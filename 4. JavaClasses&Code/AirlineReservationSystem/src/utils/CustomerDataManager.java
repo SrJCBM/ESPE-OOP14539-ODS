@@ -1,7 +1,7 @@
-
-
 package utils;
+
 import ec.edu.espe.airlinereservationsystem.model.Customer;
+import ec.edu.espe.airlinereservationsystem.model.Ticket;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -9,24 +9,20 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
- */
 public class CustomerDataManager {
+
     private static final String CUSTOMER_DATA_FILE = "customers.json";
+    private static ReservationSystem reservationSystemInt;
+
+    public static void setReservationSystem(ReservationSystem reservationSystem) {
+        reservationSystemInt = reservationSystem;
+    }
 
     public static void saveCustomers(List<Customer> customers) {
         JSONArray customerArray = new JSONArray();
 
         for (Customer customer : customers) {
-            JSONObject customerJson = new JSONObject();
-            customerJson.put("customerId", customer.getCustomerId());
-            customerJson.put("name", customer.getName());
-            customerJson.put("email", customer.getEmail());
-            JSONArray ticketArray = new JSONArray();
-            customerJson.put("ticketHistory", ticketArray);
-            // Add other fields as necessary
+            JSONObject customerJson = customer.toJSON();
             customerArray.put(customerJson);
         }
 
@@ -51,18 +47,12 @@ public class CustomerDataManager {
 
             for (int i = 0; i < customerArray.length(); i++) {
                 JSONObject customerJson = customerArray.getJSONObject(i);
-                int customerId = customerJson.getInt("customerId");
-                String name = customerJson.getString("name");
-                String email = customerJson.getString("email");
-                Customer customer = new Customer(customerId, name, email);
-                // Handle ticket history
-                JSONArray ticketArray = customerJson.getJSONArray("ticketHistory");
-                // Add logic to parse tickets and add to the customer's ticket history
+                Customer customer = Customer.fromJSON(customerJson, reservationSystemInt.getCustomerManager(), reservationSystemInt.getFlightManager());
                 customers.add(customer);
             }
 
         } catch (FileNotFoundException e) {
-            // No data file found, return an empty list
+            System.out.println("Customer data file not found, creating a new one upon first save.");
         } catch (IOException e) {
             e.printStackTrace();
         }

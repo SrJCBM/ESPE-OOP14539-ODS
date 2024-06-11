@@ -1,4 +1,3 @@
-
 package utils;
 
 import java.util.ArrayList;
@@ -9,6 +8,7 @@ import java.util.List;
  * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
  */
 public class OfferManager {
+
     private List<String> offers;
 
     public OfferManager() {

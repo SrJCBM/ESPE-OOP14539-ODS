@@ -1,4 +1,3 @@
-
 package utils;
 
 import ec.edu.espe.airlinereservationsystem.model.Customer;
@@ -14,16 +13,19 @@ import java.util.List;
  * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
  */
 public class TicketManager {
+
     private List<Ticket> tickets;
 
     public TicketManager() {
         this.tickets = new ArrayList<>();
     }
+
     public Ticket bookTicket(Customer customer, Flight flight, TicketClass ticketClass, int numberOfPeople) {
         int ticketId = tickets.size() + 1;
-        Ticket ticket = new Ticket(ticketId, customer, flight, ticketClass, numberOfPeople);
+        Ticket ticket = new Ticket(ticketId, flight.getFlightId(), customer.getCustomerId(), ticketClass, numberOfPeople);
+        System.out.println("Booking ticket with ID: " + ticketId);
         tickets.add(ticket);
-        customer.addTicketToHistory(ticket);
+        customer.addTicket(ticket);
         sendTicketByEmail(customer, ticket);
         return ticket;
     }
@@ -35,7 +37,8 @@ public class TicketManager {
 
     public void changeFlightDate(Ticket ticket, Date newDepartureDate, Date newArrivalDate) {
         if (ticket.getTicketClass() == TicketClass.BUSINESS) {
-            Flight flight = ticket.getFlight();
+            // Retrieve the flight object associated with the ticket
+            Flight flight = ReservationSystem.getInstance().getFlightManager().getFlight(ticket.getFlightId());
             flight.setDepartureDate(newDepartureDate);
             flight.setArrivalDate(newArrivalDate);
             System.out.println("Flight dates updated for ticket ID: " + ticket.getTicketId());
@@ -51,18 +54,22 @@ public class TicketManager {
 
     public void viewTicketHistory(Customer customer) {
         System.out.println("Ticket History for " + customer.getName() + ":");
-        for (Ticket ticket : customer.getTicketHistory()) {
-            System.out.println("- Ticket ID: " + ticket.getTicketId() + ", Flight ID: " + ticket.getFlight().getFlightId() + ", Class: " + ticket.getTicketClass() + ", Status: " + ticket.getStatus());
+        for (Ticket ticket : customer.getTickets()) {  // Assuming getTickets() returns the ticket history
+            System.out.println("- Ticket ID: " + ticket.getTicketId() + ", Flight ID: " + ticket.getFlightId() + ", Class: " + ticket.getTicketClass() + ", Status: " + ticket.getStatus());
         }
     }
 
     public void sendTicketByEmail(Customer customer, Ticket ticket) {
         System.out.println("Sending ticket to " + customer.getEmail());
         System.out.println("Ticket ID: " + ticket.getTicketId());
-        System.out.println("Flight ID: " + ticket.getFlight().getFlightId());
+        System.out.println("Flight ID: " + ticket.getFlightId());
         System.out.println("Ticket Class: " + ticket.getTicketClass());
         System.out.println("Number of People: " + ticket.getNumberOfPeople());
         System.out.println("Status: " + ticket.getStatus());
+    }
+
+    public List<Ticket> getTicketsByCustomer(Customer customer) {
+        return customer.getTickets();
     }
 
     public Ticket getTicket(int id) {
@@ -71,5 +78,5 @@ public class TicketManager {
 
     public List<Ticket> getAllTickets() {
         return tickets;
-    } 
+    }
 }

@@ -1,4 +1,3 @@
-
 package utils;
 
 import ec.edu.espe.airlinereservationsystem.model.Payment;
@@ -12,6 +11,7 @@ import java.util.List;
  * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
  */
 public class PaymentManager {
+
     private List<Payment> payments;
 
     public PaymentManager() {

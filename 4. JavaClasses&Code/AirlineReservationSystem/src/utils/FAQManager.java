@@ -1,4 +1,3 @@
-
 package utils;
 
 /**
@@ -6,6 +5,7 @@ package utils;
  * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
  */
 public class FAQManager {
+
     public void displayFAQ() {
         System.out.println("FAQ Section:");
         System.out.println("1. How to book a ticket?");
