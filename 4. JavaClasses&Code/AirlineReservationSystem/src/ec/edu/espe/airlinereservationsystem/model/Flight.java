@@ -1,13 +1,14 @@
-
 package ec.edu.espe.airlinereservationsystem.model;
 
 import java.util.Date;
+import org.json.JSONObject;
 
 /**
  *
  * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
  */
 public class Flight {
+
     private int flightId;
     private String origin;
     private String destination;
@@ -108,5 +109,25 @@ public class Flight {
         this.arrivalDate = arrivalDate;
     }
 
+    public JSONObject toJSON() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("flightId", flightId);
+        jsonObject.put("origin", origin);
+        jsonObject.put("destination", destination);
+        jsonObject.put("airline", airline);
+        jsonObject.put("departureDate", departureDate.toString());
+        jsonObject.put("arrivalDate", arrivalDate.toString());
+        return jsonObject;
+    }
 
+    public static Flight fromJSON(JSONObject jsonObject) {
+        int flightId = jsonObject.getInt("flightId");
+        String origin = jsonObject.getString("origin");
+        String destination = jsonObject.getString("destination");
+        String airline = jsonObject.getString("airline");
+        Date departureDate = Date.from(java.time.Instant.parse(jsonObject.getString("departureDate")));
+        Date arrivalDate = Date.from(java.time.Instant.parse(jsonObject.getString("arrivalDate")));
+
+        return new Flight(flightId, origin, destination, airline, departureDate, arrivalDate);
+    }
 }

@@ -1,16 +1,13 @@
-
 package ec.edu.espe.airlinereservationsystem.model;
 
-
 import enums.TicketClass;
-
+import org.json.JSONObject;
 
 /**
- *
- * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
+ * Represents a ticket in the reservation system.
  */
-
 public class Ticket {
+
     private int ticketId;
     private Customer customer;
     private Flight flight;
@@ -29,106 +26,64 @@ public class Ticket {
         this.eTicket = true;
     }
 
-    
-    
-    /**
-     * @return the ticketId
-     */
     public int getTicketId() {
         return ticketId;
     }
 
-    /**
-     * @param ticketId the ticketId to set
-     */
-    public void setTicketId(int ticketId) {
-        this.ticketId = ticketId;
-    }
-
-    /**
-     * @return the customer
-     */
     public Customer getCustomer() {
         return customer;
     }
 
-    /**
-     * @param customer the customer to set
-     */
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    /**
-     * @return the flight
-     */
     public Flight getFlight() {
         return flight;
     }
 
-    /**
-     * @param flight the flight to set
-     */
-    public void setFlight(Flight flight) {
-        this.flight = flight;
-    }
-
-    /**
-     * @return the ticketClass
-     */
     public TicketClass getTicketClass() {
         return ticketClass;
     }
 
-    /**
-     * @param ticketClass the ticketClass to set
-     */
-    public void setTicketClass(TicketClass ticketClass) {
-        this.ticketClass = ticketClass;
-    }
-
-    /**
-     * @return the numberOfPeople
-     */
     public int getNumberOfPeople() {
         return numberOfPeople;
     }
 
-    /**
-     * @param numberOfPeople the numberOfPeople to set
-     */
-    public void setNumberOfPeople(int numberOfPeople) {
-        this.numberOfPeople = numberOfPeople;
-    }
-
-    /**
-     * @return the status
-     */
     public String getStatus() {
         return status;
     }
 
-    /**
-     * @param status the status to set
-     */
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    /**
-     * @return the eTicket
-     */
     public boolean iseTicket() {
         return eTicket;
     }
 
-    /**
-     * @param eTicket the eTicket to set
-     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public void seteTicket(boolean eTicket) {
         this.eTicket = eTicket;
     }
-    
-    
-}
 
+    public JSONObject toJSON() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("ticketId", ticketId);
+        jsonObject.put("customerId", customer.getCustomerId());
+        jsonObject.put("flightId", flight.getFlightId());
+        jsonObject.put("ticketClass", ticketClass.name());
+        jsonObject.put("numberOfPeople", numberOfPeople);
+        jsonObject.put("status", status);
+        jsonObject.put("eTicket", eTicket);
+        return jsonObject;
+    }
+
+    public static Ticket fromJSON(JSONObject jsonObject, Customer customer, Flight flight) {
+        int ticketId = jsonObject.getInt("ticketId");
+        TicketClass ticketClass = TicketClass.valueOf(jsonObject.getString("ticketClass"));
+        int numberOfPeople = jsonObject.getInt("numberOfPeople");
+        String status = jsonObject.getString("status");
+        boolean eTicket = jsonObject.getBoolean("eTicket");
+
+        Ticket ticket = new Ticket(ticketId, customer, flight, ticketClass, numberOfPeople);
+        ticket.setStatus(status);
+        ticket.seteTicket(eTicket);
+        return ticket;
+    }
+}
