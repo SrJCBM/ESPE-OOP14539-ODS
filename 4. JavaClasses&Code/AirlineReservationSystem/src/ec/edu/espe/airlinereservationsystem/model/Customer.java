@@ -1,47 +1,25 @@
 package ec.edu.espe.airlinereservationsystem.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import utils.CustomerManager;
-import utils.FlightManager;
 
-/**
- * Represents a customer in the reservation system.
- */
+import java.util.ArrayList;
+import java.util.List;
+import ec.edu.espe.airlinereservationsystem.utils.CustomerManager;
+import ec.edu.espe.airlinereservationsystem.utils.FlightManager;
+
 public class Customer {
 
     private int customerId;
     private String name;
     private String email;
-    private List<Ticket> ticketHistory;
+    private List<Ticket> tickets;
 
     public Customer(int customerId, String name, String email) {
         this.customerId = customerId;
         this.name = name;
         this.email = email;
-        this.ticketHistory = new ArrayList<>();
-    }
-
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public List<Ticket> getTicketHistory() {
-        return ticketHistory;
-    }
-
-    public void addTicket(Ticket ticket) {
-        ticketHistory.add(ticket);
+        this.tickets = new ArrayList<>();
     }
 
     public JSONObject toJSON() {
@@ -50,11 +28,12 @@ public class Customer {
         jsonObject.put("name", name);
         jsonObject.put("email", email);
 
-        JSONArray ticketArray = new JSONArray();
-        for (Ticket ticket : ticketHistory) {
-            ticketArray.put(ticket.toJSON());
+        JSONArray ticketsArray = new JSONArray();
+        for (Ticket ticket : tickets) {
+            ticketsArray.put(ticket.toJSON());
         }
-        jsonObject.put("ticketHistory", ticketArray);
+        jsonObject.put("tickets", ticketsArray);
+
         return jsonObject;
     }
 
@@ -65,15 +44,47 @@ public class Customer {
 
         Customer customer = new Customer(customerId, name, email);
 
-        JSONArray ticketArray = jsonObject.getJSONArray("ticketHistory");
-        for (int i = 0; i < ticketArray.length(); i++) {
-            JSONObject ticketObject = ticketArray.getJSONObject(i);
-            int flightId = ticketObject.getInt("flightId");
-            Flight flight = flightManager.getFlight(flightId);
-            Ticket ticket = Ticket.fromJSON(ticketObject, customer, flight);
+        JSONArray ticketsArray = jsonObject.getJSONArray("tickets");
+        for (int i = 0; i < ticketsArray.length(); i++) {
+            JSONObject ticketJson = ticketsArray.getJSONObject(i);
+            Ticket ticket = Ticket.fromJSON(ticketJson, customerManager, flightManager);
             customer.addTicket(ticket);
         }
 
         return customer;
     }
+
+    public void addTicket(Ticket ticket) {
+        System.out.println("Adding ticket with ID: " + ticket.getTicketId() + " to customer ID: " + this.customerId);
+        tickets.add(ticket);
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }

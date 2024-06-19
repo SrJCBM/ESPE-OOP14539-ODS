@@ -130,4 +130,6 @@ public class Flight {
 
         return new Flight(flightId, origin, destination, airline, departureDate, arrivalDate);
     }
+    
+    
 }

@@ -1,1 +1,1 @@
-[{"ticketHistory":[],"customerId":1,"name":"Beto","email":"lacanarte@gmail.com"}]
+[{"tickets":[{"ticketClass":"BUSINESS","customerId":1,"flightId":1,"ticketId":1,"numberOfPeople":1,"status":"Booked"}],"customerId":1,"name":"Julio","email":"jcblacio@espe.edu.ec"}]
