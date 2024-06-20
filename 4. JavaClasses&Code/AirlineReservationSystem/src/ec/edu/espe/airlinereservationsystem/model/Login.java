@@ -25,9 +25,9 @@ public class Login {
     }
 
     
-    public boolean autenticar(String nombreUsuario, String contrasena) {
-        Customer customer = customerManager.getCustomerByUsername(nombreUsuario);
-        if (customer != null && customer.getPassword().equals(contrasena)) {
+    public boolean authenticate(String userName, String password) {
+        Customer customer = customerManager.getCustomerByUsername(userName);
+        if (customer != null && customer.getPassword().equals(password)) {
             return true;
         }
         return false;
@@ -35,34 +35,34 @@ public class Login {
 
    
     public boolean mostrarMenuLogin() {
-        JTextField campoNombreUsuario = new JTextField();
-        JPasswordField campoContrasena = new JPasswordField();
+        JTextField fieldUserName = new JTextField();
+        JPasswordField fieldPassword = new JPasswordField();
 
       
         JPanel panel = new JPanel(new GridLayout(2, 2));
-        panel.add(new JLabel("Nombre de usuario:"));
-        panel.add(campoNombreUsuario);
-        panel.add(new JLabel("Contraseña:"));
-        panel.add(campoContrasena);
+        panel.add(new JLabel("User Name:"));
+        panel.add(fieldUserName);
+        panel.add(new JLabel("password:"));
+        panel.add(fieldPassword);
 
         
-        int opcion = JOptionPane.showConfirmDialog(null, panel, "Inicio de sesión", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        int opcion = JOptionPane.showConfirmDialog(null, panel, "Login", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
         if (opcion == JOptionPane.OK_OPTION) {
-            String nombreUsuario = campoNombreUsuario.getText();
-            char[] arrayContrasena = campoContrasena.getPassword();
-            String contrasena = new String(arrayContrasena);
+            String userName = fieldUserName.getText();
+            char[] arrayPassword = fieldPassword.getPassword();
+            String password = new String(arrayPassword);
 
            
-            if (autenticar(nombreUsuario, contrasena)) {
-                JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso");
+            if (authenticate(userName, password)) {
+                JOptionPane.showMessageDialog(null, "Succesful Login");
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos");
+                JOptionPane.showMessageDialog(null, "Username or password incorrect");
                 return false;
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Inicio de sesión cancelado");
+            JOptionPane.showMessageDialog(null, "Login canceled");
             return false;
         }
     }

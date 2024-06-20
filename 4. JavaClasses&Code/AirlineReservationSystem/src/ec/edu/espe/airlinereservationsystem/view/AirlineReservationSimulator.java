@@ -19,32 +19,32 @@ public class AirlineReservationSimulator {
         CustomerManager customerManager = new CustomerManager();
         
         // Mostrar el menú de inicio de sesión y autenticar al usuario
-        boolean loginExitoso = mostrarMenuLogin(customerManager);
+        boolean loggingSuccessful = showMenuLogin(customerManager);
 
-        if (loginExitoso) {
+        if (loggingSuccessful) {
             // Si el login es exitoso, proceder con el menú principal de la aplicación
             MenuManager menuManager = new MenuManager(reservationSystem);
             menuManager.displayMenu();
         } else {
             // Manejar cualquier lógica adicional si el login falla o se cancela
-            System.out.println("Login fallido. Saliendo del sistema...");
+            System.out.println("Login failed. Logging out of the system...");
         }
     }
 
-    private static boolean mostrarMenuLogin(CustomerManager customerManager) {
-        String nombreUsuario = JOptionPane.showInputDialog(null, "Ingrese su nombre de usuario:");
-        if (nombreUsuario == null) {
-            JOptionPane.showMessageDialog(null, "Inicio de sesión cancelado");
+    private static boolean showMenuLogin(CustomerManager customerManager) {
+        String userName = JOptionPane.showInputDialog(null, "Enter your username:");
+        if (userName == null) {
+            JOptionPane.showMessageDialog(null, "Login canceled");
             return false;
         }
 
-        String contrasena = JOptionPane.showInputDialog(null, "Ingrese su contraseña:");
-        if (contrasena == null) {
-            JOptionPane.showMessageDialog(null, "Inicio de sesión cancelado");
+        String password = JOptionPane.showInputDialog(null, "Enter your password:");
+        if (password == null) {
+            JOptionPane.showMessageDialog(null, "Login canceled");
             return false;
         }
 
         Login login = new Login(customerManager);
-        return login.autenticar(nombreUsuario, contrasena);
+        return login.authenticate(userName, password);
     }
 }
