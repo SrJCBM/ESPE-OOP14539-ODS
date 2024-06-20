@@ -1,4 +1,4 @@
-package utils;
+package ec.edu.espe.airlinereservationsystem.utils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

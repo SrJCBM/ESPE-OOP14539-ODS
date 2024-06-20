@@ -1,4 +1,4 @@
-package enums;
+package ec.edu.espe.airlinereservationsystem.enums;
 
 /**
  *

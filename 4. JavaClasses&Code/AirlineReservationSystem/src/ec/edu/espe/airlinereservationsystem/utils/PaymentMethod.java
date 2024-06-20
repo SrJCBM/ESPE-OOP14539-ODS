@@ -1,6 +1,6 @@
-package utils;
+package ec.edu.espe.airlinereservationsystem.utils;
 
-import enums.PaymentMethods;
+import ec.edu.espe.airlinereservationsystem.enums.PaymentMethods;
 import java.util.Date;
 
 /**

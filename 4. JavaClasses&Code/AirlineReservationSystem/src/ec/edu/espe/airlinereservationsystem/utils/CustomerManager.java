@@ -1,4 +1,4 @@
-package utils;
+package ec.edu.espe.airlinereservationsystem.utils;
 
 import ec.edu.espe.airlinereservationsystem.model.Customer;
 import java.util.ArrayList;
@@ -18,9 +18,14 @@ public class CustomerManager {
     }
 
     public void loadCustomers() {
-        this.customers = CustomerDataManager.loadCustomers();
+         List<Customer> loadedCustomers = CustomerDataManager.loadCustomers();
+    if (loadedCustomers != null) {
+        this.customers = loadedCustomers;
         System.out.println("Customers loaded: " + customers.size());
+    } else {
+        System.out.println("Failed to load customers.");
     }
+}
 
     public Customer createCustomer(String name, String email) {
         int customerId = customers.size() + 1; // Generate unique IDs
@@ -42,4 +47,12 @@ public class CustomerManager {
         }
         return null;
     }
+    public Customer getCustomerByUsername(String username) {
+    for (Customer customer : customers) {
+        if (customer.getUsername().equals(username)) {
+            return customer;
+        }
+    }
+    return null;
+}
 }

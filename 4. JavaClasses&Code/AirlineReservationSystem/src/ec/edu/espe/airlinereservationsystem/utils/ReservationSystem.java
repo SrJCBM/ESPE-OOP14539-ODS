@@ -1,4 +1,4 @@
-package utils;
+package ec.edu.espe.airlinereservationsystem.utils;
 
 /**
  *
@@ -7,7 +7,7 @@ package utils;
 public class ReservationSystem {
 
     private static ReservationSystem instance;
-    private CustomerManager customerManager;
+    private  CustomerManager customerManager;
     private FlightManager flightManager;
     private TicketManager ticketManager;
     private PaymentManager paymentManager;
