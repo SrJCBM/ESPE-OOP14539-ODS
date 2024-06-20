@@ -1,13 +1,13 @@
 package ec.edu.espe.airlinereservationsystem.view;
 
-import ec.edu.espe.airlinereservationsystem.utils.ReservationSystem;
-import ec.edu.espe.airlinereservationsystem.enums.TicketClass;
-import ec.edu.espe.airlinereservationsystem.enums.PaymentMethods;
+import utils.ReservationSystem;
+import enums.TicketClass;
+import enums.PaymentMethods;
 import ec.edu.espe.airlinereservationsystem.model.Customer;
 import ec.edu.espe.airlinereservationsystem.model.Flight;
 import ec.edu.espe.airlinereservationsystem.model.Ticket;
-import ec.edu.espe.airlinereservationsystem.utils.CustomerDataManager;
-import ec.edu.espe.airlinereservationsystem.utils.JsonUtils;
+import utils.CustomerDataManager;
+import utils.JsonUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -173,23 +173,36 @@ public class MenuManager {
         int customerId = getIntInput();
         try {
             Customer customer = reservationSystemInt.getCustomerManager().getCustomer(customerId);
-            List<Ticket> tickets = reservationSystemInt.getTicketManager().getTicketsByCustomer(customer);
+            if (customer != null) {
+                List<Ticket> tickets = reservationSystemInt.getTicketManager().getTicketsByCustomer(customer);
 
-            System.out.println("Ticket History for " + customer.getName() + ":");
-            for (Ticket ticket : tickets) {
-                Flight flight = ticket.getFlight(reservationSystemInt.getFlightManager());
-                System.out.println("- Ticket ID: " + ticket.getTicketId()
-                        + ", Flight ID: " + flight.getFlightId()
-                        + ", Origin: " + flight.getOrigin()
-                        + ", Destination: " + flight.getDestination()
-                        + ", Airline: " + flight.getAirline()
-                        + ", Departure Date: " + flight.getDepartureDate()
-                        + ", Arrival Date: " + flight.getArrivalDate()
-                        + ", Class: " + ticket.getTicketClass()
-                        + ", Status: " + ticket.getStatus());
+                if (!tickets.isEmpty()) {
+                    System.out.println("Ticket History for " + customer.getName() + ":");
+                    for (Ticket ticket : tickets) {
+                        Flight flight = reservationSystemInt.getFlightManager().getFlight(ticket.getFlightId());
+                        if (flight != null) {
+                            System.out.println("- Ticket ID: " + ticket.getTicketId()
+                                    + ", Flight ID: " + flight.getFlightId()
+                                    + ", Origin: " + flight.getOrigin()
+                                    + ", Destination: " + flight.getDestination()
+                                    + ", Airline: " + flight.getAirline()
+                                    + ", Departure Date: " + flight.getDepartureDate()
+                                    + ", Arrival Date: " + flight.getArrivalDate()
+                                    + ", Class: " + ticket.getTicketClass()
+                                    + ", Status: " + ticket.getStatus());
+                        } else {
+                            System.out.println("- Ticket ID: " + ticket.getTicketId()
+                                    + ", Flight information not available.");
+                        }
+                    }
+                } else {
+                    System.out.println("No tickets found for customer " + customer.getName());
+                }
+            } else {
+                System.out.println("Invalid customer ID. Please try again.");
             }
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Invalid customer ID. Please try again.");
+            System.out.println("Error accessing ticket information. Please try again.");
         }
     }
 

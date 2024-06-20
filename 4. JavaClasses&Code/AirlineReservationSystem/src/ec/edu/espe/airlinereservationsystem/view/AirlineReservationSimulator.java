@@ -1,6 +1,6 @@
 package ec.edu.espe.airlinereservationsystem.view;
 
-import ec.edu.espe.airlinereservationsystem.utils.ReservationSystem;
+import utils.ReservationSystem;
 
 public class AirlineReservationSimulator {
 

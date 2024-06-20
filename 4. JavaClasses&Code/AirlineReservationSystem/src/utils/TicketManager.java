@@ -4,6 +4,7 @@ import ec.edu.espe.airlinereservationsystem.model.Customer;
 import ec.edu.espe.airlinereservationsystem.model.Flight;
 import ec.edu.espe.airlinereservationsystem.model.Ticket;
 import enums.TicketClass;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,23 +40,29 @@ public class TicketManager {
         if (ticket.getTicketClass() == TicketClass.BUSINESS) {
             // Retrieve the flight object associated with the ticket
             Flight flight = ReservationSystem.getInstance().getFlightManager().getFlight(ticket.getFlightId());
+
             flight.setDepartureDate(newDepartureDate);
             flight.setArrivalDate(newArrivalDate);
-            System.out.println("Flight dates updated for ticket ID: " + ticket.getTicketId());
+            System.out.println("Changed flight dates for ticket ID: " + ticket.getTicketId());
+            System.out.println("New departure date: " + newDepartureDate + ", New arrival date: " + newArrivalDate);
         } else {
             System.out.println("Date change allowed only for BUSINESS class tickets.");
         }
     }
 
     public void updateTicketStatus(Ticket ticket, String status) {
-        ticket.setStatus(status);
-        System.out.println("Ticket status updated to: " + status);
+        System.out.println("Updating status for ticket ID: " + ticket.getTicketId() + " to: " + status);
     }
 
     public void viewTicketHistory(Customer customer) {
-        System.out.println("Ticket History for " + customer.getName() + ":");
-        for (Ticket ticket : customer.getTickets()) {  // Assuming getTickets() returns the ticket history
-            System.out.println("- Ticket ID: " + ticket.getTicketId() + ", Flight ID: " + ticket.getFlightId() + ", Class: " + ticket.getTicketClass() + ", Status: " + ticket.getStatus());
+        List<Ticket> tickets = customer.getTickets();
+        if (tickets.isEmpty()) {
+            System.out.println("No tickets found for " + customer.getName());
+        } else {
+            System.out.println("Ticket History for " + customer.getName() + ":");
+            for (Ticket ticket : tickets) {
+                System.out.println("- Ticket ID: " + ticket.getTicketId() + ", Flight ID: " + ticket.getFlightId() + ", Ticket Class: " + ticket.getTicketClass());
+            }
         }
     }
 

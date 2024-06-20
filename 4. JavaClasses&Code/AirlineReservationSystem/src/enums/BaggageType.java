@@ -1,11 +1,9 @@
-
 package enums;
-
 
 /**
  *
- * @author Kerlly Chiriboga, Overnight Developers Squad, ODS
+ * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
  */
 public enum BaggageType {
-        CARRY_ON, CHECKED
+    CARRY_ON, CHECKED
 }

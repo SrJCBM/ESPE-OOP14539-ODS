@@ -1,4 +1,4 @@
-package ec.edu.espe.airlinereservationsystem.utils;
+package utils;
 
 import ec.edu.espe.airlinereservationsystem.model.Customer;
 import ec.edu.espe.airlinereservationsystem.model.Ticket;

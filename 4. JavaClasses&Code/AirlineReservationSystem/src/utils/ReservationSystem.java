@@ -15,12 +15,15 @@ public class ReservationSystem {
     private FAQManager faqManager;
 
     private ReservationSystem() {
+        CustomerDataManager.setReservationSystem(this);
+        
+        this.customerManager = new CustomerManager();
         this.flightManager = new FlightManager();
         this.ticketManager = new TicketManager();
         this.paymentManager = new PaymentManager();
         this.offerManager = new OfferManager();
         this.faqManager = new FAQManager();
-        CustomerDataManager.setReservationSystem(this);
+
     }
 
     public static synchronized ReservationSystem getInstance() {
@@ -31,9 +34,6 @@ public class ReservationSystem {
     }
 
     public CustomerManager getCustomerManager() {
-        if (customerManager == null) {
-            this.customerManager = new CustomerManager();
-        }
         return customerManager;
     }
 

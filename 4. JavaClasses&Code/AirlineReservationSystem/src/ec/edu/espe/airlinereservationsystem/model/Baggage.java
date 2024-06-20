@@ -1,7 +1,7 @@
 package ec.edu.espe.airlinereservationsystem.model;
 
 import java.io.Serializable;
-import ec.edu.espe.airlinereservationsystem.enums.BaggageType;
+import enums.BaggageType;
 
 /**
  *

@@ -1,4 +1,4 @@
-package ec.edu.espe.airlinereservationsystem.utils;
+package utils;
 
 import ec.edu.espe.airlinereservationsystem.model.Flight;
 import java.util.ArrayList;

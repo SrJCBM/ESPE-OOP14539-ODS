@@ -1,4 +1,4 @@
-package ec.edu.espe.airlinereservationsystem.utils;
+package utils;
 
 /**
  *

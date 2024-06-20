@@ -1,9 +1,9 @@
-package ec.edu.espe.airlinereservationsystem.utils;
+package utils;
 
 import ec.edu.espe.airlinereservationsystem.model.Customer;
 import ec.edu.espe.airlinereservationsystem.model.Flight;
 import ec.edu.espe.airlinereservationsystem.model.Ticket;
-import ec.edu.espe.airlinereservationsystem.enums.TicketClass;
+import enums.TicketClass;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -56,9 +56,13 @@ public class TicketManager {
 
     public void viewTicketHistory(Customer customer) {
         List<Ticket> tickets = customer.getTickets();
-        System.out.println("Ticket History for " + customer.getName() + ":");
-        for (Ticket ticket : tickets) {  
-            System.out.println("- Ticket ID: " + ticket.getTicketId() + ", Flight ID: " + ticket.getFlightId() + ", Ticket Class: " + ticket.getTicketClass());
+        if (tickets.isEmpty()) {
+            System.out.println("No tickets found for " + customer.getName());
+        } else {
+            System.out.println("Ticket History for " + customer.getName() + ":");
+            for (Ticket ticket : tickets) {
+                System.out.println("- Ticket ID: " + ticket.getTicketId() + ", Flight ID: " + ticket.getFlightId() + ", Ticket Class: " + ticket.getTicketClass());
+            }
         }
     }
 

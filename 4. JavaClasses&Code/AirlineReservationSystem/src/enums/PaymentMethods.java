@@ -1,9 +1,8 @@
-
 package enums;
 
 /**
  *
- * @author Kerlly Chiriboga, Overnight Developers Squad,  ODS
+ * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
  */
 public enum PaymentMethods {
     CREDIT_CARD,

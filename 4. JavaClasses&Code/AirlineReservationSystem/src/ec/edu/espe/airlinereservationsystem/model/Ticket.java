@@ -1,9 +1,9 @@
 package ec.edu.espe.airlinereservationsystem.model;
 
 import org.json.JSONObject;
-import ec.edu.espe.airlinereservationsystem.enums.TicketClass;
-import ec.edu.espe.airlinereservationsystem.utils.CustomerManager;
-import ec.edu.espe.airlinereservationsystem.utils.FlightManager;
+import enums.TicketClass;
+import utils.CustomerManager;
+import utils.FlightManager;
 
 public class Ticket {
 

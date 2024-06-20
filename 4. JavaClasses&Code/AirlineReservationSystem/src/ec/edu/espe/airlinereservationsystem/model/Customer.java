@@ -5,8 +5,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import ec.edu.espe.airlinereservationsystem.utils.CustomerManager;
-import ec.edu.espe.airlinereservationsystem.utils.FlightManager;
+import utils.CustomerManager;
+import utils.FlightManager;
 
 public class Customer {
 
@@ -55,7 +55,6 @@ public class Customer {
     }
 
     public void addTicket(Ticket ticket) {
-        System.out.println("Adding ticket with ID: " + ticket.getTicketId() + " to customer ID: " + this.customerId);
         tickets.add(ticket);
     }
 

@@ -1,6 +1,7 @@
-package ec.edu.espe.airlinereservationsystem.utils;
+package utils;
 
 import ec.edu.espe.airlinereservationsystem.model.Customer;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,13 @@ public class CustomerManager {
     private List<Customer> customers;
 
     public CustomerManager() {
-        this.customers = CustomerDataManager.loadCustomers(); // Load existing customers
+        this.customers = new ArrayList<>();
+        loadCustomers();
+    }
+
+    public void loadCustomers() {
+        this.customers = CustomerDataManager.loadCustomers();
+        System.out.println("Customers loaded: " + customers.size());
     }
 
     public Customer createCustomer(String name, String email) {

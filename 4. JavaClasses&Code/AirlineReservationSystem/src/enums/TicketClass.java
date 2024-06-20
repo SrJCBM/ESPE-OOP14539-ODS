@@ -1,11 +1,9 @@
 package enums;
 
-
 /**
  *
- * @author Kerlly Chiriboga,  Overnight Developers Squad,  ODS
+ * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
  */
-
 public enum TicketClass {
     ECONOMY(100.0),
     BUSINESS(200.0);
