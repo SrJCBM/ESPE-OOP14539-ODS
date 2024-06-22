@@ -12,10 +12,14 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Alfonso%20Alejandro/Desktop/Alfonso/ESPE/Segundo%20%20Semestre/POO/REVISION%20DE%20PROYECTO%20EQUIPO%202/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/model/Baggage.java</file>
             <file>file:/C:/Users/Alfonso%20Alejandro/Desktop/Alfonso/ESPE/Segundo%20%20Semestre/POO/REVISION%20DE%20PROYECTO%20EQUIPO%202/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/utils/ReservationSystem.java</file>
             <file>file:/C:/Users/Alfonso%20Alejandro/Desktop/Alfonso/ESPE/Segundo%20%20Semestre/POO/REVISION%20DE%20PROYECTO%20EQUIPO%202/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/utils/FAQManager.java</file>
             <file>file:/C:/Users/Alfonso%20Alejandro/Desktop/Alfonso/ESPE/Segundo%20%20Semestre/POO/REVISION%20DE%20PROYECTO%20EQUIPO%202/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/utils/CustomerDataManager.java</file>
+=======
+            <file>file:/C:/Users/Leonidas/Desktop/Miguel%20Trabajos/OOP/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/view/AirlineReservationSimulator.java</file>
+>>>>>>> 8773be16b83feed97cd52dde17ea3148190c942e
         </group>
     </open-files>
 </project-private>
