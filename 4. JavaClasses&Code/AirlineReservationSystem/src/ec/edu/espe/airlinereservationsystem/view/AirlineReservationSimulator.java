@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class AirlineReservationSimulator {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { 
         // Obtener una instancia del sistema de reservas
         ReservationSystem reservationSystem = ReservationSystem.getInstance();
         
