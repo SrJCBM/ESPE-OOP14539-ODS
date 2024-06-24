@@ -1,9 +1,10 @@
 package ec.edu.espe.airlinereservationsystem.utils;
 
-import ec.edu.espe.airlinereservationsystem.enums.TicketClass;
 import ec.edu.espe.airlinereservationsystem.model.Customer;
 import ec.edu.espe.airlinereservationsystem.model.Flight;
 import ec.edu.espe.airlinereservationsystem.model.Ticket;
+import enums.TicketClass;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -54,16 +55,16 @@ public class TicketManager {
     }
 
     public void viewTicketHistory(Customer customer) {
-    List<Ticket> tickets = customer.getTickets();
-    if (tickets.isEmpty()) {
-        System.out.println("No tickets found for " + customer.getName());
-    } else {
-        System.out.println("Ticket History for " + customer.getName() + ":");
-        for (Ticket ticket : tickets) {
-            System.out.println("- Ticket ID: " + ticket.getTicketId() + ", Flight ID: " + ticket.getFlightId() + ", Ticket Class: " + ticket.getTicketClass());
+        List<Ticket> tickets = customer.getTickets();
+        if (tickets.isEmpty()) {
+            System.out.println("No tickets found for " + customer.getName());
+        } else {
+            System.out.println("Ticket History for " + customer.getName() + ":");
+            for (Ticket ticket : tickets) {
+                System.out.println("- Ticket ID: " + ticket.getTicketId() + ", Flight ID: " + ticket.getFlightId() + ", Ticket Class: " + ticket.getTicketClass());
+            }
         }
     }
-}
 
     public void sendTicketByEmail(Customer customer, Ticket ticket) {
         System.out.println("Sending ticket to " + customer.getEmail());

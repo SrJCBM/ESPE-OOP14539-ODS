@@ -1,14 +1,14 @@
 package ec.edu.espe.airlinereservationsystem.view;
 
-
-import ec.edu.espe.airlinereservationsystem.enums.PaymentMethods;
-import ec.edu.espe.airlinereservationsystem.enums.TicketClass;
+import ec.edu.espe.airlinereservationsystem.utils.ReservationSystem;
+import enums.TicketClass;
+import enums.PaymentMethods;
 import ec.edu.espe.airlinereservationsystem.model.Customer;
 import ec.edu.espe.airlinereservationsystem.model.Flight;
 import ec.edu.espe.airlinereservationsystem.model.Ticket;
 import ec.edu.espe.airlinereservationsystem.utils.CustomerDataManager;
 import ec.edu.espe.airlinereservationsystem.utils.JsonUtils;
-import ec.edu.espe.airlinereservationsystem.utils.ReservationSystem;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

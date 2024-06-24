@@ -18,14 +18,9 @@ public class CustomerManager {
     }
 
     public void loadCustomers() {
-         List<Customer> loadedCustomers = CustomerDataManager.loadCustomers();
-    if (loadedCustomers != null) {
-        this.customers = loadedCustomers;
+        this.customers = CustomerDataManager.loadCustomers();
         System.out.println("Customers loaded: " + customers.size());
-    } else {
-        System.out.println("Failed to load customers.");
     }
-}
 
     public Customer createCustomer(String name, String email) {
         int customerId = customers.size() + 1; // Generate unique IDs
@@ -47,12 +42,4 @@ public class CustomerManager {
         }
         return null;
     }
-    public Customer getCustomerByUsername(String username) {
-    for (Customer customer : customers) {
-        if (customer.getUsername().equals(username)) {
-            return customer;
-        }
-    }
-    return null;
-}
 }

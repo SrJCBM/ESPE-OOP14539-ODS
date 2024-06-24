@@ -1,7 +1,7 @@
 package ec.edu.espe.airlinereservationsystem.utils;
 
-import ec.edu.espe.airlinereservationsystem.enums.PaymentMethods;
 import ec.edu.espe.airlinereservationsystem.model.Payment;
+import enums.PaymentMethods;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

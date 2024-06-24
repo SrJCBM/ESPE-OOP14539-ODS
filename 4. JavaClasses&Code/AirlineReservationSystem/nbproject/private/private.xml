@@ -12,20 +12,8 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/view/AirlineReservationSimulator.java</file>
-            <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/utils/TicketManager.java</file>
-            <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/utils/FlightManager.java</file>
-            <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/enums/TicketClass.java</file>
-            <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/utils/PaymentMethod.java</file>
-            <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/utils/FAQManager.java</file>
-            <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/utils/PaymentManager.java</file>
-            <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/utils/CustomerManager.java</file>
-            <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/utils/OfferManager.java</file>
             <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/utils/JsonUtils.java</file>
-            <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/utils/ReservationSystem.java</file>
-            <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/utils/CustomerDataManager.java</file>
             <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/model/Customer.java</file>
-            <file>file:/C:/REPOSITORIO/ESPE-OOP14539-ODS/4.%20JavaClasses&amp;Code/AirlineReservationSystem/src/ec/edu/espe/airlinereservationsystem/model/Login.java</file>
         </group>
     </open-files>
 </project-private>
