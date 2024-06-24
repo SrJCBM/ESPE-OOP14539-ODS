@@ -3,7 +3,7 @@ package ec.edu.espe.airlinereservationsystem.utils;
 import ec.edu.espe.airlinereservationsystem.model.Customer;
 import ec.edu.espe.airlinereservationsystem.model.Flight;
 import ec.edu.espe.airlinereservationsystem.model.Ticket;
-import enums.TicketClass;
+import ec.edu.espe.airlinereservationsystem.enums.TicketClass;
 
 import java.util.ArrayList;
 import java.util.Date;

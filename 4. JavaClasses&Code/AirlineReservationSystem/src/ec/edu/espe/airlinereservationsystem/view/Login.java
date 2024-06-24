@@ -11,9 +11,7 @@ import java.awt.Cursor;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.prefs.Preferences;
 import javax.swing.BorderFactory;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -96,11 +94,8 @@ public class Login {
                 return user;
             }
         }
-        return null;
+       return null;
     }
-
 }
 
-
-  
 

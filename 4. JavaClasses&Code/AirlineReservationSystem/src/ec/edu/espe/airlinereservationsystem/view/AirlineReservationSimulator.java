@@ -20,4 +20,4 @@ public class AirlineReservationSimulator {
             System.out.println("Exiting the system.");
         }
     }
-    }
+}
