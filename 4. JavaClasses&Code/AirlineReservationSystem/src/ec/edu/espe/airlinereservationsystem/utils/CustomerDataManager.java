@@ -1,7 +1,6 @@
 package ec.edu.espe.airlinereservationsystem.utils;
 
 import ec.edu.espe.airlinereservationsystem.model.Customer;
-import ec.edu.espe.airlinereservationsystem.model.Ticket;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -29,7 +28,6 @@ public class CustomerDataManager {
         try (FileWriter file = new FileWriter(CUSTOMER_DATA_FILE)) {
             file.write(customerArray.toString());
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -54,7 +52,6 @@ public class CustomerDataManager {
         } catch (FileNotFoundException e) {
             System.out.println("Customer data file not found, creating a new one upon first save.");
         } catch (IOException e) {
-            e.printStackTrace();
         }
 
         return customers;
