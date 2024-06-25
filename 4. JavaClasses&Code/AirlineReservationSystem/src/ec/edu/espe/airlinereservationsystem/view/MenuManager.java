@@ -31,63 +31,64 @@ public class MenuManager {
     }
 
     public void displayMenu() {
-        int choice;
-        do {
-            System.out.println("Airline Reservation Simulator");
-            System.out.println("1. Create Customer");
-            System.out.println("2. Create Flight");
-            System.out.println("3. Book Ticket");
-            System.out.println("4. Add Offer");
-            System.out.println("5. View Ticket History");
-            System.out.println("6. Add Baggage");
-            System.out.println("7. Change Flight Date");
-            System.out.println("8. Update Ticket Status");
-            System.out.println("9. View Offers");
-            System.out.println("10. FAQ");
-            System.out.println("0. Exit");
-            System.out.print("Enter your choice: ");
-            choice = getIntInput();
-
-            switch (choice) {
-                case 1:
-                    createCustomer();
-                    break;
-                case 2:
-                    createFlight();
-                    break;
-                case 3:
-                    bookTicket();
-                    break;
-                case 4:
-                    addOffer();
-                    break;
-                case 5:
-                    viewTicketHistory();
-                    break;
-                case 6:
-                    addBaggage();
-                    break;
-                case 7:
-                    changeFlightDate();
-                    break;
-                case 8:
-                    updateTicketStatus();
-                    break;
-                case 9:
-                    viewOffers();
-                    break;
-                case 10:
-                    displayFAQ();
-                    break;
-                case 0:
-                    System.out.println("Exiting...");
-                    break;
-                default:
-                    System.out.println("Invalid choice! Please try again.");
-            }
-        } while (choice != 0);
-
-        scanner.close();
+        try (scanner) {
+            int choice;
+            do {
+                System.out.println("==== Welcome to the Airline Reservation System ==========");
+                System.out.println("||           1. Create Customer                        ||");
+                System.out.println("||           2. Create Flight                          ||");
+                System.out.println("||           3. Book Ticket                            ||");
+                System.out.println("||           4. Add Offer                              ||");
+                System.out.println("||           5. View Ticket History                    ||");
+                System.out.println("||           6. Add Baggage                            ||");
+                System.out.println("||           7. Change Flight Date                     ||");
+                System.out.println("||           8. Update Ticket Status                   ||");
+                System.out.println("||           9. View Offers                            ||");
+                System.out.println("||           10. FAQ                                   ||");
+                System.out.println("||           0. Exit                                   ||");
+                System.out.println("=======================================================");
+                System.out.print("Enter your choice: ");
+                choice = getIntInput();
+                
+                switch (choice) {
+                    case 1:
+                        createCustomer();
+                        break;
+                    case 2:
+                        createFlight();
+                        break;
+                    case 3:
+                        bookTicket();
+                        break;
+                    case 4:
+                        addOffer();
+                        break;
+                    case 5:
+                        viewTicketHistory();
+                        break;
+                    case 6:
+                        addBaggage();
+                        break;
+                    case 7:
+                        changeFlightDate();
+                        break;
+                    case 8:
+                        updateTicketStatus();
+                        break;
+                    case 9:
+                        viewOffers();
+                        break;
+                    case 10:
+                        displayFAQ();
+                        break;
+                    case 0:
+                        System.out.println("Exiting...");
+                        break;
+                    default:
+                        System.out.println("Invalid choice! Please try again.");
+                }
+            } while (choice != 0);
+        }
     }
 
     private void createCustomer() {
@@ -225,7 +226,6 @@ public class MenuManager {
     private void changeFlightDate() {
         System.out.print("Enter ticket ID: ");
         int ticketId = getIntInput();
-        scanner.nextLine();
         System.out.print("Enter new departure date (yyyy-MM-dd): ");
         String newDepDateStr = scanner.nextLine();
         System.out.print("Enter new arrival date (yyyy-MM-dd): ");
@@ -246,7 +246,6 @@ public class MenuManager {
     private void updateTicketStatus() {
         System.out.print("Enter ticket ID: ");
         int ticketId = getIntInput();
-        scanner.nextLine();
         System.out.print("Enter new status: ");
         String status = scanner.nextLine();
         try {

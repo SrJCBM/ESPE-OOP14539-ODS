@@ -1,1 +1,59 @@
-[{"tickets":[{"ticketClass":"ECONOMY","customerId":1,"flightId":1,"ticketId":1,"numberOfPeople":1,"status":"Booked"}],"customerId":1,"name":"Julio","email":"jcblacio@espe.edu.ec"},{"tickets":[],"customerId":2,"name":"joffre","email":"jegomez6@espe.edu.ec"},{"tickets":[],"customerId":3,"name":"joffre","email":"jegomez6@espe.edu.ec"}]
+[
+    {
+        "tickets": [{
+            "ticketClass": "ECONOMY",
+            "customerId": 1,
+            "flightId": 1,
+            "ticketId": 1,
+            "numberOfPeople": 1,
+            "status": "Booked"
+        }],
+        "customerId": 1,
+        "name": "Julio",
+        "email": "jcblacio@espe.edu.ec"
+    },
+    {
+        "tickets": [],
+        "customerId": 2,
+        "name": "joffre",
+        "email": "jegomez6@espe.edu.ec"
+    },
+    {
+        "tickets": [],
+        "customerId": 3,
+        "name": "joffre",
+        "email": "jegomez6@espe.edu.ec"
+    },
+    {
+        "tickets": [],
+        "customerId": 4,
+        "name": "SARA",
+        "email": ""
+    },
+    {
+        "tickets": [{
+            "ticketClass": "ECONOMY",
+            "customerId": 5,
+            "flightId": 2,
+            "ticketId": 1,
+            "numberOfPeople": 1,
+            "status": "Booked"
+        }],
+        "customerId": 5,
+        "name": "Sara Lopez",
+        "email": "lopezs@gmail.com"
+    },
+    {
+        "tickets": [{
+            "ticketClass": "BUSINESS",
+            "customerId": 6,
+            "flightId": 1,
+            "ticketId": 2,
+            "numberOfPeople": 1,
+            "status": "Booked"
+        }],
+        "customerId": 6,
+        "name": "Luis Chavez",
+        "email": "chavezlu@gmail.com"
+    }
+]

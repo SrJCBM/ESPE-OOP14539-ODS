@@ -1,7 +1,6 @@
 package ec.edu.espe.airlinereservationsystem.utils;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 import ec.edu.espe.airlinereservationsystem.model.Customer;
 
 import java.io.IOException;
@@ -12,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
+ * @author Kerlly Chiriboga - ODS
  */
 public class JsonUtils {
 
@@ -25,7 +24,8 @@ public class JsonUtils {
             jsonArray.put(customer.toJSON());
         }
         try {
-            Files.write(Paths.get(filename), jsonArray.toString().getBytes());
+            String jsonString = jsonArray.toString(4);
+            Files.write(Paths.get(filename), jsonString.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }

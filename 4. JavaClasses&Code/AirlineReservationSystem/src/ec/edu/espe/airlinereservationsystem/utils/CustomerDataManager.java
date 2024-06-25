@@ -26,8 +26,9 @@ public class CustomerDataManager {
         }
 
         try (FileWriter file = new FileWriter(CUSTOMER_DATA_FILE)) {
-            file.write(customerArray.toString());
+            file.write(customerArray.toString(4));
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -52,6 +53,7 @@ public class CustomerDataManager {
         } catch (FileNotFoundException e) {
             System.out.println("Customer data file not found, creating a new one upon first save.");
         } catch (IOException e) {
+            e.printStackTrace();
         }
 
         return customers;
