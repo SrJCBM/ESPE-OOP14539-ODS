@@ -13,6 +13,7 @@ public class FrmLogin extends javax.swing.JFrame {
      */
     public FrmLogin() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     int xMouse, yMouse;
@@ -223,8 +224,8 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_passTxtMousePressed
 
     private void logginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logginButtonActionPerformed
-        String user = "JulioBlacio";
-        String password = "julio0308";
+        String user = "administrator";
+        String password = "administrator";
         String pass = new String(passTxt.getPassword());
        if(UsernameField.getText().equals(user)&& pass.equals(password)){  
         FrmAirlineReservationSystem fmAirlineReservationSystem = new FrmAirlineReservationSystem();

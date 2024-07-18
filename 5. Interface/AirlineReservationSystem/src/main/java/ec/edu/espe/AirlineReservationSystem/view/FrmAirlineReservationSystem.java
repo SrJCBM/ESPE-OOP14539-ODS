@@ -12,6 +12,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
      */
     public FrmAirlineReservationSystem() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

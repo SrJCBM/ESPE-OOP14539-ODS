@@ -15,6 +15,7 @@ public class FrmCreateCustomer extends javax.swing.JFrame {
      */
     public FrmCreateCustomer() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

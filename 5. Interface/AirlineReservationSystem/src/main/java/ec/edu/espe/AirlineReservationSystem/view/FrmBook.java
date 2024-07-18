@@ -12,6 +12,7 @@ public class FrmBook extends javax.swing.JFrame {
      */
     public FrmBook() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
