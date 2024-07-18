@@ -26,78 +26,77 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
 
         jCheckBoxMenuItem5 = new javax.swing.JCheckBoxMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
-        mnuAirlineReservation = new javax.swing.JMenu();
-        imtExit = new javax.swing.JCheckBoxMenuItem();
-        imtLogout = new javax.swing.JCheckBoxMenuItem();
-        mnuUser = new javax.swing.JMenu();
-        itmBookFlight = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        imtViewOffert = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
+        mnuCustomer = new javax.swing.JMenu();
+        itemUser = new javax.swing.JMenuItem();
+        itemLogout = new javax.swing.JMenuItem();
+        itemExit = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        itemCreateCustomer = new javax.swing.JMenuItem();
+        mnuFlight = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        itemChangeFlightData = new javax.swing.JMenuItem();
         mnuTicket = new javax.swing.JMenu();
-        mnuFAQ = new javax.swing.JMenu();
+        mnuOffer = new javax.swing.JMenu();
+        mnuBaggage = new javax.swing.JMenu();
+        mnuHelp = new javax.swing.JMenu();
 
         jCheckBoxMenuItem5.setSelected(true);
         jCheckBoxMenuItem5.setText("jCheckBoxMenuItem5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        mnuAirlineReservation.setText("Airline Reservation");
+        mnuCustomer.setText("Airline Reservation");
 
-        imtExit.setSelected(true);
-        imtExit.setText("Salir");
-        imtExit.addActionListener(new java.awt.event.ActionListener() {
+        itemUser.setText("Crear Usuario");
+        mnuCustomer.add(itemUser);
+
+        itemLogout.setText("Logout");
+        mnuCustomer.add(itemLogout);
+
+        itemExit.setText("Exit");
+        itemExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imtExitActionPerformed(evt);
+                itemExitActionPerformed(evt);
             }
         });
-        mnuAirlineReservation.add(imtExit);
+        mnuCustomer.add(itemExit);
 
-        imtLogout.setSelected(true);
-        imtLogout.setText("Cerrar Sesión");
-        imtLogout.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBar1.add(mnuCustomer);
+
+        jMenu2.setText("Cliente");
+
+        itemCreateCustomer.setText("Crear Cliente");
+        itemCreateCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imtLogoutActionPerformed(evt);
+                itemCreateCustomerActionPerformed(evt);
             }
         });
-        mnuAirlineReservation.add(imtLogout);
+        jMenu2.add(itemCreateCustomer);
 
-        jMenuBar1.add(mnuAirlineReservation);
+        jMenuBar1.add(jMenu2);
 
-        mnuUser.setText("Usuario");
-        jMenuBar1.add(mnuUser);
+        mnuFlight.setText("Vuelo");
 
-        itmBookFlight.setText("Vuelo");
+        jMenu3.setText("Crear Vuelo");
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("Buscar Vuelo");
-        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem1ActionPerformed(evt);
-            }
-        });
-        itmBookFlight.add(jCheckBoxMenuItem1);
+        itemChangeFlightData.setText("Cambiar Datos del Vuelo");
+        jMenu3.add(itemChangeFlightData);
 
-        imtViewOffert.setSelected(true);
-        imtViewOffert.setText("Cambiar Vuelo");
-        itmBookFlight.add(imtViewOffert);
+        mnuFlight.add(jMenu3);
 
-        jCheckBoxMenuItem3.setSelected(true);
-        jCheckBoxMenuItem3.setText("Añadir Vuelo");
-        itmBookFlight.add(jCheckBoxMenuItem3);
+        jMenuBar1.add(mnuFlight);
 
-        jCheckBoxMenuItem4.setSelected(true);
-        jCheckBoxMenuItem4.setText("Ver Ofertas");
-        itmBookFlight.add(jCheckBoxMenuItem4);
-
-        jMenuBar1.add(itmBookFlight);
-
-        mnuTicket.setText("Boletos");
+        mnuTicket.setText("Ticket");
         jMenuBar1.add(mnuTicket);
 
-        mnuFAQ.setText("FAQ");
-        jMenuBar1.add(mnuFAQ);
+        mnuOffer.setText("Ofertas");
+        jMenuBar1.add(mnuOffer);
+
+        mnuBaggage.setText("Equipaje");
+        jMenuBar1.add(mnuBaggage);
+
+        mnuHelp.setText("Ayuda");
+        jMenuBar1.add(mnuHelp);
 
         setJMenuBar(jMenuBar1);
 
@@ -115,21 +114,16 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
-        FrmBook book = new FrmBook();
-        this.setVisible(false);
-        book.setVisible(true);
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
-
-    private void imtLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imtLogoutActionPerformed
-        FrmLogin login = new FrmLogin();
-        this.setVisible(false);
-        login.setVisible(true);
-    }//GEN-LAST:event_imtLogoutActionPerformed
-
-    private void imtExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imtExitActionPerformed
+    private void itemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemExitActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_imtExitActionPerformed
+    }//GEN-LAST:event_itemExitActionPerformed
+
+    private void itemCreateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCreateCustomerActionPerformed
+        FrmCreateCustomer frmCreateCustomer = new FrmCreateCustomer();
+        this.setVisible(false);
+        frmCreateCustomer.setVisible(true);
+
+    }//GEN-LAST:event_itemCreateCustomerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,18 +164,20 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBoxMenuItem imtExit;
-    private javax.swing.JCheckBoxMenuItem imtLogout;
-    private javax.swing.JCheckBoxMenuItem imtViewOffert;
-    private javax.swing.JMenu itmBookFlight;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
+    private javax.swing.JMenuItem itemChangeFlightData;
+    private javax.swing.JMenuItem itemCreateCustomer;
+    private javax.swing.JMenuItem itemExit;
+    private javax.swing.JMenuItem itemLogout;
+    private javax.swing.JMenuItem itemUser;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu mnuAirlineReservation;
-    private javax.swing.JMenu mnuFAQ;
+    private javax.swing.JMenu mnuBaggage;
+    private javax.swing.JMenu mnuCustomer;
+    private javax.swing.JMenu mnuFlight;
+    private javax.swing.JMenu mnuHelp;
+    private javax.swing.JMenu mnuOffer;
     private javax.swing.JMenu mnuTicket;
-    private javax.swing.JMenu mnuUser;
     // End of variables declaration//GEN-END:variables
 }
