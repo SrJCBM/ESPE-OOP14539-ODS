@@ -14,6 +14,10 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Airline Reservation"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mnuCustomerMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mnuCustomerMouseEntered"/>
+          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="itemUser">
               <Properties>

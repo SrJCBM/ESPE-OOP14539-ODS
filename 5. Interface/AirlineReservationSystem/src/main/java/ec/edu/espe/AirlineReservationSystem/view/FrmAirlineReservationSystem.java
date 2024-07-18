@@ -46,6 +46,14 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mnuCustomer.setText("Airline Reservation");
+        mnuCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnuCustomerMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                mnuCustomerMouseEntered(evt);
+            }
+        });
 
         itemUser.setText("Crear Usuario");
         mnuCustomer.add(itemUser);
@@ -124,6 +132,17 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         frmCreateCustomer.setVisible(true);
 
     }//GEN-LAST:event_itemCreateCustomerActionPerformed
+
+    private void mnuCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuCustomerMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuCustomerMouseClicked
+
+    private void mnuCustomerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuCustomerMouseEntered
+                                     
+    // Mostrar el submenú cuando el ratón entra en el menú principal
+    mnuCustomer.doClick();
+   
+    }//GEN-LAST:event_mnuCustomerMouseEntered
 
     /**
      * @param args the command line arguments
