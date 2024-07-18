@@ -55,5 +55,11 @@
         "customerId": 6,
         "name": "Luis Chavez",
         "email": "chavezlu@gmail.com"
+    },
+    {
+        "tickets": [],
+        "customerId": 7,
+        "name": "Lucio Sanchez",
+        "email": "lucioschz@gmail.com"
     }
 ]
