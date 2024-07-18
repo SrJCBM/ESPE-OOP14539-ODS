@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package ec.edu.espe.airlinereservationsystem.view;
+package ec.edu.espe.AirlineReservationSystem.view;
 
 /**
  *
@@ -64,7 +64,6 @@ public class FrmCreateCustomer extends javax.swing.JFrame {
         );
 
         jLabel2.setText("Crear Cliente");
-        jLabel2.setPreferredSize(new java.awt.Dimension(68, 16));
 
         jLabel1.setText("ID:");
 
@@ -141,7 +140,7 @@ public class FrmCreateCustomer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackMenuActionPerformed
-        FrmAirlineReservation frmAirlineReservation = new FrmAirlineReservation();
+        FrmAirlineReservationSystem frmAirlineReservation = new FrmAirlineReservationSystem();
         this.setVisible(false);
         frmAirlineReservation.setVisible(true);
     }//GEN-LAST:event_btnBackMenuActionPerformed
