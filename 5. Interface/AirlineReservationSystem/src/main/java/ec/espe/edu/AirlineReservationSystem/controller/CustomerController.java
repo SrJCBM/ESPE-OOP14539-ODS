@@ -11,6 +11,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import ec.espe.edu.AirlineReservationSystem.model.Customer;
 import org.bson.Document;
+
 /**
  *
  * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
@@ -32,7 +33,7 @@ public class CustomerController {
         return MongoClients.create(settings);
     }
 
-        public static void createCustomer(Customer customer) {
+    public static void createCustomer(Customer customer) {
         try (MongoClient mongoClient = createMongoClient()) {
             MongoDatabase database = mongoClient.getDatabase("CustomerDatabase");
 
@@ -42,26 +43,28 @@ public class CustomerController {
             e.printStackTrace();
         }
     }
-    
-    
-    
-        private static void saveCustomerToDatabase(Customer customer, MongoDatabase database) {
+
+    private static void saveCustomerToDatabase(Customer customer, MongoDatabase database) {
         MongoCollection<Document> collection = database.getCollection("customers");
 
-        Document carDocument = new Document("id", customer.get)
-                .append("model", car.getModel())
-                .append("year", car.getYear())
-                .append("age", car.getAge())
-                .append("depreciation", car.getDepreciation());
+        Document customerDocument = new Document("id", customer.getIdDocument())
+                .append("name", customer.getName())
+                .append("email", customer.getEmail())
+                .append("phoneNumber", customer.getPhoneNumber())
+                .append("userName", customer.getUsername())
+                .append("password", customer.getPassword())
+                .append("city", customer.getCity())
+                .append("state", customer.getState())
+                .append("postalCode", customer.getPostalCode())
+                .append("dateOfBirth", customer.getDateOfBirth())
+                .append("gender", customer.getGender());
 
         try {
-            collection.insertOne(carDocument);
-            System.out.println("Car saved successfully!");
+            collection.insertOne(customerDocument);
+            System.out.println("Customer saved successfully!");
         } catch (MongoException e) {
             e.printStackTrace();
         }
     }
 
-    
-    
 }
