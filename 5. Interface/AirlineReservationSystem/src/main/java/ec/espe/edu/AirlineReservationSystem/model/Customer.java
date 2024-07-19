@@ -5,7 +5,7 @@ package ec.espe.edu.AirlineReservationSystem.model;
  * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
  */
 public class Customer {
-
+    private String idDocument;
     private String name;
     private String email;
     private String phoneNumber;
@@ -16,9 +16,9 @@ public class Customer {
     private String postalCode;
     private String dateOfBirth;
     private String gender;
-    private String idDocument;
 
-    public Customer(String name, String email, String phoneNumber, String username, String password, String city, String state, String postalCode, String dateOfBirth, String gender, String idDocument) {
+    public Customer(String idDocument, String name, String email, String phoneNumber, String username, String password, String city, String state, String postalCode, String dateOfBirth, String gender) {
+        this.idDocument = idDocument;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -29,6 +29,21 @@ public class Customer {
         this.postalCode = postalCode;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
+    }
+
+    
+    
+    /**
+     * @return the idDocument
+     */
+    public String getIdDocument() {
+        return idDocument;
+    }
+
+    /**
+     * @param idDocument the idDocument to set
+     */
+    public void setIdDocument(String idDocument) {
         this.idDocument = idDocument;
     }
 
@@ -172,19 +187,6 @@ public class Customer {
         this.gender = gender;
     }
 
-    /**
-     * @return the idDocument
-     */
-    public String getIdDocument() {
-        return idDocument;
-    }
 
-    /**
-     * @param idDocument the idDocument to set
-     */
-    public void setIdDocument(String idDocument) {
-        this.idDocument = idDocument;
-    }
-    
 
 }
