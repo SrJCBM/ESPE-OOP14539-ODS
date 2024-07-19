@@ -202,6 +202,9 @@ public class FrmLogin extends javax.swing.JFrame {
         logginButton.setText("ENTER");
         logginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logginButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 logginButtonMouseEntered(evt);
             }
@@ -307,16 +310,22 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_UsernameFieldActionPerformed
 
     private void registerButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseEntered
-        // TODO add your handling code here:
+        registerButton.setBackground(new Color(173,129,204));
     }//GEN-LAST:event_registerButtonMouseEntered
 
     private void registerButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseExited
-        // TODO add your handling code here:
+        registerButton.setBackground(new Color(157,117,185));
     }//GEN-LAST:event_registerButtonMouseExited
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void logginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logginButtonMouseClicked
+        FrmCreateCustomer frmCreateCustomer = new FrmCreateCustomer();
+        this.setVisible(false);
+        frmCreateCustomer.setVisible(true);
+    }//GEN-LAST:event_logginButtonMouseClicked
 
     /**
      * @param args the command line arguments
