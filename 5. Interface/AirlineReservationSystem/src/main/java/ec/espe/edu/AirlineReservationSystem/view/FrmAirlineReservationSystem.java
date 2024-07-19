@@ -35,8 +35,11 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         mnuFlight = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         itemChangeFlightData = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         mnuTicket = new javax.swing.JMenu();
+        imtemBuyTicket = new javax.swing.JMenuItem();
         mnuOffer = new javax.swing.JMenu();
+        itemViewOfert = new javax.swing.JMenuItem();
         mnuBaggage = new javax.swing.JMenu();
         mnuHelp = new javax.swing.JMenu();
 
@@ -97,12 +100,23 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
 
         mnuFlight.add(jMenu3);
 
+        jMenuItem2.setText("Buscar Vuelo");
+        mnuFlight.add(jMenuItem2);
+
         jMenuBar1.add(mnuFlight);
 
         mnuTicket.setText("Ticket");
+
+        imtemBuyTicket.setText("Comprar Ticket");
+        mnuTicket.add(imtemBuyTicket);
+
         jMenuBar1.add(mnuTicket);
 
         mnuOffer.setText("Ofertas");
+
+        itemViewOfert.setText("Ver Ofertas");
+        mnuOffer.add(itemViewOfert);
+
         jMenuBar1.add(mnuOffer);
 
         mnuBaggage.setText("Equipaje");
@@ -198,15 +212,18 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem imtemBuyTicket;
     private javax.swing.JMenuItem itemChangeFlightData;
     private javax.swing.JMenuItem itemCreateCustomer;
     private javax.swing.JMenuItem itemExit;
     private javax.swing.JMenuItem itemLogout;
     private javax.swing.JMenuItem itemUser;
+    private javax.swing.JMenuItem itemViewOfert;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu mnuBaggage;
     private javax.swing.JMenu mnuCustomer;
     private javax.swing.JMenu mnuFlight;

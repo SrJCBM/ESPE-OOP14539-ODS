@@ -13,6 +13,7 @@ public class FrmAirlineReservationSystemSplash extends javax.swing.JFrame {
      */
     public FrmAirlineReservationSystemSplash() {
         initComponents();
+        setLocationRelativeTo(null);
     }
     int xMouse, yMouse;
     

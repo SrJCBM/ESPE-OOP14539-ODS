@@ -59,12 +59,12 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 310, 520));
 
         LoginTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        LoginTitle.setText("LOGIN");
-        jPanel1.add(LoginTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 98, -1));
+        LoginTitle.setText("Iniciar Sesión");
+        jPanel1.add(LoginTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, -1));
 
         UsernameField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         UsernameField.setForeground(new java.awt.Color(204, 204, 204));
-        UsernameField.setText("Ingress username");
+        UsernameField.setText("Ingrese Nombre de Usuario");
         UsernameField.setBorder(null);
         UsernameField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -79,7 +79,7 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel1.add(ProgramTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 500, -1));
 
         PasswordTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        PasswordTitle.setText("PASSWORD");
+        PasswordTitle.setText("Contraseña");
         jPanel1.add(PasswordTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 140, -1));
         jPanel1.add(UsernameSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 420, 10));
 
@@ -221,7 +221,7 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_exitTxtMouseExited
 
     private void UsernameFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsernameFieldMousePressed
-        if (UsernameField.getText().equals("Ingress username")) {
+        if (UsernameField.getText().equals("Ingrese Nombre de Usuario")) {
             UsernameField.setText("");
             UsernameField.setForeground(Color.black);
         }
@@ -237,7 +237,7 @@ public class FrmLogin extends javax.swing.JFrame {
             passTxt.setForeground(Color.black);
         }
         if (UsernameField.getText().isEmpty()) {
-            UsernameField.setText("Ingress username");
+            UsernameField.setText("Ingrese Nombre de Usuario");
             UsernameField.setForeground(Color.gray);
         }
     }//GEN-LAST:event_passTxtMousePressed

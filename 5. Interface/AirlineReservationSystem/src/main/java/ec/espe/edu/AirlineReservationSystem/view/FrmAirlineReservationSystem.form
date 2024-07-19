@@ -74,17 +74,36 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar Vuelo"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuTicket">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ticket"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="imtemBuyTicket">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Comprar Ticket"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuOffer">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ofertas"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itemViewOfert">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ver Ofertas"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuBaggage">
           <Properties>
