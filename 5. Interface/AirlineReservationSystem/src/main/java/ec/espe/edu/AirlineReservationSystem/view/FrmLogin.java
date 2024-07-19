@@ -37,12 +37,13 @@ public class FrmLogin extends javax.swing.JFrame {
         PasswordTitle = new javax.swing.JLabel();
         UsernameSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
-        logginButton = new javax.swing.JToggleButton();
+        registerButton = new javax.swing.JToggleButton();
         passTxt = new javax.swing.JPasswordField();
         header = new javax.swing.JPanel();
         exitBtn = new javax.swing.JPanel();
         exitTxt = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        logginButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -71,6 +72,11 @@ public class FrmLogin extends javax.swing.JFrame {
                 UsernameFieldMousePressed(evt);
             }
         });
+        UsernameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UsernameFieldActionPerformed(evt);
+            }
+        });
         jPanel1.add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 457, 30));
         jPanel1.add(UsernameSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 420, 10));
 
@@ -85,22 +91,22 @@ public class FrmLogin extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        logginButton.setBackground(new java.awt.Color(157, 117, 185));
-        logginButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        logginButton.setForeground(new java.awt.Color(255, 255, 255));
-        logginButton.setText("ENTER");
-        logginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        logginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        registerButton.setBackground(new java.awt.Color(157, 117, 185));
+        registerButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        registerButton.setForeground(new java.awt.Color(255, 255, 255));
+        registerButton.setText("REGISTRAR");
+        registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registerButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                logginButtonMouseEntered(evt);
+                registerButtonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                logginButtonMouseExited(evt);
+                registerButtonMouseExited(evt);
             }
         });
-        logginButton.addActionListener(new java.awt.event.ActionListener() {
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logginButtonActionPerformed(evt);
+                registerButtonActionPerformed(evt);
             }
         });
 
@@ -108,14 +114,18 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 160, 40));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 160, 40));
 
         passTxt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         passTxt.setForeground(new java.awt.Color(204, 204, 204));
@@ -124,6 +134,11 @@ public class FrmLogin extends javax.swing.JFrame {
         passTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 passTxtMousePressed(evt);
+            }
+        });
+        passTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passTxtActionPerformed(evt);
             }
         });
         jPanel1.add(passTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 420, -1));
@@ -180,6 +195,26 @@ public class FrmLogin extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/user icon.jpg"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
+
+        logginButton.setBackground(new java.awt.Color(157, 117, 185));
+        logginButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        logginButton.setForeground(new java.awt.Color(255, 255, 255));
+        logginButton.setText("ENTER");
+        logginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logginButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logginButtonMouseExited(evt);
+            }
+        });
+        logginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logginButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(logginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 160, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -263,6 +298,26 @@ public class FrmLogin extends javax.swing.JFrame {
     logginButton.setBackground(new Color(157,117,185));
     }//GEN-LAST:event_logginButtonMouseExited
 
+    private void passTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passTxtActionPerformed
+
+    private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UsernameFieldActionPerformed
+
+    private void registerButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registerButtonMouseEntered
+
+    private void registerButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registerButtonMouseExited
+
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registerButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -318,5 +373,6 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToggleButton logginButton;
     private javax.swing.JPasswordField passTxt;
+    private javax.swing.JToggleButton registerButton;
     // End of variables declaration//GEN-END:variables
 }
