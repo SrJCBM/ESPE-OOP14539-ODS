@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ec.espe.edu.AirlineReservationSystem.view;
+
+import java.awt.Color;
 
 /**
  *
@@ -16,7 +14,8 @@ public class FrmAirlineReservationSystemSplash extends javax.swing.JFrame {
     public FrmAirlineReservationSystemSplash() {
         initComponents();
     }
-
+    int xMouse, yMouse;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,14 +28,20 @@ public class FrmAirlineReservationSystemSplash extends javax.swing.JFrame {
         background = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
-        exit = new javax.swing.JPanel();
+        exitBtn = new javax.swing.JPanel();
+        lblExitBtn = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblCopyright = new javax.swing.JLabel();
         lblRights = new javax.swing.JLabel();
         lblSystemVersion = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        Start = new javax.swing.JPanel();
+        lblStart = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setUndecorated(true);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         background.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -44,18 +49,53 @@ public class FrmAirlineReservationSystemSplash extends javax.swing.JFrame {
         jLabel1.setText("Airline Reservation System");
 
         header.setBackground(new java.awt.Color(255, 255, 255));
+        header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                headerMouseDragged(evt);
+            }
+        });
+        header.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                headerMousePressed(evt);
+            }
+        });
 
-        exit.setBackground(new java.awt.Color(255, 255, 255));
+        exitBtn.setBackground(new java.awt.Color(255, 255, 255));
+        exitBtn.setPreferredSize(new java.awt.Dimension(40, 40));
 
-        javax.swing.GroupLayout exitLayout = new javax.swing.GroupLayout(exit);
-        exit.setLayout(exitLayout);
-        exitLayout.setHorizontalGroup(
-            exitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 45, Short.MAX_VALUE)
+        lblExitBtn.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
+        lblExitBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblExitBtn.setText("X");
+        lblExitBtn.setToolTipText("");
+        lblExitBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblExitBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblExitBtn.setMaximumSize(new java.awt.Dimension(10, 40));
+        lblExitBtn.setPreferredSize(new java.awt.Dimension(40, 40));
+        lblExitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblExitBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblExitBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblExitBtnMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout exitBtnLayout = new javax.swing.GroupLayout(exitBtn);
+        exitBtn.setLayout(exitBtnLayout);
+        exitBtnLayout.setHorizontalGroup(
+            exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exitBtnLayout.createSequentialGroup()
+                .addComponent(lblExitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        exitLayout.setVerticalGroup(
-            exitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+        exitBtnLayout.setVerticalGroup(
+            exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exitBtnLayout.createSequentialGroup()
+                .addComponent(lblExitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
@@ -63,14 +103,14 @@ public class FrmAirlineReservationSystemSplash extends javax.swing.JFrame {
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/airline company icon .jpg"))); // NOI18N
@@ -81,15 +121,35 @@ public class FrmAirlineReservationSystemSplash extends javax.swing.JFrame {
 
         lblSystemVersion.setText("V1.0.0");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 99, Short.MAX_VALUE)
+        Start.setBackground(new java.awt.Color(157, 117, 185));
+
+        lblStart.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblStart.setForeground(new java.awt.Color(255, 255, 255));
+        lblStart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblStart.setText("Iniciar");
+        lblStart.setToolTipText("");
+        lblStart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblStart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblStartMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblStartMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblStartMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout StartLayout = new javax.swing.GroupLayout(Start);
+        Start.setLayout(StartLayout);
+        StartLayout.setHorizontalGroup(
+            StartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 33, Short.MAX_VALUE)
+        StartLayout.setVerticalGroup(
+            StartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
@@ -110,8 +170,8 @@ public class FrmAirlineReservationSystemSplash extends javax.swing.JFrame {
                         .addGap(0, 193, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
+                        .addComponent(Start, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
                         .addComponent(lblCopyright)))
                 .addContainerGap())
             .addGroup(backgroundLayout.createSequentialGroup()
@@ -132,25 +192,55 @@ public class FrmAirlineReservationSystemSplash extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCopyright, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Start, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addComponent(lblRights)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
+    xMouse = evt.getX();
+    yMouse = evt.getY();
+    }//GEN-LAST:event_headerMousePressed
+
+    private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse,y - yMouse);
+    }//GEN-LAST:event_headerMouseDragged
+
+    private void lblExitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitBtnMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_lblExitBtnMouseClicked
+
+    private void lblExitBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitBtnMouseEntered
+        exitBtn.setBackground(Color.red);
+        lblExitBtn.setForeground(Color.white);
+    }//GEN-LAST:event_lblExitBtnMouseEntered
+
+    private void lblExitBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitBtnMouseExited
+        exitBtn.setBackground(Color.white);
+        lblExitBtn.setForeground(Color.black);
+    }//GEN-LAST:event_lblExitBtnMouseExited
+
+    private void lblStartMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStartMouseEntered
+        Start.setBackground(new Color(173,129,204));
+    }//GEN-LAST:event_lblStartMouseEntered
+
+    private void lblStartMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStartMouseExited
+        Start.setBackground(new Color(157,117,185));
+    }//GEN-LAST:event_lblStartMouseExited
+
+    private void lblStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStartMouseClicked
+        FrmLogin frmLogin = new FrmLogin();
+        this.setVisible(false);
+        frmLogin.setVisible(true);
+    }//GEN-LAST:event_lblStartMouseClicked
 
     /**
      * @param args the command line arguments
@@ -188,14 +278,16 @@ public class FrmAirlineReservationSystemSplash extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Start;
     private javax.swing.JPanel background;
-    private javax.swing.JPanel exit;
+    private javax.swing.JPanel exitBtn;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCopyright;
+    private javax.swing.JLabel lblExitBtn;
     private javax.swing.JLabel lblRights;
+    private javax.swing.JLabel lblStart;
     private javax.swing.JLabel lblSystemVersion;
     // End of variables declaration//GEN-END:variables
 }
