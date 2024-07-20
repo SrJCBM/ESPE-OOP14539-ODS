@@ -1,5 +1,7 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
+import java.awt.Color;
+
 
 /**
  *
@@ -14,7 +16,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-
+  int xMouse, yMouse;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -25,149 +27,364 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBoxMenuItem5 = new javax.swing.JCheckBoxMenuItem();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        mnuCustomer = new javax.swing.JMenu();
-        itemUser = new javax.swing.JMenuItem();
-        itemLogout = new javax.swing.JMenuItem();
-        itemExit = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        itemCreateCustomer = new javax.swing.JMenuItem();
-        mnuFlight = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        itemChangeFlightData = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        mnuTicket = new javax.swing.JMenu();
-        imtemBuyTicket = new javax.swing.JMenuItem();
-        mnuOffer = new javax.swing.JMenu();
-        itemViewOfert = new javax.swing.JMenuItem();
-        mnuBaggage = new javax.swing.JMenu();
-        mnuHelp = new javax.swing.JMenu();
+        menupanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        SubmenuPanel3 = new javax.swing.JPanel();
+        FQAtxt1 = new javax.swing.JLabel();
+        submenuPanel = new javax.swing.JPanel();
+        ARStxt = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        SubmenuPanel4 = new javax.swing.JPanel();
+        FQAtxt2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        logopanel = new javax.swing.JPanel();
+        arstxt = new javax.swing.JLabel();
+        lblCopyright = new javax.swing.JLabel();
+        lblRights = new javax.swing.JLabel();
+        lblSystemVersion = new javax.swing.JLabel();
+        Imagelogotxt = new javax.swing.JLabel();
+        bg = new javax.swing.JPanel();
+        exitBtn = new javax.swing.JPanel();
+        lblExitBtn = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        header = new javax.swing.JPanel();
 
         jCheckBoxMenuItem5.setSelected(true);
         jCheckBoxMenuItem5.setText("jCheckBoxMenuItem5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocationByPlatform(true);
+        setMinimumSize(new java.awt.Dimension(100, 100));
+        setUndecorated(true);
+        setResizable(false);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        mnuCustomer.setText("Airline Reservation");
-        mnuCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+        menupanel.setBackground(new java.awt.Color(120, 60, 180));
+        menupanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Gill Sans Ultra Bold", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("\"IN THE SKY\"");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        menupanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("_____________________________");
+        jLabel3.setToolTipText("");
+        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        menupanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 20));
+
+        SubmenuPanel3.setBackground(new java.awt.Color(30, 10, 100));
+
+        FQAtxt1.setFont(new java.awt.Font("DialogInput", 1, 12)); // NOI18N
+        FQAtxt1.setForeground(new java.awt.Color(255, 255, 255));
+        FQAtxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        FQAtxt1.setText("Cliente");
+        FQAtxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        FQAtxt1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                FQAtxt1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                FQAtxt1MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout SubmenuPanel3Layout = new javax.swing.GroupLayout(SubmenuPanel3);
+        SubmenuPanel3.setLayout(SubmenuPanel3Layout);
+        SubmenuPanel3Layout.setHorizontalGroup(
+            SubmenuPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SubmenuPanel3Layout.createSequentialGroup()
+                .addComponent(FQAtxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        SubmenuPanel3Layout.setVerticalGroup(
+            SubmenuPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(FQAtxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        menupanel.add(SubmenuPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 40));
+
+        submenuPanel.setBackground(new java.awt.Color(30, 10, 100));
+        submenuPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        submenuPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        submenuPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                submenuPanelMouseEntered(evt);
+            }
+        });
+
+        ARStxt.setFont(new java.awt.Font("DialogInput", 1, 12)); // NOI18N
+        ARStxt.setForeground(new java.awt.Color(255, 255, 255));
+        ARStxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ARStxt.setText("Airline Reservation System");
+        ARStxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ARStxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ARStxtMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout submenuPanelLayout = new javax.swing.GroupLayout(submenuPanel);
+        submenuPanel.setLayout(submenuPanelLayout);
+        submenuPanelLayout.setHorizontalGroup(
+            submenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ARStxt, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+        );
+        submenuPanelLayout.setVerticalGroup(
+            submenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ARStxt, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        menupanel.add(submenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 40));
+
+        jLabel1.setBackground(new java.awt.Color(30, 10, 100));
+        jLabel1.setForeground(new java.awt.Color(30, 10, 100));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/city.jpg"))); // NOI18N
+        menupanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 500));
+
+        SubmenuPanel4.setBackground(new java.awt.Color(30, 10, 100));
+
+        FQAtxt2.setFont(new java.awt.Font("DialogInput", 1, 12)); // NOI18N
+        FQAtxt2.setForeground(new java.awt.Color(255, 255, 255));
+        FQAtxt2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        FQAtxt2.setText("Cliente");
+        FQAtxt2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        FQAtxt2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                FQAtxt2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                FQAtxt2MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout SubmenuPanel4Layout = new javax.swing.GroupLayout(SubmenuPanel4);
+        SubmenuPanel4.setLayout(SubmenuPanel4Layout);
+        SubmenuPanel4Layout.setHorizontalGroup(
+            SubmenuPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SubmenuPanel4Layout.createSequentialGroup()
+                .addComponent(FQAtxt2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        SubmenuPanel4Layout.setVerticalGroup(
+            SubmenuPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(FQAtxt2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        menupanel.add(SubmenuPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 40));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        menupanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 220, 40));
+
+        getContentPane().add(menupanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
+
+        logopanel.setBackground(new java.awt.Color(255, 255, 255));
+        logopanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        arstxt.setFont(new java.awt.Font("Engravers MT", 0, 14)); // NOI18N
+        arstxt.setForeground(new java.awt.Color(38, 0, 68));
+        arstxt.setText("Airline Reservation System");
+        logopanel.add(arstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 300, 50));
+
+        lblCopyright.setText("(C) Overnight Developerr Squad - ODS");
+        logopanel.add(lblCopyright, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, 30));
+
+        lblRights.setText("(R) Overnight Developer Squad");
+        logopanel.add(lblRights, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, -1, -1));
+
+        lblSystemVersion.setText("V1.0.0");
+        logopanel.add(lblSystemVersion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, 30));
+
+        Imagelogotxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/airline company icon .jpg"))); // NOI18N
+        Imagelogotxt.setText("jLabel1");
+        logopanel.add(Imagelogotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 160, 100));
+
+        getContentPane().add(logopanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 800, 100));
+
+        bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        exitBtn.setBackground(new java.awt.Color(255, 255, 255));
+        exitBtn.setPreferredSize(new java.awt.Dimension(40, 40));
+        exitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                exitBtnMouseEntered(evt);
+            }
+        });
+
+        lblExitBtn.setBackground(new java.awt.Color(255, 255, 255));
+        lblExitBtn.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
+        lblExitBtn.setForeground(new java.awt.Color(0, 0, 0));
+        lblExitBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblExitBtn.setText("X");
+        lblExitBtn.setToolTipText("");
+        lblExitBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblExitBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblExitBtn.setMaximumSize(new java.awt.Dimension(10, 40));
+        lblExitBtn.setPreferredSize(new java.awt.Dimension(40, 40));
+        lblExitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mnuCustomerMouseClicked(evt);
+                lblExitBtnMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                mnuCustomerMouseEntered(evt);
+                lblExitBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblExitBtnMouseExited(evt);
             }
         });
 
-        itemUser.setText("Crear Usuario");
-        mnuCustomer.add(itemUser);
-
-        itemLogout.setText("Logout");
-        itemLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemLogoutActionPerformed(evt);
-            }
-        });
-        mnuCustomer.add(itemLogout);
-
-        itemExit.setText("Exit");
-        itemExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemExitActionPerformed(evt);
-            }
-        });
-        mnuCustomer.add(itemExit);
-
-        jMenuBar1.add(mnuCustomer);
-
-        jMenu2.setText("Cliente");
-
-        itemCreateCustomer.setText("Crear Cliente");
-        itemCreateCustomer.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemCreateCustomerActionPerformed(evt);
-            }
-        });
-        jMenu2.add(itemCreateCustomer);
-
-        jMenuBar1.add(jMenu2);
-
-        mnuFlight.setText("Vuelo");
-
-        jMenu3.setText("Crear Vuelo");
-
-        itemChangeFlightData.setText("Cambiar Datos del Vuelo");
-        jMenu3.add(itemChangeFlightData);
-
-        mnuFlight.add(jMenu3);
-
-        jMenuItem2.setText("Buscar Vuelo");
-        mnuFlight.add(jMenuItem2);
-
-        jMenuBar1.add(mnuFlight);
-
-        mnuTicket.setText("Ticket");
-
-        imtemBuyTicket.setText("Comprar Ticket");
-        mnuTicket.add(imtemBuyTicket);
-
-        jMenuBar1.add(mnuTicket);
-
-        mnuOffer.setText("Ofertas");
-
-        itemViewOfert.setText("Ver Ofertas");
-        mnuOffer.add(itemViewOfert);
-
-        jMenuBar1.add(mnuOffer);
-
-        mnuBaggage.setText("Equipaje");
-        jMenuBar1.add(mnuBaggage);
-
-        mnuHelp.setText("Ayuda");
-        jMenuBar1.add(mnuHelp);
-
-        setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 770, Short.MAX_VALUE)
+        javax.swing.GroupLayout exitBtnLayout = new javax.swing.GroupLayout(exitBtn);
+        exitBtn.setLayout(exitBtnLayout);
+        exitBtnLayout.setHorizontalGroup(
+            exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitBtnLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblExitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 468, Short.MAX_VALUE)
+        exitBtnLayout.setVerticalGroup(
+            exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitBtnLayout.createSequentialGroup()
+                .addComponent(lblExitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        bg.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 0, 40, 40));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 90, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 40, 90, 60));
+
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-160, 0, 1130, 500));
+
+        header.setBackground(new java.awt.Color(255, 255, 255));
+        header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                headerMouseDragged(evt);
+            }
+        });
+        header.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                headerMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 970, Short.MAX_VALUE)
+        );
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemExitActionPerformed
+    private void lblExitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitBtnMouseClicked
         System.exit(0);
-    }//GEN-LAST:event_itemExitActionPerformed
+    }//GEN-LAST:event_lblExitBtnMouseClicked
 
-    private void itemCreateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCreateCustomerActionPerformed
-        /*FrmCreateCustomer frmCreateCustomer = new FrmCreateCustomer();
-        this.setVisible(false);
-        frmCreateCustomer.setVisible(true);*/
+    private void lblExitBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitBtnMouseEntered
+        exitBtn.setBackground(Color.red);
+        lblExitBtn.setForeground(Color.white);
+    }//GEN-LAST:event_lblExitBtnMouseEntered
 
-    }//GEN-LAST:event_itemCreateCustomerActionPerformed
+    private void lblExitBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitBtnMouseExited
+        exitBtn.setBackground(Color.white);
+        lblExitBtn.setForeground(Color.black);
+    }//GEN-LAST:event_lblExitBtnMouseExited
 
-    private void mnuCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuCustomerMouseClicked
+    private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xMouse,y - yMouse);
+    }//GEN-LAST:event_headerMouseDragged
+
+    private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_headerMousePressed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+    
+    }//GEN-LAST:event_formMousePressed
+
+    private void exitBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtnMouseEntered
+
+    }//GEN-LAST:event_exitBtnMouseEntered
+
+    private void submenuPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submenuPanelMouseEntered
+   //lbl
+    }//GEN-LAST:event_submenuPanelMouseEntered
+
+    private void ARStxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARStxtMouseEntered
+       Color darkColor = new Color(65, 0, 100); 
+
+ submenuPanel.setBackground(darkColor); 
+    ARStxt.setForeground(Color.WHITE); 
+    }//GEN-LAST:event_ARStxtMouseEntered
+
+    private void ARStxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARStxtMouseExited
+         Color darkColor = new Color(30, 10, 100);  
+        submenuPanel.setBackground(darkColor); 
+    ARStxt.setForeground(Color.WHITE); 
+    }//GEN-LAST:event_ARStxtMouseExited
+
+    private void FQAtxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FQAtxt1MouseEntered
+  Color darkColor = new Color(65, 0, 100); 
+
+ SubmenuPanel3.setBackground(darkColor); 
+    FQAtxt1.setForeground(Color.WHITE);    }//GEN-LAST:event_FQAtxt1MouseEntered
+
+    private void FQAtxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FQAtxt1MouseExited
+   Color darkColor = new Color(30, 10, 100);  
+        SubmenuPanel3.setBackground(darkColor); 
+    FQAtxt1.setForeground(Color.WHITE); 
+    }//GEN-LAST:event_FQAtxt1MouseExited
+
+    private void FQAtxt2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FQAtxt2MouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_mnuCustomerMouseClicked
+    }//GEN-LAST:event_FQAtxt2MouseEntered
 
-    private void mnuCustomerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnuCustomerMouseEntered
-                                     
-    // Mostrar el submenú cuando el ratón entra en el menú principal
-    mnuCustomer.doClick();
-   
-    }//GEN-LAST:event_mnuCustomerMouseEntered
-
-    private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
-       FrmLogin frmLogin = new FrmLogin();
-       this.setVisible(false);
-       frmLogin.setVisible(true);
-    }//GEN-LAST:event_itemLogoutActionPerformed
+    private void FQAtxt2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FQAtxt2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FQAtxt2MouseExited
 
     /**
      * @param args the command line arguments
@@ -212,23 +429,28 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem imtemBuyTicket;
-    private javax.swing.JMenuItem itemChangeFlightData;
-    private javax.swing.JMenuItem itemCreateCustomer;
-    private javax.swing.JMenuItem itemExit;
-    private javax.swing.JMenuItem itemLogout;
-    private javax.swing.JMenuItem itemUser;
-    private javax.swing.JMenuItem itemViewOfert;
+    private javax.swing.JLabel ARStxt;
+    private javax.swing.JLabel FQAtxt1;
+    private javax.swing.JLabel FQAtxt2;
+    private javax.swing.JLabel Imagelogotxt;
+    private javax.swing.JPanel SubmenuPanel3;
+    private javax.swing.JPanel SubmenuPanel4;
+    private javax.swing.JLabel arstxt;
+    private javax.swing.JPanel bg;
+    private javax.swing.JPanel exitBtn;
+    private javax.swing.JPanel header;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenu mnuBaggage;
-    private javax.swing.JMenu mnuCustomer;
-    private javax.swing.JMenu mnuFlight;
-    private javax.swing.JMenu mnuHelp;
-    private javax.swing.JMenu mnuOffer;
-    private javax.swing.JMenu mnuTicket;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblCopyright;
+    private javax.swing.JLabel lblExitBtn;
+    private javax.swing.JLabel lblRights;
+    private javax.swing.JLabel lblSystemVersion;
+    private javax.swing.JPanel logopanel;
+    private javax.swing.JPanel menupanel;
+    private javax.swing.JPanel submenuPanel;
     // End of variables declaration//GEN-END:variables
 }
