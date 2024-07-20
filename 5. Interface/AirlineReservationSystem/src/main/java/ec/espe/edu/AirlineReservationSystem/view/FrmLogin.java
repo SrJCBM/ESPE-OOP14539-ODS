@@ -1,4 +1,6 @@
 package ec.espe.edu.AirlineReservationSystem.view;
+
+import ec.espe.edu.AirlineReservationSystem.controller.CustomerController;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -304,24 +306,27 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_passTxtMousePressed
 
     private void logginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logginButtonActionPerformed
-        String user = "administrator";
-        String password = "administrator";
-        String pass = new String(passTxt.getPassword());
-       if(UsernameField.getText().equals(user)&& pass.equals(password)){  
-        FrmAirlineReservationSystem fmAirlineReservationSystem = new FrmAirlineReservationSystem();
-        this.setVisible(false);
-        fmAirlineReservationSystem.setVisible(true);
-        }else{
-           JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrectos por favor intentelo de nuevo");
-       }   
+        String username = UsernameField.getText();
+        String password = new String(passTxt.getPassword());
+
+        boolean isAuthenticated = CustomerController.authenticateCustomer(username, password);
+
+        if (isAuthenticated) {
+            FrmAirlineReservationSystem fmAirlineReservationSystem = new FrmAirlineReservationSystem();
+            this.setVisible(false);
+            fmAirlineReservationSystem.setVisible(true);
+            JOptionPane.showMessageDialog(this, "Login successful!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos. Por favor intentelo de nuevo", "Login Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_logginButtonActionPerformed
 
     private void logginButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logginButtonMouseEntered
-     logginButton.setBackground(new Color(173,129,204));
+        logginButton.setBackground(new Color(173, 129, 204));
     }//GEN-LAST:event_logginButtonMouseEntered
 
     private void logginButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logginButtonMouseExited
-    logginButton.setBackground(new Color(157,117,185));
+        logginButton.setBackground(new Color(157, 117, 185));
     }//GEN-LAST:event_logginButtonMouseExited
 
     private void passTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passTxtActionPerformed
@@ -333,11 +338,11 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_UsernameFieldActionPerformed
 
     private void registerButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseEntered
-        registerButton.setBackground(new Color(173,129,204));
+        registerButton.setBackground(new Color(173, 129, 204));
     }//GEN-LAST:event_registerButtonMouseEntered
 
     private void registerButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseExited
-        registerButton.setBackground(new Color(157,117,185));
+        registerButton.setBackground(new Color(157, 117, 185));
     }//GEN-LAST:event_registerButtonMouseExited
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
@@ -345,9 +350,7 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void logginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logginButtonMouseClicked
-        /*FrmCreateCustomer frmCreateCustomer = new FrmCreateCustomer();
-        this.setVisible(false);
-        frmCreateCustomer.setVisible(true);*/
+        // TODO
     }//GEN-LAST:event_logginButtonMouseClicked
 
     private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
@@ -365,7 +368,7 @@ public class FrmLogin extends javax.swing.JFrame {
     private void seePasswordLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seePasswordLblMouseClicked
         seePasswordLbl.setVisible(false);
         hidePasswordLbl.setVisible(true);
-        passTxt.setEchoChar((char)0);
+        passTxt.setEchoChar((char) 0);
     }//GEN-LAST:event_seePasswordLblMouseClicked
 
     /**

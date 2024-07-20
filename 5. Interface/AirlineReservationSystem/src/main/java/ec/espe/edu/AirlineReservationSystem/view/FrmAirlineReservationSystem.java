@@ -339,6 +339,9 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         VueloBton.setText("Vuelo");
         VueloBton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         VueloBton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VueloBtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 VueloBtonMouseEntered(evt);
             }
@@ -416,7 +419,6 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
 
         lblExitBtn.setBackground(new java.awt.Color(255, 255, 255));
         lblExitBtn.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
-        lblExitBtn.setForeground(new java.awt.Color(0, 0, 0));
         lblExitBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblExitBtn.setText("X");
         lblExitBtn.setToolTipText("");
@@ -603,12 +605,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         SubmenuPanel2.setBackground(darkColor);
         VueloBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_VueloBtonMouseEntered
-    private void VueloBtonMouseClicked(java.awt.event.MouseEvent evt) {
-        FrmCreateFlight createFlightForm = new FrmCreateFlight();
-        createFlightForm.setVisible(true);
-        this.setVisible(false);
-    }
-
+    
     private void VueloBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VueloBtonMouseExited
         Color darkColor = new Color(30, 10, 100);
         SubmenuPanel2.setBackground(darkColor);
@@ -667,6 +664,12 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         SubmenuPanel7.setBackground(darkColor);
         AyudaBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_AyudaBtonMouseExited
+
+    private void VueloBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VueloBtonMouseClicked
+        FrmCreateFlight createFlightForm = new FrmCreateFlight();
+        createFlightForm.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_VueloBtonMouseClicked
     public static String Fecha() {
 
         Date Fecha = new Date();
