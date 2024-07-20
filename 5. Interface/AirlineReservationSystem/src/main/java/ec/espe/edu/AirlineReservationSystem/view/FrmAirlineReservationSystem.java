@@ -9,30 +9,35 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.Timer;
 
-
 /**
  *
  * @author Miguel Caiza,Overnight Developers Squad,DCCO-ESPE
  */
 public class FrmAirlineReservationSystem extends javax.swing.JFrame {
+
     /**
      * Creates new form FmAirlineReservationSystemMenu
      */
- 
     public FrmAirlineReservationSystem() {
- initComponents();
- Datetxt.setText("Hoy es  "+Fecha());
-  Timer timer = new Timer(1000, new ActionListener() {
+        initComponents();
+        Datetxt.setText("Hoy es  " + Fecha());
+        Timer timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Datetxt.setText("Hoy es " + Fecha());
             }
         });
         timer.start(); // Inicia el timer
- setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
+
+        VueloBton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VueloBtonMouseClicked(evt);
+            }
+        });
+
     }
-  int xMouse, yMouse;
-  
+    int xMouse, yMouse;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -547,7 +552,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        this.setLocation(x - xMouse,y - yMouse);
+        this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_headerMouseDragged
 
     private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
@@ -556,7 +561,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     }//GEN-LAST:event_headerMousePressed
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-    
+
     }//GEN-LAST:event_formMousePressed
 
     private void exitBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtnMouseEntered
@@ -564,105 +569,111 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     }//GEN-LAST:event_exitBtnMouseEntered
 
     private void submenuPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submenuPanelMouseEntered
-   //lbl
+        //lbl
     }//GEN-LAST:event_submenuPanelMouseEntered
 
     private void ARStxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARStxtMouseEntered
-       Color darkColor = new Color(65, 0, 100); 
+        Color darkColor = new Color(65, 0, 100);
 
- submenuPanel.setBackground(darkColor); 
-    ARStxt.setForeground(Color.WHITE); 
+        submenuPanel.setBackground(darkColor);
+        ARStxt.setForeground(Color.WHITE);
     }//GEN-LAST:event_ARStxtMouseEntered
 
     private void ARStxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARStxtMouseExited
-         Color darkColor = new Color(30, 10, 100);  
-        submenuPanel.setBackground(darkColor); 
-    ARStxt.setForeground(Color.WHITE); 
+        Color darkColor = new Color(30, 10, 100);
+        submenuPanel.setBackground(darkColor);
+        ARStxt.setForeground(Color.WHITE);
     }//GEN-LAST:event_ARStxtMouseExited
 
     private void FQAtxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FQAtxt1MouseEntered
-  Color darkColor = new Color(65, 0, 100); 
+        Color darkColor = new Color(65, 0, 100);
 
- SubmenuPanel3.setBackground(darkColor);
+        SubmenuPanel3.setBackground(darkColor);
     FQAtxt1.setForeground(Color.WHITE);    }//GEN-LAST:event_FQAtxt1MouseEntered
 
     private void FQAtxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FQAtxt1MouseExited
-   Color darkColor = new Color(30, 10, 100);  
-        SubmenuPanel3.setBackground(darkColor); 
-    FQAtxt1.setForeground(Color.WHITE); 
+        Color darkColor = new Color(30, 10, 100);
+        SubmenuPanel3.setBackground(darkColor);
+        FQAtxt1.setForeground(Color.WHITE);
     }//GEN-LAST:event_FQAtxt1MouseExited
 
     private void VueloBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VueloBtonMouseEntered
-   Color darkColor = new Color(65, 0, 100); 
+        Color darkColor = new Color(65, 0, 100);
 
- SubmenuPanel2.setBackground(darkColor);
- VueloBton.setForeground(Color.WHITE); 
+        SubmenuPanel2.setBackground(darkColor);
+        VueloBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_VueloBtonMouseEntered
+    private void VueloBtonMouseClicked(java.awt.event.MouseEvent evt) {
+        FrmCreateFlight createFlightForm = new FrmCreateFlight();
+        createFlightForm.setVisible(true);
+        this.setVisible(false);
+    }
 
     private void VueloBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VueloBtonMouseExited
- Color darkColor = new Color(30, 10, 100);  
-        SubmenuPanel2.setBackground(darkColor); 
-    VueloBton.setForeground(Color.WHITE); 
+        Color darkColor = new Color(30, 10, 100);
+        SubmenuPanel2.setBackground(darkColor);
+        VueloBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_VueloBtonMouseExited
 
     private void TicketBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketBtonMouseEntered
-Color darkColor = new Color(65, 0, 100); 
+        Color darkColor = new Color(65, 0, 100);
 
- SubmenuPanel4.setBackground(darkColor);
+        SubmenuPanel4.setBackground(darkColor);
  TicketBton.setForeground(Color.WHITE);    }//GEN-LAST:event_TicketBtonMouseEntered
 
     private void TicketBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketBtonMouseExited
-Color darkColor = new Color(30, 10, 100);  
-        SubmenuPanel4.setBackground(darkColor); 
-    TicketBton.setForeground(Color.WHITE);
+        Color darkColor = new Color(30, 10, 100);
+        SubmenuPanel4.setBackground(darkColor);
+        TicketBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_TicketBtonMouseExited
 
     private void OfertasBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OfertasBtonMouseEntered
-Color darkColor = new Color(65, 0, 100); 
+        Color darkColor = new Color(65, 0, 100);
 
- SubmenuPanel5.setBackground(darkColor);
- OfertasBton.setForeground(Color.WHITE);      
+        SubmenuPanel5.setBackground(darkColor);
+        OfertasBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_OfertasBtonMouseEntered
 
     private void OfertasBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OfertasBtonMouseExited
-Color darkColor = new Color(30, 10, 100);  
+        Color darkColor = new Color(30, 10, 100);
 
-        SubmenuPanel5.setBackground(darkColor); 
-    OfertasBton.setForeground(Color.WHITE);
+        SubmenuPanel5.setBackground(darkColor);
+        OfertasBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_OfertasBtonMouseExited
 
     private void EquipajeBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EquipajeBtonMouseEntered
-Color darkColor = new Color(65, 0, 100); 
+        Color darkColor = new Color(65, 0, 100);
 
- SubmenuPanel6.setBackground(darkColor);
- EquipajeBton.setForeground(Color.WHITE);
+        SubmenuPanel6.setBackground(darkColor);
+        EquipajeBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_EquipajeBtonMouseEntered
 
     private void EquipajeBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EquipajeBtonMouseExited
-Color darkColor = new Color(30, 10, 100);  
+        Color darkColor = new Color(30, 10, 100);
 
-        SubmenuPanel6.setBackground(darkColor); 
-    EquipajeBton.setForeground(Color.WHITE);
+        SubmenuPanel6.setBackground(darkColor);
+        EquipajeBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_EquipajeBtonMouseExited
 
     private void AyudaBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaBtonMouseEntered
-Color darkColor = new Color(65, 0, 100);   
+        Color darkColor = new Color(65, 0, 100);
 
-        SubmenuPanel7.setBackground(darkColor); 
+        SubmenuPanel7.setBackground(darkColor);
     AyudaBton.setForeground(Color.WHITE);    }//GEN-LAST:event_AyudaBtonMouseEntered
 
     private void AyudaBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaBtonMouseExited
-Color darkColor = new Color(30, 10, 100);  
+        Color darkColor = new Color(30, 10, 100);
 
-        SubmenuPanel7.setBackground(darkColor); 
-    AyudaBton.setForeground(Color.WHITE);
+        SubmenuPanel7.setBackground(darkColor);
+        AyudaBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_AyudaBtonMouseExited
-public static String Fecha() {
-    
-    Date Fecha = new Date();
-    SimpleDateFormat formato = new SimpleDateFormat ("dd 'de' MMMM 'de' yyyy '                           Hora:' HH:mm:ss");
-    return formato.format(Fecha);
-}
+    public static String Fecha() {
+
+        Date Fecha = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy '                           Hora:' HH:mm:ss");
+        return formato.format(Fecha);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -704,8 +715,8 @@ public static String Fecha() {
             }
         });
     }
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ARStxt;
     private javax.swing.JLabel AyudaBton;

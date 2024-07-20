@@ -457,9 +457,9 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
             String phoneNumber = phoneTxt.getText();
             String username = usernameTxt.getText();
             String password = passwordTxt.getText();
-            String city = cityTxt.getText();;
-            String state = stateTxt.getText();;
-            String postalCode = zipTxt.getText();;
+            String city = cityTxt.getText();
+            String state = stateTxt.getText();
+            String postalCode = zipTxt.getText();
             Date dateOfBirth = jDateChooser1.getDate();
             String gender = gendercmb.getSelectedItem().toString();
 

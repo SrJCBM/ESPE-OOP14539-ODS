@@ -116,7 +116,7 @@ public class FrmAirlineReservationSystemSplash extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/airline company icon .jpg"))); // NOI18N
 
-        lblCopyright.setText("(C) Overnight Developerr Squad - ODS");
+        lblCopyright.setText("(C) Overnight Developers Squad - ODS");
 
         lblRights.setText("(R) Overnight Developer Squad");
 
