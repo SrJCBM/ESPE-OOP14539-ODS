@@ -127,7 +127,7 @@ public class FrmAirlineReservationSystemSplash extends javax.swing.JFrame {
         lblStart.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblStart.setForeground(new java.awt.Color(255, 255, 255));
         lblStart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblStart.setText("Iniciar");
+        lblStart.setText("Continuar");
         lblStart.setToolTipText("");
         lblStart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblStart.addMouseListener(new java.awt.event.MouseAdapter() {

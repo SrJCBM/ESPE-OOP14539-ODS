@@ -44,6 +44,8 @@ public class FrmLogin extends javax.swing.JFrame {
         exitTxt = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         logginButton = new javax.swing.JToggleButton();
+        hidePasswordLbl = new javax.swing.JLabel();
+        seePasswordLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -97,6 +99,9 @@ public class FrmLogin extends javax.swing.JFrame {
         registerButton.setText("REGISTRAR");
         registerButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registerButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerButtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 registerButtonMouseEntered(evt);
             }
@@ -120,9 +125,9 @@ public class FrmLogin extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 160, 40));
@@ -199,7 +204,7 @@ public class FrmLogin extends javax.swing.JFrame {
         logginButton.setBackground(new java.awt.Color(157, 117, 185));
         logginButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         logginButton.setForeground(new java.awt.Color(255, 255, 255));
-        logginButton.setText("ENTER");
+        logginButton.setText("Ingresar");
         logginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -218,6 +223,24 @@ public class FrmLogin extends javax.swing.JFrame {
             }
         });
         jPanel1.add(logginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 160, 40));
+
+        hidePasswordLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/hide 32px.png"))); // NOI18N
+        hidePasswordLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hidePasswordLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hidePasswordLblMouseClicked(evt);
+            }
+        });
+        jPanel1.add(hidePasswordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, -1, -1));
+
+        seePasswordLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/see 32px.png"))); // NOI18N
+        seePasswordLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        seePasswordLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                seePasswordLblMouseClicked(evt);
+            }
+        });
+        jPanel1.add(seePasswordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 30, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -322,10 +345,28 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void logginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logginButtonMouseClicked
-        FrmCreateCustomer frmCreateCustomer = new FrmCreateCustomer();
+        /*FrmCreateCustomer frmCreateCustomer = new FrmCreateCustomer();
         this.setVisible(false);
-        frmCreateCustomer.setVisible(true);
+        frmCreateCustomer.setVisible(true);*/
     }//GEN-LAST:event_logginButtonMouseClicked
+
+    private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
+        FrmRegisterCustomer frmRegisterCustomer = new FrmRegisterCustomer();
+        this.setVisible(false);
+        frmRegisterCustomer.setVisible(true);
+    }//GEN-LAST:event_registerButtonMouseClicked
+
+    private void hidePasswordLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hidePasswordLblMouseClicked
+        hidePasswordLbl.setVisible(false);
+        seePasswordLbl.setVisible(true);
+        passTxt.setEchoChar('*');
+    }//GEN-LAST:event_hidePasswordLblMouseClicked
+
+    private void seePasswordLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seePasswordLblMouseClicked
+        seePasswordLbl.setVisible(false);
+        hidePasswordLbl.setVisible(true);
+        passTxt.setEchoChar((char)0);
+    }//GEN-LAST:event_seePasswordLblMouseClicked
 
     /**
      * @param args the command line arguments
@@ -375,6 +416,7 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JPanel exitBtn;
     private javax.swing.JLabel exitTxt;
     private javax.swing.JPanel header;
+    private javax.swing.JLabel hidePasswordLbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -383,5 +425,6 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JToggleButton logginButton;
     private javax.swing.JPasswordField passTxt;
     private javax.swing.JToggleButton registerButton;
+    private javax.swing.JLabel seePasswordLbl;
     // End of variables declaration//GEN-END:variables
 }

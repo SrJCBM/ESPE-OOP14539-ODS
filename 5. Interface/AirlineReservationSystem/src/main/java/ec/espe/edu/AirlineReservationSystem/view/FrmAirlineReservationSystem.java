@@ -146,9 +146,9 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     }//GEN-LAST:event_itemExitActionPerformed
 
     private void itemCreateCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCreateCustomerActionPerformed
-        FrmCreateCustomer frmCreateCustomer = new FrmCreateCustomer();
+        /*FrmCreateCustomer frmCreateCustomer = new FrmCreateCustomer();
         this.setVisible(false);
-        frmCreateCustomer.setVisible(true);
+        frmCreateCustomer.setVisible(true);*/
 
     }//GEN-LAST:event_itemCreateCustomerActionPerformed
 
