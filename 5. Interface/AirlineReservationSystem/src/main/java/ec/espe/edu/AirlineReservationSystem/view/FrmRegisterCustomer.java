@@ -1,17 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ec.espe.edu.AirlineReservationSystem.view;
-//nombre,email,celular,username,password,city,estado,zip,fecha de nacimiento,genero,iddocumento
 
+import ec.espe.edu.AirlineReservationSystem.controller.CustomerController;
+import ec.espe.edu.AirlineReservationSystem.model.Customer;
 import java.awt.Color;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @Miguel Caiza,Overnight Developers Squad,DCCO-ESPE
  */
-public class FrmRegisterCustomer extends javax.swing.JFrame{
+public class FrmRegisterCustomer extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmRegister
@@ -22,6 +21,7 @@ public class FrmRegisterCustomer extends javax.swing.JFrame{
         this.hidePasswordLbl.setVisible(false);
     }
     int xMouse, yMouse;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -185,7 +185,7 @@ public class FrmRegisterCustomer extends javax.swing.JFrame{
 
         usernameLbl.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         usernameLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usernameLbl.setText("Nombe de Usuario :");
+        usernameLbl.setText("Nombre de Usuario :");
         background.add(usernameLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 130, 20));
 
         usernameTxt.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
@@ -441,21 +441,44 @@ public class FrmRegisterCustomer extends javax.swing.JFrame{
     }//GEN-LAST:event_registerButtonMouseClicked
 
     private void registerButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseEntered
-        registerButton.setBackground(new Color(173,129,204));
+        registerButton.setBackground(new Color(173, 129, 204));
     }//GEN-LAST:event_registerButtonMouseEntered
 
     private void registerButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseExited
-        registerButton.setBackground(new Color(157,117,185));
+        registerButton.setBackground(new Color(157, 117, 185));
     }//GEN-LAST:event_registerButtonMouseExited
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            Customer customer;
+            String idDocument = idDocumentTxt.getText();
+            String name = nameTxt.getText();
+            String email = emailTxt.getText();
+            String phoneNumber = phoneTxt.getText();
+            String username = usernameTxt.getText();
+            String password = passwordTxt.getText();
+            String city = cityTxt.getText();;
+            String state = stateTxt.getText();;
+            String postalCode = zipTxt.getText();;
+            Date dateOfBirth = jDateChooser1.getDate();
+            String gender = gendercmb.getSelectedItem().toString();
+
+            customer = new Customer(idDocument, name, email, phoneNumber, username, password, city, state, postalCode, dateOfBirth, gender);
+
+            CustomerController.createCustomer(customer);
+
+            JOptionPane.showMessageDialog(this, "Customer registered successfully!");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error registering customer data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void seePasswordLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seePasswordLblMouseClicked
         seePasswordLbl.setVisible(false);
         hidePasswordLbl.setVisible(true);
-        passwordTxt.setEchoChar((char)0);
+        passwordTxt.setEchoChar((char) 0);
     }//GEN-LAST:event_seePasswordLblMouseClicked
 
     private void hidePasswordLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hidePasswordLblMouseClicked
@@ -477,7 +500,7 @@ public class FrmRegisterCustomer extends javax.swing.JFrame{
     }//GEN-LAST:event_usernameTxtMousePressed
 
     private void phoneTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_phoneTxtMousePressed
-                               
+
     }//GEN-LAST:event_phoneTxtMousePressed
 
     private void emailTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailTxtMousePressed
@@ -491,8 +514,7 @@ public class FrmRegisterCustomer extends javax.swing.JFrame{
     /**
      * @param args the command line arguments
      */
-    
-public static void main(String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

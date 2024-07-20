@@ -79,8 +79,8 @@ public class FrmLogin extends javax.swing.JFrame {
                 UsernameFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 457, 30));
-        jPanel1.add(UsernameSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 420, 10));
+        jPanel1.add(UsernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 457, 30));
+        jPanel1.add(UsernameSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 420, 10));
 
         ProgramTitle.setFont(new java.awt.Font("Segoe UI", 2, 36)); // NOI18N
         ProgramTitle.setText("AIRLINE RESERVATION SYSTEM");

@@ -1,5 +1,7 @@
 package ec.espe.edu.AirlineReservationSystem.model;
 
+import java.util.Date;
+
 /**
  *
  * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
@@ -14,10 +16,10 @@ public class Customer {
     private String city;
     private String state;
     private String postalCode;
-    private String dateOfBirth;
+    private Date dateOfBirth;
     private String gender;
 
-    public Customer(String idDocument, String name, String email, String phoneNumber, String username, String password, String city, String state, String postalCode, String dateOfBirth, String gender) {
+    public Customer(String idDocument, String name, String email, String phoneNumber, String username, String password, String city, String state, String postalCode, Date dateOfBirth, String gender) {
         this.idDocument = idDocument;
         this.name = name;
         this.email = email;
@@ -162,14 +164,14 @@ public class Customer {
     /**
      * @return the dateOfBirth
      */
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
     /**
      * @param dateOfBirth the dateOfBirth to set
      */
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
