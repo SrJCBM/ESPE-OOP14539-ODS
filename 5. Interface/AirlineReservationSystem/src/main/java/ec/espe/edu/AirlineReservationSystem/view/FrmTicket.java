@@ -71,10 +71,10 @@ public JPanel GetBgTicket (){
 
         ticketsNumberLbl.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         ticketsNumberLbl.setText("Numero de Voletos : ");
-        jPanel1.add(ticketsNumberLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 130, 20));
+        jPanel1.add(ticketsNumberLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 140, 20));
 
         ticketsNumberSpn.setBorder(null);
-        jPanel1.add(ticketsNumberSpn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 70, -1));
+        jPanel1.add(ticketsNumberSpn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 70, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 200, 10));
 
         userLbl.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
@@ -83,7 +83,7 @@ public JPanel GetBgTicket (){
 
         userNameTxt.setBorder(null);
         jPanel1.add(userNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 200, 20));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 70, 10));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 70, 10));
 
         flightIdLbl.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         flightIdLbl.setText("ID de vuelo :");

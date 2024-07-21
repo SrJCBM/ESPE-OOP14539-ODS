@@ -48,24 +48,27 @@ public class TicketController {
         }
     }
 
-    public String saveTicket(Ticket ticket) {
-        try {
-            int nextTicketId = getNextTicketId();
-            ticket.setIdTicket(nextTicketId);
+   public String saveTicket(Ticket ticket) {
+    try {
+      
+        int nextTicketId = getNextTicketId();
+        ticket.setIdTicket(nextTicketId); 
 
-            Document ticketDoc = new Document("Number of Ticket", ticket.getTicketNumber())
-                .append("Ticket ID", ticket.getIdTicket())
-                .append("Customer Name", ticket.getCustomerName())
-                .append("Id Flight", ticket.getIdFlight())
-                .append("Ticket Class", ticket.getTicketClass());
+        
+        Document ticketDoc = new Document("Number of Ticket", ticket.getTicketNumber())
+            .append("Ticket ID", ticket.getIdTicket()) 
+            .append("Customer Name", ticket.getCustomerName())
+            .append("Id Flight", ticket.getIdFlight())
+            .append("Ticket Class", ticket.getTicketClass());
 
-            ticketCollection.insertOne(ticketDoc);
-            return String.valueOf(ticket.getIdTicket());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        
+        ticketCollection.insertOne(ticketDoc);
+        return String.valueOf(ticket.getIdTicket()); 
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
     }
+}
    public String findTicketById(int ticketId) {
     Document query = new Document("Ticket ID", ticketId);
     Document ticket = ticketCollection.find(query).first();
@@ -73,7 +76,7 @@ public class TicketController {
     if (ticket != null) {
         String customerName = ticket.getString("Customer Name");
         int flightId = ticket.getInteger("Id Flight");
-        String ticketClass = ticket.getString("Ticket Class"); // Corregido: agregada la falta de punto y coma
+        String ticketClass = ticket.getString("Ticket Class"); 
         
         return "<html>Cliente Encontrado <br><br> Nombre del Cliente: " + customerName + 
                "<br><br>ID del Vuelo: " + flightId + 
