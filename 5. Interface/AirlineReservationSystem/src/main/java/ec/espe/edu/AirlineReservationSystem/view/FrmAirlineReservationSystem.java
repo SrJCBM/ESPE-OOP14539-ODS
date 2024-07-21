@@ -710,8 +710,8 @@ content.repaint();
         content.add(backgroundPanel2, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
-
-
+        
+        
     }//GEN-LAST:event_VueloBtonMouseClicked
 
     public static String Fecha() {
