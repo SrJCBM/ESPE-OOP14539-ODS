@@ -5,6 +5,7 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import java.awt.Color;
+import javax.swing.JPanel;
 
 /**
  *
@@ -18,7 +19,9 @@ public class FrmTicket extends javax.swing.JFrame {
     public FrmTicket() {
         initComponents();
     }
-
+public JPanel GetBgTicket (){
+    return jPanel1;
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

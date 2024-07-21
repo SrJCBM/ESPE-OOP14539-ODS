@@ -24,11 +24,9 @@ public class FrmCreateFlight extends javax.swing.JFrame {
     public FrmCreateFlight() {
         initComponents();
     }
-
-    public JPanel getCreateFlight() {
+public JPanel getCreateFlight() {
         return background;
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,7 +63,7 @@ public class FrmCreateFlight extends javax.swing.JFrame {
         ArrivalDate.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         ArrivalDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ArrivalDate.setText("Fecha de Llegada:");
-        background.add(ArrivalDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, -1, 20));
+        background.add(ArrivalDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, -1, 20));
 
         Origin.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         Origin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -80,7 +78,7 @@ public class FrmCreateFlight extends javax.swing.JFrame {
         Airline.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         Airline.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Airline.setText("Aerolínea:");
-        background.add(Airline, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, 20));
+        background.add(Airline, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, 20));
 
         DepartureDate.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         DepartureDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -100,11 +98,11 @@ public class FrmCreateFlight extends javax.swing.JFrame {
         });
         background.add(cmbDestination, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 180, 40));
         background.add(jDateDeparture, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 190, 30));
-        background.add(jDateArrival, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 200, 30));
+        background.add(jDateArrival, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 320, 200, 30));
 
         txtAirline.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         txtAirline.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        background.add(txtAirline, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 220, 40));
+        background.add(txtAirline, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 220, 40));
 
         btnCreate.setBackground(new java.awt.Color(157, 117, 185));
         btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -127,7 +125,7 @@ public class FrmCreateFlight extends javax.swing.JFrame {
                 btnCreateActionPerformed(evt);
             }
         });
-        background.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 120, 40));
+        background.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 120, 40));
 
         btnBack.setBackground(new java.awt.Color(157, 117, 185));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -150,7 +148,7 @@ public class FrmCreateFlight extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
-        background.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 420, 140, 40));
+        background.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 140, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,23 +187,11 @@ public class FrmCreateFlight extends javax.swing.JFrame {
             String airline = txtAirline.getText();
             Date departureDate = jDateDeparture.getDate();
             Date arrivalDate = jDateArrival.getDate();
-            Date currentDate = new Date();
 
-            if (origin.equals("Ciudad") || destination.equals("Ciudad") || airline.isEmpty() || departureDate == null || arrivalDate == null) {
+            if (origin.equals("País") || destination.equals("País") || airline.isEmpty() || departureDate == null || arrivalDate == null) {
                 JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
-            if (departureDate.before(currentDate)) {
-                JOptionPane.showMessageDialog(this, "La fecha de salida no puede ser anterior a la fecha actual.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (arrivalDate.before(departureDate)) {
-                JOptionPane.showMessageDialog(this, "La fecha de llegada debe ser posterior a la fecha de salida.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
             Flight flight = new Flight();
             flight.setOrigin(origin);
             flight.setDestination(destination);
@@ -215,6 +201,7 @@ public class FrmCreateFlight extends javax.swing.JFrame {
 
             FlightController flightController = new FlightController();
             String flightId = flightController.saveFlight(flight);
+            //flightController.saveFlight(flight);
 
             JOptionPane.showMessageDialog(this, "Vuelo creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 

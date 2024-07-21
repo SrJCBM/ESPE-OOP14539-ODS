@@ -155,6 +155,9 @@ content.repaint();
         EquipajeBton.setText("Equipaje");
         EquipajeBton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         EquipajeBton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EquipajeBtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 EquipajeBtonMouseEntered(evt);
             }
@@ -194,6 +197,9 @@ content.repaint();
         OfertasBton.setText("Ofertas");
         OfertasBton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         OfertasBton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OfertasBtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 OfertasBtonMouseEntered(evt);
             }
@@ -302,6 +308,9 @@ content.repaint();
         TicketBton.setText("Ticket");
         TicketBton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         TicketBton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TicketBtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 TicketBtonMouseEntered(evt);
             }
@@ -710,9 +719,43 @@ content.repaint();
         content.add(backgroundPanel2, BorderLayout.CENTER);
         content.revalidate();
         content.repaint();
-        
-        
+
+
     }//GEN-LAST:event_VueloBtonMouseClicked
+
+    private void EquipajeBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EquipajeBtonMouseClicked
+     BaggagePanel  panel = new BaggagePanel();
+        panel.setSize(920, 580);
+        panel.setLocation(0, 0);
+
+        content.removeAll();
+        content.add(panel, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();    }//GEN-LAST:event_EquipajeBtonMouseClicked
+
+    private void TicketBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketBtonMouseClicked
+          FrmTicket ticket = new FrmTicket();
+        JPanel backGround = ticket.GetBgTicket();
+        backGround.setSize(920, 580);
+        backGround.setLocation(0, 0);
+
+        content.removeAll();
+        content.add(backGround, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_TicketBtonMouseClicked
+
+    private void OfertasBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OfertasBtonMouseClicked
+        FrmOffers offers = new FrmOffers();
+        JPanel offerBackground = offers.getOffersPanel();
+        offerBackground.setSize(920, 580);
+        offerBackground.setLocation(0, 0);
+
+        content.removeAll();
+        content.add(offerBackground, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint(); 
+    }//GEN-LAST:event_OfertasBtonMouseClicked
 
     public static String Fecha() {
 
