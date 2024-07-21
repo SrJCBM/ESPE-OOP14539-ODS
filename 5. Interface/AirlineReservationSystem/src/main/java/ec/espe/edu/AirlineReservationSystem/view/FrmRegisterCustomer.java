@@ -373,7 +373,7 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
         btnBack.setBackground(new java.awt.Color(157, 117, 185));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
-        btnBack.setText("REGRESAR");
+        btnBack.setText("Volver");
         btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
