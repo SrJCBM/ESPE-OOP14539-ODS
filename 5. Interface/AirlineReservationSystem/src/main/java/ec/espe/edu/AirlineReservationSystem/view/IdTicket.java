@@ -4,9 +4,11 @@
  */
 package ec.espe.edu.AirlineReservationSystem.view;
 
+import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import org.bson.Document;
 
 /**
@@ -122,7 +124,25 @@ public class IdTicket extends javax.swing.JPanel {
     }//GEN-LAST:event_IdTickettxtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+         try {
+            String ticketIdText = IdTickettxt.getText().trim();
+            if (ticketIdText.isEmpty()) {
+                return;
+            }
+            int ticketId;
+            try {
+                ticketId = Integer.parseInt(ticketIdText);
+            } catch (NumberFormatException e) {
+                return;
+            }
+            
+              BaggageController.setTicketId(ticketId);
+              
+              SwingUtilities.getWindowAncestor(this).dispose();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ValidarBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValidarBtonActionPerformed
