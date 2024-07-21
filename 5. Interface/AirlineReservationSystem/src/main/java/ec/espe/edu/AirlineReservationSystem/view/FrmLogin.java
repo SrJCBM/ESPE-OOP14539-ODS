@@ -64,8 +64,8 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 310, 520));
 
         LoginTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        LoginTitle.setText("Iniciar Sesión");
-        jPanel1.add(LoginTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 150, -1));
+        LoginTitle.setText("Usuario");
+        jPanel1.add(LoginTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 130, 20));
 
         UsernameField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         UsernameField.setForeground(new java.awt.Color(204, 204, 204));
@@ -90,7 +90,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
         PasswordTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         PasswordTitle.setText("Contraseña");
-        jPanel1.add(PasswordTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 140, -1));
+        jPanel1.add(PasswordTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 120, 20));
         jPanel1.add(UsernameSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 420, 10));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -206,7 +206,7 @@ public class FrmLogin extends javax.swing.JFrame {
         logginButton.setBackground(new java.awt.Color(157, 117, 185));
         logginButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         logginButton.setForeground(new java.awt.Color(255, 255, 255));
-        logginButton.setText("Ingresar");
+        logginButton.setText("INGRESAR");
         logginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

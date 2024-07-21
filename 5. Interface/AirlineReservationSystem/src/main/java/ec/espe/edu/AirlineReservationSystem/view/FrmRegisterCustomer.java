@@ -326,8 +326,8 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
         bornOnDateLbl.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         bornOnDateLbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bornOnDateLbl.setText("Fecha de nacimiento :");
-        background.add(bornOnDateLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 140, 20));
-        background.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 90, 20));
+        background.add(bornOnDateLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 140, 20));
+        background.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 120, 30));
 
         registerButton.setBackground(new java.awt.Color(157, 117, 185));
         registerButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N

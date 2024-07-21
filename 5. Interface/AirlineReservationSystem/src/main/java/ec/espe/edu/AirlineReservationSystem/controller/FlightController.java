@@ -19,8 +19,8 @@ public class FlightController {
     private MongoCollection<Document> flightCollection;
 
     public FlightController() {
-        mongoClient = MongoClients.create("mongodb+srv://kachiriboga:chiriboga@cluster0.mstbyy5.mongodb.net/");
-        database = mongoClient.getDatabase("AirlineReservationSystem");
+        mongoClient = MongoClients.create("mongodb+srv://overnightdevelopersquad:Iq9R4i2czmCFcGBk@airlinedb.wbmwsfn.mongodb.net/");
+        database = mongoClient.getDatabase("FlightDataBase");
         flightCollection = database.getCollection("flights");
     }
 
@@ -34,7 +34,6 @@ public class FlightController {
         
                 String flightId = flightDoc.getObjectId("_id").toString();
 
-        // Actualizar el objeto Flight con el ID generado
         flight.setFlightId(flightId);
 
         return flightId;
