@@ -132,7 +132,7 @@
             <Component class="javax.swing.JLabel" name="fondoImage">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/ec/edu/espe/airlinereservationsystem/images/fondo.jpg"/>
+                  <Image iconType="3" name="/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"/>
                 </Property>
               </Properties>
               <Constraints>

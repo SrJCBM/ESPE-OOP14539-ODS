@@ -60,7 +60,7 @@ public class BaggagePanel extends javax.swing.JPanel {
         arstxt.setText("Airline Reservation System");
         datePanel.add(arstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 300, 50));
 
-        fondoImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpg"))); // NOI18N
+        fondoImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
         datePanel.add(fondoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 910, 120));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
