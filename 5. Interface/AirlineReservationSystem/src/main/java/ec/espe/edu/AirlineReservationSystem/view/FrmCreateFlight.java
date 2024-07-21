@@ -201,7 +201,6 @@ public JPanel getCreateFlight() {
 
             FlightController flightController = new FlightController();
             String flightId = flightController.saveFlight(flight);
-            //flightController.saveFlight(flight);
 
             JOptionPane.showMessageDialog(this, "Vuelo creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 

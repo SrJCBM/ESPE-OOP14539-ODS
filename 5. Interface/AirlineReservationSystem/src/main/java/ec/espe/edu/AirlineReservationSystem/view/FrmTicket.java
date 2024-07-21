@@ -70,41 +70,51 @@ public JPanel GetBgTicket (){
         jPanel1.add(ticketTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 230, 30));
 
         ticketsNumberLbl.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        ticketsNumberLbl.setText("Numero de Voletos : ");
-        jPanel1.add(ticketsNumberLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 140, 20));
+        ticketsNumberLbl.setText("Número de Boletos : ");
+        jPanel1.add(ticketsNumberLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 140, 20));
 
         ticketsNumberSpn.setBorder(null);
-        jPanel1.add(ticketsNumberSpn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 70, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 200, 10));
+        jPanel1.add(ticketsNumberSpn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 70, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 210, 10));
 
         userLbl.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         userLbl.setText("Nombre del Cliente :");
-        jPanel1.add(userLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, 20));
+        jPanel1.add(userLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, 20));
 
         userNameTxt.setBorder(null);
-        jPanel1.add(userNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 200, 20));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 70, 10));
+        userNameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNameTxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(userNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 210, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 70, 10));
 
         flightIdLbl.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         flightIdLbl.setText("ID de vuelo :");
-        jPanel1.add(flightIdLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, 20));
+        jPanel1.add(flightIdLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, 20));
 
         flightIdTxt.setBorder(null);
-        jPanel1.add(flightIdTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 200, 20));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 210, 10));
+        flightIdTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                flightIdTxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(flightIdTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 210, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 210, 10));
 
         classTxt.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         classTxt.setText("Clase :");
-        jPanel1.add(classTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, 20));
+        jPanel1.add(classTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, 20));
 
         classBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Economica", "Ejecutiva", " " }));
-        jPanel1.add(classBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 210, 10));
+        jPanel1.add(classBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 100, 30));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 267, 210, -1));
 
         buyBtn.setBackground(new java.awt.Color(157, 117, 185));
         buyBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         buyBtn.setForeground(new java.awt.Color(255, 255, 255));
-        buyBtn.setText("Comprar");
+        buyBtn.setText("COMPRAR");
         buyBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buyBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -122,7 +132,7 @@ public JPanel GetBgTicket (){
                 buyBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(buyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 140, 40));
+        jPanel1.add(buyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 140, 40));
 
         btnBack.setBackground(new java.awt.Color(157, 117, 185));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -145,7 +155,7 @@ public JPanel GetBgTicket (){
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 140, 40));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 140, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,8 +168,9 @@ public JPanel GetBgTicket (){
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -244,6 +255,14 @@ public JPanel GetBgTicket (){
         this.setVisible(false);
         frmAirlineReservationSystem.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void userNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userNameTxtActionPerformed
+
+    private void flightIdTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flightIdTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_flightIdTxtActionPerformed
 
     /**
      * @param args the command line arguments
