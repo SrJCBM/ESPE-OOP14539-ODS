@@ -66,6 +66,23 @@ public class TicketController {
             return null;
         }
     }
+   public String findTicketById(int ticketId) {
+    Document query = new Document("Ticket ID", ticketId);
+    Document ticket = ticketCollection.find(query).first();
+    
+    if (ticket != null) {
+        String customerName = ticket.getString("Customer Name");
+        int flightId = ticket.getInteger("Id Flight");
+        String ticketClass = ticket.getString("Ticket Class"); // Corregido: agregada la falta de punto y coma
+        
+        return "<html>Cliente Encontrado <br><br> Nombre del Cliente: " + customerName + 
+               "<br><br>ID del Vuelo: " + flightId + 
+               "<br><br>Clase: " + ticketClass + 
+               "<br><br>Por favor, estimado cliente, revise que sus datos sean correctos.</html>";
+    } else {
+        return "<html>No se encontró el ticket con ID: " + ticketId + "</html>";
+    }
+  }
 }
 
 

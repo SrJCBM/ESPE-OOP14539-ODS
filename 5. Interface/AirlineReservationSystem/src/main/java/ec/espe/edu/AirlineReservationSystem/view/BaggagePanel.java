@@ -4,6 +4,9 @@
  */
 package ec.espe.edu.AirlineReservationSystem.view;
 
+import ec.espe.edu.AirlineReservationSystem.view.IdTicket;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Joffre
@@ -55,13 +58,15 @@ public class BaggagePanel extends javax.swing.JPanel {
         arstxt.setFont(new java.awt.Font("Engravers MT", 0, 14)); // NOI18N
         arstxt.setForeground(new java.awt.Color(255, 255, 255));
         arstxt.setText("Airline Reservation System");
-        datePanel.add(arstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 300, 50));
+        datePanel.add(arstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 300, 50));
 
         fondoImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpg"))); // NOI18N
         datePanel.add(fondoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 910, 120));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
         datePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 110));
+
+        OptionBaggagePanel.setBackground(new java.awt.Color(255, 232, 210));
 
         javax.swing.GroupLayout OptionBaggagePanelLayout = new javax.swing.GroupLayout(OptionBaggagePanel);
         OptionBaggagePanel.setLayout(OptionBaggagePanelLayout);
@@ -74,7 +79,7 @@ public class BaggagePanel extends javax.swing.JPanel {
             .addGap(0, 333, Short.MAX_VALUE)
         );
 
-        TicketBton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/ticket.jpg"))); // NOI18N
+        TicketBton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/ticket.png"))); // NOI18N
         TicketBton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         TicketBton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +88,7 @@ public class BaggagePanel extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jLabel1.setText("Añada su ticket");
+        jLabel1.setText("Ingrese su ticket");
 
         javax.swing.GroupLayout BackgroundLayout = new javax.swing.GroupLayout(Background);
         Background.setLayout(BackgroundLayout);
@@ -93,28 +98,27 @@ public class BaggagePanel extends javax.swing.JPanel {
             .addGroup(BackgroundLayout.createSequentialGroup()
                 .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BackgroundLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(39, 39, 39)
                         .addComponent(OptionBaggagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BackgroundLayout.createSequentialGroup()
-                        .addGap(343, 343, 343)
-                        .addGroup(BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TicketBton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(BackgroundLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel1)))))
+                        .addGap(352, 352, 352)
+                        .addComponent(TicketBton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(BackgroundLayout.createSequentialGroup()
+                        .addGap(380, 380, 380)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         BackgroundLayout.setVerticalGroup(
             BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundLayout.createSequentialGroup()
                 .addComponent(datePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TicketBton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(19, 19, 19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(OptionBaggagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -130,7 +134,20 @@ public class BaggagePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TicketBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TicketBtonActionPerformed
-        // TODO add your handling code here:
+    JFrame newFrame = new JFrame("Id Ticket");
+    newFrame.setResizable(false);
+    newFrame.setSize(700, 500);
+    newFrame.setLocationRelativeTo(null);
+    newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    
+    
+    IdTicket idTicketPanel = new IdTicket();
+    newFrame.add(idTicketPanel);
+    
+    
+    
+    newFrame.setVisible(true);
+
     }//GEN-LAST:event_TicketBtonActionPerformed
 
 
