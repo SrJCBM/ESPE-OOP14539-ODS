@@ -24,9 +24,11 @@ public class FrmCreateFlight extends javax.swing.JFrame {
     public FrmCreateFlight() {
         initComponents();
     }
-public JPanel getCreateFlight() {
+
+    public JPanel getCreateFlight() {
         return background;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -187,11 +189,23 @@ public JPanel getCreateFlight() {
             String airline = txtAirline.getText();
             Date departureDate = jDateDeparture.getDate();
             Date arrivalDate = jDateArrival.getDate();
+            Date currentDate = new Date();
 
-            if (origin.equals("País") || destination.equals("País") || airline.isEmpty() || departureDate == null || arrivalDate == null) {
+            if (origin.equals("Ciudad") || destination.equals("Ciudad") || airline.isEmpty() || departureDate == null || arrivalDate == null) {
                 JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
+
+            if (departureDate.before(currentDate)) {
+                JOptionPane.showMessageDialog(this, "La fecha de salida no puede ser anterior a la fecha actual.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (arrivalDate.before(departureDate)) {
+                JOptionPane.showMessageDialog(this, "La fecha de llegada debe ser posterior a la fecha de salida.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             Flight flight = new Flight();
             flight.setOrigin(origin);
             flight.setDestination(destination);
@@ -201,7 +215,6 @@ public JPanel getCreateFlight() {
 
             FlightController flightController = new FlightController();
             String flightId = flightController.saveFlight(flight);
-            //flightController.saveFlight(flight);
 
             JOptionPane.showMessageDialog(this, "Vuelo creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
