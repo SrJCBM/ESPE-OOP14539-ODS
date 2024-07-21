@@ -1,43 +1,52 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.Timer;
+
 
 /**
  *
  * @author Miguel Caiza,Overnight Developers Squad,DCCO-ESPE
  */
 public class FrmAirlineReservationSystem extends javax.swing.JFrame {
-
     /**
      * Creates new form FmAirlineReservationSystemMenu
      */
+
+ 
     public FrmAirlineReservationSystem() {
-        initComponents();
-        Datetxt.setText("Hoy es  " + Fecha());
-        Timer timer = new Timer(1000, new ActionListener() {
+ initComponents();
+ Datetxt.setText("Hoy es  "+Fecha());
+  Timer timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Datetxt.setText("Hoy es " + Fecha());
             }
         });
-        timer.start(); // Inicia el timer
-        setLocationRelativeTo(null);
-        
-        VueloBton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                VueloBtonMouseClicked(evt);
-            }
-        });
-        
+        timer.start(); 
+ setLocationRelativeTo(null);
+ 
     }
-    int xMouse, yMouse;
+    
+ /*
+FrmRegisterCustomer customerFrame = new FrmRegisterCustomer();
+customerFrame.setSize(920, 580);
+customerFrame.setLocation(0,0);
+
+content.removeAll();
+content.add(customerFrame, BorderLayout.CENTER);
+content.revalidate();
+content.repaint();
+*/
+  int xMouse, yMouse;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,16 +66,16 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         SubmenuPanel5 = new javax.swing.JPanel();
         OfertasBton = new javax.swing.JLabel();
         SubmenuPanel3 = new javax.swing.JPanel();
-        btnCustomer = new javax.swing.JLabel();
+        FQAtxt1 = new javax.swing.JLabel();
         submenuPanel = new javax.swing.JPanel();
         ARStxt = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         SubmenuPanel4 = new javax.swing.JPanel();
         TicketBton = new javax.swing.JLabel();
         SubmenuPanel2 = new javax.swing.JPanel();
         VueloBton = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         menuImage = new javax.swing.JLabel();
         logopanel = new javax.swing.JPanel();
         arstxt = new javax.swing.JLabel();
@@ -78,10 +87,10 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         exitBtn = new javax.swing.JPanel();
         lblExitBtn = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         datePanel = new javax.swing.JPanel();
         Datetxt = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        content = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
 
         jCheckBoxMenuItem5.setSelected(true);
@@ -221,17 +230,17 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
 
         SubmenuPanel3.setBackground(new java.awt.Color(30, 10, 100));
 
-        btnCustomer.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        btnCustomer.setForeground(new java.awt.Color(255, 255, 255));
-        btnCustomer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnCustomer.setText("Cliente");
-        btnCustomer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+        FQAtxt1.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
+        FQAtxt1.setForeground(new java.awt.Color(255, 255, 255));
+        FQAtxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        FQAtxt1.setText("Usuario");
+        FQAtxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        FQAtxt1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCustomerMouseEntered(evt);
+                FQAtxt1MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCustomerMouseExited(evt);
+                FQAtxt1MouseExited(evt);
             }
         });
 
@@ -240,12 +249,12 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         SubmenuPanel3Layout.setHorizontalGroup(
             SubmenuPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SubmenuPanel3Layout.createSequentialGroup()
-                .addComponent(btnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(FQAtxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 1, Short.MAX_VALUE))
         );
         SubmenuPanel3Layout.setVerticalGroup(
             SubmenuPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(FQAtxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         menupanel.add(SubmenuPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 230, 40));
@@ -264,6 +273,9 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         ARStxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ARStxt.setText("Administración");
         ARStxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ARStxtMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ARStxtMouseEntered(evt);
             }
@@ -272,22 +284,15 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("jLabel4");
-
         javax.swing.GroupLayout submenuPanelLayout = new javax.swing.GroupLayout(submenuPanel);
         submenuPanel.setLayout(submenuPanelLayout);
         submenuPanelLayout.setHorizontalGroup(
             submenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(submenuPanelLayout.createSequentialGroup()
-                .addComponent(ARStxt, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(ARStxt, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         submenuPanelLayout.setVerticalGroup(
             submenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ARStxt, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ARStxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         menupanel.add(submenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 230, 40));
@@ -332,6 +337,11 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         menupanel.add(SubmenuPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 230, 40));
 
         SubmenuPanel2.setBackground(new java.awt.Color(30, 10, 100));
+        SubmenuPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SubmenuPanel2MouseClicked(evt);
+            }
+        });
 
         VueloBton.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         VueloBton.setForeground(new java.awt.Color(255, 255, 255));
@@ -354,7 +364,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         SubmenuPanel2.setLayout(SubmenuPanel2Layout);
         SubmenuPanel2Layout.setHorizontalGroup(
             SubmenuPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(VueloBton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+            .addComponent(VueloBton, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
         );
         SubmenuPanel2Layout.setVerticalGroup(
             SubmenuPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,12 +387,15 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         menupanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 110, 20));
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/city.jpg"))); // NOI18N
+        menupanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 230, 640));
+
         menuImage.setBackground(new java.awt.Color(30, 10, 100));
         menuImage.setForeground(new java.awt.Color(30, 10, 100));
         menuImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/city.jpg"))); // NOI18N
-        menupanel.add(menuImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 590));
+        menupanel.add(menuImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 230, 780));
 
-        getContentPane().add(menupanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 500));
+        getContentPane().add(menupanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 740));
 
         logopanel.setBackground(new java.awt.Color(255, 255, 255));
         logopanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -390,22 +403,22 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         arstxt.setFont(new java.awt.Font("Engravers MT", 0, 14)); // NOI18N
         arstxt.setForeground(new java.awt.Color(38, 0, 68));
         arstxt.setText("Airline Reservation System");
-        logopanel.add(arstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 300, 50));
+        logopanel.add(arstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 300, 50));
 
         lblCopyright.setText("(C) Overnight Developerr Squad - ODS");
-        logopanel.add(lblCopyright, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, 30));
+        logopanel.add(lblCopyright, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, 30));
 
         lblRights.setText("(R) Overnight Developer Squad");
-        logopanel.add(lblRights, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, -1, -1));
+        logopanel.add(lblRights, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, -1, -1));
 
         lblSystemVersion.setText("V1.0.0");
-        logopanel.add(lblSystemVersion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, 30));
+        logopanel.add(lblSystemVersion, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, 30));
 
         Imagelogotxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/airline company icon .jpg"))); // NOI18N
         Imagelogotxt.setText("jLabel1");
-        logopanel.add(Imagelogotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 160, 100));
+        logopanel.add(Imagelogotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 160, 100));
 
-        getContentPane().add(logopanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 800, 100));
+        getContentPane().add(logopanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 980, 100));
 
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -442,18 +455,24 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         exitBtn.setLayout(exitBtnLayout);
         exitBtnLayout.setHorizontalGroup(
             exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitBtnLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblExitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(exitBtnLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lblExitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         exitBtnLayout.setVerticalGroup(
             exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitBtnLayout.createSequentialGroup()
-                .addComponent(lblExitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(exitBtnLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(lblExitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        bg.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 0, 40, 40));
+        bg.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 0, 40, 40));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -468,11 +487,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
             .addGap(0, 60, Short.MAX_VALUE)
         );
 
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 40, 90, 60));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/city.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 230, 590));
+        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 40, 90, 60));
 
         datePanel.setBackground(new java.awt.Color(102, 0, 102));
 
@@ -489,25 +504,40 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         datePanelLayout.setHorizontalGroup(
             datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(datePanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Datetxt, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(Datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
         datePanelLayout.setVerticalGroup(
             datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(datePanelLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
                 .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(datePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                    .addComponent(Datetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        bg.add(datePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 740, 60));
+        bg.add(datePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 920, 60));
 
-        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-160, 0, 1130, 590));
+        content.setMinimumSize(new java.awt.Dimension(920, 580));
+
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 920, Short.MAX_VALUE)
+        );
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 580, Short.MAX_VALUE)
+        );
+
+        bg.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 920, 580));
+
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-160, 0, 1310, 730));
 
         header.setBackground(new java.awt.Color(255, 255, 255));
         header.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -525,14 +555,14 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 970, Short.MAX_VALUE)
+            .addGap(0, 1150, Short.MAX_VALUE)
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 40));
+        getContentPane().add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -554,7 +584,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        this.setLocation(x - xMouse, y - yMouse);
+        this.setLocation(x - xMouse,y - yMouse);
     }//GEN-LAST:event_headerMouseDragged
 
     private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
@@ -563,7 +593,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     }//GEN-LAST:event_headerMousePressed
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-
+    
     }//GEN-LAST:event_formMousePressed
 
     private void exitBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitBtnMouseEntered
@@ -571,114 +601,128 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     }//GEN-LAST:event_exitBtnMouseEntered
 
     private void submenuPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submenuPanelMouseEntered
-        //lbl
+   //lbl
     }//GEN-LAST:event_submenuPanelMouseEntered
 
     private void ARStxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARStxtMouseEntered
-        Color darkColor = new Color(65, 0, 100);
-        
-        submenuPanel.setBackground(darkColor);
-        ARStxt.setForeground(Color.WHITE);
+       Color darkColor = new Color(65, 0, 100); 
+
+ submenuPanel.setBackground(darkColor); 
+    ARStxt.setForeground(Color.WHITE); 
     }//GEN-LAST:event_ARStxtMouseEntered
 
     private void ARStxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARStxtMouseExited
-        Color darkColor = new Color(30, 10, 100);
-        submenuPanel.setBackground(darkColor);
-        ARStxt.setForeground(Color.WHITE);
+         Color darkColor = new Color(30, 10, 100);  
+        submenuPanel.setBackground(darkColor); 
+    ARStxt.setForeground(Color.WHITE); 
     }//GEN-LAST:event_ARStxtMouseExited
 
-    private void btnCustomerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerMouseEntered
-        Color darkColor = new Color(65, 0, 100);
-        
-        SubmenuPanel3.setBackground(darkColor);
-    btnCustomer.setForeground(Color.WHITE);    }//GEN-LAST:event_btnCustomerMouseEntered
+    private void FQAtxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FQAtxt1MouseEntered
+  Color darkColor = new Color(65, 0, 100); 
 
-    private void btnCustomerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerMouseExited
-        Color darkColor = new Color(30, 10, 100);
-        SubmenuPanel3.setBackground(darkColor);
-        btnCustomer.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnCustomerMouseExited
+ SubmenuPanel3.setBackground(darkColor);
+    FQAtxt1.setForeground(Color.WHITE);    }//GEN-LAST:event_FQAtxt1MouseEntered
+
+    private void FQAtxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FQAtxt1MouseExited
+   Color darkColor = new Color(30, 10, 100);  
+        SubmenuPanel3.setBackground(darkColor); 
+    FQAtxt1.setForeground(Color.WHITE); 
+    }//GEN-LAST:event_FQAtxt1MouseExited
 
     private void VueloBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VueloBtonMouseEntered
-        Color darkColor = new Color(65, 0, 100);
-        
-        SubmenuPanel2.setBackground(darkColor);
-        VueloBton.setForeground(Color.WHITE);
+   Color darkColor = new Color(65, 0, 100); 
+
+ SubmenuPanel2.setBackground(darkColor);
+ VueloBton.setForeground(Color.WHITE); 
     }//GEN-LAST:event_VueloBtonMouseEntered
-    
+
     private void VueloBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VueloBtonMouseExited
-        Color darkColor = new Color(30, 10, 100);
-        SubmenuPanel2.setBackground(darkColor);
-        VueloBton.setForeground(Color.WHITE);
+ Color darkColor = new Color(30, 10, 100);  
+        SubmenuPanel2.setBackground(darkColor); 
+    VueloBton.setForeground(Color.WHITE); 
     }//GEN-LAST:event_VueloBtonMouseExited
 
     private void TicketBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketBtonMouseEntered
-        Color darkColor = new Color(65, 0, 100);
-        
-        SubmenuPanel4.setBackground(darkColor);
+Color darkColor = new Color(65, 0, 100); 
+
+ SubmenuPanel4.setBackground(darkColor);
  TicketBton.setForeground(Color.WHITE);    }//GEN-LAST:event_TicketBtonMouseEntered
 
     private void TicketBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketBtonMouseExited
-        Color darkColor = new Color(30, 10, 100);
-        SubmenuPanel4.setBackground(darkColor);
-        TicketBton.setForeground(Color.WHITE);
+Color darkColor = new Color(30, 10, 100);  
+        SubmenuPanel4.setBackground(darkColor); 
+    TicketBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_TicketBtonMouseExited
 
     private void OfertasBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OfertasBtonMouseEntered
-        Color darkColor = new Color(65, 0, 100);
-        
-        SubmenuPanel5.setBackground(darkColor);
-        OfertasBton.setForeground(Color.WHITE);
+Color darkColor = new Color(65, 0, 100); 
+
+ SubmenuPanel5.setBackground(darkColor);
+ OfertasBton.setForeground(Color.WHITE);      
     }//GEN-LAST:event_OfertasBtonMouseEntered
 
     private void OfertasBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OfertasBtonMouseExited
-        Color darkColor = new Color(30, 10, 100);
-        
-        SubmenuPanel5.setBackground(darkColor);
-        OfertasBton.setForeground(Color.WHITE);
+Color darkColor = new Color(30, 10, 100);  
+
+        SubmenuPanel5.setBackground(darkColor); 
+    OfertasBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_OfertasBtonMouseExited
 
     private void EquipajeBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EquipajeBtonMouseEntered
-        Color darkColor = new Color(65, 0, 100);
-        
-        SubmenuPanel6.setBackground(darkColor);
-        EquipajeBton.setForeground(Color.WHITE);
+Color darkColor = new Color(65, 0, 100); 
+
+ SubmenuPanel6.setBackground(darkColor);
+ EquipajeBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_EquipajeBtonMouseEntered
 
     private void EquipajeBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EquipajeBtonMouseExited
-        Color darkColor = new Color(30, 10, 100);
-        
-        SubmenuPanel6.setBackground(darkColor);
-        EquipajeBton.setForeground(Color.WHITE);
+Color darkColor = new Color(30, 10, 100);  
+
+        SubmenuPanel6.setBackground(darkColor); 
+    EquipajeBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_EquipajeBtonMouseExited
 
     private void AyudaBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaBtonMouseEntered
-        Color darkColor = new Color(65, 0, 100);
-        
-        SubmenuPanel7.setBackground(darkColor);
+Color darkColor = new Color(65, 0, 100);   
+
+        SubmenuPanel7.setBackground(darkColor); 
     AyudaBton.setForeground(Color.WHITE);    }//GEN-LAST:event_AyudaBtonMouseEntered
 
     private void AyudaBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaBtonMouseExited
-        Color darkColor = new Color(30, 10, 100);
-        
-        SubmenuPanel7.setBackground(darkColor);
-        AyudaBton.setForeground(Color.WHITE);
+Color darkColor = new Color(30, 10, 100);  
+
+        SubmenuPanel7.setBackground(darkColor); 
+    AyudaBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_AyudaBtonMouseExited
 
+    private void ARStxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARStxtMouseClicked
+    // AQUI DEBER IR EL DE USUARIO
+    }//GEN-LAST:event_ARStxtMouseClicked
+
+    private void SubmenuPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmenuPanel2MouseClicked
+
+    }//GEN-LAST:event_SubmenuPanel2MouseClicked
+
     private void VueloBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VueloBtonMouseClicked
-        FrmCreateFlight createFlightForm = new FrmCreateFlight();
-        this.setVisible(true);
-        this.setVisible(false);
+        FrmCreateFlight sourceFrame = new FrmCreateFlight();
+    
+    
+    JPanel backgroundPanel2 = sourceFrame.getCreateFlight();
+    backgroundPanel2.setSize(920, 580);
+    backgroundPanel2.setLocation(0,0);
+    
+    content.removeAll();
+    content.add(backgroundPanel2, BorderLayout.CENTER);
+    content.revalidate();
+    content.repaint();
     }//GEN-LAST:event_VueloBtonMouseClicked
-
-
+    
     public static String Fecha() {
-        
-        Date Fecha = new Date();
-        SimpleDateFormat formato = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy '                           Hora:' HH:mm:ss");
-        return formato.format(Fecha);
-    }
-
+    
+    Date Fecha = new Date();
+    SimpleDateFormat formato = new SimpleDateFormat ("dd 'de' MMMM 'de' yyyy '                           Hora:' HH:mm:ss");
+    return formato.format(Fecha);
+}
     /**
      * @param args the command line arguments
      */
@@ -720,35 +764,35 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
             }
         });
     }
-
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ARStxt;
     private javax.swing.JLabel AyudaBton;
     private javax.swing.JLabel Datetxt;
     private javax.swing.JLabel EquipajeBton;
+    private javax.swing.JLabel FQAtxt1;
     private javax.swing.JLabel Imagelogotxt;
     private javax.swing.JLabel OfertasBton;
-    private javax.swing.JPanel SubmenuPanel2;
+    public static javax.swing.JPanel SubmenuPanel2;
     private javax.swing.JPanel SubmenuPanel3;
     private javax.swing.JPanel SubmenuPanel4;
     private javax.swing.JPanel SubmenuPanel5;
     private javax.swing.JPanel SubmenuPanel6;
     private javax.swing.JPanel SubmenuPanel7;
     private javax.swing.JLabel TicketBton;
-    private javax.swing.JLabel VueloBton;
+    public static javax.swing.JLabel VueloBton;
     private javax.swing.JLabel arstxt;
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel btnCustomer;
+    public static javax.swing.JPanel content;
     private javax.swing.JPanel datePanel;
     private javax.swing.JPanel exitBtn;
     private javax.swing.JPanel header;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCopyright;
     private javax.swing.JLabel lblExitBtn;
