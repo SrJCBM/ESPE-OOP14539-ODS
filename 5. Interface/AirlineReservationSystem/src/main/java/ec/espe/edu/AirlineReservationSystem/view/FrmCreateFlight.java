@@ -47,6 +47,7 @@ public class FrmCreateFlight extends javax.swing.JFrame {
         jDateArrival = new com.toedter.calendar.JDateChooser();
         txtAirline = new javax.swing.JTextField();
         btnCreate = new javax.swing.JToggleButton();
+        btnBack = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,11 +89,11 @@ public class FrmCreateFlight extends javax.swing.JFrame {
         background.add(DepartureDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, 20));
 
         cmbOrigin.setForeground(new java.awt.Color(204, 204, 204));
-        cmbOrigin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "País", "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania (Myanmar)", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Colombia", "Comoras", "Congo", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Esuatini (Suazilandia)", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Grecia", "Granada", "Guatemala", "Guinea", "Guinea-Bisáu", "Guinea Ecuatorial", "Guyana", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República Democrática del Congo", "República Dominicana", "Ruanda", "Rumania", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
+        cmbOrigin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ciudad", "Quito  ", "Guayaquil  ", "Cuenca  ", "Manta  ", "Esmeraldas  ", "Santa Rosa  ", "Latacunga  ", "Loja  ", "Tena  ", "Galápagos (Baltra)  ", "Galápagos (San Cristóbal)" }));
         background.add(cmbOrigin, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, -1, 30));
 
         cmbDestination.setForeground(new java.awt.Color(204, 204, 204));
-        cmbDestination.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "País", "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania (Myanmar)", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Colombia", "Comoras", "Congo", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Esuatini (Suazilandia)", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Grecia", "Granada", "Guatemala", "Guinea", "Guinea-Bisáu", "Guinea Ecuatorial", "Guyana", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República Democrática del Congo", "República Dominicana", "Ruanda", "Rumania", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
+        cmbDestination.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ciudad", "Quito  ", "Guayaquil  ", "Cuenca  ", "Manta  ", "Esmeraldas  ", "Santa Rosa  ", "Latacunga  ", "Loja  ", "Tena  ", "Galápagos (Baltra)  ", "Galápagos (San Cristóbal)" }));
         cmbDestination.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbDestinationActionPerformed(evt);
@@ -109,7 +110,7 @@ public class FrmCreateFlight extends javax.swing.JFrame {
         btnCreate.setBackground(new java.awt.Color(157, 117, 185));
         btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCreate.setForeground(new java.awt.Color(255, 255, 255));
-        btnCreate.setText("Crear");
+        btnCreate.setText("CREAR");
         btnCreate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCreate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -127,7 +128,30 @@ public class FrmCreateFlight extends javax.swing.JFrame {
                 btnCreateActionPerformed(evt);
             }
         });
-        background.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 120, 40));
+        background.add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 120, 40));
+
+        btnBack.setBackground(new java.awt.Color(157, 117, 185));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("REGRESAR");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBackMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBackMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBackMouseExited(evt);
+            }
+        });
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        background.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 140, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,7 +204,7 @@ public class FrmCreateFlight extends javax.swing.JFrame {
 
             FlightController flightController = new FlightController();
             String flightId = flightController.saveFlight(flight);
-//flightController.saveFlight(flight);
+            //flightController.saveFlight(flight);
 
             JOptionPane.showMessageDialog(this, "Vuelo creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
@@ -196,6 +220,25 @@ public class FrmCreateFlight extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnCreateActionPerformed
+
+    private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackMouseClicked
+
+    private void btnBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackMouseEntered
+
+    private void btnBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackMouseExited
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        FrmAirlineReservationSystem frmAirlineReservationSystem = new FrmAirlineReservationSystem();
+        this.setVisible(false);
+        frmAirlineReservationSystem.setVisible(true);       
+        
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,6 +282,7 @@ public class FrmCreateFlight extends javax.swing.JFrame {
     private javax.swing.JLabel Destination;
     private javax.swing.JLabel Origin;
     private javax.swing.JPanel background;
+    private javax.swing.JToggleButton btnBack;
     private javax.swing.JToggleButton btnCreate;
     private javax.swing.JComboBox<String> cmbDestination;
     private javax.swing.JComboBox<String> cmbOrigin;

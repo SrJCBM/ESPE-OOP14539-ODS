@@ -1,3 +1,4 @@
+
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.CustomerController;
@@ -10,6 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @Miguel Caiza,Overnight Developers Squad,DCCO-ESPE
  */
+
 public class FrmRegisterCustomer extends javax.swing.JFrame {
 
     /**
@@ -75,6 +77,7 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
         registerButton = new javax.swing.JToggleButton();
         seePasswordLbl = new javax.swing.JLabel();
         hidePasswordLbl = new javax.swing.JLabel();
+        btnBack = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -347,7 +350,7 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
                 registerButtonActionPerformed(evt);
             }
         });
-        background.add(registerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, -1, -1));
+        background.add(registerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, -1, 40));
 
         seePasswordLbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/see 32px.png"))); // NOI18N
         seePasswordLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -366,6 +369,29 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
             }
         });
         background.add(hidePasswordLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, -1, -1));
+
+        btnBack.setBackground(new java.awt.Color(157, 117, 185));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("REGRESAR");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBackMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBackMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBackMouseExited(evt);
+            }
+        });
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        background.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 520, 140, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -449,30 +475,123 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_registerButtonMouseExited
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        try {
-            Customer customer;
-            String idDocument = idDocumentTxt.getText();
-            String name = nameTxt.getText();
-            String email = emailTxt.getText();
-            String phoneNumber = phoneTxt.getText();
-            String username = usernameTxt.getText();
-            String password = passwordTxt.getText();
-            String city = cityTxt.getText();
-            String state = stateTxt.getText();
-            String postalCode = zipTxt.getText();
+     try {
+            String idDocument = idDocumentTxt.getText().trim();
+            String name = nameTxt.getText().trim();
+            String lastName = lastNameTxt.getText().trim();
+            String email = emailTxt.getText().trim();
+            String phoneNumber = phoneTxt.getText().trim();
+            String username = usernameTxt.getText().trim();
+            String password = new String(passwordTxt.getPassword()).trim();
+            String city = cityTxt.getText().trim();
+            String state = stateTxt.getText().trim();
+            String postalCode = zipTxt.getText().trim();
             Date dateOfBirth = jDateChooser1.getDate();
             String gender = gendercmb.getSelectedItem().toString();
+            if (idDocument.isEmpty() || name.isEmpty() || lastName.isEmpty() || email.isEmpty() || phoneNumber.isEmpty()
+                    || username.isEmpty() || password.isEmpty() || city.isEmpty() || state.isEmpty() || postalCode.isEmpty()
+                    || dateOfBirth == null || gender.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-            customer = new Customer(idDocument, name, email, phoneNumber, username, password, city, state, postalCode, dateOfBirth, gender);
+            if (!validarCedula(idDocument)) {
+                JOptionPane.showMessageDialog(this, "La cédula ingresada no es válida.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (!name.matches("[A-Za-z]+( [A-Za-z]+)*")) {
+                JOptionPane.showMessageDialog(this, "El nombre solo puede contener letras y un espacio entre palabras.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (!lastName.matches("[A-Za-z]+( [A-Za-z]+)*")) {
+                JOptionPane.showMessageDialog(this, "El apellido solo puede contener letras y un espacio entre palabras.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+                JOptionPane.showMessageDialog(this, "El correo electrónico no es válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (!phoneNumber.matches("\\d+")) {
+                JOptionPane.showMessageDialog(this, "El número de teléfono solo puede contener dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (!postalCode.matches("\\d+")) {
+                JOptionPane.showMessageDialog(this, "El código postal solo puede contener dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (username.length() > 10) {
+                JOptionPane.showMessageDialog(this, "El nombre de usuario no puede tener más de 10 caracteres.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (password.length() > 10) {
+                JOptionPane.showMessageDialog(this, "La contraseña no puede tener más de 10 caracteres.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            Customer customer = new Customer(idDocument, name, email, phoneNumber, username, password, city, state, postalCode, dateOfBirth, gender);
 
             CustomerController.createCustomer(customer);
 
-            JOptionPane.showMessageDialog(this, "Customer registered successfully!");
+            JOptionPane.showMessageDialog(this, "Cliente registrado exitosamente!");
+            clearFields();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error registering customer data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-
+            JOptionPane.showMessageDialog(this, "Error al registrar los datos del cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private void clearFields() {
+        idDocumentTxt.setText("");
+        nameTxt.setText("");
+        lastNameTxt.setText("");
+        emailTxt.setText("");
+        phoneTxt.setText("");
+        usernameTxt.setText("");
+        passwordTxt.setText("");
+        cityTxt.setText("");
+        stateTxt.setText("");
+        zipTxt.setText("");
+        jDateChooser1.setDate(null);
+        gendercmb.setSelectedIndex(0);
+    }
+
+    private boolean validarCedula(String cedula) {
+        if (cedula.length() != 10) {
+            return false;
+        }
+
+        int provincia = Integer.parseInt(cedula.substring(0, 2));
+        if (provincia < 1 || provincia > 24) {
+            return false;
+        }
+
+        int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
+        if (tercerDigito < 0 || tercerDigito > 6) {
+            return false;
+        }
+
+        int suma = 0;
+        int[] coeficientes = {2, 1, 2, 1, 2, 1, 2, 1, 2};
+        for (int i = 0; i < 9; i++) {
+            int digito = Integer.parseInt(cedula.substring(i, i + 1));
+            int producto = digito * coeficientes[i];
+            suma += (producto > 9) ? producto - 9 : producto;
+        }
+
+        int ultimoDigito = Integer.parseInt(cedula.substring(9, 10));
+        int decenaSuperior = ((suma + 9) / 10) * 10;
+        int digitoVerificador = decenaSuperior - suma;
+
+        return digitoVerificador == ultimoDigito;
+    
+
+
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void seePasswordLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seePasswordLblMouseClicked
@@ -511,46 +630,66 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
 
     }//GEN-LAST:event_passwordTxtMousePressed
 
+    private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackMouseClicked
+
+    private void btnBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackMouseEntered
+
+    private void btnBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackMouseExited
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+       FrmLogin frmLogin = new FrmLogin();
+       this.setVisible(false);
+       frmLogin.setVisible(true);
+
+    }//GEN-LAST:event_btnBackActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmRegisterCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmRegisterCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmRegisterCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmRegisterCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmRegisterCustomer().setVisible(true);
-            }
-        });
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(FrmRegisterCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(FrmRegisterCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(FrmRegisterCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(FrmRegisterCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new FrmRegisterCustomer().setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel RegisterTitleLbl;
     private javax.swing.JPanel background;
     private javax.swing.JLabel bornOnDateLbl;
+    private javax.swing.JToggleButton btnBack;
     private javax.swing.JLabel cityLbl;
     private javax.swing.JTextField cityTxt;
     private javax.swing.JLabel emailLbl;

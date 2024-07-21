@@ -29,13 +29,13 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         });
         timer.start(); // Inicia el timer
         setLocationRelativeTo(null);
-
+        
         VueloBton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 VueloBtonMouseClicked(evt);
             }
         });
-
+        
     }
     int xMouse, yMouse;
 
@@ -57,7 +57,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         SubmenuPanel5 = new javax.swing.JPanel();
         OfertasBton = new javax.swing.JLabel();
         SubmenuPanel3 = new javax.swing.JPanel();
-        FQAtxt1 = new javax.swing.JLabel();
+        btnCustomer = new javax.swing.JLabel();
         submenuPanel = new javax.swing.JPanel();
         ARStxt = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -221,17 +221,17 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
 
         SubmenuPanel3.setBackground(new java.awt.Color(30, 10, 100));
 
-        FQAtxt1.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        FQAtxt1.setForeground(new java.awt.Color(255, 255, 255));
-        FQAtxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        FQAtxt1.setText("Cliente");
-        FQAtxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        FQAtxt1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCustomer.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
+        btnCustomer.setForeground(new java.awt.Color(255, 255, 255));
+        btnCustomer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnCustomer.setText("Cliente");
+        btnCustomer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                FQAtxt1MouseEntered(evt);
+                btnCustomerMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                FQAtxt1MouseExited(evt);
+                btnCustomerMouseExited(evt);
             }
         });
 
@@ -240,12 +240,12 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         SubmenuPanel3Layout.setHorizontalGroup(
             SubmenuPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SubmenuPanel3Layout.createSequentialGroup()
-                .addComponent(FQAtxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 1, Short.MAX_VALUE))
         );
         SubmenuPanel3Layout.setVerticalGroup(
             SubmenuPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(FQAtxt1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(btnCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         menupanel.add(SubmenuPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 230, 40));
@@ -576,7 +576,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
 
     private void ARStxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARStxtMouseEntered
         Color darkColor = new Color(65, 0, 100);
-
+        
         submenuPanel.setBackground(darkColor);
         ARStxt.setForeground(Color.WHITE);
     }//GEN-LAST:event_ARStxtMouseEntered
@@ -587,21 +587,21 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         ARStxt.setForeground(Color.WHITE);
     }//GEN-LAST:event_ARStxtMouseExited
 
-    private void FQAtxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FQAtxt1MouseEntered
+    private void btnCustomerMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerMouseEntered
         Color darkColor = new Color(65, 0, 100);
-
+        
         SubmenuPanel3.setBackground(darkColor);
-    FQAtxt1.setForeground(Color.WHITE);    }//GEN-LAST:event_FQAtxt1MouseEntered
+    btnCustomer.setForeground(Color.WHITE);    }//GEN-LAST:event_btnCustomerMouseEntered
 
-    private void FQAtxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FQAtxt1MouseExited
+    private void btnCustomerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerMouseExited
         Color darkColor = new Color(30, 10, 100);
         SubmenuPanel3.setBackground(darkColor);
-        FQAtxt1.setForeground(Color.WHITE);
-    }//GEN-LAST:event_FQAtxt1MouseExited
+        btnCustomer.setForeground(Color.WHITE);
+    }//GEN-LAST:event_btnCustomerMouseExited
 
     private void VueloBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VueloBtonMouseEntered
         Color darkColor = new Color(65, 0, 100);
-
+        
         SubmenuPanel2.setBackground(darkColor);
         VueloBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_VueloBtonMouseEntered
@@ -614,7 +614,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
 
     private void TicketBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketBtonMouseEntered
         Color darkColor = new Color(65, 0, 100);
-
+        
         SubmenuPanel4.setBackground(darkColor);
  TicketBton.setForeground(Color.WHITE);    }//GEN-LAST:event_TicketBtonMouseEntered
 
@@ -626,52 +626,54 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
 
     private void OfertasBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OfertasBtonMouseEntered
         Color darkColor = new Color(65, 0, 100);
-
+        
         SubmenuPanel5.setBackground(darkColor);
         OfertasBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_OfertasBtonMouseEntered
 
     private void OfertasBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OfertasBtonMouseExited
         Color darkColor = new Color(30, 10, 100);
-
+        
         SubmenuPanel5.setBackground(darkColor);
         OfertasBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_OfertasBtonMouseExited
 
     private void EquipajeBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EquipajeBtonMouseEntered
         Color darkColor = new Color(65, 0, 100);
-
+        
         SubmenuPanel6.setBackground(darkColor);
         EquipajeBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_EquipajeBtonMouseEntered
 
     private void EquipajeBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EquipajeBtonMouseExited
         Color darkColor = new Color(30, 10, 100);
-
+        
         SubmenuPanel6.setBackground(darkColor);
         EquipajeBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_EquipajeBtonMouseExited
 
     private void AyudaBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaBtonMouseEntered
         Color darkColor = new Color(65, 0, 100);
-
+        
         SubmenuPanel7.setBackground(darkColor);
     AyudaBton.setForeground(Color.WHITE);    }//GEN-LAST:event_AyudaBtonMouseEntered
 
     private void AyudaBtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaBtonMouseExited
         Color darkColor = new Color(30, 10, 100);
-
+        
         SubmenuPanel7.setBackground(darkColor);
         AyudaBton.setForeground(Color.WHITE);
     }//GEN-LAST:event_AyudaBtonMouseExited
 
     private void VueloBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VueloBtonMouseClicked
         FrmCreateFlight createFlightForm = new FrmCreateFlight();
-        createFlightForm.setVisible(true);
+        this.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_VueloBtonMouseClicked
-    public static String Fecha() {
 
+
+    public static String Fecha() {
+        
         Date Fecha = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd 'de' MMMM 'de' yyyy '                           Hora:' HH:mm:ss");
         return formato.format(Fecha);
@@ -725,7 +727,6 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     private javax.swing.JLabel AyudaBton;
     private javax.swing.JLabel Datetxt;
     private javax.swing.JLabel EquipajeBton;
-    private javax.swing.JLabel FQAtxt1;
     private javax.swing.JLabel Imagelogotxt;
     private javax.swing.JLabel OfertasBton;
     private javax.swing.JPanel SubmenuPanel2;
@@ -738,6 +739,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     private javax.swing.JLabel VueloBton;
     private javax.swing.JLabel arstxt;
     private javax.swing.JPanel bg;
+    private javax.swing.JLabel btnCustomer;
     private javax.swing.JPanel datePanel;
     private javax.swing.JPanel exitBtn;
     private javax.swing.JPanel header;
