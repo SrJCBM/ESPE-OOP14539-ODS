@@ -73,6 +73,7 @@ private String baggageType;
 }
   private void mostrarPanelEliminacion() {
     JPanel panel = new JPanel();
+    panel.setLayout(new GridBagLayout()); // Usar GridBagLayout para centrar elementos
     GridBagConstraints gbc = new GridBagConstraints();
     gbc.insets = new Insets(10, 10, 10, 10); // Espaciado entre los elementos
     gbc.anchor = GridBagConstraints.CENTER; // Centrar el contenido

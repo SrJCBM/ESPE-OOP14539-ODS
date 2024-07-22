@@ -86,6 +86,7 @@ content.repaint();
         Datetxt = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
 
         jCheckBoxMenuItem5.setSelected(true);
@@ -107,6 +108,11 @@ content.repaint();
         menupanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         SubmenuPanel7.setBackground(new java.awt.Color(30, 10, 100));
+        SubmenuPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SubmenuPanel7MouseClicked(evt);
+            }
+        });
 
         AyudaBton.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
         AyudaBton.setForeground(new java.awt.Color(255, 255, 255));
@@ -396,6 +402,7 @@ content.repaint();
 
         getContentPane().add(logopanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 980, 100));
 
+        bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         exitBtn.setBackground(new java.awt.Color(255, 255, 255));
@@ -500,15 +507,18 @@ content.repaint();
 
         content.setMinimumSize(new java.awt.Dimension(920, 580));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/bienvenido.png"))); // NOI18N
+
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 920, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         bg.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 920, 580));
@@ -660,7 +670,14 @@ content.repaint();
     }//GEN-LAST:event_AyudaBtonMouseExited
 
     private void ARStxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARStxtMouseClicked
-        // AQUI DEBER IR EL DE USUARIO
+       AdministratorPanel  Bg = new AdministratorPanel();
+        Bg.setSize(920, 580);
+        Bg.setLocation(0, 0);
+
+        content.removeAll();
+        content.add(Bg, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();     
     }//GEN-LAST:event_ARStxtMouseClicked
 
     private void SubmenuPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmenuPanel2MouseClicked
@@ -682,7 +699,7 @@ content.repaint();
     }//GEN-LAST:event_VueloBtonMouseClicked
 
     private void EquipajeBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EquipajeBtonMouseClicked
-        BaggagePanel  panel = new BaggagePanel();
+     BaggagePanel  panel = new BaggagePanel();
         panel.setSize(920, 580);
         panel.setLocation(0, 0);
 
@@ -692,7 +709,7 @@ content.repaint();
         content.repaint();    }//GEN-LAST:event_EquipajeBtonMouseClicked
 
     private void TicketBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketBtonMouseClicked
-        FrmTicket ticket = new FrmTicket();
+          FrmTicket ticket = new FrmTicket();
         JPanel backGround = ticket.GetBgTicket();
         backGround.setSize(920, 580);
         backGround.setLocation(0, 0);
@@ -715,9 +732,28 @@ content.repaint();
         content.repaint(); 
     }//GEN-LAST:event_OfertasBtonMouseClicked
 
+    private void SubmenuPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmenuPanel7MouseClicked
+ FrmFAQ createFAQ = new FrmFAQ();
+        JPanel bg = createFAQ.getFrmFAQ();
+        bg.setSize(920, 580);
+        bg.setLocation(0, 0);
+
+        content.removeAll();
+        content.add(bg, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_SubmenuPanel7MouseClicked
+
     private void AyudaBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaBtonMouseClicked
-        FrmFAQ faq = new FrmFAQ();
-        
+FrmFAQ createFAQ = new FrmFAQ();
+        JPanel bg = createFAQ.getFrmFAQ();
+        bg.setSize(920, 580);
+        bg.setLocation(0, 0);
+
+        content.removeAll();
+        content.add(bg, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }//GEN-LAST:event_AyudaBtonMouseClicked
 
     public static String Fecha() {
@@ -791,6 +827,7 @@ content.repaint();
     private javax.swing.JPanel exitBtn;
     private javax.swing.JPanel header;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;

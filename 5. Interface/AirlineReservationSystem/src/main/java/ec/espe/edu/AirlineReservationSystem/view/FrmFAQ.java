@@ -4,6 +4,8 @@
  */
 package ec.espe.edu.AirlineReservationSystem.view;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author Miguel Caiza,Overnight Developers Squad,DCCO-ESPE
@@ -16,7 +18,9 @@ public class FrmFAQ extends javax.swing.JFrame {
     public FrmFAQ() {
         initComponents();
     }
-
+public JPanel getFrmFAQ() {
+        return background;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
