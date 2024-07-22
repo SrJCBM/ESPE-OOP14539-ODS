@@ -52,10 +52,6 @@ public class Ticket {
         saveCounter(); // Guarda el nuevo contador en el archivo
     }
 
-    public Ticket() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     private void saveCounter() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(COUNTER_FILE))) {
             writer.write(Integer.toString(idCounter));

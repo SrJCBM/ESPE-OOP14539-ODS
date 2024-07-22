@@ -30,11 +30,4 @@ public class OffersController {
         }
         return offersList;
     }
-
-    public void close() {
-        if (mongoClient != null) {
-            mongoClient.close();
-            System.out.println("Conexión a MongoDB cerrada.");
-        }
-    }
 }

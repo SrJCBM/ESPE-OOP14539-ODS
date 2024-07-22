@@ -62,8 +62,6 @@ content.repaint();
         EquipajeBton = new javax.swing.JLabel();
         SubmenuPanel5 = new javax.swing.JPanel();
         OfertasBton = new javax.swing.JLabel();
-        SubmenuPanel3 = new javax.swing.JPanel();
-        FQAtxt1 = new javax.swing.JLabel();
         submenuPanel = new javax.swing.JPanel();
         ARStxt = new javax.swing.JLabel();
         SubmenuPanel4 = new javax.swing.JPanel();
@@ -231,37 +229,6 @@ content.repaint();
 
         menupanel.add(SubmenuPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 230, 40));
 
-        SubmenuPanel3.setBackground(new java.awt.Color(30, 10, 100));
-
-        FQAtxt1.setFont(new java.awt.Font("DialogInput", 1, 18)); // NOI18N
-        FQAtxt1.setForeground(new java.awt.Color(255, 255, 255));
-        FQAtxt1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        FQAtxt1.setText("Usuario");
-        FQAtxt1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        FQAtxt1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                FQAtxt1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                FQAtxt1MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout SubmenuPanel3Layout = new javax.swing.GroupLayout(SubmenuPanel3);
-        SubmenuPanel3.setLayout(SubmenuPanel3Layout);
-        SubmenuPanel3Layout.setHorizontalGroup(
-            SubmenuPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SubmenuPanel3Layout.createSequentialGroup()
-                .addComponent(FQAtxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
-        );
-        SubmenuPanel3Layout.setVerticalGroup(
-            SubmenuPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(FQAtxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        menupanel.add(SubmenuPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 230, 40));
-
         submenuPanel.setBackground(new java.awt.Color(30, 10, 100));
         submenuPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         submenuPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -295,10 +262,10 @@ content.repaint();
         );
         submenuPanelLayout.setVerticalGroup(
             submenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ARStxt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(ARStxt, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
 
-        menupanel.add(submenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 230, 40));
+        menupanel.add(submenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 230, 80));
 
         SubmenuPanel4.setBackground(new java.awt.Color(30, 10, 100));
 
@@ -623,18 +590,6 @@ content.repaint();
         ARStxt.setForeground(Color.WHITE);
     }//GEN-LAST:event_ARStxtMouseExited
 
-    private void FQAtxt1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FQAtxt1MouseEntered
-        Color darkColor = new Color(65, 0, 100);
-
-        SubmenuPanel3.setBackground(darkColor);
-    FQAtxt1.setForeground(Color.WHITE);    }//GEN-LAST:event_FQAtxt1MouseEntered
-
-    private void FQAtxt1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FQAtxt1MouseExited
-        Color darkColor = new Color(30, 10, 100);
-        SubmenuPanel3.setBackground(darkColor);
-        FQAtxt1.setForeground(Color.WHITE);
-    }//GEN-LAST:event_FQAtxt1MouseExited
-
     private void VueloBtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VueloBtonMouseEntered
         Color darkColor = new Color(65, 0, 100);
 
@@ -812,11 +767,9 @@ content.repaint();
     private javax.swing.JLabel AyudaBton;
     private javax.swing.JLabel Datetxt;
     private javax.swing.JLabel EquipajeBton;
-    private javax.swing.JLabel FQAtxt1;
     private javax.swing.JLabel Imagelogotxt;
     private javax.swing.JLabel OfertasBton;
     public static javax.swing.JPanel SubmenuPanel2;
-    private javax.swing.JPanel SubmenuPanel3;
     private javax.swing.JPanel SubmenuPanel4;
     private javax.swing.JPanel SubmenuPanel5;
     private javax.swing.JPanel SubmenuPanel6;

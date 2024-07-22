@@ -184,11 +184,11 @@
                           </Group>
                       </Group>
                       <EmptySpace pref="135" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel4" max="32767" attributes="0"/>
-                          <Component id="CleanBaggageBton" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="CleanBaggageBton" min="-2" pref="165" max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" pref="181" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -223,6 +223,9 @@
                   <Image iconType="3" name="/ec/edu/espe/airlinereservationsystem/images/equipaje-de-viaje.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CarryOnBtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -254,6 +257,9 @@
                   <Image iconType="3" name="/ec/edu/espe/airlinereservationsystem/images/facturar.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CheckedBtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
@@ -269,6 +275,9 @@
                   <Image iconType="3" name="/ec/edu/espe/airlinereservationsystem/images/borrar.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CleanBaggageBtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

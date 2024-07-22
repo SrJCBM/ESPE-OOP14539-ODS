@@ -4,26 +4,35 @@
  */
 package ec.espe.edu.AirlineReservationSystem.view;
 
+import static com.mongodb.client.model.Filters.type;
 import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
 import ec.espe.edu.AirlineReservationSystem.model.Baggage;
-import ec.espe.edu.AirlineReservationSystem.view.BaggagePanel.ButtonManager;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
  *
  * @author Joffre
  */
-public class IdTicket extends javax.swing.JPanel { 
+public class WeigthBaggagePanel extends javax.swing.JPanel {
+private String baggageType;
     /**
-     * Creates new form IdTicket
+     * Creates new form WeigthBaggagePanel
      */
-    public IdTicket() {
+    public WeigthBaggagePanel(String baggageType) {
+        
+ this.baggageType = baggageType;
+ 
         initComponents();
+        
+        
     }
-    
-    
 
+    
+      
+        
+        
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,17 +46,14 @@ public class IdTicket extends javax.swing.JPanel {
         background = new javax.swing.JPanel();
         arstxt = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
-        IdTickettxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        ValidarBton = new javax.swing.JButton();
-        Validaciontxt = new javax.swing.JLabel();
-
-        setEnabled(false);
+        ConfirmBton = new javax.swing.JButton();
+        weigth = new javax.swing.JSlider();
+        jLabel6 = new javax.swing.JLabel();
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setRequestFocusEnabled(false);
@@ -61,23 +67,16 @@ public class IdTicket extends javax.swing.JPanel {
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
         background.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 48));
 
-        IdTickettxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdTickettxtActionPerformed(evt);
-            }
-        });
-        background.add(IdTickettxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 130, 40));
-
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 12)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/ticket.png"))); // NOI18N
-        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 160, 80));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/equipaje-de-viaje.png"))); // NOI18N
+        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 140, 150));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/airline company icon .jpg"))); // NOI18N
         background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 150, 140));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jLabel3.setText("Ingrese el Ticket ID:");
-        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+        jLabel3.setText("Ingrese el peso del equipaje:");
+        background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 210, 20));
 
         jLabel4.setText("(C) Overnight Developerr Squad - ODS");
         background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, -1, -1));
@@ -85,24 +84,27 @@ public class IdTicket extends javax.swing.JPanel {
         jLabel5.setText("(R) Overnight Developer Squad");
         background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, -1, -1));
 
-        jButton1.setText("Confirmar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ConfirmBton.setText("Confirmar");
+        ConfirmBton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ConfirmBtonActionPerformed(evt);
             }
         });
-        background.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 90, -1));
+        background.add(ConfirmBton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 90, -1));
 
-        ValidarBton.setText("Validar");
-        ValidarBton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ValidarBtonActionPerformed(evt);
-            }
-        });
-        background.add(ValidarBton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, -1, -1));
+        weigth.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        weigth.setMajorTickSpacing(10);
+        weigth.setMaximum(30);
+        weigth.setMinorTickSpacing(1);
+        weigth.setPaintLabels(true);
+        weigth.setPaintTicks(true);
+        weigth.setSnapToTicks(true);
+        weigth.setToolTipText("");
+        background.add(weigth, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
 
-        Validaciontxt.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        background.add(Validaciontxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 300, 170));
+        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel6.setText("Kilogramos");
+        background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -120,79 +122,43 @@ public class IdTicket extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IdTickettxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdTickettxtActionPerformed
+    private void ConfirmBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmBtonActionPerformed
+  try {
+        int weightValue = weigth.getValue();
+           
+        if (weightValue <= 0) {
+            JOptionPane.showMessageDialog(this, "El peso debe ser mayor que 0.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+      
+         int ticketId = BaggageController.getTicketId();
+            TicketController ticketController = new TicketController();
+            ticketController.updateTicketWithBaggage(ticketId, baggageType, weightValue);
+        
+        JOptionPane.showMessageDialog(this, "Peso confirmado: " + weightValue + " kilogramos", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+        
+        
+        JOptionPane.showMessageDialog(this, "El equipaje se ha añadido a su Ticket!", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
 
-    }//GEN-LAST:event_IdTickettxtActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     try {
-    String ticketIdText = IdTickettxt.getText().trim();
-    if (ticketIdText.isEmpty()) {
-        Validaciontxt.setText("ID del ticket no puede estar vacío.");
-        ButtonManager.enableButtons(false);
-        return;
+    } catch (Exception e) {
+        e.printStackTrace();
     }
-    if (!ticketIdText.matches("\\d+")) {
-        Validaciontxt.setText("ID del ticket no válido. Debe ser un número.");
-        ButtonManager.enableButtons(false);
-        return;
-    }
-    int ticketId = Integer.parseInt(ticketIdText);
 
-    TicketController ticketController = new TicketController();
-    String result = ticketController.findTicketById(ticketId);
-    Validaciontxt.setText(result);
-
-    if (result.contains("Cliente Encontrado")) {
-        BaggageController.setTicketId(ticketId);
-        ButtonManager.enableButtons(true);
         SwingUtilities.getWindowAncestor(this).dispose();
-    } else {
-        ButtonManager.enableButtons(false);
-    }
-} catch (Exception e) {
-    Validaciontxt.setText("Ocurrió un error inesperado.");
-    e.printStackTrace();
-}
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void ValidarBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValidarBtonActionPerformed
-String ticketIdStr = IdTickettxt.getText().trim();
-    if (!ticketIdStr.matches("\\d+")) {
-        Validaciontxt.setText("ID del ticket no válido. Debe ser un número.");
-        return;
-    }
-
-    int ticketId = Integer.parseInt(ticketIdStr);
-
- 
-    TicketController ticketController = new TicketController();
-
-   
- String ticket = ticketController.findTicketById(ticketId);
-    
-    Validaciontxt.setText(ticket);
-
-    }//GEN-LAST:event_ValidarBtonActionPerformed
+    }//GEN-LAST:event_ConfirmBtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField IdTickettxt;
-    private javax.swing.JLabel Validaciontxt;
-    private javax.swing.JButton ValidarBton;
+    private javax.swing.JButton ConfirmBton;
     private javax.swing.JLabel arstxt;
     private javax.swing.JPanel background;
-    private javax.swing.JPanel exitBtn;
-    private javax.swing.JPanel exitBtn1;
-    private javax.swing.JLabel exitTxt;
-    private javax.swing.JLabel exitTxt1;
     private javax.swing.JLabel fondo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JSlider weigth;
     // End of variables declaration//GEN-END:variables
 }
