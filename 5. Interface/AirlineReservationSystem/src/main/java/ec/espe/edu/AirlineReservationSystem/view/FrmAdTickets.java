@@ -7,6 +7,7 @@ package ec.espe.edu.AirlineReservationSystem.view;
 import ec.espe.edu.AirlineReservationSystem.controller.AdTicketsController;
 import ec.espe.edu.AirlineReservationSystem.controller.ButtonEditor;
 import ec.espe.edu.AirlineReservationSystem.controller.ButtonRenderer;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -14,11 +15,17 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import org.bson.Document;
 
@@ -26,6 +33,7 @@ import org.bson.Document;
  *
  * @author Kerlly Chiriboga, ODS
  */
+
 public class FrmAdTickets extends javax.swing.JFrame {
 
     private AdTicketsController ticketController;
@@ -33,20 +41,9 @@ public class FrmAdTickets extends javax.swing.JFrame {
     public FrmAdTickets() {
         initComponents();
         ticketController = new AdTicketsController();
-
-        DefaultTableModel model = (DefaultTableModel) TicketsTable.getModel();
-        model.addColumn("Number of Ticket");
-        model.addColumn("Ticket ID");
-        model.addColumn("Customer Name");
-        model.addColumn("Flight ID");
-        model.addColumn("Ticket Class");
-        model.addColumn("Actions");
-
         populateTicketsTable();
-        TableColumn actionColumn = TicketsTable.getColumnModel().getColumn(5);
-        actionColumn.setCellRenderer(new ButtonRenderer());
-        actionColumn.setCellEditor(new ButtonEditor(new JCheckBox(), TicketsTable));
-        actionColumn.setPreferredWidth(150);
+        configureActionColumn();
+        TicketsTable.setRowHeight(40);
     }
 
     public JPanel getTicketsPanel() {
@@ -55,7 +52,7 @@ public class FrmAdTickets extends javax.swing.JFrame {
 
     private void populateTicketsTable() {
         DefaultTableModel model = (DefaultTableModel) TicketsTable.getModel();
-        model.setRowCount(0); 
+        model.setRowCount(0);
 
         List<Document> tickets = ticketController.getTickets();
 
@@ -67,55 +64,123 @@ public class FrmAdTickets extends javax.swing.JFrame {
                 row[2] = ticket.getString("Customer Name");
                 row[3] = ticket.getInteger("Id Flight");
                 row[4] = ticket.getString("Ticket Class");
-                JButton btnUpdate = new JButton("Update");
-                JButton btnDelete = new JButton("Delete");
+
+                JPanel buttonPanel = new JPanel();
+                buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
+
+                JButton btnUpdate = new JButton("Actualizar");
+                JButton btnDelete = new JButton("Eliminar");
 
                 btnUpdate.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         int ticketId = (Integer) row[1];
-                        JOptionPane.showMessageDialog(null, "Update functionality for Ticket ID: " + ticketId);
+                        String customerName = (String) row[2];
+                        int idFlight = (Integer) row[3];
+                        String ticketClass = (String) row[4];
+                        String newCustomerName = JOptionPane.showInputDialog(null, "Ingrese el nuevo nombre del Usuario:", customerName);
+                        String newTicketClass = JOptionPane.showInputDialog(null, "Ingrese la nueva clase:", ticketClass);
+                        String idFlightStr = JOptionPane.showInputDialog(null, "Ingrese el nuevo ID del vuelo:", idFlight);
+
+                        if (newCustomerName != null && newTicketClass != null && idFlightStr != null) {
+                            try {
+                                int newIdFlight = Integer.parseInt(idFlightStr);
+                                boolean success = ticketController.updateTicket(ticketId, newCustomerName, newIdFlight, newTicketClass);
+
+                                if (success) {
+                                    JOptionPane.showMessageDialog(null, "Ticket actualizado correctamente.");
+                                    populateTicketsTable();
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Failed to update ticket.");
+                                }
+                            } catch (NumberFormatException ex) {
+                                JOptionPane.showMessageDialog(null, "Invalid input for flight ID.");
+                            }
+                        }
                     }
                 });
 
                 btnDelete.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        int ticketId = (Integer) row[1]; 
+                        int ticketId = (Integer) row[1];
                         int response = JOptionPane.showConfirmDialog(null,
-                                "Are you sure you want to delete Ticket ID: " + ticketId + "?",
-                                "Confirm Delete",
+                                "¿Estás segura de que quieres eliminar el Ticket con ID: " + ticketId + "?",
+                                "Confitmar eliminación",
                                 JOptionPane.YES_NO_OPTION,
                                 JOptionPane.WARNING_MESSAGE);
 
                         if (response == JOptionPane.YES_OPTION) {
-                            ticketController.deleteTicket(ticketId);
-                            populateTicketsTable();
+                            boolean success = ticketController.deleteTicket(ticketId);
+
+                            if (success) {
+                                JOptionPane.showMessageDialog(null, "Ticket eliminado correctamente.");
+                                populateTicketsTable();
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Failed to delete ticket.");
+                            }
                         }
                     }
                 });
-                JPanel buttonPanel = new JPanel();
-                buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
+
                 buttonPanel.add(btnUpdate);
                 buttonPanel.add(btnDelete);
-                row[5] = buttonPanel; 
+                row[5] = buttonPanel;
 
                 model.addRow(row);
             }
         }
     }
 
-    private String formatDate(Date date, SimpleDateFormat dateFormat) {
-        return date != null ? dateFormat.format(date) : "";
+    private void configureActionColumn() {
+        TableColumn actionColumn = TicketsTable.getColumnModel().getColumn(5);
+        actionColumn.setCellRenderer(new ButtonRenderer());
+        actionColumn.setCellEditor(new ButtonEditor(new JCheckBox()));
+        actionColumn.setPreferredWidth(150);
     }
 
-    private boolean isRowEmpty(Object[] row) {
-        for (Object cell : row) {
-            if (cell != null && !cell.toString().trim().isEmpty()) {
-                return false;
-            }
+    class ButtonRenderer extends JPanel implements TableCellRenderer {
+        public ButtonRenderer() {
+            setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
         }
-        return true;
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            removeAll();
+            if (value instanceof JPanel) {
+                add((JPanel) value);
+            }
+            return this;
+        }
+    }
+
+    class ButtonEditor extends DefaultCellEditor {
+        private JPanel panel;
+
+        public ButtonEditor(JCheckBox checkBox) {
+            super(checkBox);
+            panel = new JPanel();
+            panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
+        }
+
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+            panel.removeAll();
+            if (value instanceof JPanel) {
+                panel.add((JPanel) value);
+            }
+            return panel;
+        }
+
+        @Override
+        public Object getCellEditorValue() {
+            return null;
+        }
+
+        @Override
+        public boolean stopCellEditing() {
+            return super.stopCellEditing();
+        }
     }
 
     /**
@@ -170,18 +235,18 @@ public class FrmAdTickets extends javax.swing.JFrame {
 
         TicketsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-
+                "Number Of Ticket", "Ticket ID", "Nombre del Cliente", "Flight ID", "Ticket Class", "Actions"
             }
         ));
         jScrollPane1.setViewportView(TicketsTable);
 
-        Background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 720, 120));
+        Background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 780, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,7 +256,7 @@ public class FrmAdTickets extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Background, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+            .addComponent(Background, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
         );
 
         pack();
@@ -201,37 +266,37 @@ public class FrmAdTickets extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmAdTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmAdTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmAdTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmAdTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmAdTickets().setVisible(true);
-            }
-        });
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(FrmAdTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(FrmAdTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(FrmAdTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(FrmAdTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new FrmAdTickets().setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;

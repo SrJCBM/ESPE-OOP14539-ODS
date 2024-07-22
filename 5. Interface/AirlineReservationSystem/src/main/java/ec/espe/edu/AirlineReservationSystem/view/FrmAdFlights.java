@@ -5,11 +5,23 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.AdFlightsController;
+import java.awt.Component;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 import org.bson.Document;
 
 /**
@@ -18,37 +30,28 @@ import org.bson.Document;
  */
 public class FrmAdFlights extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmFlights
-     */
     public FrmAdFlights() {
         initComponents();
-        DefaultTableModel model = (DefaultTableModel) VuelosTable.getModel();
-        model.addColumn("Flight ID");
-        model.addColumn("Airline");
-        model.addColumn("Origin");
-        model.addColumn("Destination");
-        model.addColumn("Departure Date");
-        model.addColumn("Arrival Date");
-        model.addColumn("Price");
         populateFlightsTable();
+        configureActionColumn();
+        VuelosTable.setRowHeight(40);  // Configura la altura de las filas de la tabla
     }
 
     public JPanel getFlightsPanel() {
-        return Background;
+        return Background;  // Asegúrate de que Background esté correctamente inicializado
     }
 
     private void populateFlightsTable() {
         DefaultTableModel model = (DefaultTableModel) VuelosTable.getModel();
-        model.setRowCount(0);
+        model.setRowCount(0);  // Limpia las filas existentes
 
         AdFlightsController flightsController = new AdFlightsController();
-        List<Document> flights = flightsController.getFlights();
+        List<Document> flights = flightsController.getFlights();  // Obtiene los vuelos desde la base de datos
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for (Document flight : flights) {
             if (flight != null && flight.size() > 0) {
-                Object[] row = new Object[7];
+                Object[] row = new Object[8];
                 row[0] = flight.getString("flightID");
                 row[1] = flight.getString("airline");
                 row[2] = flight.getString("origin");
@@ -69,9 +72,74 @@ public class FrmAdFlights extends javax.swing.JFrame {
                     row[6] = null;
                 }
 
-                if (!isRowEmpty(row)) {
-                    model.addRow(row);
-                }
+                JPanel buttonPanel = new JPanel();
+                buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
+
+                JButton btnUpdate = new JButton("Actualizar");
+                JButton btnDelete = new JButton("Eliminar");
+
+                // Configura el botón de actualización
+                btnUpdate.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        String flightID = (String) row[0];
+                        String newAirline = JOptionPane.showInputDialog(null, "Ingrese la nueva aerolìnea:", row[1]);
+                        String newOrigin = JOptionPane.showInputDialog(null, "Ingrese el nuevo origen:", row[2]);
+                        String newDestination = JOptionPane.showInputDialog(null, "Ingrese el nuevo destino:", row[3]);
+                        String newDepartureDateStr = JOptionPane.showInputDialog(null, "Ingrese el nuevo dia de salida (yyyy-MM-dd HH:mm:ss):", row[4]);
+                        String newArrivalDateStr = JOptionPane.showInputDialog(null, "Ingrese el nuevo dia de llegada (yyyy-MM-dd HH:mm:ss):", row[5]);
+                        String newPriceStr = JOptionPane.showInputDialog(null, "Ingrese el nuevo precio:", row[6]);
+
+                        if (newAirline != null && newOrigin != null && newDestination != null
+                                && newDepartureDateStr != null && newArrivalDateStr != null && newPriceStr != null) {
+                            try {
+                                Date newDepartureDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(newDepartureDateStr);
+                                Date newArrivalDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(newArrivalDateStr);
+                                double newPrice = Double.parseDouble(newPriceStr);
+                                boolean success = flightsController.updateFlight(flightID, newAirline, newOrigin, newDestination, newDepartureDate, newArrivalDate, newPrice);
+
+                                if (success) {
+                                    JOptionPane.showMessageDialog(null, "Vuelo actualizado correctamente.");
+                                    populateFlightsTable();  // Actualiza la tabla después de la modificación
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "No se pudo actualizar el vuelo.");
+                                }
+                            } catch (ParseException | NumberFormatException ex) {
+                                JOptionPane.showMessageDialog(null, "Formato de fecha o precio inválido.");
+                            }
+                        }
+                    }
+                });
+
+                // Configura el botón de eliminación
+                btnDelete.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        String flightID = (String) row[0];
+                        int response = JOptionPane.showConfirmDialog(null,
+                                "¿Estás segura de que quieres eliminar el vuelo con ID: " + flightID + "?",
+                                "Confirmar eliminación",
+                                JOptionPane.YES_NO_OPTION,
+                                JOptionPane.WARNING_MESSAGE);
+
+                        if (response == JOptionPane.YES_OPTION) {
+                            boolean success = flightsController.deleteFlight(flightID);
+
+                            if (success) {
+                                JOptionPane.showMessageDialog(null, "Vuelo eliminado correctamente.");
+                                populateFlightsTable();  // Actualiza la tabla después de la eliminación
+                            } else {
+                                JOptionPane.showMessageDialog(null, "No se pudo eliminar el vuelo.");
+                            }
+                        }
+                    }
+                });
+
+                buttonPanel.add(btnUpdate);
+                buttonPanel.add(btnDelete);
+                row[7] = buttonPanel;  // Agrega el panel de botones a la fila
+
+                model.addRow(row);  // Agrega la fila al modelo de tabla
             }
         }
     }
@@ -87,6 +155,59 @@ public class FrmAdFlights extends javax.swing.JFrame {
             }
         }
         return true;
+    }
+
+    private void configureActionColumn() {
+        TableColumn actionColumn = VuelosTable.getColumnModel().getColumn(7);
+        actionColumn.setCellRenderer(new ButtonRenderer());
+        actionColumn.setCellEditor(new ButtonEditor(new JCheckBox()));
+        actionColumn.setPreferredWidth(200);  // Configura el ancho de la columna de botones
+    }
+
+    class ButtonRenderer extends JPanel implements TableCellRenderer {
+
+        public ButtonRenderer() {
+            setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
+        }
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            removeAll();
+            if (value instanceof JPanel) {
+                add((JPanel) value);
+            }
+            return this;
+        }
+    }
+
+    class ButtonEditor extends DefaultCellEditor {
+
+        private JPanel panel;
+
+        public ButtonEditor(JCheckBox checkBox) {
+            super(checkBox);
+            panel = new JPanel();
+            panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
+        }
+
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+            panel.removeAll();
+            if (value instanceof JPanel) {
+                panel.add((JPanel) value);
+            }
+            return panel;
+        }
+
+        @Override
+        public Object getCellEditorValue() {
+            return null;
+        }
+
+        @Override
+        public boolean stopCellEditing() {
+            return super.stopCellEditing();
+        }
     }
 
     /**
@@ -141,18 +262,29 @@ public class FrmAdFlights extends javax.swing.JFrame {
 
         VuelosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-
+                "Flight ID", "Airline", "Origin", "Destination", "Departure Date", "Arrival Date", "Price", "Actions"
             }
-        ));
-        jScrollPane1.setViewportView(VuelosTable);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true, true, true, true, false
+            };
 
-        Background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 820, 120));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(VuelosTable);
+        if (VuelosTable.getColumnModel().getColumnCount() > 0) {
+            VuelosTable.getColumnModel().getColumn(7).setResizable(false);
+        }
+
+        Background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 840, 150));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,9 +294,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Background, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 25, Short.MAX_VALUE))
+            .addComponent(Background, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
 
         pack();

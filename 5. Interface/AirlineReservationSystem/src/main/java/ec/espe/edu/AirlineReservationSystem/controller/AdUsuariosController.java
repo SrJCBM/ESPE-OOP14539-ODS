@@ -8,6 +8,7 @@ import com.mongodb.client.MongoCursor;
 import org.bson.Document;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,6 +36,37 @@ public class AdUsuariosController {
             }
         }
         return usuariosList;
+    }
+
+    public boolean updateUser(String userId, String newName, String newEmail, String newPhoneNumber, String newCity, String newState, String newPostalCode, Date newDateOfBirth, String newGender) {
+        try {
+            Document query = new Document("id", userId);
+            Document update = new Document("$set", new Document("name", newName)
+                .append("email", newEmail)
+                .append("phoneNumber", newPhoneNumber)
+                .append("city", newCity)
+                .append("state", newState)
+                .append("postalCode", newPostalCode)
+                .append("dateOfBirth", newDateOfBirth)
+                .append("gender", newGender));
+
+            usuariosCollection.updateOne(query, update);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean deleteUser(String userId) {
+        try {
+            Document query = new Document("id", userId);
+            usuariosCollection.deleteOne(query);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public void close() {

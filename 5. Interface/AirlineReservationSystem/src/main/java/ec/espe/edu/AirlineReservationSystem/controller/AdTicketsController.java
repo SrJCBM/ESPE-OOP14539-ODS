@@ -19,6 +19,16 @@ import java.util.List;
  *
  * @author Kerlly Chiriboga, ODS
  */
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCursor;
+import org.bson.Document;
+import java.util.ArrayList;
+import java.util.List;
+
 public class AdTicketsController {
 
     private MongoClient mongoClient;
@@ -48,15 +58,16 @@ public class AdTicketsController {
             System.out.println("Conexión a MongoDB cerrada.");
         }
     }
-     public boolean updateTicket(int ticketId, Ticket updatedTicket) {
+
+    // Method to update the entire ticket
+    public boolean updateTicket(int ticketId, String newCustomerName, int newFlightId, String newTicketClass) {
         try {
             Document query = new Document("Ticket ID", ticketId);
-            Document update = new Document("$set", new Document("Number of Ticket", updatedTicket.getTicketNumber())
-                .append("Customer Name", updatedTicket.getCustomerName())
-                .append("Id Flight", updatedTicket.getIdFlight())
-                .append("Ticket Class", updatedTicket.getTicketClass()));
-
-            // Actualiza el documento en la colección
+            Document update = new Document("$set", new Document("Customer Name", newCustomerName)
+                .append("Id Flight", newFlightId)
+                .append("Ticket Class", newTicketClass));
+            
+            // Updates the entire document
             ticketsCollection.updateOne(query, update);
             return true;
         } catch (Exception e) {
@@ -68,7 +79,7 @@ public class AdTicketsController {
     public boolean deleteTicket(int ticketId) {
         try {
             Document query = new Document("Ticket ID", ticketId);
-            // Elimina el documento de la colección
+            // Deletes the document from the collection
             ticketsCollection.deleteOne(query);
             return true;
         } catch (Exception e) {

@@ -1,37 +1,42 @@
+
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.AdUsuariosController;
+import java.awt.Component;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.bson.Document;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 /**
  *
  * @author Kerlly Chiriboga, ODS
  */
+
 public class FrmAdUsuarios extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmUsuarios
-     */
+    private AdUsuariosController usuariosController;
+
     public FrmAdUsuarios() {
         initComponents();
-        DefaultTableModel model = (DefaultTableModel) UsuariosTable.getModel();
-        model.addColumn("User ID");
-        model.addColumn("Name");
-        model.addColumn("Email");
-        model.addColumn("Phone Number");
-        model.addColumn("User Name");
-        model.addColumn("City");
-        model.addColumn("State");
-        model.addColumn("Postal Code");
-        model.addColumn("Date of Birth");
-        model.addColumn("Gender");
+        usuariosController = new AdUsuariosController();
         populateUsuariosTable();
+        configureActionColumn();
+        UsuariosTable.setRowHeight(40);
     }
 
     public JPanel getUsuariosPanel() {
@@ -40,7 +45,6 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
 
     private void populateUsuariosTable() {
         DefaultTableModel model = (DefaultTableModel) UsuariosTable.getModel();
-        AdUsuariosController usuariosController = new AdUsuariosController();
         List<Document> usuarios = usuariosController.getUsuarios();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         model.setRowCount(0);
@@ -51,16 +55,134 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
             row[1] = usuario.getString("name");
             row[2] = usuario.getString("email");
             row[3] = usuario.getString("phoneNumber");
-            row[4] = usuario.getString("userName");
-            row[5] = usuario.getString("city");
-            row[6] = usuario.getString("state");
-            row[7] = usuario.getString("postalCode");
-            row[8] = usuario.getDate("dateOfBirth") != null ? dateFormat.format(usuario.getDate("dateOfBirth")) : null;
-            row[9] = usuario.getString("gender");
+            row[4] = usuario.getString("city");
+            row[5] = usuario.getString("state");
+            row[6] = usuario.getString("postalCode");
+            row[7] = usuario.getDate("dateOfBirth") != null ? dateFormat.format(usuario.getDate("dateOfBirth")) : null;
+            row[8] = usuario.getString("gender");
+
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
+
+            JButton btnUpdate = new JButton("Actualizar");
+            JButton btnDelete = new JButton("Eliminar");
+
+            btnUpdate.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String userId = (String) row[0];
+                    String newName = JOptionPane.showInputDialog(null, "Ingrese el nuevo nombre:", row[1]);
+                    String newEmail = JOptionPane.showInputDialog(null, "Ingrese el email:", row[2]);
+                    String newPhoneNumber = JOptionPane.showInputDialog(null, "Ingrese el nuevo nùmero de teléfono:", row[3]);
+                    String newCity = JOptionPane.showInputDialog(null, "Ingrese la nueva ciudad: ", row[4]);
+                    String newState = JOptionPane.showInputDialog(null, "Ingrese la nueva provincia:", row[5]);
+                    String newPostalCode = JOptionPane.showInputDialog(null, "Ingrese el nuevo código postal:", row[6]);
+                    String newDateOfBirthStr = JOptionPane.showInputDialog(null, "Ingrese la nueva fecha de nacimiento (yyyy-MM-dd):", row[7]);
+                    String newGender = JOptionPane.showInputDialog(null, "Ingrese el nuevo género:", row[8]);
+
+                    if (newName != null && newEmail != null && newPhoneNumber != null &&
+                        newCity != null && newState != null && newPostalCode != null &&
+                        newDateOfBirthStr != null && newGender != null) {
+                        try {
+                            Date newDateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(newDateOfBirthStr);
+                            boolean success = usuariosController.updateUser(userId, newName, newEmail, newPhoneNumber, newCity, newState, newPostalCode, newDateOfBirth, newGender);
+
+                            if (success) {
+                                JOptionPane.showMessageDialog(null, "Usuario actualizado correctamente.");
+                                populateUsuariosTable();
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Failed to update user.");
+                            }
+                        } catch (ParseException ex) {
+                            JOptionPane.showMessageDialog(null, "Invalid date format.");
+                        }
+                    }
+                }
+            });
+
+            btnDelete.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String userId = (String) row[0];
+                    int response = JOptionPane.showConfirmDialog(null,
+                            "¿Estás segura de que quieres eliminar el usuario con ID: " + userId + "?",
+                            "Confirmar eliminación",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.WARNING_MESSAGE);
+
+                    if (response == JOptionPane.YES_OPTION) {
+                        boolean success = usuariosController.deleteUser(userId);
+
+                        if (success) {
+                            JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente.");
+                            populateUsuariosTable();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Failed to delete user.");
+                        }
+                    }
+                }
+            });
+
+            buttonPanel.add(btnUpdate);
+            buttonPanel.add(btnDelete);
+            row[9] = buttonPanel;
 
             model.addRow(row);
         }
     }
+
+    private void configureActionColumn() {
+        TableColumn actionColumn = UsuariosTable.getColumnModel().getColumn(9);
+        actionColumn.setCellRenderer(new ButtonRenderer());
+        actionColumn.setCellEditor(new ButtonEditor(new JCheckBox()));
+        actionColumn.setPreferredWidth(200);
+    }
+
+    class ButtonRenderer extends JPanel implements TableCellRenderer {
+        public ButtonRenderer() {
+            setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
+        }
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            removeAll();
+            if (value instanceof JPanel) {
+                add((JPanel) value);
+            }
+            return this;
+        }
+    }
+
+    class ButtonEditor extends DefaultCellEditor {
+        private JPanel panel;
+
+        public ButtonEditor(JCheckBox checkBox) {
+            super(checkBox);
+            panel = new JPanel();
+            panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
+        }
+
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+            panel.removeAll();
+            if (value instanceof JPanel) {
+                panel.add((JPanel) value);
+            }
+            return panel;
+        }
+
+        @Override
+        public Object getCellEditorValue() {
+            return null;
+        }
+
+        @Override
+        public boolean stopCellEditing() {
+            return super.stopCellEditing();
+        }
+    }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,7 +200,7 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
         arstxt = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         UsuariosTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,18 +236,18 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
 
         UsuariosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-
+                "User ID", "Name", "Email", "Phone Number", "City", "State", "Postal Code", "Date Of Birth", "Gender", "Actions"
             }
         ));
-        jScrollPane2.setViewportView(UsuariosTable);
+        jScrollPane1.setViewportView(UsuariosTable);
 
-        Background.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 790, 210));
+        Background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 780, 160));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,7 +257,7 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Background, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+            .addComponent(Background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -145,37 +267,37 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmAdUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmAdUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmAdUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmAdUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmAdUsuarios().setVisible(true);
-            }
-        });
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(FrmAdUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(FrmAdUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(FrmAdUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(FrmAdUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new FrmAdUsuarios().setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
@@ -185,7 +307,7 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel arstxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDate;
     // End of variables declaration//GEN-END:variables
 }
