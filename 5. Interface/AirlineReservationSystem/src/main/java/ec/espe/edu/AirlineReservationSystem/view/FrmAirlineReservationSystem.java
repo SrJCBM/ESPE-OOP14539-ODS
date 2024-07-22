@@ -670,14 +670,14 @@ content.repaint();
     }//GEN-LAST:event_AyudaBtonMouseExited
 
     private void ARStxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARStxtMouseClicked
-       AdministratorPanel  Bg = new AdministratorPanel();
+        AdministratorPanel Bg = new AdministratorPanel();
         Bg.setSize(920, 580);
         Bg.setLocation(0, 0);
 
         content.removeAll();
         content.add(Bg, BorderLayout.CENTER);
         content.revalidate();
-        content.repaint();     
+        content.repaint();
     }//GEN-LAST:event_ARStxtMouseClicked
 
     private void SubmenuPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmenuPanel2MouseClicked
@@ -699,7 +699,7 @@ content.repaint();
     }//GEN-LAST:event_VueloBtonMouseClicked
 
     private void EquipajeBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EquipajeBtonMouseClicked
-     BaggagePanel  panel = new BaggagePanel();
+        BaggagePanel panel = new BaggagePanel();
         panel.setSize(920, 580);
         panel.setLocation(0, 0);
 
@@ -709,7 +709,7 @@ content.repaint();
         content.repaint();    }//GEN-LAST:event_EquipajeBtonMouseClicked
 
     private void TicketBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketBtonMouseClicked
-          FrmTicket ticket = new FrmTicket();
+        FrmTicket ticket = new FrmTicket();
         JPanel backGround = ticket.GetBgTicket();
         backGround.setSize(920, 580);
         backGround.setLocation(0, 0);
@@ -729,11 +729,11 @@ content.repaint();
         content.removeAll();
         content.add(offerBackground, BorderLayout.CENTER);
         content.revalidate();
-        content.repaint(); 
+        content.repaint();
     }//GEN-LAST:event_OfertasBtonMouseClicked
 
     private void SubmenuPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmenuPanel7MouseClicked
- FrmFAQ createFAQ = new FrmFAQ();
+        FrmFAQ createFAQ = new FrmFAQ();
         JPanel bg = createFAQ.getFrmFAQ();
         bg.setSize(920, 580);
         bg.setLocation(0, 0);
@@ -745,7 +745,7 @@ content.repaint();
     }//GEN-LAST:event_SubmenuPanel7MouseClicked
 
     private void AyudaBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaBtonMouseClicked
-FrmFAQ createFAQ = new FrmFAQ();
+        FrmFAQ createFAQ = new FrmFAQ();
         JPanel bg = createFAQ.getFrmFAQ();
         bg.setSize(920, 580);
         bg.setLocation(0, 0);

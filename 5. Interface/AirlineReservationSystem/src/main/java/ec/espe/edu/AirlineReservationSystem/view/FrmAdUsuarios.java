@@ -80,7 +80,6 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         UsuariosTable = new javax.swing.JTable();
-        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,14 +127,6 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
 
         Background.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 790, 210));
 
-        btnBack.setText("Regresar");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        Background.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 530, -1, -1));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,12 +140,6 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        AdministratorPanel administratorPanel = new AdministratorPanel();
-        this.setVisible(false);
-        administratorPanel.setVisible(true);
-    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,7 +183,6 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel Imagelogotxt;
     private javax.swing.JTable UsuariosTable;
     private javax.swing.JLabel arstxt;
-    private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

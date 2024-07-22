@@ -5,6 +5,9 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.view.FrmAdTickets;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
 
 /**
  *
@@ -42,7 +45,7 @@ public class AdministratorPanel extends javax.swing.JPanel {
         Bg.setBackground(new java.awt.Color(255, 255, 255));
 
         addFlights.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        addFlights.setText("MostrarVuelos");
+        addFlights.setText("Mostrar  Vuelos");
         addFlights.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addFlightsActionPerformed(evt);
@@ -58,7 +61,7 @@ public class AdministratorPanel extends javax.swing.JPanel {
         });
 
         addTickets.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        addTickets.setText("MostrarTickets ");
+        addTickets.setText("Mostrar Tickets ");
         addTickets.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addTicketsActionPerformed(evt);
@@ -137,28 +140,52 @@ public class AdministratorPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTicketsActionPerformed
-         FrmAdTickets frmAddTickets = new FrmAdTickets();
-         frmAddTickets.setSize(900, 500);
-        frmAddTickets.setLocation(0, 0);
-  
-    frmAddTickets.setVisible(true);
+        FrmAdTickets frmAddTickets = new FrmAdTickets();
 
+        frmAddTickets.setSize(900, 500);
+        frmAddTickets.setLocation(0, 0);
+        this.setVisible(false);
+        frmAddTickets.setVisible(true);
+
+        frmAddTickets.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frmAddTickets.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent windowEvent) {
+                AdministratorPanel.this.setVisible(true);
+            }
+        });
     }//GEN-LAST:event_addTicketsActionPerformed
 
     private void addFlightsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFlightsActionPerformed
- FrmAdFlights frmAdd = new FrmAdFlights();
-         frmAdd.setSize(1000, 600);
+        FrmAdFlights frmAdd = new FrmAdFlights();
+        frmAdd.setSize(1000, 600);
         frmAdd.setLocation(0, 0);
-  
-    frmAdd.setVisible(true);
+        this.setVisible(false);
+        frmAdd.setVisible(true);
+
+        frmAdd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frmAdd.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent windowEvent) {
+                AdministratorPanel.this.setVisible(true);
+            }
+        });
     }//GEN-LAST:event_addFlightsActionPerformed
 
     private void addUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUsuariosActionPerformed
-FrmAdUsuarios frmAddUsuarios = new FrmAdUsuarios();
-         frmAddUsuarios.setSize(1000, 600);
+        FrmAdUsuarios frmAddUsuarios = new FrmAdUsuarios();
+        frmAddUsuarios.setSize(1000, 600);
         frmAddUsuarios.setLocation(0, 0);
-  
-    frmAddUsuarios.setVisible(true);    
+        this.setVisible(false);
+        frmAddUsuarios.setVisible(true);
+
+        frmAddUsuarios.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frmAddUsuarios.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent windowEvent) {
+                AdministratorPanel.this.setVisible(true);
+            }
+        });
       }//GEN-LAST:event_addUsuariosActionPerformed
 
 

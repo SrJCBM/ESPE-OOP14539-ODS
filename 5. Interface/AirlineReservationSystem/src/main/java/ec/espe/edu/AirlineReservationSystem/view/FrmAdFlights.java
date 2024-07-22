@@ -107,7 +107,6 @@ public class FrmAdFlights extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         VuelosTable = new javax.swing.JTable();
-        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,14 +154,6 @@ public class FrmAdFlights extends javax.swing.JFrame {
 
         Background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 820, 120));
 
-        btnBack.setText("Regresar");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        Background.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 410, -1, -1));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,17 +162,13 @@ public class FrmAdFlights extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Background, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Background, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        AdministratorPanel administratorPanel = new AdministratorPanel();
-        this.setVisible(false);
-        administratorPanel.setVisible(true);
-    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,7 +211,6 @@ public class FrmAdFlights extends javax.swing.JFrame {
     private javax.swing.JLabel Imagelogotxt;
     private javax.swing.JTable VuelosTable;
     private javax.swing.JLabel arstxt;
-    private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
