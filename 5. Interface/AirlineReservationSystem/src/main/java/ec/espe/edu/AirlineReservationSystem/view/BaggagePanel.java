@@ -8,9 +8,28 @@ import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
 import ec.espe.edu.AirlineReservationSystem.model.Baggage;
 import ec.espe.edu.AirlineReservationSystem.view.IdTicket;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
 import org.bson.Document;
 
 /**
@@ -52,6 +71,93 @@ private String baggageType;
         }
     }
 }
+  private void mostrarPanelEliminacion() {
+    JPanel panel = new JPanel();
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.insets = new Insets(10, 10, 10, 10); // Espaciado entre los elementos
+    gbc.anchor = GridBagConstraints.CENTER; // Centrar el contenido
+
+    // Recuperar el ticketId
+    int ticketId = BaggageController.getTicketId();
+
+    // Crear una instancia del controlador
+    TicketController controlador = new TicketController();
+    
+    // Recuperar el ticket
+    Document ticket = controlador.findTicket(ticketId);
+
+    if (ticket == null) {
+        JOptionPane.showMessageDialog(null, "No se encontró el ticket con ID: " + ticketId, "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Recuperar el equipaje del ticket
+    List<Document> equipajes = (List<Document>) ticket.get("Equipaje");
+
+    if (equipajes == null || equipajes.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "No se encontró equipaje para el ticket con ID: " + ticketId, "Información", JOptionPane.INFORMATION_MESSAGE);
+        return;
+    }
+
+    // Crear los componentes dinámicamente
+    int row = 0;
+    for (Document equipaje : equipajes) {
+        String baggageId = equipaje.getString("Baggage ID");
+        String baggageType = equipaje.getString("Baggage Type");
+        int baggageWeight = equipaje.getInteger("Baggage Size");
+
+        JPanel itemPanel = new JPanel();
+        itemPanel.setLayout(new BorderLayout());
+        itemPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10)); // Espaciado alrededor del item
+        itemPanel.setBackground(Color.WHITE); // Fondo blanco para el item
+
+        JLabel etiquetaEquipaje = new JLabel(String.format("<html><b>%s</b><br>Tipo: %s<br>Peso: %d kg</html>", baggageId, baggageType, baggageWeight));
+        etiquetaEquipaje.setFont(new Font("Arial", Font.BOLD, 14)); // Fuente en negrita y tamaño
+
+        JButton botonEliminar = new JButton("Eliminar");
+        botonEliminar.setFont(new Font("Arial", Font.BOLD, 10)); // Fuente en negrita y tamaño pequeño
+        botonEliminar.setBackground(Color.RED); // Fondo rojo
+        botonEliminar.setForeground(Color.WHITE); // Texto blanco
+        botonEliminar.setOpaque(true); // Fondo visible
+        botonEliminar.setPreferredSize(new Dimension(100, 25)); // Tamaño ajustado para un botón compacto
+
+        itemPanel.add(etiquetaEquipaje, BorderLayout.CENTER);
+        itemPanel.add(botonEliminar, BorderLayout.EAST);
+
+        gbc.gridy = row;
+        panel.add(itemPanel, gbc);
+        row++;
+
+        botonEliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                eliminarEquipaje(baggageId, (JDialog) SwingUtilities.getWindowAncestor(botonEliminar));
+            }
+        });
+    }
+
+    // Crear y mostrar el diálogo con el panel
+    JDialog dialog = new JDialog((Frame) null, "Eliminar Equipaje", true);
+    dialog.setLayout(new BorderLayout());
+    dialog.add(new JScrollPane(panel), BorderLayout.CENTER); // Añadir scroll si es necesario
+    dialog.setSize(500, 500); // Tamaño fijo
+    dialog.setLocationRelativeTo(null); // Centrar el diálogo en la pantalla
+    dialog.setVisible(true);
+}
+  
+private void eliminarEquipaje(String baggageId, JDialog dialog) {
+    int ticketId = BaggageController.getTicketId();
+    TicketController controlador = new TicketController();
+    controlador.removeBaggage(ticketId, baggageId);
+
+    // Mostrar mensaje de confirmación
+    JOptionPane.showMessageDialog(null, baggageId + " eliminado exitosamente.", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+
+    // Cerrar el diálogo
+    dialog.dispose();
+}
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -343,32 +449,8 @@ private String baggageType;
     }//GEN-LAST:event_CheckedBtonActionPerformed
 
     private void CleanBaggageBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleanBaggageBtonActionPerformed
-   
-         String[] options = {"Maleta 1", "Maleta 2"};
-    int choice = JOptionPane.showOptionDialog(this,
-            "Seleccione la maleta que desea eliminar:",
-            "Eliminar Maleta",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            options,
-            options[0]);
-
-    if (choice == JOptionPane.CLOSED_OPTION) {
-        return; 
-    }
-
-    
-    String selectedBaggageType = options[choice];
-    int ticketId = BaggageController.getTicketId(); 
-
-    
-    TicketController controller = new TicketController();
-    controller.removeBaggage(ticketId, selectedBaggageType);
-
-    JOptionPane.showMessageDialog(this, "Maleta " + (choice + 1) + " eliminada exitosamente.", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-
-        
+  
+    mostrarPanelEliminacion();
         
     }//GEN-LAST:event_CleanBaggageBtonActionPerformed
 

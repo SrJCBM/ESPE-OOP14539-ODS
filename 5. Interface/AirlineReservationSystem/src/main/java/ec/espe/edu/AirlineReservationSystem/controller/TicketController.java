@@ -8,12 +8,14 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.UpdateResult;
 import ec.espe.edu.AirlineReservationSystem.model.Ticket;
 import org.bson.Document;
 
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class TicketController {
 
@@ -130,19 +132,28 @@ public class TicketController {
         }
     }
 
-    public void removeBaggage(int ticketId, String baggageId) {
-        try {
-            Document filter = new Document("Baggage ID", baggageId)
-                    .append("Ticket ID", ticketId);
+  public void removeBaggage(int ticketId, String baggageId) {
+    try {
+        // Filtrar por Ticket ID
+        Document filter = new Document("Ticket ID", ticketId);
+        
+        // Actualizar para eliminar el equipaje con el Baggage ID proporcionado
+        Document update = new Document("$pull", new Document("Equipaje", new Document("Baggage ID", baggageId)));
 
-            ticketCollection.updateOne(
-                    new Document("Ticket ID", ticketId),
-                    new Document("$pull", new Document("Equipaje", new Document("Baggage ID", baggageId)))
-            );
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error al eliminar el equipaje", e);
+        // Ejecutar la actualización
+        UpdateResult result = ticketCollection.updateOne(filter, update);
+
+        // Verificar si se modificó algún documento
+        if (result.getModifiedCount() > 0) {
+            System.out.println("Equipaje eliminado exitosamente.");
+        } else {
+            System.out.println("No se encontró equipaje para eliminar.");
         }
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error al eliminar el equipaje: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
 
     public int getBaggageCount(int ticketId) {
         try {
@@ -159,6 +170,12 @@ public class TicketController {
             return 0;
         }
     }
+    public Document findTicket(int ticketId) {
+    MongoCollection<Document> ticketCollection = database.getCollection("tickets");
+    Document filter = new Document("Ticket ID", ticketId);
+    Document ticket = ticketCollection.find(filter).first();
+    return ticket;
+}
 }
 
 
