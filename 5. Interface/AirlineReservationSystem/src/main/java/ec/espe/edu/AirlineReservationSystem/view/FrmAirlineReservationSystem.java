@@ -114,6 +114,9 @@ content.repaint();
         AyudaBton.setText("Ayuda");
         AyudaBton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AyudaBton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AyudaBtonMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 AyudaBtonMouseEntered(evt);
             }
@@ -679,7 +682,7 @@ content.repaint();
     }//GEN-LAST:event_VueloBtonMouseClicked
 
     private void EquipajeBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EquipajeBtonMouseClicked
-     BaggagePanel  panel = new BaggagePanel();
+        BaggagePanel  panel = new BaggagePanel();
         panel.setSize(920, 580);
         panel.setLocation(0, 0);
 
@@ -689,7 +692,7 @@ content.repaint();
         content.repaint();    }//GEN-LAST:event_EquipajeBtonMouseClicked
 
     private void TicketBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketBtonMouseClicked
-          FrmTicket ticket = new FrmTicket();
+        FrmTicket ticket = new FrmTicket();
         JPanel backGround = ticket.GetBgTicket();
         backGround.setSize(920, 580);
         backGround.setLocation(0, 0);
@@ -711,6 +714,11 @@ content.repaint();
         content.revalidate();
         content.repaint(); 
     }//GEN-LAST:event_OfertasBtonMouseClicked
+
+    private void AyudaBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaBtonMouseClicked
+        FrmFAQ faq = new FrmFAQ();
+        
+    }//GEN-LAST:event_AyudaBtonMouseClicked
 
     public static String Fecha() {
 
