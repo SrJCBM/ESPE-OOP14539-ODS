@@ -32,7 +32,7 @@ public class FrmAdTickets extends javax.swing.JFrame {
 
     public FrmAdTickets() {
         initComponents();
-        ticketController = new AdTicketsController(); // Inicializa el controlador
+        ticketController = new AdTicketsController();
 
         DefaultTableModel model = (DefaultTableModel) TicketsTable.getModel();
         model.addColumn("Number of Ticket");
@@ -40,15 +40,13 @@ public class FrmAdTickets extends javax.swing.JFrame {
         model.addColumn("Customer Name");
         model.addColumn("Flight ID");
         model.addColumn("Ticket Class");
-        model.addColumn("Actions"); // Columna para los botones
+        model.addColumn("Actions");
 
         populateTicketsTable();
-
-        // Establecer el renderizador y editor para la columna de botones
         TableColumn actionColumn = TicketsTable.getColumnModel().getColumn(5);
         actionColumn.setCellRenderer(new ButtonRenderer());
         actionColumn.setCellEditor(new ButtonEditor(new JCheckBox(), TicketsTable));
-        actionColumn.setPreferredWidth(150); // Ajusta el tamaño de la columna de botones
+        actionColumn.setPreferredWidth(150);
     }
 
     public JPanel getTicketsPanel() {
@@ -57,7 +55,7 @@ public class FrmAdTickets extends javax.swing.JFrame {
 
     private void populateTicketsTable() {
         DefaultTableModel model = (DefaultTableModel) TicketsTable.getModel();
-        model.setRowCount(0); // Limpia las filas existentes
+        model.setRowCount(0); 
 
         List<Document> tickets = ticketController.getTickets();
 
@@ -69,27 +67,21 @@ public class FrmAdTickets extends javax.swing.JFrame {
                 row[2] = ticket.getString("Customer Name");
                 row[3] = ticket.getInteger("Id Flight");
                 row[4] = ticket.getString("Ticket Class");
-
-                // Crea los botones
                 JButton btnUpdate = new JButton("Update");
                 JButton btnDelete = new JButton("Delete");
 
-                // Acción para el botón de actualizar
                 btnUpdate.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        int ticketId = (Integer) row[1]; // Obtén el Ticket ID de la fila actual
-                        // Aquí llamas al método para actualizar el ticket
-                        // Puedes abrir un diálogo o un formulario para realizar la actualización
+                        int ticketId = (Integer) row[1];
                         JOptionPane.showMessageDialog(null, "Update functionality for Ticket ID: " + ticketId);
                     }
                 });
 
-                // Acción para el botón de borrar
                 btnDelete.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        int ticketId = (Integer) row[1]; // Obtén el Ticket ID de la fila actual
+                        int ticketId = (Integer) row[1]; 
                         int response = JOptionPane.showConfirmDialog(null,
                                 "Are you sure you want to delete Ticket ID: " + ticketId + "?",
                                 "Confirm Delete",
@@ -97,21 +89,18 @@ public class FrmAdTickets extends javax.swing.JFrame {
                                 JOptionPane.WARNING_MESSAGE);
 
                         if (response == JOptionPane.YES_OPTION) {
-                            // Llama al método del controlador para eliminar el ticket
                             ticketController.deleteTicket(ticketId);
-                            populateTicketsTable(); // Actualiza la tabla después de eliminar
+                            populateTicketsTable();
                         }
                     }
                 });
-
-                // Añade los botones a la fila
                 JPanel buttonPanel = new JPanel();
-                buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0)); // Centra los botones
+                buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
                 buttonPanel.add(btnUpdate);
                 buttonPanel.add(btnDelete);
-                row[5] = buttonPanel; // Coloca el panel con botones en la columna de acciones
+                row[5] = buttonPanel; 
 
-                model.addRow(row); // Añade la fila a la tabla
+                model.addRow(row);
             }
         }
     }

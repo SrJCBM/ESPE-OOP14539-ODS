@@ -21,8 +21,7 @@ public class ButtonRenderer extends JButton implements TableCellRenderer {
     }
 
     @Override
-    public Component getTableCellRendererComponent(JTable table, Object value,
-                                                   boolean isSelected, boolean hasFocus, int row, int column) {
+    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         if (value instanceof JPanel) {
             JPanel panel = (JPanel) value;
             setPreferredSize(panel.getPreferredSize());

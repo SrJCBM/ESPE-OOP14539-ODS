@@ -57,10 +57,10 @@ public class FrmOffers extends javax.swing.JFrame {
                 try {
                     row[6] = Double.parseDouble((String) priceObj);
                 } catch (NumberFormatException e) {
-                    row[6] = null; // o manejar el error de manera adecuada
+                    row[6] = null;
                 }
             } else {
-                row[6] = null; // o manejar el error de manera adecuada
+                row[6] = null; 
             }
 
             model.addRow(row);
