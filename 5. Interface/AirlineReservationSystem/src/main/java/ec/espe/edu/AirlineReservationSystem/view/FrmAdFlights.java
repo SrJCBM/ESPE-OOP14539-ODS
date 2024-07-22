@@ -34,19 +34,19 @@ public class FrmAdFlights extends javax.swing.JFrame {
         initComponents();
         populateFlightsTable();
         configureActionColumn();
-        VuelosTable.setRowHeight(40);  // Configura la altura de las filas de la tabla
+        VuelosTable.setRowHeight(40);
     }
 
     public JPanel getFlightsPanel() {
-        return Background;  // Asegúrate de que Background esté correctamente inicializado
+        return Background;
     }
 
     private void populateFlightsTable() {
         DefaultTableModel model = (DefaultTableModel) VuelosTable.getModel();
-        model.setRowCount(0);  // Limpia las filas existentes
+        model.setRowCount(0);
 
         AdFlightsController flightsController = new AdFlightsController();
-        List<Document> flights = flightsController.getFlights();  // Obtiene los vuelos desde la base de datos
+        List<Document> flights = flightsController.getFlights();
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for (Document flight : flights) {
@@ -78,7 +78,6 @@ public class FrmAdFlights extends javax.swing.JFrame {
                 JButton btnUpdate = new JButton("Actualizar");
                 JButton btnDelete = new JButton("Eliminar");
 
-                // Configura el botón de actualización
                 btnUpdate.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -100,7 +99,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
 
                                 if (success) {
                                     JOptionPane.showMessageDialog(null, "Vuelo actualizado correctamente.");
-                                    populateFlightsTable();  // Actualiza la tabla después de la modificación
+                                    populateFlightsTable();
                                 } else {
                                     JOptionPane.showMessageDialog(null, "No se pudo actualizar el vuelo.");
                                 }
@@ -111,7 +110,6 @@ public class FrmAdFlights extends javax.swing.JFrame {
                     }
                 });
 
-                // Configura el botón de eliminación
                 btnDelete.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -127,7 +125,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
 
                             if (success) {
                                 JOptionPane.showMessageDialog(null, "Vuelo eliminado correctamente.");
-                                populateFlightsTable();  // Actualiza la tabla después de la eliminación
+                                populateFlightsTable();
                             } else {
                                 JOptionPane.showMessageDialog(null, "No se pudo eliminar el vuelo.");
                             }
@@ -137,9 +135,8 @@ public class FrmAdFlights extends javax.swing.JFrame {
 
                 buttonPanel.add(btnUpdate);
                 buttonPanel.add(btnDelete);
-                row[7] = buttonPanel;  // Agrega el panel de botones a la fila
-
-                model.addRow(row);  // Agrega la fila al modelo de tabla
+                row[7] = buttonPanel;
+                model.addRow(row);
             }
         }
     }
@@ -161,7 +158,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
         TableColumn actionColumn = VuelosTable.getColumnModel().getColumn(7);
         actionColumn.setCellRenderer(new ButtonRenderer());
         actionColumn.setCellEditor(new ButtonEditor(new JCheckBox()));
-        actionColumn.setPreferredWidth(200);  // Configura el ancho de la columna de botones
+        actionColumn.setPreferredWidth(200);
     }
 
     class ButtonRenderer extends JPanel implements TableCellRenderer {
