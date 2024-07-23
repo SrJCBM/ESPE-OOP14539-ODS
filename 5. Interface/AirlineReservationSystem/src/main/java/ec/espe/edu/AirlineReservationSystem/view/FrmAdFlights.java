@@ -29,7 +29,6 @@ import org.bson.Document;
  * @author Kerlly Chiriboga, ODS
  */
 public class FrmAdFlights extends javax.swing.JFrame {
-
     public FrmAdFlights() {
         initComponents();
         populateFlightsTable();
@@ -38,7 +37,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
     }
 
     public JPanel getFlightsPanel() {
-        return Background;
+        return Background; 
     }
 
     private void populateFlightsTable() {
@@ -51,26 +50,13 @@ public class FrmAdFlights extends javax.swing.JFrame {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for (Document flight : flights) {
             if (flight != null && flight.size() > 0) {
-                Object[] row = new Object[8];
+                Object[] row = new Object[7]; 
                 row[0] = flight.getString("flightID");
                 row[1] = flight.getString("airline");
                 row[2] = flight.getString("origin");
                 row[3] = flight.getString("destination");
                 row[4] = formatDate(flight.getDate("departureDate"), dateFormat);
                 row[5] = formatDate(flight.getDate("arrivalDate"), dateFormat);
-
-                Object priceObj = flight.get("price");
-                if (priceObj instanceof Double) {
-                    row[6] = (Double) priceObj;
-                } else if (priceObj instanceof String) {
-                    try {
-                        row[6] = Double.parseDouble((String) priceObj);
-                    } catch (NumberFormatException e) {
-                        row[6] = null;
-                    }
-                } else {
-                    row[6] = null;
-                }
 
                 JPanel buttonPanel = new JPanel();
                 buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
@@ -82,20 +68,18 @@ public class FrmAdFlights extends javax.swing.JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         String flightID = (String) row[0];
-                        String newAirline = JOptionPane.showInputDialog(null, "Ingrese la nueva aerolìnea:", row[1]);
+                        String newAirline = JOptionPane.showInputDialog(null, "Ingrese la nueva aerolínea:", row[1]);
                         String newOrigin = JOptionPane.showInputDialog(null, "Ingrese el nuevo origen:", row[2]);
                         String newDestination = JOptionPane.showInputDialog(null, "Ingrese el nuevo destino:", row[3]);
-                        String newDepartureDateStr = JOptionPane.showInputDialog(null, "Ingrese el nuevo dia de salida (yyyy-MM-dd HH:mm:ss):", row[4]);
-                        String newArrivalDateStr = JOptionPane.showInputDialog(null, "Ingrese el nuevo dia de llegada (yyyy-MM-dd HH:mm:ss):", row[5]);
-                        String newPriceStr = JOptionPane.showInputDialog(null, "Ingrese el nuevo precio:", row[6]);
+                        String newDepartureDateStr = JOptionPane.showInputDialog(null, "Ingrese el nuevo día de salida (yyyy-MM-dd HH:mm:ss):", row[4]);
+                        String newArrivalDateStr = JOptionPane.showInputDialog(null, "Ingrese el nuevo día de llegada (yyyy-MM-dd HH:mm:ss):", row[5]);
 
                         if (newAirline != null && newOrigin != null && newDestination != null
-                                && newDepartureDateStr != null && newArrivalDateStr != null && newPriceStr != null) {
+                                && newDepartureDateStr != null && newArrivalDateStr != null) {
                             try {
                                 Date newDepartureDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(newDepartureDateStr);
                                 Date newArrivalDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(newArrivalDateStr);
-                                double newPrice = Double.parseDouble(newPriceStr);
-                                boolean success = flightsController.updateFlight(flightID, newAirline, newOrigin, newDestination, newDepartureDate, newArrivalDate, newPrice);
+                                boolean success = flightsController.updateFlight(flightID, newAirline, newOrigin, newDestination, newDepartureDate, newArrivalDate);
 
                                 if (success) {
                                     JOptionPane.showMessageDialog(null, "Vuelo actualizado correctamente.");
@@ -103,8 +87,8 @@ public class FrmAdFlights extends javax.swing.JFrame {
                                 } else {
                                     JOptionPane.showMessageDialog(null, "No se pudo actualizar el vuelo.");
                                 }
-                            } catch (ParseException | NumberFormatException ex) {
-                                JOptionPane.showMessageDialog(null, "Formato de fecha o precio inválido.");
+                            } catch (ParseException ex) {
+                                JOptionPane.showMessageDialog(null, "Formato de fecha inválido.");
                             }
                         }
                     }
@@ -115,7 +99,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
                     public void actionPerformed(ActionEvent e) {
                         String flightID = (String) row[0];
                         int response = JOptionPane.showConfirmDialog(null,
-                                "¿Estás segura de que quieres eliminar el vuelo con ID: " + flightID + "?",
+                                "¿Estás seguro de que quieres eliminar el vuelo con ID: " + flightID + "?",
                                 "Confirmar eliminación",
                                 JOptionPane.YES_NO_OPTION,
                                 JOptionPane.WARNING_MESSAGE);
@@ -135,7 +119,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
 
                 buttonPanel.add(btnUpdate);
                 buttonPanel.add(btnDelete);
-                row[7] = buttonPanel;
+                row[6] = buttonPanel;
                 model.addRow(row);
             }
         }
@@ -155,14 +139,13 @@ public class FrmAdFlights extends javax.swing.JFrame {
     }
 
     private void configureActionColumn() {
-        TableColumn actionColumn = VuelosTable.getColumnModel().getColumn(7);
+        TableColumn actionColumn = VuelosTable.getColumnModel().getColumn(6);
         actionColumn.setCellRenderer(new ButtonRenderer());
         actionColumn.setCellEditor(new ButtonEditor(new JCheckBox()));
         actionColumn.setPreferredWidth(200);
     }
 
     class ButtonRenderer extends JPanel implements TableCellRenderer {
-
         public ButtonRenderer() {
             setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
         }
@@ -178,7 +161,6 @@ public class FrmAdFlights extends javax.swing.JFrame {
     }
 
     class ButtonEditor extends DefaultCellEditor {
-
         private JPanel panel;
 
         public ButtonEditor(JCheckBox checkBox) {
@@ -259,27 +241,16 @@ public class FrmAdFlights extends javax.swing.JFrame {
 
         VuelosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Flight ID", "Airline", "Origin", "Destination", "Departure Date", "Arrival Date", "Price", "Actions"
+                "Flight ID", "Airline", "Origin", "Destination", "Departure Date", "Arrival Date", "Actions"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, true, true, true, true, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(VuelosTable);
-        if (VuelosTable.getColumnModel().getColumnCount() > 0) {
-            VuelosTable.getColumnModel().getColumn(7).setResizable(false);
-        }
 
         Background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 840, 150));
 

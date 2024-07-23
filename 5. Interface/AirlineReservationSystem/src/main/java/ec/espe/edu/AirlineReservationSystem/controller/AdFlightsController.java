@@ -21,6 +21,7 @@ import java.util.List;
  *
  * @author Kerlly Chiriboga, ODS
  */
+
 public class AdFlightsController {
     private MongoClient mongoClient;
     private MongoDatabase database;
@@ -43,15 +44,14 @@ public class AdFlightsController {
         return flightsList;
     }
     
-    public boolean updateFlight(String flightID, String newAirline, String newOrigin, String newDestination, Date newDepartureDate, Date newArrivalDate, double newPrice) {
+    public boolean updateFlight(String flightID, String newAirline, String newOrigin, String newDestination, Date newDepartureDate, Date newArrivalDate) {
         try {
             Document query = new Document("flightID", flightID);
             Document update = new Document("$set", new Document("airline", newAirline)
                 .append("origin", newOrigin)
                 .append("destination", newDestination)
                 .append("departureDate", newDepartureDate)
-                .append("arrivalDate", newArrivalDate)
-                .append("price", newPrice));
+                .append("arrivalDate", newArrivalDate));
                 
             UpdateResult result = flightsCollection.updateOne(query, update);
             return result.getModifiedCount() > 0;
