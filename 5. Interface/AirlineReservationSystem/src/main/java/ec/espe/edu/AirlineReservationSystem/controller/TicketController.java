@@ -176,6 +176,29 @@ public class TicketController {
     Document ticket = ticketCollection.find(filter).first();
     return ticket;
 }
+    
+        public int calculateTicketCost(String ticketClass, int ticketNumber) {
+        if (ticketClass == null || ticketClass.isEmpty()) {
+            throw new IllegalArgumentException("La clase de ticket no puede ser nula o vacía.");
+        }
+
+        int ticketCost = 0;
+        final int ECONOMY_COST = 120;
+        final int BUSINESS_COST = 200;
+
+        switch (ticketClass.toUpperCase()) {
+            case "ECONOMY":
+                ticketCost = ECONOMY_COST;
+                break;
+            case "BUSINESS":
+                ticketCost = BUSINESS_COST;
+                break;
+            default:
+                throw new IllegalArgumentException("Clase de ticket no válida");
+        }
+
+        return ticketCost * ticketNumber;
+    }
 }
 
 

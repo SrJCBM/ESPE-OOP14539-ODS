@@ -6,7 +6,6 @@ package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
-import ec.espe.edu.AirlineReservationSystem.model.Baggage;
 import ec.espe.edu.AirlineReservationSystem.view.BaggagePanel.ButtonManager;
 import javax.swing.SwingUtilities;
 

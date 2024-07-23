@@ -4,19 +4,25 @@
  */
 package ec.espe.edu.AirlineReservationSystem.view;
 
+import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
+import ec.espe.edu.AirlineReservationSystem.model.Ticket;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Joffre
  */
 public class PayMethod extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PayMethod
-     */
-    public PayMethod() {
-        initComponents();
-    }
+;
 
+    public PayMethod() {
+     
+        initComponents(); 
+    }
+    
+        
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,18 +32,25 @@ public class PayMethod extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        botones = new javax.swing.ButtonGroup();
         background4 = new javax.swing.JPanel();
         arstxt4 = new javax.swing.JLabel();
         fondo4 = new javax.swing.JLabel();
-        IdTickettxt4 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        ValidarBton = new javax.swing.JButton();
-        Validaciontxt = new javax.swing.JLabel();
+        BDebit = new javax.swing.JRadioButton();
+        BCredit = new javax.swing.JRadioButton();
+        BPaypal = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        TicketCosttxt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,23 +66,12 @@ public class PayMethod extends javax.swing.JFrame {
         fondo4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
         background4.add(fondo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 48));
 
-        IdTickettxt4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdTickettxt4ActionPerformed(evt);
-            }
-        });
-        background4.add(IdTickettxt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 130, 40));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 12)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/tarjeta-de-credito.png"))); // NOI18N
-        background4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 160, 150));
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/airline company icon .jpg"))); // NOI18N
         background4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 150, 140));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jLabel3.setText("Ingrese el Ticket ID:");
-        background4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        jLabel3.setText("Ingrese el tipo de Pago:");
+        background4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, -1, -1));
 
         jLabel4.setText("(C) Overnight Developerr Squad - ODS");
         background4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, -1, -1));
@@ -83,18 +85,54 @@ public class PayMethod extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        background4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 90, -1));
+        background4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 90, -1));
 
-        ValidarBton.setText("Validar");
-        ValidarBton.addActionListener(new java.awt.event.ActionListener() {
+        BDebit.setBackground(new java.awt.Color(255, 255, 255));
+        botones.add(BDebit);
+        BDebit.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
+        BDebit.setText("Tarjeta de Credito");
+        BDebit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ValidarBtonActionPerformed(evt);
+                BDebitActionPerformed(evt);
             }
         });
-        background4.add(ValidarBton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, -1, -1));
+        background4.add(BDebit, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, -1, -1));
 
-        Validaciontxt.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        background4.add(Validaciontxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 300, 170));
+        botones.add(BCredit);
+        BCredit.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
+        BCredit.setText("Tarjeta de Debito");
+        background4.add(BCredit, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, -1, -1));
+
+        botones.add(BPaypal);
+        BPaypal.setFont(new java.awt.Font("Segoe UI Light", 1, 12)); // NOI18N
+        BPaypal.setText("Paypal");
+        BPaypal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BPaypalActionPerformed(evt);
+            }
+        });
+        background4.add(BPaypal, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, -1, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/visa.png"))); // NOI18N
+        background4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/card.png"))); // NOI18N
+        background4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 50, 30));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/paypal.png"))); // NOI18N
+        background4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 50, 30));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/tarjeta-de-credito.png"))); // NOI18N
+        background4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 140, 110));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel9.setText("Estimado cliente sus datos son privados ");
+        background4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 390, 30));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI Black", 2, 18)); // NOI18N
+        jLabel10.setText("Protejalos...");
+        background4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 120, 40));
+        background4.add(TicketCosttxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 220, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,17 +152,26 @@ public class PayMethod extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IdTickettxt4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdTickettxt4ActionPerformed
-
-    }//GEN-LAST:event_IdTickettxt4ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+                                              
+
+  if (BCredit.isSelected() || BDebit.isSelected() || BPaypal.isSelected()) {
+    
+    JOptionPane.showMessageDialog(this, "El pago se realizó con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+     this.dispose();
+} else {
+    
+    JOptionPane.showMessageDialog(this, "Por favor, seleccione un método de pago.", "Error", JOptionPane.ERROR_MESSAGE);
+}
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void ValidarBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValidarBtonActionPerformed
-      
-    }//GEN-LAST:event_ValidarBtonActionPerformed
+    private void BDebitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDebitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BDebitActionPerformed
+
+    private void BPaypalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BPaypalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BPaypalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,38 +204,30 @@ public class PayMethod extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PayMethod().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField IdTickettxt;
-    private javax.swing.JTextField IdTickettxt1;
-    private javax.swing.JTextField IdTickettxt2;
-    private javax.swing.JTextField IdTickettxt3;
-    private javax.swing.JTextField IdTickettxt4;
-    private javax.swing.JLabel Validaciontxt;
-    private javax.swing.JButton ValidarBton;
-    private javax.swing.JLabel arstxt;
-    private javax.swing.JLabel arstxt1;
-    private javax.swing.JLabel arstxt2;
-    private javax.swing.JLabel arstxt3;
+    private javax.swing.JRadioButton BCredit;
+    private javax.swing.JRadioButton BDebit;
+    private javax.swing.JRadioButton BPaypal;
+    private javax.swing.JLabel TicketCosttxt;
     private javax.swing.JLabel arstxt4;
-    private javax.swing.JPanel background;
-    private javax.swing.JPanel background1;
-    private javax.swing.JPanel background2;
-    private javax.swing.JPanel background3;
     private javax.swing.JPanel background4;
-    private javax.swing.JLabel fondo;
-    private javax.swing.JLabel fondo1;
-    private javax.swing.JLabel fondo2;
-    private javax.swing.JLabel fondo3;
+    private javax.swing.ButtonGroup botones;
     private javax.swing.JLabel fondo4;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }

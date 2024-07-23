@@ -8,6 +8,7 @@ import ec.espe.edu.AirlineReservationSystem.controller.FlightController;
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
 import ec.espe.edu.AirlineReservationSystem.model.Flight;
 import ec.espe.edu.AirlineReservationSystem.model.Ticket;
+import ec.espe.edu.AirlineReservationSystem.view.PayMethod;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.util.Date;
@@ -114,7 +115,7 @@ public JPanel GetBgTicket (){
         buyBtn.setBackground(new java.awt.Color(157, 117, 185));
         buyBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         buyBtn.setForeground(new java.awt.Color(255, 255, 255));
-        buyBtn.setText("COMPRAR");
+        buyBtn.setText("Proceder al pago");
         buyBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buyBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -132,7 +133,7 @@ public JPanel GetBgTicket (){
                 buyBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(buyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 140, 40));
+        jPanel1.add(buyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 200, 40));
 
         btnBack.setBackground(new java.awt.Color(157, 117, 185));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -190,7 +191,7 @@ public JPanel GetBgTicket (){
 
     private void buyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyBtnActionPerformed
       
-   try {
+try {
         int ticketNumber = (int) ticketsNumberSpn.getValue();
         String customerName = userNameTxt.getText().trim();
         String flightId = flightIdTxt.getText().trim();
@@ -217,7 +218,19 @@ public JPanel GetBgTicket (){
         String ticketId = ticketController.saveTicket(ticket);
         
         if (ticketId != null) {
-            JOptionPane.showMessageDialog(this, "Boleto creado exitosamente con ID: " + ticketId, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+           JOptionPane.showMessageDialog(this,
+    "<html><body style='width: 300px;'>"
+    + "<p style='font-size: 14px;'>Ha reservado con exito su/s Ticket/s.</p>"
+    + "<p style='font-size: 14px;'>El ID de su boleto es: <strong>" + ticketId + "</strong></p>"
+    + "<p style='font-size: 14px;'>Por favor, proceda con el pago.</p>"
+    + "</body></html>",
+    "Éxito",
+    JOptionPane.INFORMATION_MESSAGE);
+            
+            PayMethod payMethodDialog = new PayMethod();
+       
+        payMethodDialog.setLocationRelativeTo(null); 
+        payMethodDialog.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Error al guardar el boleto en la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
