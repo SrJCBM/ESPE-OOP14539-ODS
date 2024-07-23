@@ -33,6 +33,9 @@ public JPanel getFrmFAQ() {
         background = new javax.swing.JPanel();
         faqLbl = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
@@ -50,6 +53,15 @@ public JPanel getFrmFAQ() {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
         background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 130));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/ODS GRUPO_resized (1).jpg"))); // NOI18N
+        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 170, 110));
+
+        jLabel5.setText("(R) Overnight Developer Squad");
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, -1, -1));
+
+        jLabel4.setText("(C) Overnight Developerr Squad - ODS");
+        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, -1, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -114,6 +126,9 @@ public JPanel getFrmFAQ() {
     private javax.swing.JPanel background;
     private javax.swing.JLabel faqLbl;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables

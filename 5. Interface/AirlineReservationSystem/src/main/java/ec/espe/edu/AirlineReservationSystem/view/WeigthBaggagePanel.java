@@ -54,6 +54,8 @@ private String baggageType;
         ConfirmBton = new javax.swing.JButton();
         weigth = new javax.swing.JSlider();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setRequestFocusEnabled(false);
@@ -105,6 +107,14 @@ private String baggageType;
         jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel6.setText("Kilogramos");
         background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel7.setText("Señor Usuario recuerde que solo puede");
+        background.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 290, 60));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel8.setText("incluir dos maletas en su viaje...");
+        background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 240, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -159,6 +169,8 @@ private String baggageType;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JSlider weigth;
     // End of variables declaration//GEN-END:variables
 }

@@ -201,9 +201,12 @@ public class FrmAdTickets extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TicketsTable = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -229,7 +232,7 @@ public class FrmAdTickets extends javax.swing.JFrame {
 
         Background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 150));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("Tickets Registrados:");
         Background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
 
@@ -248,6 +251,12 @@ public class FrmAdTickets extends javax.swing.JFrame {
 
         Background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 780, 120));
 
+        jLabel4.setText("(C) Overnight Developerr Squad - ODS");
+        Background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, -1, -1));
+
+        jLabel5.setText("(R) Overnight Developer Squad");
+        Background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -256,7 +265,7 @@ public class FrmAdTickets extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Background, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+            .addComponent(Background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -304,6 +313,8 @@ public class FrmAdTickets extends javax.swing.JFrame {
     private javax.swing.JTable TicketsTable;
     private javax.swing.JLabel arstxt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDate;

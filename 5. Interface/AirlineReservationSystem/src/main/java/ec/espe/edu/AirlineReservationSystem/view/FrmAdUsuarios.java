@@ -202,9 +202,12 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         UsuariosTable = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -230,7 +233,7 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
 
         Background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 150));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("Lista de Usuarios Registrados:");
         Background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
 
@@ -248,6 +251,12 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
         jScrollPane1.setViewportView(UsuariosTable);
 
         Background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 780, 160));
+
+        jLabel4.setText("(C) Overnight Developerr Squad - ODS");
+        Background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, -1, -1));
+
+        jLabel5.setText("(R) Overnight Developer Squad");
+        Background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -306,6 +315,8 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
     private javax.swing.JTable UsuariosTable;
     private javax.swing.JLabel arstxt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDate;

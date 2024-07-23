@@ -1,6 +1,5 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
-import ec.espe.edu.AirlineReservationSystem.view.FrmCreateFlight;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -33,16 +32,7 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
 
     }
 
-    /*
-FrmRegisterCustomer customerFrame = new FrmRegisterCustomer();
-customerFrame.setSize(920, 580);
-customerFrame.setLocation(0,0);
 
-content.removeAll();
-content.add(customerFrame, BorderLayout.CENTER);
-content.revalidate();
-content.repaint();
-     */
     int xMouse, yMouse;
 
     /**

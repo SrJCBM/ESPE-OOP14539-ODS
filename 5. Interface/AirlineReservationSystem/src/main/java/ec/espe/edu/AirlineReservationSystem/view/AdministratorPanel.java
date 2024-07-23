@@ -4,7 +4,6 @@
  */
 package ec.espe.edu.AirlineReservationSystem.view;
 
-import ec.espe.edu.AirlineReservationSystem.view.FrmAdTickets;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -41,10 +40,14 @@ public class AdministratorPanel extends javax.swing.JPanel {
         arstxt = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         fondoImage = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         Bg.setBackground(new java.awt.Color(255, 255, 255));
 
+        addFlights.setBackground(new java.awt.Color(153, 153, 255));
         addFlights.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        addFlights.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/vuelo-directo.png"))); // NOI18N
         addFlights.setText("Mostrar  Vuelos");
         addFlights.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,7 +55,9 @@ public class AdministratorPanel extends javax.swing.JPanel {
             }
         });
 
+        addUsuarios.setBackground(new java.awt.Color(153, 153, 255));
         addUsuarios.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        addUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/user icon.jpg"))); // NOI18N
         addUsuarios.setText("Mostrar Usuarios");
         addUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,7 +65,9 @@ public class AdministratorPanel extends javax.swing.JPanel {
             }
         });
 
+        addTickets.setBackground(new java.awt.Color(153, 153, 255));
         addTickets.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        addTickets.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/ticket.png"))); // NOI18N
         addTickets.setText("Mostrar Tickets ");
         addTickets.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +91,7 @@ public class AdministratorPanel extends javax.swing.JPanel {
         arstxt.setFont(new java.awt.Font("Engravers MT", 0, 14)); // NOI18N
         arstxt.setForeground(new java.awt.Color(255, 255, 255));
         arstxt.setText("Airline Reservation System");
-        datePanel.add(arstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 300, 50));
+        datePanel.add(arstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 300, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
         datePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 110));
@@ -92,37 +99,51 @@ public class AdministratorPanel extends javax.swing.JPanel {
         fondoImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
         datePanel.add(fondoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 120));
 
+        jLabel4.setText("(C) Overnight Developerr Squad - ODS");
+
+        jLabel5.setText("(R) Overnight Developer Squad");
+
         javax.swing.GroupLayout BgLayout = new javax.swing.GroupLayout(Bg);
         Bg.setLayout(BgLayout);
         BgLayout.setHorizontalGroup(
             BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(addFlights, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(addFlights, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(addUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147))
+                .addComponent(addUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(125, 125, 125))
             .addGroup(BgLayout.createSequentialGroup()
                 .addComponent(datePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(BgLayout.createSequentialGroup()
-                .addGap(343, 343, 343)
-                .addComponent(addTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(272, 272, 272)
+                .addComponent(addTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BgLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel5))
+                    .addComponent(jLabel4))
+                .addGap(73, 73, 73))
         );
         BgLayout.setVerticalGroup(
             BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BgLayout.createSequentialGroup()
-                .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(datePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(BgLayout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addFlights, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(addTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105))
+                .addComponent(datePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addFlights, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addComponent(addTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -142,7 +163,7 @@ public class AdministratorPanel extends javax.swing.JPanel {
     private void addTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTicketsActionPerformed
         FrmAdTickets frmAddTickets = new FrmAdTickets();
 
-        frmAddTickets.setSize(900, 500);
+        frmAddTickets.setSize(920, 500);
         frmAddTickets.setLocation(0, 0);
         this.setVisible(false);
         frmAddTickets.setVisible(true);
@@ -158,7 +179,7 @@ public class AdministratorPanel extends javax.swing.JPanel {
 
     private void addFlightsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFlightsActionPerformed
         FrmAdFlights frmAdd = new FrmAdFlights();
-        frmAdd.setSize(1000, 600);
+        frmAdd.setSize(920, 600);
         frmAdd.setLocation(0, 0);
         this.setVisible(false);
         frmAdd.setVisible(true);
@@ -174,7 +195,7 @@ public class AdministratorPanel extends javax.swing.JPanel {
 
     private void addUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUsuariosActionPerformed
         FrmAdUsuarios frmAddUsuarios = new FrmAdUsuarios();
-        frmAddUsuarios.setSize(1000, 600);
+        frmAddUsuarios.setSize(920, 600);
         frmAddUsuarios.setLocation(0, 0);
         this.setVisible(false);
         frmAddUsuarios.setVisible(true);
@@ -200,5 +221,7 @@ public class AdministratorPanel extends javax.swing.JPanel {
     private javax.swing.JPanel datePanel;
     private javax.swing.JLabel fondoImage;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

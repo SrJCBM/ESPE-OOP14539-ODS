@@ -207,16 +207,19 @@ public class FrmAdFlights extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         VuelosTable = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Imagelogotxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/airline company icon .jpg"))); // NOI18N
         Imagelogotxt.setText("jLabel1");
-        jPanel1.add(Imagelogotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 0, 160, 130));
+        jPanel1.add(Imagelogotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 160, 130));
 
         txtVuelos.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         txtVuelos.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,17 +230,17 @@ public class FrmAdFlights extends javax.swing.JFrame {
         arstxt.setFont(new java.awt.Font("Engravers MT", 0, 14)); // NOI18N
         arstxt.setForeground(new java.awt.Color(255, 255, 255));
         arstxt.setText("Airline Reservation System");
-        jPanel1.add(arstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 300, 50));
+        jPanel1.add(arstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, 300, 50));
 
         lblDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
         lblDate.setText("jLabel1");
         jPanel1.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 930, -1));
 
-        Background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 140));
+        Background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 140));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("Vuelos Registrados:");
-        Background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, -1));
+        Background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, 30));
 
         VuelosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -252,7 +255,13 @@ public class FrmAdFlights extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(VuelosTable);
 
-        Background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 840, 150));
+        Background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 840, 150));
+
+        jLabel4.setText("(C) Overnight Developerr Squad - ODS");
+        Background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 460, -1, -1));
+
+        jLabel5.setText("(R) Overnight Developer Squad");
+        Background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 430, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -262,7 +271,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Background, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+            .addComponent(Background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -310,6 +319,8 @@ public class FrmAdFlights extends javax.swing.JFrame {
     private javax.swing.JTable VuelosTable;
     private javax.swing.JLabel arstxt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDate;
