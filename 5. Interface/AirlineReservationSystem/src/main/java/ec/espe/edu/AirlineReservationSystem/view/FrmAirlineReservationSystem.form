@@ -516,31 +516,21 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblCopyright">
           <Properties>
-            <Property name="text" type="java.lang.String" value="(C) Overnight Developerr Squad - ODS"/>
+            <Property name="text" type="java.lang.String" value="(C) Overnight Developers Squad - ODS"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="650" y="10" width="-1" height="30"/>
+              <AbsoluteConstraints x="740" y="20" width="-1" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="lblRights">
           <Properties>
-            <Property name="text" type="java.lang.String" value="(R) Overnight Developer Squad"/>
+            <Property name="text" type="java.lang.String" value="(R) Overnight Developers Squad"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="750" y="60" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblSystemVersion">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="V1.0.0"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="420" y="60" width="-1" height="30"/>
+              <AbsoluteConstraints x="760" y="50" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -753,12 +743,15 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="901" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" pref="580" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

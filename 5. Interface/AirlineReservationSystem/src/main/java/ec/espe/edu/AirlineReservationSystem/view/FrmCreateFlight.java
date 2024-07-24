@@ -50,15 +50,17 @@ public JPanel getCreateFlight() {
         txtAirline = new javax.swing.JTextField();
         btnCreate = new javax.swing.JToggleButton();
         btnBack = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Crear Vuelo");
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, 230, 40));
+        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 270, 50));
 
         ArrivalDate.setFont(new java.awt.Font("Roboto Light", 1, 14)); // NOI18N
         ArrivalDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -149,6 +151,10 @@ public JPanel getCreateFlight() {
             }
         });
         background.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 140, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -283,6 +289,7 @@ public JPanel getCreateFlight() {
     private javax.swing.JComboBox<String> cmbOrigin;
     private com.toedter.calendar.JDateChooser jDateArrival;
     private com.toedter.calendar.JDateChooser jDateDeparture;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtAirline;
     // End of variables declaration//GEN-END:variables

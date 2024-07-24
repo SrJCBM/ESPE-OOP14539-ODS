@@ -66,7 +66,6 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         arstxt = new javax.swing.JLabel();
         lblCopyright = new javax.swing.JLabel();
         lblRights = new javax.swing.JLabel();
-        lblSystemVersion = new javax.swing.JLabel();
         Imagelogotxt = new javax.swing.JLabel();
         bg = new javax.swing.JPanel();
         exitBtn = new javax.swing.JPanel();
@@ -377,14 +376,11 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         arstxt.setText("Airline Reservation System");
         logopanel.add(arstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 300, 50));
 
-        lblCopyright.setText("(C) Overnight Developerr Squad - ODS");
-        logopanel.add(lblCopyright, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, 30));
+        lblCopyright.setText("(C) Overnight Developers Squad - ODS");
+        logopanel.add(lblCopyright, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, -1, 30));
 
-        lblRights.setText("(R) Overnight Developer Squad");
-        logopanel.add(lblRights, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, -1, -1));
-
-        lblSystemVersion.setText("V1.0.0");
-        logopanel.add(lblSystemVersion, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, -1, 30));
+        lblRights.setText("(R) Overnight Developers Squad");
+        logopanel.add(lblRights, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 50, -1, -1));
 
         Imagelogotxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/airline company icon .jpg"))); // NOI18N
         Imagelogotxt.setText("jLabel1");
@@ -504,11 +500,13 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentLayout.createSequentialGroup()
+                .addGap(0, 19, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 901, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
         );
 
         bg.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 920, 580));
@@ -826,7 +824,6 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     private javax.swing.JLabel lblCopyright;
     private javax.swing.JLabel lblExitBtn;
     private javax.swing.JLabel lblRights;
-    private javax.swing.JLabel lblSystemVersion;
     private javax.swing.JPanel logopanel;
     private javax.swing.JLabel menuImage;
     private javax.swing.JPanel menupanel;

@@ -40,7 +40,6 @@ public JPanel GetBgTicket (){
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        cityIcon = new javax.swing.JLabel();
         ticketTitle = new javax.swing.JLabel();
         ticketsNumberLbl = new javax.swing.JLabel();
         ticketsNumberSpn = new javax.swing.JSpinner();
@@ -53,9 +52,9 @@ public JPanel GetBgTicket (){
         jSeparator3 = new javax.swing.JSeparator();
         classTxt = new javax.swing.JLabel();
         classBox = new javax.swing.JComboBox<>();
-        jSeparator4 = new javax.swing.JSeparator();
         buyBtn = new javax.swing.JToggleButton();
         btnBack = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,24 +62,22 @@ public JPanel GetBgTicket (){
         jPanel1.setRequestFocusEnabled(false);
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        cityIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/city.jpg"))); // NOI18N
-        jPanel1.add(cityIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(581, 0, 340, 580));
-
-        ticketTitle.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        ticketTitle.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        ticketTitle.setForeground(new java.awt.Color(255, 255, 255));
         ticketTitle.setText("Compra de Boletos");
-        jPanel1.add(ticketTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 230, 30));
+        jPanel1.add(ticketTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 550, 60));
 
-        ticketsNumberLbl.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
-        ticketsNumberLbl.setText("Número de Boletos : ");
-        jPanel1.add(ticketsNumberLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 140, 20));
+        ticketsNumberLbl.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
+        ticketsNumberLbl.setText("Cantidad de Boletos : ");
+        jPanel1.add(ticketsNumberLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 230, 20));
 
         ticketsNumberSpn.setBorder(null);
-        jPanel1.add(ticketsNumberSpn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 70, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, 210, 10));
+        jPanel1.add(ticketsNumberSpn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 70, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 210, 10));
 
-        userLbl.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        userLbl.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         userLbl.setText("Nombre del Cliente :");
-        jPanel1.add(userLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, 20));
+        jPanel1.add(userLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, -1, 20));
 
         userNameTxt.setBorder(null);
         userNameTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -88,12 +85,12 @@ public JPanel GetBgTicket (){
                 userNameTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(userNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 210, 20));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 70, 10));
+        jPanel1.add(userNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, 210, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 70, 10));
 
-        flightIdLbl.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        flightIdLbl.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         flightIdLbl.setText("ID de vuelo :");
-        jPanel1.add(flightIdLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, 20));
+        jPanel1.add(flightIdLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, 20));
 
         flightIdTxt.setBorder(null);
         flightIdTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -101,21 +98,25 @@ public JPanel GetBgTicket (){
                 flightIdTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(flightIdTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 210, 20));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 210, 10));
+        jPanel1.add(flightIdTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 150, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 150, 10));
 
-        classTxt.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
+        classTxt.setFont(new java.awt.Font("Roboto Medium", 1, 18)); // NOI18N
         classTxt.setText("Clase :");
-        jPanel1.add(classTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, 20));
+        jPanel1.add(classTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, -1, 20));
 
         classBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Economica", "Ejecutiva", " " }));
-        jPanel1.add(classBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 100, 30));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 267, 210, -1));
+        classBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(classBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 100, 30));
 
         buyBtn.setBackground(new java.awt.Color(157, 117, 185));
         buyBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         buyBtn.setForeground(new java.awt.Color(255, 255, 255));
-        buyBtn.setText("Proceder al pago");
+        buyBtn.setText("REALIZAR PAGO");
         buyBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buyBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -133,7 +134,7 @@ public JPanel GetBgTicket (){
                 buyBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(buyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 200, 40));
+        jPanel1.add(buyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, 200, 40));
 
         btnBack.setBackground(new java.awt.Color(157, 117, 185));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -156,22 +157,23 @@ public JPanel GetBgTicket (){
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 140, 40));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, 140, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
@@ -277,6 +279,10 @@ try {
         // TODO add your handling code here:
     }//GEN-LAST:event_flightIdTxtActionPerformed
 
+    private void classBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_classBoxActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -316,16 +322,15 @@ try {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnBack;
     private javax.swing.JToggleButton buyBtn;
-    private javax.swing.JLabel cityIcon;
     private javax.swing.JComboBox<String> classBox;
     private javax.swing.JLabel classTxt;
     private javax.swing.JLabel flightIdLbl;
     private javax.swing.JTextField flightIdTxt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel ticketTitle;
     private javax.swing.JLabel ticketsNumberLbl;
     private javax.swing.JSpinner ticketsNumberSpn;

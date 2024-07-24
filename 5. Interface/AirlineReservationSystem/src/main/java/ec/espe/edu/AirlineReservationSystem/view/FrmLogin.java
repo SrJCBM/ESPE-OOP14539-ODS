@@ -61,9 +61,9 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/city.jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 310, 520));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 300, 520));
 
-        LoginTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        LoginTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         LoginTitle.setText("Usuario");
         jPanel1.add(LoginTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 130, 20));
 
@@ -86,11 +86,11 @@ public class FrmLogin extends javax.swing.JFrame {
 
         ProgramTitle.setFont(new java.awt.Font("Segoe UI", 2, 36)); // NOI18N
         ProgramTitle.setText("AIRLINE RESERVATION SYSTEM");
-        jPanel1.add(ProgramTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 500, -1));
+        jPanel1.add(ProgramTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 500, -1));
 
-        PasswordTitle.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        PasswordTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         PasswordTitle.setText("Contraseña");
-        jPanel1.add(PasswordTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 120, 20));
+        jPanel1.add(PasswordTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 180, 30));
         jPanel1.add(UsernameSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 420, 10));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -186,14 +186,16 @@ public class FrmLogin extends javax.swing.JFrame {
         exitBtnLayout.setHorizontalGroup(
             exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitBtnLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         exitBtnLayout.setVerticalGroup(
             exitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exitBtnLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(exitTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(exitTxt)
+                .addContainerGap())
         );
 
         header.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -201,7 +203,7 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel1.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/user icon.jpg"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 140, 130));
 
         logginButton.setBackground(new java.awt.Color(157, 117, 185));
         logginButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N

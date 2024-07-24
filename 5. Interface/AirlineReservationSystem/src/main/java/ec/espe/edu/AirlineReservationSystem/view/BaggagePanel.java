@@ -173,8 +173,6 @@ private void eliminarEquipaje(String baggageId, JDialog dialog) {
         Background = new javax.swing.JPanel();
         datePanel = new javax.swing.JPanel();
         Equipajetxt = new javax.swing.JLabel();
-        Imagelogotxt = new javax.swing.JLabel();
-        arstxt = new javax.swing.JLabel();
         fondoImage = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         OptionBaggagePanel = new javax.swing.JPanel();
@@ -193,20 +191,11 @@ private void eliminarEquipaje(String baggageId, JDialog dialog) {
         datePanel.setBackground(new java.awt.Color(102, 0, 102));
         datePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Equipajetxt.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        Equipajetxt.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         Equipajetxt.setForeground(new java.awt.Color(255, 255, 255));
         Equipajetxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Equipajetxt.setText("Añadir Equipaje");
         datePanel.add(Equipajetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 78));
-
-        Imagelogotxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/airline company icon .jpg"))); // NOI18N
-        Imagelogotxt.setText("jLabel1");
-        datePanel.add(Imagelogotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 160, 120));
-
-        arstxt.setFont(new java.awt.Font("Engravers MT", 0, 14)); // NOI18N
-        arstxt.setForeground(new java.awt.Color(255, 255, 255));
-        arstxt.setText("Airline Reservation System");
-        datePanel.add(arstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 300, 50));
 
         fondoImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
         datePanel.add(fondoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 930, 120));
@@ -463,10 +452,8 @@ private void eliminarEquipaje(String baggageId, JDialog dialog) {
     private javax.swing.JButton CheckedBton;
     private javax.swing.JButton CleanBaggageBton;
     private javax.swing.JLabel Equipajetxt;
-    private javax.swing.JLabel Imagelogotxt;
     private javax.swing.JPanel OptionBaggagePanel;
     private javax.swing.JButton TicketBton;
-    private javax.swing.JLabel arstxt;
     private javax.swing.JPanel datePanel;
     private javax.swing.JLabel fondoImage;
     private javax.swing.JLabel jLabel1;

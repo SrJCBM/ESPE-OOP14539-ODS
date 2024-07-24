@@ -46,29 +46,29 @@ public JPanel getFrmFAQ() {
         background.setPreferredSize(new java.awt.Dimension(920, 580));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        faqLbl.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        faqLbl.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         faqLbl.setForeground(new java.awt.Color(255, 255, 255));
         faqLbl.setText("Preguntas Frecuentes");
-        background.add(faqLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
+        background.add(faqLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
         background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 130));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/ODS GRUPO_resized (1).jpg"))); // NOI18N
-        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 440, 170, 110));
+        background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 170, 130));
 
-        jLabel5.setText("(R) Overnight Developer Squad");
-        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, -1, -1));
+        jLabel5.setText("(R) Overnight Developers Squad");
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 490, -1, -1));
 
-        jLabel4.setText("(C) Overnight Developerr Squad - ODS");
-        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, -1, -1));
+        jLabel4.setText("(C) Overnight Developers Squad - ODS");
+        background.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, -1, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("\t1. ¿Cómo reservar un boleto de avion?\n\n       \t - Para reservar un boleto, debe crear un perfil de cliente, buscar un vuelo y luego reservar el billete.\n\n       \t2. ¿Cómo realizar un pago?\n\n        \t- Los pagos se pueden realizar con tarjeta de crédito, tarjeta de débito o PayPal.\n\n      \t 3. ¿Cómo cambiar las fechas de los vuelos?\n\n        \t - Los cambios de fecha solo se permiten para boletos de clase BUSINESS. Comuníquese con el servicio de atención al cliente para obtener ayuda.\n\n        \t4. ¿Cómo agregar equipaje?\n\n        \t- El equipaje se puede agregar durante la reserva del boleto o más tarde actualizando los detalles del boleto.");
+        jTextArea1.setText("       \n        1. ¿Cómo reservar un boleto de avión?\n            - Para reservar un boleto, debe crear un perfil de cliente, buscar un vuelo y luego reservar el billete.\n\n        2. ¿Cómo realizar un pago?\n            - Los pagos se pueden realizar con tarjeta de crédito, tarjeta de débito o PayPal.\n\n        3. ¿Cómo cambiar las fechas de los vuelos?\n            - Los cambios de fecha solo se permiten para boletos de clase BUSINESS. \n              Comuníquese con el servicio de atención al cliente para obtener ayuda.\n\n        4. ¿Cómo agregar equipaje?\n            - El equipaje se puede agregar durante la reserva del boleto o más tarde actualizando los detalles del boleto.");
         jScrollPane1.setViewportView(jTextArea1);
 
         background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 920, 450));

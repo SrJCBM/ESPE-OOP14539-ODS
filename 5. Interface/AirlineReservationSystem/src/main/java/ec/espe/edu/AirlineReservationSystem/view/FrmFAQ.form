@@ -53,7 +53,7 @@
         <Component class="javax.swing.JLabel" name="faqLbl">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="36" style="0"/>
+              <Font name="Segoe UI" size="36" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -62,7 +62,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="260" y="30" width="-1" height="-1"/>
+              <AbsoluteConstraints x="40" y="40" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -86,27 +86,27 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="360" y="440" width="170" height="110"/>
+              <AbsoluteConstraints x="310" y="420" width="170" height="130"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="(R) Overnight Developer Squad"/>
+            <Property name="text" type="java.lang.String" value="(R) Overnight Developers Squad"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="580" y="460" width="-1" height="-1"/>
+              <AbsoluteConstraints x="590" y="490" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="(C) Overnight Developerr Squad - ODS"/>
+            <Property name="text" type="java.lang.String" value="(C) Overnight Developers Squad - ODS"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="560" y="490" width="-1" height="-1"/>
+              <AbsoluteConstraints x="570" y="510" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -131,10 +131,10 @@
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Roboto" size="14" style="0"/>
+                  <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="&#x9;1. &#xbf;C&#xf3;mo reservar un boleto de avion?&#xa;&#xa;       &#x9; - Para reservar un boleto, debe crear un perfil de cliente, buscar un vuelo y luego reservar el billete.&#xa;&#xa;       &#x9;2. &#xbf;C&#xf3;mo realizar un pago?&#xa;&#xa;        &#x9;- Los pagos se pueden realizar con tarjeta de cr&#xe9;dito, tarjeta de d&#xe9;bito o PayPal.&#xa;&#xa;      &#x9; 3. &#xbf;C&#xf3;mo cambiar las fechas de los vuelos?&#xa;&#xa;        &#x9; - Los cambios de fecha solo se permiten para boletos de clase BUSINESS. Comun&#xed;quese con el servicio de atenci&#xf3;n al cliente para obtener ayuda.&#xa;&#xa;        &#x9;4. &#xbf;C&#xf3;mo agregar equipaje?&#xa;&#xa;        &#x9;- El equipaje se puede agregar durante la reserva del boleto o m&#xe1;s tarde actualizando los detalles del boleto."/>
+                <Property name="text" type="java.lang.String" value="       &#xa;        1. &#xbf;C&#xf3;mo reservar un boleto de avi&#xf3;n?&#xa;            - Para reservar un boleto, debe crear un perfil de cliente, buscar un vuelo y luego reservar el billete.&#xa;&#xa;        2. &#xbf;C&#xf3;mo realizar un pago?&#xa;            - Los pagos se pueden realizar con tarjeta de cr&#xe9;dito, tarjeta de d&#xe9;bito o PayPal.&#xa;&#xa;        3. &#xbf;C&#xf3;mo cambiar las fechas de los vuelos?&#xa;            - Los cambios de fecha solo se permiten para boletos de clase BUSINESS. &#xa;              Comun&#xed;quese con el servicio de atenci&#xf3;n al cliente para obtener ayuda.&#xa;&#xa;        4. &#xbf;C&#xf3;mo agregar equipaje?&#xa;            - El equipaje se puede agregar durante la reserva del boleto o m&#xe1;s tarde actualizando los detalles del boleto."/>
               </Properties>
             </Component>
           </SubComponents>

@@ -87,10 +87,10 @@ public class FrmOffers extends javax.swing.JFrame {
 
         BackGround.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblOffers.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblOffers.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         lblOffers.setForeground(new java.awt.Color(255, 255, 255));
         lblOffers.setText("Ofertas de Temporada");
-        BackGround.add(lblOffers, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
+        BackGround.add(lblOffers, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(153, 51, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createCompoundBorder());

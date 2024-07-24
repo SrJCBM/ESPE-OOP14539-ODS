@@ -36,12 +36,8 @@ public class AdministratorPanel extends javax.swing.JPanel {
         addTickets = new javax.swing.JButton();
         datePanel = new javax.swing.JPanel();
         Equipajetxt = new javax.swing.JLabel();
-        Imagelogotxt = new javax.swing.JLabel();
-        arstxt = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         fondoImage = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
 
         Bg.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -78,30 +74,17 @@ public class AdministratorPanel extends javax.swing.JPanel {
         datePanel.setBackground(new java.awt.Color(102, 0, 102));
         datePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Equipajetxt.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
+        Equipajetxt.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         Equipajetxt.setForeground(new java.awt.Color(255, 255, 255));
         Equipajetxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Equipajetxt.setText("Añadir Equipaje");
+        Equipajetxt.setText("Administración");
         datePanel.add(Equipajetxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 78));
-
-        Imagelogotxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/airline company icon .jpg"))); // NOI18N
-        Imagelogotxt.setText("jLabel1");
-        datePanel.add(Imagelogotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 160, 120));
-
-        arstxt.setFont(new java.awt.Font("Engravers MT", 0, 14)); // NOI18N
-        arstxt.setForeground(new java.awt.Color(255, 255, 255));
-        arstxt.setText("Airline Reservation System");
-        datePanel.add(arstxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 300, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
         datePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 110));
 
         fondoImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/airlinereservationsystem/images/fondo.jpeg"))); // NOI18N
         datePanel.add(fondoImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 120));
-
-        jLabel4.setText("(C) Overnight Developerr Squad - ODS");
-
-        jLabel5.setText("(R) Overnight Developer Squad");
 
         javax.swing.GroupLayout BgLayout = new javax.swing.GroupLayout(Bg);
         Bg.setLayout(BgLayout);
@@ -120,14 +103,6 @@ public class AdministratorPanel extends javax.swing.JPanel {
                 .addGap(272, 272, 272)
                 .addComponent(addTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BgLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BgLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel5))
-                    .addComponent(jLabel4))
-                .addGap(73, 73, 73))
         );
         BgLayout.setVerticalGroup(
             BgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,11 +114,7 @@ public class AdministratorPanel extends javax.swing.JPanel {
                     .addComponent(addUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addComponent(addTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addGap(14, 14, 14)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18))
+                .addGap(82, 82, 82))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -213,15 +184,11 @@ public class AdministratorPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bg;
     private javax.swing.JLabel Equipajetxt;
-    private javax.swing.JLabel Imagelogotxt;
     private javax.swing.JButton addFlights;
     private javax.swing.JButton addTickets;
     private javax.swing.JButton addUsuarios;
-    private javax.swing.JLabel arstxt;
     private javax.swing.JPanel datePanel;
     private javax.swing.JLabel fondoImage;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
