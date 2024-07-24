@@ -149,6 +149,17 @@ private String baggageType;
         
         
         JOptionPane.showMessageDialog(this, "El equipaje se ha añadido a su Ticket!", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+         JOptionPane.showMessageDialog(this,
+    "<html><body style='width: 300px;'>"
+    + "<p style='font-size: 14px;'>Por favor, proceda con el pago.</p>"
+    + "</body></html>",
+    "Éxito", 
+    JOptionPane.INFORMATION_MESSAGE);
+            
+            PayMethod payMethodDialog = new PayMethod();
+       
+        payMethodDialog.setLocationRelativeTo(null); 
+        payMethodDialog.setVisible(true);
 
     } catch (Exception e) {
         e.printStackTrace();

@@ -73,18 +73,18 @@ private String baggageType;
 }
   private void mostrarPanelEliminacion() {
     JPanel panel = new JPanel();
-    panel.setLayout(new GridBagLayout()); // Usar GridBagLayout para centrar elementos
+    panel.setLayout(new GridBagLayout()); 
     GridBagConstraints gbc = new GridBagConstraints();
-    gbc.insets = new Insets(10, 10, 10, 10); // Espaciado entre los elementos
-    gbc.anchor = GridBagConstraints.CENTER; // Centrar el contenido
+    gbc.insets = new Insets(10, 10, 10, 10); 
+    gbc.anchor = GridBagConstraints.CENTER; 
 
-    // Recuperar el ticketId
+   
     int ticketId = BaggageController.getTicketId();
 
-    // Crear una instancia del controlador
+
     TicketController controlador = new TicketController();
     
-    // Recuperar el ticket
+    
     Document ticket = controlador.findTicket(ticketId);
 
     if (ticket == null) {
@@ -92,7 +92,7 @@ private String baggageType;
         return;
     }
 
-    // Recuperar el equipaje del ticket
+ 
     List<Document> equipajes = (List<Document>) ticket.get("Equipaje");
 
     if (equipajes == null || equipajes.isEmpty()) {
@@ -100,7 +100,7 @@ private String baggageType;
         return;
     }
 
-    // Crear los componentes dinámicamente
+  
     int row = 0;
     for (Document equipaje : equipajes) {
         String baggageId = equipaje.getString("Baggage ID");
@@ -109,18 +109,18 @@ private String baggageType;
 
         JPanel itemPanel = new JPanel();
         itemPanel.setLayout(new BorderLayout());
-        itemPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10)); // Espaciado alrededor del item
-        itemPanel.setBackground(Color.WHITE); // Fondo blanco para el item
+        itemPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        itemPanel.setBackground(Color.WHITE); 
 
         JLabel etiquetaEquipaje = new JLabel(String.format("<html><b>%s</b><br>Tipo: %s<br>Peso: %d kg</html>", baggageId, baggageType, baggageWeight));
-        etiquetaEquipaje.setFont(new Font("Arial", Font.BOLD, 14)); // Fuente en negrita y tamaño
+        etiquetaEquipaje.setFont(new Font("Arial", Font.BOLD, 14)); 
 
         JButton botonEliminar = new JButton("Eliminar");
-        botonEliminar.setFont(new Font("Arial", Font.BOLD, 10)); // Fuente en negrita y tamaño pequeño
-        botonEliminar.setBackground(Color.RED); // Fondo rojo
-        botonEliminar.setForeground(Color.WHITE); // Texto blanco
-        botonEliminar.setOpaque(true); // Fondo visible
-        botonEliminar.setPreferredSize(new Dimension(100, 25)); // Tamaño ajustado para un botón compacto
+        botonEliminar.setFont(new Font("Arial", Font.BOLD, 10)); 
+        botonEliminar.setBackground(Color.RED); 
+        botonEliminar.setForeground(Color.WHITE); 
+        botonEliminar.setOpaque(true); 
+        botonEliminar.setPreferredSize(new Dimension(100, 25)); 
 
         itemPanel.add(etiquetaEquipaje, BorderLayout.CENTER);
         itemPanel.add(botonEliminar, BorderLayout.EAST);
@@ -137,12 +137,12 @@ private String baggageType;
         });
     }
 
-    // Crear y mostrar el diálogo con el panel
+
     JDialog dialog = new JDialog((Frame) null, "Eliminar Equipaje", true);
     dialog.setLayout(new BorderLayout());
-    dialog.add(new JScrollPane(panel), BorderLayout.CENTER); // Añadir scroll si es necesario
-    dialog.setSize(500, 500); // Tamaño fijo
-    dialog.setLocationRelativeTo(null); // Centrar el diálogo en la pantalla
+    dialog.add(new JScrollPane(panel), BorderLayout.CENTER); 
+    dialog.setSize(500, 500); 
+    dialog.setLocationRelativeTo(null); 
     dialog.setVisible(true);
 }
   
@@ -151,10 +151,11 @@ private void eliminarEquipaje(String baggageId, JDialog dialog) {
     TicketController controlador = new TicketController();
     controlador.removeBaggage(ticketId, baggageId);
 
-    // Mostrar mensaje de confirmación
-    JOptionPane.showMessageDialog(null, baggageId + " eliminado exitosamente.", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
 
-    // Cerrar el diálogo
+    JOptionPane.showMessageDialog(null, baggageId + " eliminado exitosamente.", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+    JOptionPane.showMessageDialog(null, " La devolucion del pago se ha reflejado a su cuenta.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+
+    
     dialog.dispose();
 }
 
