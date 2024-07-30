@@ -4,14 +4,10 @@
  */
 package ec.espe.edu.AirlineReservationSystem.view;
 
-import ec.espe.edu.AirlineReservationSystem.controller.FlightController;
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
-import ec.espe.edu.AirlineReservationSystem.model.Flight;
 import ec.espe.edu.AirlineReservationSystem.model.Ticket;
 import ec.espe.edu.AirlineReservationSystem.view.PayMethod;
 import java.awt.Color;
-import java.awt.HeadlessException;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -27,9 +23,11 @@ public class FrmTicket extends javax.swing.JFrame {
     public FrmTicket() {
         initComponents();
     }
-public JPanel GetBgTicket (){
-    return jPanel1;
-}
+
+    public JPanel GetBgTicket() {
+        return jPanel1;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -192,64 +190,65 @@ public JPanel GetBgTicket (){
     }//GEN-LAST:event_buyBtnMouseExited
 
     private void buyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyBtnActionPerformed
-      
-try {
-        int ticketNumber = (int) ticketsNumberSpn.getValue();
-        String customerName = userNameTxt.getText().trim();
-        String flightId = flightIdTxt.getText().trim();
-        String ticketClass = classBox.getSelectedItem().toString().trim();
 
-        if (ticketNumber == 0 || customerName.isEmpty() || flightId.isEmpty() || ticketClass.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
+        try {
+            int ticketNumber = (int) ticketsNumberSpn.getValue();
+            String customerName = userNameTxt.getText().trim();
+            String flightId = flightIdTxt.getText().trim();
+            String ticketClass = classBox.getSelectedItem().toString().trim();
+
+            if (ticketNumber == 0 || customerName.isEmpty() || flightId.isEmpty() || ticketClass.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (!customerName.matches("[A-Za-z ]+")) {
+                JOptionPane.showMessageDialog(this, "El nombre solo puede contener letras y espacios.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (!flightId.matches("\\d+")) {
+                JOptionPane.showMessageDialog(this, "El ID del vuelo solo puede contener dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Ticket ticket = new Ticket(ticketNumber, customerName, Integer.parseInt(flightId), ticketClass);
+
+            TicketController ticketController = new TicketController();
+            String ticketId = ticketController.saveTicket(ticket);
+
+            if (ticketId != null) {
+                JOptionPane.showMessageDialog(this,
+                        "<html><body style='width: 300px;'>"
+                        + "<p style='font-size: 14px;'>Ha reservado con exito su/s Ticket/s.</p>"
+                        + "<p style='font-size: 14px;'>El ID de su boleto es: <strong>" + ticketId + "</strong></p>"
+                        + "<p style='font-size: 14px;'>Por favor, proceda con el pago.</p>"
+                        + "</body></html>",
+                        "Éxito",
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                PayMethod payMethodDialog = new PayMethod();
+
+                payMethodDialog.setLocationRelativeTo(null);
+                payMethodDialog.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al guardar el boleto en la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            clearFields();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Número de boleto o ID de vuelo no válido: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al registrar el ticket: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-
-        if (!customerName.matches("[A-Za-z ]+")) {
-            JOptionPane.showMessageDialog(this, "El nombre solo puede contener letras y espacios.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        if (!flightId.matches("\\d+")) {
-            JOptionPane.showMessageDialog(this, "El ID del vuelo solo puede contener dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        Ticket ticket = new Ticket(ticketNumber, customerName, Integer.parseInt(flightId), ticketClass);
-        
-        TicketController ticketController = new TicketController();
-        String ticketId = ticketController.saveTicket(ticket);
-        
-        if (ticketId != null) {
-           JOptionPane.showMessageDialog(this,
-    "<html><body style='width: 300px;'>"
-    + "<p style='font-size: 14px;'>Ha reservado con exito su/s Ticket/s.</p>"
-    + "<p style='font-size: 14px;'>El ID de su boleto es: <strong>" + ticketId + "</strong></p>"
-    + "<p style='font-size: 14px;'>Por favor, proceda con el pago.</p>"
-    + "</body></html>",
-    "Éxito",
-    JOptionPane.INFORMATION_MESSAGE);
-            
-            PayMethod payMethodDialog = new PayMethod();
-       
-        payMethodDialog.setLocationRelativeTo(null); 
-        payMethodDialog.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Error al guardar el boleto en la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        clearFields();
-
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Número de boleto o ID de vuelo no válido: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error al registrar el ticket: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
+
     private void clearFields() {
-    ticketsNumberSpn.setValue(0);
-    userNameTxt.setText("");
-    flightIdTxt.setText("");
-    classBox.setSelectedIndex(0);
+        ticketsNumberSpn.setValue(0);
+        userNameTxt.setText("");
+        flightIdTxt.setText("");
+        classBox.setSelectedIndex(0);
 
     }//GEN-LAST:event_buyBtnActionPerformed
 

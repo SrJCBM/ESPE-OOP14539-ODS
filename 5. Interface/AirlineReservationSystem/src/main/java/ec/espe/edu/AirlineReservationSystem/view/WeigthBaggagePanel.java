@@ -4,10 +4,8 @@
  */
 package ec.espe.edu.AirlineReservationSystem.view;
 
-import static com.mongodb.client.model.Filters.type;
 import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
-import ec.espe.edu.AirlineReservationSystem.model.Baggage;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -16,24 +14,20 @@ import javax.swing.SwingUtilities;
  * @author Joffre
  */
 public class WeigthBaggagePanel extends javax.swing.JPanel {
-private String baggageType;
+
+    private String baggageType;
+
     /**
      * Creates new form WeigthBaggagePanel
      */
     public WeigthBaggagePanel(String baggageType) {
-        
- this.baggageType = baggageType;
- 
+
+        this.baggageType = baggageType;
+
         initComponents();
-        
-        
+
     }
 
-    
-      
-        
-        
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -133,37 +127,36 @@ private String baggageType;
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConfirmBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmBtonActionPerformed
-  try {
-        int weightValue = weigth.getValue();
-           
-        if (weightValue <= 0) {
-            JOptionPane.showMessageDialog(this, "El peso debe ser mayor que 0.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-      
-         int ticketId = BaggageController.getTicketId();
+        try {
+            int weightValue = weigth.getValue();
+
+            if (weightValue <= 0) {
+                JOptionPane.showMessageDialog(this, "El peso debe ser mayor que 0.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            int ticketId = BaggageController.getTicketId();
             TicketController ticketController = new TicketController();
             ticketController.updateTicketWithBaggage(ticketId, baggageType, weightValue);
-        
-        JOptionPane.showMessageDialog(this, "Peso confirmado: " + weightValue + " kilogramos", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-        
-        
-        JOptionPane.showMessageDialog(this, "El equipaje se ha añadido a su Ticket!", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-         JOptionPane.showMessageDialog(this,
-    "<html><body style='width: 300px;'>"
-    + "<p style='font-size: 14px;'>Por favor, proceda con el pago.</p>"
-    + "</body></html>",
-    "Éxito", 
-    JOptionPane.INFORMATION_MESSAGE);
-            
-            PayMethod payMethodDialog = new PayMethod();
-       
-        payMethodDialog.setLocationRelativeTo(null); 
-        payMethodDialog.setVisible(true);
 
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
+            JOptionPane.showMessageDialog(this, "Peso confirmado: " + weightValue + " kilogramos", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+
+            JOptionPane.showMessageDialog(this, "El equipaje se ha añadido a su Ticket!", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this,
+                    "<html><body style='width: 300px;'>"
+                    + "<p style='font-size: 14px;'>Por favor, proceda con el pago.</p>"
+                    + "</body></html>",
+                    "Éxito",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+            PayMethod payMethodDialog = new PayMethod();
+
+            payMethodDialog.setLocationRelativeTo(null);
+            payMethodDialog.setVisible(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         SwingUtilities.getWindowAncestor(this).dispose();
     }//GEN-LAST:event_ConfirmBtonActionPerformed

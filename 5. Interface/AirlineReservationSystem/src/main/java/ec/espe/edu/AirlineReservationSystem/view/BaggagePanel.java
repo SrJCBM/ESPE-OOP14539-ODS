@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
-import ec.espe.edu.AirlineReservationSystem.model.Baggage;
-import ec.espe.edu.AirlineReservationSystem.view.IdTicket;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,7 +9,6 @@ import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,7 +22,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
-import javax.swing.border.EmptyBorder;
 import org.bson.Document;
 
 /**
@@ -37,129 +29,121 @@ import org.bson.Document;
  * @author Joffre
  */
 public class BaggagePanel extends javax.swing.JPanel {
-private String baggageType;    
+
+    private String baggageType;
 
     /**
      * Creates new form BaggagePanel
      */
     public BaggagePanel() {
         initComponents();
-        
-    CheckedBton.setEnabled(false);
-    CleanBaggageBton.setEnabled(false);
-    CarryOnBton.setEnabled(false);
-     ButtonManager.setButtons(CheckedBton, CleanBaggageBton, CarryOnBton);
+
+        CheckedBton.setEnabled(false);
+        CleanBaggageBton.setEnabled(false);
+        CarryOnBton.setEnabled(false);
+        ButtonManager.setButtons(CheckedBton, CleanBaggageBton, CarryOnBton);
     }
-    
+
     public class ButtonManager {
 
-    private static javax.swing.JButton checkedBton;
-    private static javax.swing.JButton cleanBaggageBton;
-    private static javax.swing.JButton carryOnBton;
+        private static javax.swing.JButton checkedBton;
+        private static javax.swing.JButton cleanBaggageBton;
+        private static javax.swing.JButton carryOnBton;
 
-    public static void setButtons(javax.swing.JButton checkedBton, javax.swing.JButton cleanBaggageBton, javax.swing.JButton carryOnBton) {
-        ButtonManager.checkedBton = checkedBton;
-        ButtonManager.cleanBaggageBton = cleanBaggageBton;
-        ButtonManager.carryOnBton = carryOnBton;
-    }
+        public static void setButtons(javax.swing.JButton checkedBton, javax.swing.JButton cleanBaggageBton, javax.swing.JButton carryOnBton) {
+            ButtonManager.checkedBton = checkedBton;
+            ButtonManager.cleanBaggageBton = cleanBaggageBton;
+            ButtonManager.carryOnBton = carryOnBton;
+        }
 
-    public static void enableButtons(boolean enable) {
-        if (checkedBton != null && cleanBaggageBton != null && carryOnBton != null) {
-            checkedBton.setEnabled(enable);
-            cleanBaggageBton.setEnabled(enable);
-            carryOnBton.setEnabled(enable);
+        public static void enableButtons(boolean enable) {
+            if (checkedBton != null && cleanBaggageBton != null && carryOnBton != null) {
+                checkedBton.setEnabled(enable);
+                cleanBaggageBton.setEnabled(enable);
+                carryOnBton.setEnabled(enable);
+            }
         }
     }
-}
-  private void mostrarPanelEliminacion() {
-    JPanel panel = new JPanel();
-    panel.setLayout(new GridBagLayout()); 
-    GridBagConstraints gbc = new GridBagConstraints();
-    gbc.insets = new Insets(10, 10, 10, 10); 
-    gbc.anchor = GridBagConstraints.CENTER; 
 
-   
-    int ticketId = BaggageController.getTicketId();
+    private void mostrarPanelEliminacion() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.anchor = GridBagConstraints.CENTER;
 
+        int ticketId = BaggageController.getTicketId();
 
-    TicketController controlador = new TicketController();
-    
-    
-    Document ticket = controlador.findTicket(ticketId);
+        TicketController controlador = new TicketController();
 
-    if (ticket == null) {
-        JOptionPane.showMessageDialog(null, "No se encontró el ticket con ID: " + ticketId, "Error", JOptionPane.ERROR_MESSAGE);
-        return;
+        Document ticket = controlador.findTicket(ticketId);
+
+        if (ticket == null) {
+            JOptionPane.showMessageDialog(null, "No se encontró el ticket con ID: " + ticketId, "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        List<Document> equipajes = (List<Document>) ticket.get("Equipaje");
+
+        if (equipajes == null || equipajes.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No se encontró equipaje para el ticket con ID: " + ticketId, "Información", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        int row = 0;
+        for (Document equipaje : equipajes) {
+            String baggageId = equipaje.getString("Baggage ID");
+            String baggageType = equipaje.getString("Baggage Type");
+            int baggageWeight = equipaje.getInteger("Baggage Size");
+
+            JPanel itemPanel = new JPanel();
+            itemPanel.setLayout(new BorderLayout());
+            itemPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+            itemPanel.setBackground(Color.WHITE);
+
+            JLabel etiquetaEquipaje = new JLabel(String.format("<html><b>%s</b><br>Tipo: %s<br>Peso: %d kg</html>", baggageId, baggageType, baggageWeight));
+            etiquetaEquipaje.setFont(new Font("Arial", Font.BOLD, 14));
+
+            JButton botonEliminar = new JButton("Eliminar");
+            botonEliminar.setFont(new Font("Arial", Font.BOLD, 10));
+            botonEliminar.setBackground(Color.RED);
+            botonEliminar.setForeground(Color.WHITE);
+            botonEliminar.setOpaque(true);
+            botonEliminar.setPreferredSize(new Dimension(100, 25));
+
+            itemPanel.add(etiquetaEquipaje, BorderLayout.CENTER);
+            itemPanel.add(botonEliminar, BorderLayout.EAST);
+
+            gbc.gridy = row;
+            panel.add(itemPanel, gbc);
+            row++;
+
+            botonEliminar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    eliminarEquipaje(baggageId, (JDialog) SwingUtilities.getWindowAncestor(botonEliminar));
+                }
+            });
+        }
+
+        JDialog dialog = new JDialog((Frame) null, "Eliminar Equipaje", true);
+        dialog.setLayout(new BorderLayout());
+        dialog.add(new JScrollPane(panel), BorderLayout.CENTER);
+        dialog.setSize(500, 500);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
     }
 
- 
-    List<Document> equipajes = (List<Document>) ticket.get("Equipaje");
+    private void eliminarEquipaje(String baggageId, JDialog dialog) {
+        int ticketId = BaggageController.getTicketId();
+        TicketController controlador = new TicketController();
+        controlador.removeBaggage(ticketId, baggageId);
 
-    if (equipajes == null || equipajes.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "No se encontró equipaje para el ticket con ID: " + ticketId, "Información", JOptionPane.INFORMATION_MESSAGE);
-        return;
+        JOptionPane.showMessageDialog(null, baggageId + " eliminado exitosamente.", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, " La devolucion del pago se ha reflejado a su cuenta.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+
+        dialog.dispose();
     }
-
-  
-    int row = 0;
-    for (Document equipaje : equipajes) {
-        String baggageId = equipaje.getString("Baggage ID");
-        String baggageType = equipaje.getString("Baggage Type");
-        int baggageWeight = equipaje.getInteger("Baggage Size");
-
-        JPanel itemPanel = new JPanel();
-        itemPanel.setLayout(new BorderLayout());
-        itemPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
-        itemPanel.setBackground(Color.WHITE); 
-
-        JLabel etiquetaEquipaje = new JLabel(String.format("<html><b>%s</b><br>Tipo: %s<br>Peso: %d kg</html>", baggageId, baggageType, baggageWeight));
-        etiquetaEquipaje.setFont(new Font("Arial", Font.BOLD, 14)); 
-
-        JButton botonEliminar = new JButton("Eliminar");
-        botonEliminar.setFont(new Font("Arial", Font.BOLD, 10)); 
-        botonEliminar.setBackground(Color.RED); 
-        botonEliminar.setForeground(Color.WHITE); 
-        botonEliminar.setOpaque(true); 
-        botonEliminar.setPreferredSize(new Dimension(100, 25)); 
-
-        itemPanel.add(etiquetaEquipaje, BorderLayout.CENTER);
-        itemPanel.add(botonEliminar, BorderLayout.EAST);
-
-        gbc.gridy = row;
-        panel.add(itemPanel, gbc);
-        row++;
-
-        botonEliminar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                eliminarEquipaje(baggageId, (JDialog) SwingUtilities.getWindowAncestor(botonEliminar));
-            }
-        });
-    }
-
-
-    JDialog dialog = new JDialog((Frame) null, "Eliminar Equipaje", true);
-    dialog.setLayout(new BorderLayout());
-    dialog.add(new JScrollPane(panel), BorderLayout.CENTER); 
-    dialog.setSize(500, 500); 
-    dialog.setLocationRelativeTo(null); 
-    dialog.setVisible(true);
-}
-  
-private void eliminarEquipaje(String baggageId, JDialog dialog) {
-    int ticketId = BaggageController.getTicketId();
-    TicketController controlador = new TicketController();
-    controlador.removeBaggage(ticketId, baggageId);
-
-
-    JOptionPane.showMessageDialog(null, baggageId + " eliminado exitosamente.", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-    JOptionPane.showMessageDialog(null, " La devolucion del pago se ha reflejado a su cuenta.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
-
-    
-    dialog.dispose();
-}
-
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -337,112 +321,91 @@ private void eliminarEquipaje(String baggageId, JDialog dialog) {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TicketBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TicketBtonActionPerformed
-    JFrame newFrame = new JFrame("Id Ticket");
-    newFrame.setResizable(false);
-    newFrame.setSize(700, 500);
-    newFrame.setLocationRelativeTo(null);
-    newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    
-    
-    IdTicket idTicketPanel = new IdTicket();
-    newFrame.add(idTicketPanel);
-    
-    
-    
-    newFrame.setVisible(true);
+        JFrame newFrame = new JFrame("Id Ticket");
+        newFrame.setResizable(false);
+        newFrame.setSize(700, 500);
+        newFrame.setLocationRelativeTo(null);
+        newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        IdTicket idTicketPanel = new IdTicket();
+        newFrame.add(idTicketPanel);
+
+        newFrame.setVisible(true);
 
     }//GEN-LAST:event_TicketBtonActionPerformed
 
     private void CarryOnBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarryOnBtonActionPerformed
 
-                                            
-   String baggageType = "Carry On";
-    
-    
-    TicketController controller = new TicketController();
-    
-    
-    int ticketId = BaggageController.getTicketId();
-    
-   
-    int baggageCount = controller.getBaggageCount(ticketId);
-    
-    if (baggageCount >= 2) {
-        
-        JOptionPane.showMessageDialog(this, 
-            "No se pueden añadir más maletas. Ya se han añadido 2 maletas.", 
-            "Límite Alcanzado", 
-            JOptionPane.INFORMATION_MESSAGE);
-        return;
-    }
-    
-  
-    JFrame newFrame = new JFrame("WeightBaggagePanel");
-    newFrame.setResizable(false);
-    newFrame.setSize(700, 500);
-    newFrame.setLocationRelativeTo(null);
-    newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    
-    
-    WeigthBaggagePanel weightPanel = new WeigthBaggagePanel(baggageType);
-    
-  
-    newFrame.add(weightPanel);
-    
-    
-    newFrame.setVisible(true);
+        String baggageType = "Carry On";
+
+        TicketController controller = new TicketController();
+
+        int ticketId = BaggageController.getTicketId();
+
+        int baggageCount = controller.getBaggageCount(ticketId);
+
+        if (baggageCount >= 2) {
+
+            JOptionPane.showMessageDialog(this,
+                    "No se pueden añadir más maletas. Ya se han añadido 2 maletas.",
+                    "Límite Alcanzado",
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        JFrame newFrame = new JFrame("WeightBaggagePanel");
+        newFrame.setResizable(false);
+        newFrame.setSize(700, 500);
+        newFrame.setLocationRelativeTo(null);
+        newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        WeigthBaggagePanel weightPanel = new WeigthBaggagePanel(baggageType);
+
+        newFrame.add(weightPanel);
+
+        newFrame.setVisible(true);
 
 
-       
-    
     }//GEN-LAST:event_CarryOnBtonActionPerformed
 
     private void CheckedBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckedBtonActionPerformed
-       
-         String baggageType = "Checked";
-    
-    
-    TicketController controller = new TicketController();
-    
-    
-    int ticketId = BaggageController.getTicketId();
-    
-   
-    int baggageCount = controller.getBaggageCount(ticketId);
-    
-    if (baggageCount >= 2) {
-        
-        JOptionPane.showMessageDialog(this, 
-            "No se pueden añadir más maletas. Ya se han añadido 2 maletas.", 
-            "Límite Alcanzado", 
-            JOptionPane.INFORMATION_MESSAGE);
-        return;
-    }
-    
-  
-    JFrame newFrame = new JFrame("WeightBaggagePanel");
-    newFrame.setResizable(false);
-    newFrame.setSize(700, 500);
-    newFrame.setLocationRelativeTo(null);
-    newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    
-    
-    WeigthBaggagePanel weightPanel = new WeigthBaggagePanel(baggageType);
-    
-  
-    newFrame.add(weightPanel);
-    
-    
-    newFrame.setVisible(true);
 
-    
-    
+        String baggageType = "Checked";
+
+        TicketController controller = new TicketController();
+
+        int ticketId = BaggageController.getTicketId();
+
+        int baggageCount = controller.getBaggageCount(ticketId);
+
+        if (baggageCount >= 2) {
+
+            JOptionPane.showMessageDialog(this,
+                    "No se pueden añadir más maletas. Ya se han añadido 2 maletas.",
+                    "Límite Alcanzado",
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        JFrame newFrame = new JFrame("WeightBaggagePanel");
+        newFrame.setResizable(false);
+        newFrame.setSize(700, 500);
+        newFrame.setLocationRelativeTo(null);
+        newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        WeigthBaggagePanel weightPanel = new WeigthBaggagePanel(baggageType);
+
+        newFrame.add(weightPanel);
+
+        newFrame.setVisible(true);
+
+
     }//GEN-LAST:event_CheckedBtonActionPerformed
 
     private void CleanBaggageBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleanBaggageBtonActionPerformed
-  
-    mostrarPanelEliminacion();
-        
+
+        mostrarPanelEliminacion();
+
     }//GEN-LAST:event_CleanBaggageBtonActionPerformed
 
 

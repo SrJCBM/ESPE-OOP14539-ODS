@@ -135,7 +135,7 @@ public class AdministratorPanel extends javax.swing.JPanel {
         FrmAdTickets frmAddTickets = new FrmAdTickets();
 
         frmAddTickets.setSize(920, 500);
-        frmAddTickets.setLocationRelativeTo(null); 
+        frmAddTickets.setLocationRelativeTo(null);
         this.setVisible(false);
         frmAddTickets.setVisible(true);
 
@@ -151,7 +151,7 @@ public class AdministratorPanel extends javax.swing.JPanel {
     private void addFlightsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFlightsActionPerformed
         FrmAdFlights frmAdd = new FrmAdFlights();
         frmAdd.setSize(920, 600);
-        frmAdd.setLocationRelativeTo(null); 
+        frmAdd.setLocationRelativeTo(null);
         this.setVisible(false);
         frmAdd.setVisible(true);
 

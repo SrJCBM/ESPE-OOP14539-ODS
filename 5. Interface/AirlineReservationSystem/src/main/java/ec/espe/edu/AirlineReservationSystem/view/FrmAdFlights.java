@@ -29,6 +29,7 @@ import org.bson.Document;
  * @author Kerlly Chiriboga, ODS
  */
 public class FrmAdFlights extends javax.swing.JFrame {
+
     public FrmAdFlights() {
         initComponents();
         populateFlightsTable();
@@ -37,7 +38,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
     }
 
     public JPanel getFlightsPanel() {
-        return Background; 
+        return Background;
     }
 
     private void populateFlightsTable() {
@@ -50,7 +51,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for (Document flight : flights) {
             if (flight != null && flight.size() > 0) {
-                Object[] row = new Object[7]; 
+                Object[] row = new Object[7];
                 row[0] = flight.getString("flightID");
                 row[1] = flight.getString("airline");
                 row[2] = flight.getString("origin");
@@ -146,6 +147,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
     }
 
     class ButtonRenderer extends JPanel implements TableCellRenderer {
+
         public ButtonRenderer() {
             setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
         }
@@ -161,6 +163,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
     }
 
     class ButtonEditor extends DefaultCellEditor {
+
         private JPanel panel;
 
         public ButtonEditor(JCheckBox checkBox) {

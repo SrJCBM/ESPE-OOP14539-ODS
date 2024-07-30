@@ -1,11 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ec.espe.edu.AirlineReservationSystem.view;
 
-import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
-import ec.espe.edu.AirlineReservationSystem.model.Ticket;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,15 +8,13 @@ import javax.swing.JOptionPane;
  */
 public class PayMethod extends javax.swing.JFrame {
 
-;
+    
 
     public PayMethod() {
-     
-        initComponents(); 
+
+        initComponents();
     }
-    
-        
-     
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,16 +145,15 @@ public class PayMethod extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                                              
 
-  if (BCredit.isSelected() || BDebit.isSelected() || BPaypal.isSelected()) {
-    
-    JOptionPane.showMessageDialog(this, "El pago se realizó con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-     this.dispose();
-} else {
-    
-    JOptionPane.showMessageDialog(this, "Por favor, seleccione un método de pago.", "Error", JOptionPane.ERROR_MESSAGE);
-}
+        if (BCredit.isSelected() || BDebit.isSelected() || BPaypal.isSelected()) {
+
+            JOptionPane.showMessageDialog(this, "El pago se realizó con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un método de pago.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BDebitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDebitActionPerformed
@@ -204,7 +195,7 @@ public class PayMethod extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PayMethod().setVisible(true);
-                
+
             }
         });
     }
