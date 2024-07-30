@@ -1,4 +1,5 @@
 package ec.espe.edu.AirlineReservationSystem.controller;
+
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -12,8 +13,6 @@ import ec.espe.edu.AirlineReservationSystem.model.Flight;
  *
  * @author Kerlly Chiriboga, ODS
  */
-
-
 public class FlightController {
 
     private MongoClient mongoClient;

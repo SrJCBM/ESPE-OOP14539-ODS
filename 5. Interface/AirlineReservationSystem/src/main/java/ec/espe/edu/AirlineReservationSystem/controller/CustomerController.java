@@ -11,6 +11,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import ec.espe.edu.AirlineReservationSystem.model.Customer;
+import ec.espe.edu.AirlineReservationSystem.utils.EncryptionUtil;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.apache.logging.log4j.LogManager;
@@ -19,8 +20,6 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-
-
 
 /**
  *
@@ -76,12 +75,14 @@ public class CustomerController {
     private static void saveCustomerToDatabase(Customer customer, MongoDatabase database) {
         MongoCollection<Document> collection = database.getCollection("customers");
 
+        String encryptedPassword = EncryptionUtil.encryptPassword(customer.getPassword());
+
         Document customerDocument = new Document("id", customer.getIdDocument())
                 .append("name", customer.getName())
                 .append("email", customer.getEmail())
                 .append("phoneNumber", customer.getPhoneNumber())
                 .append("userName", customer.getUsername())
-                .append("password", customer.getPassword())
+                .append("password", encryptedPassword)
                 .append("city", customer.getCity())
                 .append("state", customer.getState())
                 .append("postalCode", customer.getPostalCode())
@@ -101,14 +102,18 @@ public class CustomerController {
             MongoDatabase database = mongoClient.getDatabase("CustomerDatabase");
             MongoCollection<Document> collection = database.getCollection("customers");
 
-            Bson filter = Filters.and(
-                    Filters.eq("userName", username),
-                    Filters.eq("password", password)
-            );
+            Bson filter = Filters.eq("userName", username);
 
             Document customerDocument = collection.find(filter).first();
 
-            return customerDocument != null;
+            if (customerDocument != null) {
+                String encryptedPassword = customerDocument.getString("password");
+                String decryptedPassword = EncryptionUtil.decryptPassword(encryptedPassword);
+
+                return decryptedPassword.equals(password);
+            } else {
+                return false;
+            }
         } catch (Exception e) {
             logger.error("Error authenticating customer: ", e);
             return false;

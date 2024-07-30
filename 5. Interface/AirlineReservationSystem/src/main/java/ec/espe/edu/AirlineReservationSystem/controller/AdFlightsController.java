@@ -21,16 +21,16 @@ import java.util.List;
  *
  * @author Kerlly Chiriboga, ODS
  */
-
 public class AdFlightsController {
+
     private MongoClient mongoClient;
     private MongoDatabase database;
     private MongoCollection<Document> flightsCollection;
 
     public AdFlightsController() {
         mongoClient = MongoClients.create("mongodb+srv://overnightdevelopersquad:Iq9R4i2czmCFcGBk@airlinedb.wbmwsfn.mongodb.net/");
-        database = mongoClient.getDatabase("FlightDataBase"); 
-        flightsCollection = database.getCollection("flights"); 
+        database = mongoClient.getDatabase("FlightDataBase");
+        flightsCollection = database.getCollection("flights");
     }
 
     public List<Document> getFlights() {
@@ -43,16 +43,16 @@ public class AdFlightsController {
         }
         return flightsList;
     }
-    
+
     public boolean updateFlight(String flightID, String newAirline, String newOrigin, String newDestination, Date newDepartureDate, Date newArrivalDate) {
         try {
             Document query = new Document("flightID", flightID);
             Document update = new Document("$set", new Document("airline", newAirline)
-                .append("origin", newOrigin)
-                .append("destination", newDestination)
-                .append("departureDate", newDepartureDate)
-                .append("arrivalDate", newArrivalDate));
-                
+                    .append("origin", newOrigin)
+                    .append("destination", newDestination)
+                    .append("departureDate", newDepartureDate)
+                    .append("arrivalDate", newArrivalDate));
+
             UpdateResult result = flightsCollection.updateOne(query, update);
             return result.getModifiedCount() > 0;
         } catch (Exception e) {
@@ -71,7 +71,7 @@ public class AdFlightsController {
             return false;
         }
     }
-    
+
     public void close() {
         if (mongoClient != null) {
             mongoClient.close();

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ec.espe.edu.AirlineReservationSystem.model;
 
 /**
@@ -9,7 +5,7 @@ package ec.espe.edu.AirlineReservationSystem.model;
  * @author Joffre
  */
 public class Baggage {
-   
+
     private int weight;
     private String type;
 
@@ -18,7 +14,6 @@ public class Baggage {
         this.type = type;
     }
 
-    
     public int getWeight() {
         return weight;
     }
@@ -35,7 +30,6 @@ public class Baggage {
         this.type = type;
     }
 
-   
     public Baggage(int weight) {
         this.weight = weight;
         this.type = null;
@@ -45,8 +39,5 @@ public class Baggage {
     public String toString() {
         return "Baggage{" + "weight=" + weight + ", type=" + type + '}';
     }
-    
-    
+
 }
-   
-  

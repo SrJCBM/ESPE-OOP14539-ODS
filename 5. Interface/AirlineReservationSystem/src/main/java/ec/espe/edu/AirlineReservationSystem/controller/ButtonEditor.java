@@ -1,9 +1,6 @@
 package ec.espe.edu.AirlineReservationSystem.controller;
 
-import ec.espe.edu.AirlineReservationSystem.controller.AdTicketsController;
 import javax.swing.*;
-import javax.swing.table.*;
-import javax.swing.table.TableCellEditor;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +10,6 @@ import javax.swing.table.DefaultTableModel;
  *
  * Author: Kerlly Chiriboga, ODS
  */
-
 public class ButtonEditor extends DefaultCellEditor {
 
     private JButton btnUpdate;

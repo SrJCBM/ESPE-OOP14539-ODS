@@ -7,6 +7,7 @@ import java.util.Date;
  * @author Julio Blacio, Overnight Developers Squad, DCCO-ESPE
  */
 public class Customer {
+
     private String idDocument;
     private String name;
     private String email;
@@ -33,8 +34,6 @@ public class Customer {
         this.gender = gender;
     }
 
-    
-    
     /**
      * @return the idDocument
      */
@@ -188,7 +187,5 @@ public class Customer {
     public void setGender(String gender) {
         this.gender = gender;
     }
-
-
 
 }

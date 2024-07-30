@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ec.espe.edu.AirlineReservationSystem.controller;
 
 import com.mongodb.client.MongoClient;
@@ -81,11 +77,11 @@ public class TicketController {
                 int flightId = ticket.getInteger("Id Flight");
                 String ticketClass = ticket.getString("Ticket Class");
 
-                return "<html>Cliente Encontrado <br><br>" +
-                        "Nombre del Cliente: " + customerName +
-                        "<br><br>ID del Vuelo: " + flightId +
-                        "<br><br>Clase: " + ticketClass +
-                        "<br><br>Por favor, estimado cliente, revise que sus datos sean correctos.</html>";
+                return "<html>Cliente Encontrado <br><br>"
+                        + "Nombre del Cliente: " + customerName
+                        + "<br><br>ID del Vuelo: " + flightId
+                        + "<br><br>Clase: " + ticketClass
+                        + "<br><br>Por favor, estimado cliente, revise que sus datos sean correctos.</html>";
             } else {
                 return "<html>No se encontró el ticket con ID: " + ticketId + "</html>";
             }
@@ -132,28 +128,28 @@ public class TicketController {
         }
     }
 
-  public void removeBaggage(int ticketId, String baggageId) {
-    try {
-        // Filtrar por Ticket ID
-        Document filter = new Document("Ticket ID", ticketId);
-        
-        // Actualizar para eliminar el equipaje con el Baggage ID proporcionado
-        Document update = new Document("$pull", new Document("Equipaje", new Document("Baggage ID", baggageId)));
+    public void removeBaggage(int ticketId, String baggageId) {
+        try {
+            // Filtrar por Ticket ID
+            Document filter = new Document("Ticket ID", ticketId);
 
-        // Ejecutar la actualización
-        UpdateResult result = ticketCollection.updateOne(filter, update);
+            // Actualizar para eliminar el equipaje con el Baggage ID proporcionado
+            Document update = new Document("$pull", new Document("Equipaje", new Document("Baggage ID", baggageId)));
 
-        // Verificar si se modificó algún documento
-        if (result.getModifiedCount() > 0) {
-            System.out.println("Equipaje eliminado exitosamente.");
-        } else {
-            System.out.println("No se encontró equipaje para eliminar.");
+            // Ejecutar la actualización
+            UpdateResult result = ticketCollection.updateOne(filter, update);
+
+            // Verificar si se modificó algún documento
+            if (result.getModifiedCount() > 0) {
+                System.out.println("Equipaje eliminado exitosamente.");
+            } else {
+                System.out.println("No se encontró equipaje para eliminar.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al eliminar el equipaje: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    } catch (Exception e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error al eliminar el equipaje: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
 
     public int getBaggageCount(int ticketId) {
         try {
@@ -170,14 +166,15 @@ public class TicketController {
             return 0;
         }
     }
+
     public Document findTicket(int ticketId) {
-    MongoCollection<Document> ticketCollection = database.getCollection("tickets");
-    Document filter = new Document("Ticket ID", ticketId);
-    Document ticket = ticketCollection.find(filter).first();
-    return ticket;
-}
-    
-        public int calculateTicketCost(String ticketClass, int ticketNumber) {
+        MongoCollection<Document> ticketCollection = database.getCollection("tickets");
+        Document filter = new Document("Ticket ID", ticketId);
+        Document ticket = ticketCollection.find(filter).first();
+        return ticket;
+    }
+
+    public int calculateTicketCost(String ticketClass, int ticketNumber) {
         if (ticketClass == null || ticketClass.isEmpty()) {
             throw new IllegalArgumentException("La clase de ticket no puede ser nula o vacía.");
         }
@@ -200,9 +197,3 @@ public class TicketController {
         return ticketCost * ticketNumber;
     }
 }
-
-
-
-
-
-
