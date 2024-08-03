@@ -1,17 +1,13 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.AdTicketsController;
+import ec.espe.edu.AirlineReservationSystem.controller.PrintoutController;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
@@ -192,6 +188,7 @@ public class FrmAdTickets extends javax.swing.JFrame {
         TicketsTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        btnPrintTickets = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -246,6 +243,19 @@ public class FrmAdTickets extends javax.swing.JFrame {
         jLabel5.setText("(R) Overnight Developer Squad");
         Background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, -1, -1));
 
+        btnPrintTickets.setText("Print All Tickets");
+        btnPrintTickets.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPrintTicketsMouseClicked(evt);
+            }
+        });
+        btnPrintTickets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintTicketsActionPerformed(evt);
+            }
+        });
+        Background.add(btnPrintTickets, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -259,6 +269,26 @@ public class FrmAdTickets extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPrintTicketsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintTicketsMouseClicked
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar PDF");
+        int userSelection = fileChooser.showSaveDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            if (!filePath.endsWith(".pdf")) {
+                filePath += ".pdf";
+            }
+            List<Document> tickets = ticketController.getTickets();
+            PrintoutController printoutcontroller = new PrintoutController();
+            printoutcontroller.createPdf(filePath, tickets);
+        }
+    }//GEN-LAST:event_btnPrintTicketsMouseClicked
+
+    private void btnPrintTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintTicketsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPrintTicketsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,6 +331,7 @@ public class FrmAdTickets extends javax.swing.JFrame {
     private javax.swing.JLabel Imagelogotxt;
     private javax.swing.JTable TicketsTable;
     private javax.swing.JLabel arstxt;
+    private javax.swing.JButton btnPrintTickets;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
