@@ -2,6 +2,7 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.AdUsuariosController;
+import ec.espe.edu.AirlineReservationSystem.controller.PrintoutUsuariosController;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,7 @@ import java.util.List;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -80,9 +82,9 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
                     String newDateOfBirthStr = JOptionPane.showInputDialog(null, "Ingrese la nueva fecha de nacimiento (yyyy-MM-dd):", row[7]);
                     String newGender = JOptionPane.showInputDialog(null, "Ingrese el nuevo género:", row[8]);
 
-                    if (newName != null && newEmail != null && newPhoneNumber != null &&
-                        newCity != null && newState != null && newPostalCode != null &&
-                        newDateOfBirthStr != null && newGender != null) {
+                    if (newName != null && newEmail != null && newPhoneNumber != null
+                            && newCity != null && newState != null && newPostalCode != null
+                            && newDateOfBirthStr != null && newGender != null) {
                         try {
                             Date newDateOfBirth = new SimpleDateFormat("yyyy-MM-dd").parse(newDateOfBirthStr);
                             boolean success = usuariosController.updateUser(userId, newName, newEmail, newPhoneNumber, newCity, newState, newPostalCode, newDateOfBirth, newGender);
@@ -139,6 +141,7 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
     }
 
     class ButtonRenderer extends JPanel implements TableCellRenderer {
+
         public ButtonRenderer() {
             setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0));
         }
@@ -154,6 +157,7 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
     }
 
     class ButtonEditor extends DefaultCellEditor {
+
         private JPanel panel;
 
         public ButtonEditor(JCheckBox checkBox) {
@@ -182,8 +186,6 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
         }
     }
 
-
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -204,6 +206,7 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
         UsuariosTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        btnPrintoutUsers = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -258,6 +261,19 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
         jLabel5.setText("(R) Overnight Developer Squad");
         Background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 440, -1, -1));
 
+        btnPrintoutUsers.setText("Imprimir ");
+        btnPrintoutUsers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPrintoutUsersMouseClicked(evt);
+            }
+        });
+        btnPrintoutUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintoutUsersActionPerformed(evt);
+            }
+        });
+        Background.add(btnPrintoutUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -271,6 +287,31 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPrintoutUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintoutUsersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPrintoutUsersActionPerformed
+
+    private void btnPrintoutUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintoutUsersMouseClicked
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar PDF");
+        int userSelection = fileChooser.showSaveDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            if (!filePath.endsWith(".pdf")) {
+                filePath += ".pdf";
+            }
+
+            AdUsuariosController adUsuariosController = new AdUsuariosController();
+            List<Document> users = adUsuariosController.getUsuarios();
+
+            PrintoutUsuariosController printoutUsuariosController = new PrintoutUsuariosController();
+            printoutUsuariosController.createPdf(filePath, users);
+
+            adUsuariosController.close();
+        }
+    }//GEN-LAST:event_btnPrintoutUsersMouseClicked
 
     /**
      * @param args the command line arguments
@@ -314,6 +355,7 @@ public class FrmAdUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel Imagelogotxt;
     private javax.swing.JTable UsuariosTable;
     private javax.swing.JLabel arstxt;
+    private javax.swing.JButton btnPrintoutUsers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

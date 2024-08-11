@@ -243,7 +243,7 @@ public class FrmAdTickets extends javax.swing.JFrame {
         jLabel5.setText("(R) Overnight Developer Squad");
         Background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, -1, -1));
 
-        btnPrintTickets.setText("Print All Tickets");
+        btnPrintTickets.setText("Imprimir");
         btnPrintTickets.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPrintTicketsMouseClicked(evt);

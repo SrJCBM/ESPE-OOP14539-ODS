@@ -213,7 +213,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnPrintTickets">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Print All Tickets"/>
+            <Property name="text" type="java.lang.String" value="Imprimir"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnPrintTicketsMouseClicked"/>
