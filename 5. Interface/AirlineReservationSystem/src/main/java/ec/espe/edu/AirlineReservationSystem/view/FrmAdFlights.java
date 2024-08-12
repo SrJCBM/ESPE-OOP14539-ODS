@@ -1,10 +1,14 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.AdFlightsController;
+import ec.espe.edu.AirlineReservationSystem.controller.FlightController;
+import ec.espe.edu.AirlineReservationSystem.controller.PrintoutController;
+import ec.espe.edu.AirlineReservationSystem.controller.PrintoutFlightController;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +16,7 @@ import java.util.List;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -208,6 +213,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
         VuelosTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        PrintFlightsbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -262,6 +268,14 @@ public class FrmAdFlights extends javax.swing.JFrame {
         jLabel5.setText("(R) Overnight Developer Squad");
         Background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 430, -1, -1));
 
+        PrintFlightsbtn.setText("Imprimir");
+        PrintFlightsbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrintFlightsbtnActionPerformed(evt);
+            }
+        });
+        Background.add(PrintFlightsbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -275,6 +289,31 @@ public class FrmAdFlights extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void PrintFlightsbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintFlightsbtnActionPerformed
+                                           
+    JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar PDF");
+        int userSelection = fileChooser.showSaveDialog(this);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            if (!filePath.endsWith(".pdf")) {
+                filePath += ".pdf";
+            }
+
+         
+            AdFlightsController flightController = new AdFlightsController();
+            List<Document> flights = flightController.getFlights();
+
+           
+            PrintoutFlightController printoutController = new PrintoutFlightController();
+            printoutController.createPdf(filePath, flights);
+            JOptionPane.showMessageDialog(this, "PDF generado con éxito.");
+            flightController.close();
+        }
+    
+    }//GEN-LAST:event_PrintFlightsbtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,6 +354,7 @@ public class FrmAdFlights extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
     private javax.swing.JLabel Imagelogotxt;
+    private javax.swing.JButton PrintFlightsbtn;
     private javax.swing.JTable VuelosTable;
     private javax.swing.JLabel arstxt;
     private javax.swing.JLabel jLabel1;
