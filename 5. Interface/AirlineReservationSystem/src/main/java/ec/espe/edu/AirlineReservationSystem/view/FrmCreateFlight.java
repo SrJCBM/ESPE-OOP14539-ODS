@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ec.espe.edu.AirlineReservationSystem.view;
 
-import ec.espe.edu.AirlineReservationSystem.controller.FlightController;
-import ec.espe.edu.AirlineReservationSystem.model.Flight;
+import ec.espe.edu.AirlineReservationSystem.controller.CreateFlightController;
 import java.awt.Color;
-import java.awt.HeadlessException;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -195,32 +189,9 @@ public class FrmCreateFlight extends javax.swing.JFrame {
             String airline = txtAirline.getText();
             Date departureDate = jDateDeparture.getDate();
             Date arrivalDate = jDateArrival.getDate();
-            Date today = new Date();
 
-            if (origin.equals("Ciudad") || destination.equals("Ciudad") || airline.isEmpty() || departureDate == null || arrivalDate == null) {
-                JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (departureDate.before(today)) {
-                JOptionPane.showMessageDialog(this, "La fecha de salida no puede ser anterior a la fecha actual.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (arrivalDate.before(departureDate)) {
-                JOptionPane.showMessageDialog(this, "La fecha de llegada no puede ser anterior a la fecha de salida.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            Flight flight = new Flight();
-            flight.setOrigin(origin);
-            flight.setDestination(destination);
-            flight.setAirline(airline);
-            flight.setDepartureDate(departureDate);
-            flight.setArrivalDate(arrivalDate);
-
-            FlightController flightController = new FlightController();
-            String flightId = flightController.saveFlight(flight);
+            CreateFlightController controller = new CreateFlightController();
+            String flightId = controller.createFlight(origin, destination, airline, departureDate, arrivalDate);
 
             JOptionPane.showMessageDialog(this, "Vuelo creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
 
@@ -230,7 +201,9 @@ public class FrmCreateFlight extends javax.swing.JFrame {
             jDateDeparture.setDate(null);
             jDateArrival.setDate(null);
 
-        } catch (HeadlessException e) {
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ocurrió un error al crear el vuelo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 

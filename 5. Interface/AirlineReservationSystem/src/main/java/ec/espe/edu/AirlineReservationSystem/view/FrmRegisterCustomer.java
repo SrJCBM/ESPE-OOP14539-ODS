@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @Miguel Caiza,Overnight Developers Squad,DCCO-ESPE
+ * @author Julio Blacio,Overnight Developers Squad,DCCO-ESPE
  */
 public class FrmRegisterCustomer extends javax.swing.JFrame {
 
