@@ -1,7 +1,6 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
-import ec.espe.edu.AirlineReservationSystem.controller.CustomerController;
-import ec.espe.edu.AirlineReservationSystem.model.Customer;
+import ec.espe.edu.AirlineReservationSystem.controller.RegisterButtonController;
 import java.awt.Color;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -486,63 +485,20 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
             String postalCode = zipTxt.getText().trim();
             Date dateOfBirth = jDateChooser1.getDate();
             String gender = gendercmb.getSelectedItem().toString();
-            if (idDocument.isEmpty() || name.isEmpty() || lastName.isEmpty() || email.isEmpty() || phoneNumber.isEmpty()
-                    || username.isEmpty() || password.isEmpty() || city.isEmpty() || state.isEmpty() || postalCode.isEmpty()
-                    || dateOfBirth == null || gender.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
 
-            if (!validarCedula(idDocument)) {
-                JOptionPane.showMessageDialog(this, "La cédula ingresada no es válida.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (!name.matches("[A-Za-z]+( [A-Za-z]+)*")) {
-                JOptionPane.showMessageDialog(this, "El nombre solo puede contener letras y un espacio entre palabras.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (!lastName.matches("[A-Za-z]+( [A-Za-z]+)*")) {
-                JOptionPane.showMessageDialog(this, "El apellido solo puede contener letras y un espacio entre palabras.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
-                JOptionPane.showMessageDialog(this, "El correo electrónico no es válido.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (!phoneNumber.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "El número de teléfono solo puede contener dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (!postalCode.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "El código postal solo puede contener dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (username.length() > 10) {
-                JOptionPane.showMessageDialog(this, "El nombre de usuario no puede tener más de 10 caracteres.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (password.length() > 10) {
-                JOptionPane.showMessageDialog(this, "La contraseña no puede tener más de 10 caracteres.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            Customer customer = new Customer(idDocument, name, email, phoneNumber, username, password, city, state, postalCode, dateOfBirth, gender);
-
-            CustomerController.createCustomer(customer);
+            RegisterButtonController controller = new RegisterButtonController();
+            controller.registerCustomer(idDocument, name, lastName, email, phoneNumber, username, password, city, state, postalCode, dateOfBirth, gender);
 
             JOptionPane.showMessageDialog(this, "Cliente registrado exitosamente!");
             clearFields();
 
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al registrar los datos del cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }
+
+    }//GEN-LAST:event_registerButtonActionPerformed
 
     private void clearFields() {
         idDocumentTxt.setText("");
@@ -558,38 +514,6 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
         jDateChooser1.setDate(null);
         gendercmb.setSelectedIndex(0);
     }
-
-    private boolean validarCedula(String cedula) {
-        if (cedula.length() != 10) {
-            return false;
-        }
-
-        int provincia = Integer.parseInt(cedula.substring(0, 2));
-        if (provincia < 1 || provincia > 24) {
-            return false;
-        }
-
-        int tercerDigito = Integer.parseInt(cedula.substring(2, 3));
-        if (tercerDigito < 0 || tercerDigito > 6) {
-            return false;
-        }
-
-        int suma = 0;
-        int[] coeficientes = {2, 1, 2, 1, 2, 1, 2, 1, 2};
-        for (int i = 0; i < 9; i++) {
-            int digito = Integer.parseInt(cedula.substring(i, i + 1));
-            int producto = digito * coeficientes[i];
-            suma += (producto > 9) ? producto - 9 : producto;
-        }
-
-        int ultimoDigito = Integer.parseInt(cedula.substring(9, 10));
-        int decenaSuperior = ((suma + 9) / 10) * 10;
-        int digitoVerificador = decenaSuperior - suma;
-
-        return digitoVerificador == ultimoDigito;
-
-
-    }//GEN-LAST:event_registerButtonActionPerformed
 
     private void seePasswordLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seePasswordLblMouseClicked
         seePasswordLbl.setVisible(false);
