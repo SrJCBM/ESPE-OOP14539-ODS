@@ -13,17 +13,15 @@ import javax.swing.SwingUtilities;
  *
  * @author Joffre
  */
-public class IdTicket extends javax.swing.JPanel { 
+public class IdTicket extends javax.swing.JPanel {
+
     /**
      * Creates new form IdTicket
      */
     public IdTicket() {
         initComponents();
     }
-    
-    
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,54 +122,52 @@ public class IdTicket extends javax.swing.JPanel {
     }//GEN-LAST:event_IdTickettxtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     try {
-    String ticketIdText = IdTickettxt.getText().trim();
-    if (ticketIdText.isEmpty()) {
-        Validaciontxt.setText("ID del ticket no puede estar vacío.");
-        ButtonManager.enableButtons(false);
-        return;
-    }
-    if (!ticketIdText.matches("\\d+")) {
-        Validaciontxt.setText("ID del ticket no válido. Debe ser un número.");
-        ButtonManager.enableButtons(false);
-        return;
-    }
-    int ticketId = Integer.parseInt(ticketIdText);
+        try {
+            String ticketIdText = IdTickettxt.getText().trim();
+            if (ticketIdText.isEmpty()) {
+                Validaciontxt.setText("ID del ticket no puede estar vacío.");
+                ButtonManager.enableButtons(false);
+                return;
+            }
+            if (!ticketIdText.matches("\\d+")) {
+                Validaciontxt.setText("ID del ticket no válido. Debe ser un número.");
+                ButtonManager.enableButtons(false);
+                return;
+            }
+            int ticketId = Integer.parseInt(ticketIdText);
 
-    TicketController ticketController = new TicketController();
-    String result = ticketController.findTicketById(ticketId);
-    Validaciontxt.setText(result);
+            TicketController ticketController = new TicketController();
+            String result = ticketController.findTicketById(ticketId);
+            Validaciontxt.setText(result);
 
-    if (result.contains("Cliente Encontrado")) {
-        BaggageController.setTicketId(ticketId);
-        ButtonManager.enableButtons(true);
-        SwingUtilities.getWindowAncestor(this).dispose();
-    } else {
-        ButtonManager.enableButtons(false);
-    }
-} catch (Exception e) {
-    Validaciontxt.setText("Ocurrió un error inesperado.");
-    e.printStackTrace();
-}
+            if (result.contains("Cliente Encontrado")) {
+                BaggageController.setTicketId(ticketId);
+                ButtonManager.enableButtons(true);
+                SwingUtilities.getWindowAncestor(this).dispose();
+            } else {
+                ButtonManager.enableButtons(false);
+            }
+        } catch (Exception e) {
+            Validaciontxt.setText("Ocurrió un error inesperado.");
+            e.printStackTrace();
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ValidarBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValidarBtonActionPerformed
-String ticketIdStr = IdTickettxt.getText().trim();
-    if (!ticketIdStr.matches("\\d+")) {
-        Validaciontxt.setText("ID del ticket no válido. Debe ser un número.");
-        return;
-    }
+        String ticketIdStr = IdTickettxt.getText().trim();
+        if (!ticketIdStr.matches("\\d+")) {
+            Validaciontxt.setText("ID del ticket no válido. Debe ser un número.");
+            return;
+        }
 
-    int ticketId = Integer.parseInt(ticketIdStr);
+        int ticketId = Integer.parseInt(ticketIdStr);
 
- 
-    TicketController ticketController = new TicketController();
+        TicketController ticketController = new TicketController();
 
-   
- String ticket = ticketController.findTicketById(ticketId);
-    
-    Validaciontxt.setText(ticket);
+        String ticket = ticketController.findTicketById(ticketId);
+
+        Validaciontxt.setText(ticket);
 
     }//GEN-LAST:event_ValidarBtonActionPerformed
 

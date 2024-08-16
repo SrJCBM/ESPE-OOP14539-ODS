@@ -1,6 +1,7 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.RegisterButtonController;
+import ec.espe.edu.AirlineReservationSystem.utils.ClearFields;
 import java.awt.Color;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -490,30 +491,14 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
             controller.registerCustomer(idDocument, name, lastName, email, phoneNumber, username, password, city, state, postalCode, dateOfBirth, gender);
 
             JOptionPane.showMessageDialog(this, "Cliente registrado exitosamente!");
-            clearFields();
 
+            ClearFields.clearFieldsUser(idDocumentTxt, nameTxt, lastNameTxt, emailTxt, phoneTxt, usernameTxt, passwordTxt, cityTxt, stateTxt, zipTxt, jDateChooser1, gendercmb);
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al registrar los datos del cliente: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_registerButtonActionPerformed
-
-    private void clearFields() {
-        idDocumentTxt.setText("");
-        nameTxt.setText("");
-        lastNameTxt.setText("");
-        emailTxt.setText("");
-        phoneTxt.setText("");
-        usernameTxt.setText("");
-        passwordTxt.setText("");
-        cityTxt.setText("");
-        stateTxt.setText("");
-        zipTxt.setText("");
-        jDateChooser1.setDate(null);
-        gendercmb.setSelectedIndex(0);
-    }
 
     private void seePasswordLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seePasswordLblMouseClicked
         seePasswordLbl.setVisible(false);

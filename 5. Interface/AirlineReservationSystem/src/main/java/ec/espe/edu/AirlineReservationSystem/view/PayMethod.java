@@ -8,8 +8,6 @@ import javax.swing.JOptionPane;
  */
 public class PayMethod extends javax.swing.JFrame {
 
-    
-
     public PayMethod() {
 
         initComponents();
@@ -145,7 +143,6 @@ public class PayMethod extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
         if (BCredit.isSelected() || BDebit.isSelected() || BPaypal.isSelected()) {
 
             JOptionPane.showMessageDialog(this, "El pago se realizó con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);

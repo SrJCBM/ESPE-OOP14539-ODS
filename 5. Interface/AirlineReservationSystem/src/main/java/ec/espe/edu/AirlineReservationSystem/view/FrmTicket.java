@@ -6,7 +6,8 @@ package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
 import ec.espe.edu.AirlineReservationSystem.model.Ticket;
-import ec.espe.edu.AirlineReservationSystem.view.PayMethod;
+import ec.espe.edu.AirlineReservationSystem.utils.ClearFields;
+import ec.espe.edu.AirlineReservationSystem.utils.FieldValidator;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -49,7 +50,7 @@ public class FrmTicket extends javax.swing.JFrame {
         flightIdTxt = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         classTxt = new javax.swing.JLabel();
-        classBox = new javax.swing.JComboBox<>();
+        cmbClass = new javax.swing.JComboBox<>();
         buyBtn = new javax.swing.JToggleButton();
         btnBack = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
@@ -103,13 +104,13 @@ public class FrmTicket extends javax.swing.JFrame {
         classTxt.setText("Clase :");
         jPanel1.add(classTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, -1, 20));
 
-        classBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Economica", "Ejecutiva", " " }));
-        classBox.addActionListener(new java.awt.event.ActionListener() {
+        cmbClass.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Economica", "Ejecutiva", " " }));
+        cmbClass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                classBoxActionPerformed(evt);
+                cmbClassActionPerformed(evt);
             }
         });
-        jPanel1.add(classBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 100, 30));
+        jPanel1.add(cmbClass, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 100, 30));
 
         buyBtn.setBackground(new java.awt.Color(157, 117, 185));
         buyBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -190,37 +191,24 @@ public class FrmTicket extends javax.swing.JFrame {
     }//GEN-LAST:event_buyBtnMouseExited
 
     private void buyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyBtnActionPerformed
-
         try {
+            if (!FieldValidator.validateTicketFields(ticketsNumberSpn, userNameTxt, flightIdTxt, cmbClass, this)) {
+                return;
+            }
+
             int ticketNumber = (int) ticketsNumberSpn.getValue();
             String customerName = userNameTxt.getText().trim();
             String flightId = flightIdTxt.getText().trim();
-            String ticketClass = classBox.getSelectedItem().toString().trim();
-
-            if (ticketNumber == 0 || customerName.isEmpty() || flightId.isEmpty() || ticketClass.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (!customerName.matches("[A-Za-z ]+")) {
-                JOptionPane.showMessageDialog(this, "El nombre solo puede contener letras y espacios.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            if (!flightId.matches("\\d+")) {
-                JOptionPane.showMessageDialog(this, "El ID del vuelo solo puede contener dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
+            String ticketClass = cmbClass.getSelectedItem().toString().trim();
 
             Ticket ticket = new Ticket(ticketNumber, customerName, Integer.parseInt(flightId), ticketClass);
-
             TicketController ticketController = new TicketController();
             String ticketId = ticketController.saveTicket(ticket);
 
             if (ticketId != null) {
                 JOptionPane.showMessageDialog(this,
                         "<html><body style='width: 300px;'>"
-                        + "<p style='font-size: 14px;'>Ha reservado con exito su/s Ticket/s.</p>"
+                        + "<p style='font-size: 14px;'>Ha reservado con éxito su/s Ticket/s.</p>"
                         + "<p style='font-size: 14px;'>El ID de su boleto es: <strong>" + ticketId + "</strong></p>"
                         + "<p style='font-size: 14px;'>Por favor, proceda con el pago.</p>"
                         + "</body></html>",
@@ -228,28 +216,17 @@ public class FrmTicket extends javax.swing.JFrame {
                         JOptionPane.INFORMATION_MESSAGE);
 
                 PayMethod payMethodDialog = new PayMethod();
-
                 payMethodDialog.setLocationRelativeTo(null);
                 payMethodDialog.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Error al guardar el boleto en la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-
-            clearFields();
-
+            ClearFields.clearFieldsTicket(ticketsNumberSpn, userNameTxt, flightIdTxt, cmbClass);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Número de boleto o ID de vuelo no válido: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al registrar el ticket: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }
-
-    private void clearFields() {
-        ticketsNumberSpn.setValue(0);
-        userNameTxt.setText("");
-        flightIdTxt.setText("");
-        classBox.setSelectedIndex(0);
-
     }//GEN-LAST:event_buyBtnActionPerformed
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
@@ -278,9 +255,9 @@ public class FrmTicket extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_flightIdTxtActionPerformed
 
-    private void classBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classBoxActionPerformed
+    private void cmbClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbClassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_classBoxActionPerformed
+    }//GEN-LAST:event_cmbClassActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,8 +298,8 @@ public class FrmTicket extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnBack;
     private javax.swing.JToggleButton buyBtn;
-    private javax.swing.JComboBox<String> classBox;
     private javax.swing.JLabel classTxt;
+    private javax.swing.JComboBox<String> cmbClass;
     private javax.swing.JLabel flightIdLbl;
     private javax.swing.JTextField flightIdTxt;
     private javax.swing.JLabel jLabel1;

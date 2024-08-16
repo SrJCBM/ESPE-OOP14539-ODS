@@ -16,17 +16,17 @@ public class ButtonEditor extends DefaultCellEditor {
     private JButton btnDelete;
     private JPanel buttonPanel;
     private JTable table;
-    private AdTicketsController adTicketsController;
+    private AdFlightsController flightsController;
 
-    public ButtonEditor(JCheckBox checkBox, JTable table) {
+    public ButtonEditor(JCheckBox checkBox, JTable table, AdFlightsController flightsController) {
         super(checkBox);
         this.table = table;
-        this.adTicketsController = adTicketsController;
+        this.flightsController = flightsController;
 
         buttonPanel = new JPanel(new GridLayout(1, 2));
 
-        btnUpdate = new JButton("Update");
-        btnDelete = new JButton("Delete");
+        btnUpdate = new JButton("Actualizar");
+        btnDelete = new JButton("Eliminar");
 
         buttonPanel.add(btnUpdate);
         buttonPanel.add(btnDelete);
@@ -35,9 +35,10 @@ public class ButtonEditor extends DefaultCellEditor {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int row = table.getSelectedRow();
-                int ticketId = (Integer) table.getValueAt(row, 1);
-                JOptionPane.showMessageDialog(null, "Update functionality for Ticket ID: " + ticketId);
-
+                if (row >= 0) {
+                    String flightID = (String) table.getValueAt(row, 0);
+                    updateFlight(flightID);
+                }
             }
         });
 
@@ -45,19 +46,30 @@ public class ButtonEditor extends DefaultCellEditor {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int row = table.getSelectedRow();
-                int ticketId = (Integer) table.getValueAt(row, 1);
-                int response = JOptionPane.showConfirmDialog(null,
-                        "Are you sure you want to delete Ticket ID: " + ticketId + "?",
-                        "Confirm Delete",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.WARNING_MESSAGE);
+                if (row >= 0) {
+                    String flightID = (String) table.getValueAt(row, 0);
+                    int response = JOptionPane.showConfirmDialog(null,
+                            "¿Estás seguro de que quieres eliminar el vuelo con ID: " + flightID + "?",
+                            "Confirmar eliminación",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.WARNING_MESSAGE);
 
-                if (response == JOptionPane.YES_OPTION) {
-                    adTicketsController.deleteTicket(ticketId);
-                    ((DefaultTableModel) table.getModel()).removeRow(row);
+                    if (response == JOptionPane.YES_OPTION) {
+                        boolean success = flightsController.deleteFlight(flightID);
+                        if (success) {
+                            ((DefaultTableModel) table.getModel()).removeRow(row);
+                            JOptionPane.showMessageDialog(null, "Vuelo eliminado correctamente.");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se pudo eliminar el vuelo.");
+                        }
+                    }
                 }
             }
         });
+    }
+
+    private void updateFlight(String flightID) {
+        JOptionPane.showMessageDialog(null, "Funcionalidad de actualización para el vuelo ID: " + flightID);
     }
 
     @Override
@@ -69,5 +81,10 @@ public class ButtonEditor extends DefaultCellEditor {
     @Override
     public Object getCellEditorValue() {
         return null;
+    }
+
+    @Override
+    public boolean stopCellEditing() {
+        return super.stopCellEditing();
     }
 }
