@@ -2,6 +2,7 @@ package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
+import ec.espe.edu.AirlineReservationSystem.utils.ButtonBaggageManager;
 import ec.espe.edu.AirlineReservationSystem.utils.ButtonBaggageManager.ButtonManager;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -118,8 +119,7 @@ public class BaggagePanel extends javax.swing.JPanel {
 
     private void eliminarEquipaje(String baggageId, JDialog dialog) {
         int ticketId = BaggageController.getTicketId();
-        TicketController controlador = new TicketController();
-        controlador.removeBaggage(ticketId, baggageId);
+        //BaggageController.findBaggageCounter(ticketId);
 
         JOptionPane.showMessageDialog(null, baggageId + " eliminado exitosamente.", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
         JOptionPane.showMessageDialog(null, " La devolucion del pago se ha reflejado a su cuenta.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
@@ -320,13 +320,12 @@ public class BaggagePanel extends javax.swing.JPanel {
 
         String baggageType = "Carry On";
 
-        TicketController controller = new TicketController();
-
         int ticketId = BaggageController.getTicketId();
 
-        int baggageCount = controller.getBaggageCount(ticketId);
-
-        if (baggageCount >= 2) {
+      TicketController ticketController = new TicketController();
+      int BaggageCounter = ticketController.getBaggageCount(ticketId);
+      
+        if (BaggageCounter >= 2) {
 
             JOptionPane.showMessageDialog(this,
                     "No se pueden añadir más maletas. Ya se han añadido 2 maletas.",
@@ -335,17 +334,7 @@ public class BaggagePanel extends javax.swing.JPanel {
             return;
         }
 
-        JFrame newFrame = new JFrame("WeightBaggagePanel");
-        newFrame.setResizable(false);
-        newFrame.setSize(700, 500);
-        newFrame.setLocationRelativeTo(null);
-        newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        WeigthBaggagePanel weightPanel = new WeigthBaggagePanel(baggageType);
-
-        newFrame.add(weightPanel);
-
-        newFrame.setVisible(true);
+        ButtonBaggageManager.insertWeigthBaggagePanel (baggageType, BaggageCounter);
 
 
     }//GEN-LAST:event_CarryOnBtonActionPerformed
@@ -354,45 +343,25 @@ public class BaggagePanel extends javax.swing.JPanel {
 
         String baggageType = "Checked";
 
-        TicketController controller = new TicketController();
+      
 
         int ticketId = BaggageController.getTicketId();
 
-        int baggageCount = controller.getBaggageCount(ticketId);
+      TicketController ticketController = new TicketController();
+      int BaggageCounter = ticketController.getBaggageCount(ticketId);
+      
+      
 
-        if (baggageCount >= 2) {
-
-            JOptionPane.showMessageDialog(this,
-                    "No se pueden añadir más maletas. Ya se han añadido 2 maletas.",
-                    "Límite Alcanzado",
-                    JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-
-        JFrame newFrame = new JFrame("WeightBaggagePanel");
-        newFrame.setResizable(false);
-        newFrame.setSize(700, 500);
-        newFrame.setLocationRelativeTo(null);
-        newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        WeigthBaggagePanel weightPanel = new WeigthBaggagePanel(baggageType);
-
-        newFrame.add(weightPanel);
-
-        newFrame.setVisible(true);
+        ButtonBaggageManager.insertWeigthBaggagePanel (baggageType, BaggageCounter);
+        
 
 
     }//GEN-LAST:event_CheckedBtonActionPerformed
 
     private void CleanBaggageBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleanBaggageBtonActionPerformed
 
-        mostrarPanelEliminacion();
         
-        FrmDeleteBaggage deleteBaggage = new FrmDeleteBaggage();
-        
-           deleteBaggage.setLocationRelativeTo(null);
-            deleteBaggage.setVisible(true);
-
+    
     }//GEN-LAST:event_CleanBaggageBtonActionPerformed
 
 

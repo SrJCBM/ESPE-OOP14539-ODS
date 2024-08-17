@@ -4,7 +4,10 @@
  */
 package ec.espe.edu.AirlineReservationSystem.utils;
 
+import ec.espe.edu.AirlineReservationSystem.view.WeigthBaggagePanel;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,4 +42,25 @@ public class ButtonBaggageManager {
         etiquetaEquipaje.setText(texto);
         
     }
+   
+   public static void insertWeigthBaggagePanel (String baggageType , int BaggageCounter ){
+       
+         if (BaggageCounter >= 2) {
+
+           JOptionPane.showMessageDialog(null,"No se pueden añadir más maletas. Ya se han añadido 2 maletas.","Límite Alcanzado",JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+       
+            JFrame newFrame = new JFrame("WeightBaggagePanel");
+        newFrame.setResizable(false);
+        newFrame.setSize(700, 500);
+        newFrame.setLocationRelativeTo(null);
+        newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        WeigthBaggagePanel weightPanel = new WeigthBaggagePanel(baggageType);
+
+        newFrame.add(weightPanel);
+
+        newFrame.setVisible(true);
+   }
 }

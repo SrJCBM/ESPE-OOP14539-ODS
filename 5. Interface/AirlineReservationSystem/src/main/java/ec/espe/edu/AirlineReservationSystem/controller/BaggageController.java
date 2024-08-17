@@ -1,12 +1,17 @@
 package ec.espe.edu.AirlineReservationSystem.controller;
 
 import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.UpdateResult;
+import java.awt.HeadlessException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComponent;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
+import javax.swing.JPanel;
 import org.bson.Document;
 
 /**
@@ -15,7 +20,7 @@ import org.bson.Document;
  */
 public class BaggageController {
 
-    private static int ticketId;
+      private static final Logger logger = Logger.getLogger(TicketController.class.getName());
 
     private static final String DATABASE_NAME = "TicketDataBase";
     private static final String TICKET_COLLECTION = "tickets";
@@ -27,12 +32,29 @@ public class BaggageController {
     private MongoCollection<Document> ticketCollection;
     private MongoCollection<Document> counterCollection;
 
+        
+
+    private static int ticketId;
+
     public BaggageController(int ticketId) {
         this.ticketId = ticketId;
     }
-    public BaggageController() {
-        
+
+       public BaggageController() {
+        mongoClient = MongoClients.create("mongodb+srv://overnightdevelopersquad:Iq9R4i2czmCFcGBk@airlinedb.wbmwsfn.mongodb.net/");
+        database = mongoClient.getDatabase(DATABASE_NAME);
+        ticketCollection = database.getCollection(TICKET_COLLECTION);
+        counterCollection = database.getCollection(COUNTER_COLLECTION);
     }
+    
+public BaggageController(MongoClient mongoClient, int ticketId) {
+    this.ticketId = ticketId;
+    this.mongoClient = mongoClient;
+    this.database = mongoClient.getDatabase("TicketDataBase");
+    this.ticketCollection = database.getCollection("tickets");
+}
+
+
 
     public static void setTicketId(int id) {
         ticketId = id;
@@ -50,8 +72,9 @@ public class BaggageController {
             }
 
             int ticketId= BaggageController.getTicketId();
-            TicketController ticketController = new TicketController();
-            ticketController.updateTicketWithBaggage(ticketId, baggageType, weightValue);
+            
+            TicketController controller = new TicketController ();
+          controller.updateTicketWithBaggage(ticketId, baggageType, weightValue);
 
             JOptionPane.showMessageDialog(component, "Peso confirmado: " + weightValue + " kilogramos", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
 
@@ -65,16 +88,76 @@ public class BaggageController {
 
         }
       
-      private void eliminarEquipaje(String baggageId, JDialog dialog) {
-        int ticketId = BaggageController.getTicketId();
-        TicketController controlador = new TicketController();
-        controlador.removeBaggage(ticketId, baggageId);
+     public static void DeleteBaggageActivate ( JPanel panel ){
+      panel.setVisible(false);  
+      panel.getComponent(0).setVisible(false); 
+      panel.getComponent(1).setVisible(false);
+     }
+     
+  
+     
+ public static void     AdministrateBaggagePanel (int ticketId, JPanel panelToDesactivate){
 
-        JOptionPane.showMessageDialog(null, baggageId + " eliminado exitosamente.", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-        JOptionPane.showMessageDialog(null, " La devolucion del pago se ha reflejado a su cuenta.", "ATENCION", JOptionPane.INFORMATION_MESSAGE);
+      try {
+          TicketController ticketController = new TicketController();
+      int BaggageCounter = ticketController.getBaggageCount(ticketId);
+      
+      if (BaggageCounter == 2){
+          
+          panelToDesactivate.setVisible(true);  
+      panelToDesactivate.getComponent(0).setVisible(true); 
+      panelToDesactivate.getComponent(1).setVisible(true);
+      } else if(BaggageCounter == 0){
+      JOptionPane.showMessageDialog(null, "No hay equipaje vinculado a esta maleta.", "Error", JOptionPane.ERROR_MESSAGE);      }
+      
+      }catch (HeadlessException e) {
+        JOptionPane.showMessageDialog(null, "Error al procesar el equipaje: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
-        dialog.dispose();
     }
       
     }
+ 
+
+    public int getNextBaggage(int ticketId) {
+        try {
+            Document filter = new Document("Ticket ID", ticketId);
+            Document ticket = ticketCollection.find(filter).first();
+
+            if (ticket != null) {
+                List<Document> baggages = (List<Document>) ticket.get("Equipaje");
+                if (baggages != null) {
+                    return baggages.size() + 1;
+                }
+            }
+            return 1;
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Error al obtener el siguiente ID de equipaje", e);
+            return 1;
+        }
+    }
+
+    public void removeBaggage(int ticketId, String baggageId) {
+        try {
+            
+            Document filter = new Document("Ticket ID", ticketId);
+
+            Document update = new Document("$pull", new Document("Equipaje", new Document("Baggage ID", baggageId)));
+
+            UpdateResult result = ticketCollection.updateOne(filter, update);
+
+            if (result.getModifiedCount() > 0) {
+                System.out.println("Equipaje eliminado exitosamente.");
+            } else {
+                System.out.println("No se encontró equipaje para eliminar.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al eliminar el equipaje: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    
+}
+
+
 

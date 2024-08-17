@@ -5,23 +5,22 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
-import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
-import ec.espe.edu.AirlineReservationSystem.utils.ButtonBaggageManager;
-import java.util.List;
-import javax.swing.JOptionPane;
-import org.bson.Document;
 
 /**
  *
  * @author Joffre
  */
 public class FrmDeleteBaggage extends javax.swing.JFrame {
-
+    
+    int ticketId = BaggageController.getTicketId();
     /**
      * Creates new form FrmDeleteBaggage
      */
     public FrmDeleteBaggage() {
         initComponents();
+        
+     BaggageController.DeleteBaggageActivate(Baggage2Panel);
+     BaggageController.AdministrateBaggagePanel(ticketId, Baggage2Panel);
     }
 
     /**
@@ -33,6 +32,7 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         background = new javax.swing.JPanel();
         arstxt = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
@@ -41,12 +41,14 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        Baggage1Panel = new javax.swing.JPanel();
         Baggage1Bton = new javax.swing.JButton();
-        etiquetaEquipaje = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        BaggageLbel1 = new javax.swing.JLabel();
+        Baggage2Panel = new javax.swing.JPanel();
         Baggage2Bton = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        BaggageLbel2 = new javax.swing.JLabel();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,8 +81,8 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
         jLabel5.setText("(R) Overnight Developer Squad");
         background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        Baggage1Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Baggage1Panel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         Baggage1Bton.setBackground(new java.awt.Color(255, 0, 0));
         Baggage1Bton.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -92,34 +94,34 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
             }
         });
 
-        etiquetaEquipaje.setBackground(new java.awt.Color(204, 255, 204));
-        etiquetaEquipaje.setText("jLabel6");
+        BaggageLbel1.setBackground(new java.awt.Color(204, 255, 204));
+        BaggageLbel1.setText("jLabel6");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout Baggage1PanelLayout = new javax.swing.GroupLayout(Baggage1Panel);
+        Baggage1Panel.setLayout(Baggage1PanelLayout);
+        Baggage1PanelLayout.setHorizontalGroup(
+            Baggage1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Baggage1PanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(etiquetaEquipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BaggageLbel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(Baggage1Bton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        Baggage1PanelLayout.setVerticalGroup(
+            Baggage1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Baggage1PanelLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(etiquetaEquipaje, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(Baggage1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BaggageLbel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Baggage1Bton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 9, Short.MAX_VALUE))
         );
 
-        background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 380, 100));
+        background.add(Baggage1Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 380, 100));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        Baggage2Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Baggage2Panel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         Baggage2Bton.setBackground(new java.awt.Color(255, 0, 0));
         Baggage2Bton.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -131,31 +133,31 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setBackground(new java.awt.Color(255, 255, 204));
-        jLabel7.setText("jLabel7");
+        BaggageLbel2.setBackground(new java.awt.Color(255, 255, 204));
+        BaggageLbel2.setText("Bgg");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout Baggage2PanelLayout = new javax.swing.GroupLayout(Baggage2Panel);
+        Baggage2Panel.setLayout(Baggage2PanelLayout);
+        Baggage2PanelLayout.setHorizontalGroup(
+            Baggage2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Baggage2PanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BaggageLbel2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(Baggage2Bton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        Baggage2PanelLayout.setVerticalGroup(
+            Baggage2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Baggage2PanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                .addGroup(Baggage2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BaggageLbel2, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                     .addComponent(Baggage2Bton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        background.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 380, 110));
+        background.add(Baggage2Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 380, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,43 +179,14 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
 
     private void Baggage1BtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Baggage1BtonActionPerformed
       
-         int ticketId = BaggageController.getTicketId();
-
-        TicketController ticketController = new TicketController();
-
-        Document documentTicket = ticketController.findTicket(ticketId);
-  
-          if (documentTicket == null) {
-            JOptionPane.showMessageDialog(this, "No se encontró el ticket con ID: " + ticketId, "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-          
-      
-             List<Document> baggages = (List<Document>) documentTicket.get("Equipaje");
-             
-         if (baggages == null || baggages.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No se encontró equipaje para el ticket con ID: " + ticketId, "Información", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-          int row = 0;
-        for (Document equipaje : baggages) {
-            String baggageId = equipaje.getString("Baggage ID");
-            String baggageType = equipaje.getString("Baggage Type");
-            int baggageWeight = equipaje.getInteger("Baggage Size");
-                
-            ButtonBaggageManager.updateEquipajeLabel(etiquetaEquipaje, baggageId, baggageType, baggageWeight);
-            
-            
-}
+                     
         
-        
-       
-        
-
     }//GEN-LAST:event_Baggage1BtonActionPerformed
 
     private void Baggage2BtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Baggage2BtonActionPerformed
-        // TODO add your handling code here:
+    
+  
+
     }//GEN-LAST:event_Baggage2BtonActionPerformed
 
     /**
@@ -253,18 +226,19 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Baggage1Bton;
+    private javax.swing.JPanel Baggage1Panel;
     private javax.swing.JButton Baggage2Bton;
+    private javax.swing.JPanel Baggage2Panel;
+    private javax.swing.JLabel BaggageLbel1;
+    private javax.swing.JLabel BaggageLbel2;
     private javax.swing.JLabel arstxt;
     private javax.swing.JPanel background;
-    private javax.swing.JLabel etiquetaEquipaje;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }
