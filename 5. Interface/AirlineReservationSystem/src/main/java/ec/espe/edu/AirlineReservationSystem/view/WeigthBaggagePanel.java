@@ -5,6 +5,7 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
+import ec.espe.edu.AirlineReservationSystem.controller.PaymethodController;
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -128,31 +129,13 @@ public class WeigthBaggagePanel extends javax.swing.JPanel {
 
     private void ConfirmBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmBtonActionPerformed
         try {
-            int weightValue = weigth.getValue();
-
-            if (weightValue <= 0) {
-                JOptionPane.showMessageDialog(this, "El peso debe ser mayor que 0.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            int ticketId = BaggageController.getTicketId();
-            TicketController ticketController = new TicketController();
-            ticketController.updateTicketWithBaggage(ticketId, baggageType, weightValue);
-
-            JOptionPane.showMessageDialog(this, "Peso confirmado: " + weightValue + " kilogramos", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-
-            JOptionPane.showMessageDialog(this, "El equipaje se ha añadido a su Ticket!", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-            JOptionPane.showMessageDialog(this,
-                    "<html><body style='width: 300px;'>"
-                    + "<p style='font-size: 14px;'>Por favor, proceda con el pago.</p>"
-                    + "</body></html>",
-                    "Éxito",
-                    JOptionPane.INFORMATION_MESSAGE);
-
-            PayMethod payMethodDialog = new PayMethod();
-
-            payMethodDialog.setLocationRelativeTo(null);
-            payMethodDialog.setVisible(true);
+        int weightValue = weigth.getValue();
+        
+        BaggageController baggageController = new BaggageController();
+          baggageController.handleBaggageProcess(this, weightValue, baggageType);
+          
+           PaymethodController payController = new PaymethodController ();
+           payController.paymethodUtilizate();
 
         } catch (Exception e) {
             e.printStackTrace();

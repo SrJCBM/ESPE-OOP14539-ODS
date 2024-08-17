@@ -4,6 +4,7 @@
  */
 package ec.espe.edu.AirlineReservationSystem.view;
 
+import ec.espe.edu.AirlineReservationSystem.controller.PaymethodController;
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
 import ec.espe.edu.AirlineReservationSystem.model.Ticket;
 import ec.espe.edu.AirlineReservationSystem.utils.ClearFields;
@@ -215,9 +216,8 @@ public class FrmTicket extends javax.swing.JFrame {
                         "Éxito",
                         JOptionPane.INFORMATION_MESSAGE);
 
-                PayMethod payMethodDialog = new PayMethod();
-                payMethodDialog.setLocationRelativeTo(null);
-                payMethodDialog.setVisible(true);
+                PaymethodController paymethod = new PaymethodController ();
+                paymethod.paymethodUtilizate();
             } else {
                 JOptionPane.showMessageDialog(this, "Error al guardar el boleto en la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
             }

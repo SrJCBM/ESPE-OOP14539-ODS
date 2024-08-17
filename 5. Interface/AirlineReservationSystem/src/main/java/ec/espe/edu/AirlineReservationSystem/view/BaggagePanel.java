@@ -2,6 +2,7 @@ package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
+import ec.espe.edu.AirlineReservationSystem.utils.ButtonBaggageManager.ButtonManager;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -44,26 +45,7 @@ public class BaggagePanel extends javax.swing.JPanel {
         ButtonManager.setButtons(CheckedBton, CleanBaggageBton, CarryOnBton);
     }
 
-    public class ButtonManager {
 
-        private static javax.swing.JButton checkedBton;
-        private static javax.swing.JButton cleanBaggageBton;
-        private static javax.swing.JButton carryOnBton;
-
-        public static void setButtons(javax.swing.JButton checkedBton, javax.swing.JButton cleanBaggageBton, javax.swing.JButton carryOnBton) {
-            ButtonManager.checkedBton = checkedBton;
-            ButtonManager.cleanBaggageBton = cleanBaggageBton;
-            ButtonManager.carryOnBton = carryOnBton;
-        }
-
-        public static void enableButtons(boolean enable) {
-            if (checkedBton != null && cleanBaggageBton != null && carryOnBton != null) {
-                checkedBton.setEnabled(enable);
-                cleanBaggageBton.setEnabled(enable);
-                carryOnBton.setEnabled(enable);
-            }
-        }
-    }
 
     private void mostrarPanelEliminacion() {
         JPanel panel = new JPanel();
@@ -405,6 +387,11 @@ public class BaggagePanel extends javax.swing.JPanel {
     private void CleanBaggageBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleanBaggageBtonActionPerformed
 
         mostrarPanelEliminacion();
+        
+        FrmDeleteBaggage deleteBaggage = new FrmDeleteBaggage();
+        
+           deleteBaggage.setLocationRelativeTo(null);
+            deleteBaggage.setVisible(true);
 
     }//GEN-LAST:event_CleanBaggageBtonActionPerformed
 

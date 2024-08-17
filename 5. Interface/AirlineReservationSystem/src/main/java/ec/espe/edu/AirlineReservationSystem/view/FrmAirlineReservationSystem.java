@@ -1,6 +1,6 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
-import java.awt.BorderLayout;
+import ec.espe.edu.AirlineReservationSystem.utils.SwitchPanel;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +14,7 @@ import javax.swing.Timer;
  * @author Miguel Caiza,Overnight Developers Squad,DCCO-ESPE
  */
 public class FrmAirlineReservationSystem extends javax.swing.JFrame {
-
+ SwitchPanel switchPn = new SwitchPanel ();
     /**
      * Creates new form FmAirlineReservationSystemMenu
      */
@@ -659,13 +659,8 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
 
     private void ARStxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ARStxtMouseClicked
         AdministratorPanel Bg = new AdministratorPanel();
-        Bg.setSize(920, 580);
-        Bg.setLocation(0, 0);
-
-        content.removeAll();
-        content.add(Bg, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+        SwitchPanel switchPn = new SwitchPanel ();
+        SwitchPanel.switchPanel(Bg);
     }//GEN-LAST:event_ARStxtMouseClicked
 
     private void SubmenuPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmenuPanel2MouseClicked
@@ -675,73 +670,42 @@ public class FrmAirlineReservationSystem extends javax.swing.JFrame {
     private void VueloBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VueloBtonMouseClicked
         FrmCreateFlight createFlightFrame = new FrmCreateFlight();
         JPanel backgroundPanel2 = createFlightFrame.getCreateFlight();
-        backgroundPanel2.setSize(920, 580);
-        backgroundPanel2.setLocation(0, 0);
-
-        content.removeAll();
-        content.add(backgroundPanel2, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
-
-
+        
+        SwitchPanel.switchPanel(backgroundPanel2);
     }//GEN-LAST:event_VueloBtonMouseClicked
 
     private void EquipajeBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EquipajeBtonMouseClicked
         BaggagePanel panel = new BaggagePanel();
-        panel.setSize(920, 580);
-        panel.setLocation(0, 0);
-
-        content.removeAll();
-        content.add(panel, BorderLayout.CENTER);
-        content.revalidate();
+       
+        SwitchPanel.switchPanel(panel);
         content.repaint();    }//GEN-LAST:event_EquipajeBtonMouseClicked
 
     private void TicketBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TicketBtonMouseClicked
         FrmTicket ticket = new FrmTicket();
         JPanel backGround = ticket.GetBgTicket();
-        backGround.setSize(920, 580);
-        backGround.setLocation(0, 0);
-
-        content.removeAll();
-        content.add(backGround, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+        
+      SwitchPanel.switchPanel(backGround);
     }//GEN-LAST:event_TicketBtonMouseClicked
 
     private void OfertasBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OfertasBtonMouseClicked
         FrmOffers offers = new FrmOffers();
         JPanel offerBackground = offers.getOffersPanel();
-        offerBackground.setSize(920, 580);
-        offerBackground.setLocation(0, 0);
-
-        content.removeAll();
-        content.add(offerBackground, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+      
+         SwitchPanel.switchPanel(offerBackground);
     }//GEN-LAST:event_OfertasBtonMouseClicked
 
     private void SubmenuPanel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmenuPanel7MouseClicked
         FrmFAQ createFAQ = new FrmFAQ();
         JPanel bg = createFAQ.getFrmFAQ();
-        bg.setSize(920, 580);
-        bg.setLocation(0, 0);
 
-        content.removeAll();
-        content.add(bg, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+         SwitchPanel.switchPanel(bg);
     }//GEN-LAST:event_SubmenuPanel7MouseClicked
 
     private void AyudaBtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AyudaBtonMouseClicked
         FrmFAQ createFAQ = new FrmFAQ();
         JPanel bg = createFAQ.getFrmFAQ();
-        bg.setSize(920, 580);
-        bg.setLocation(0, 0);
-
-        content.removeAll();
-        content.add(bg, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+     
+         SwitchPanel.switchPanel(bg);
     }//GEN-LAST:event_AyudaBtonMouseClicked
 
     public static String Fecha() {
