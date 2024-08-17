@@ -136,28 +136,35 @@ public BaggageController(MongoClient mongoClient, int ticketId) {
         }
     }
 
-    public void removeBaggage(int ticketId, String baggageId) {
+  public void deleteBaggage(int ticketId, int baggageIndex) {
         try {
-            
             Document filter = new Document("Ticket ID", ticketId);
+            Document ticket = ticketCollection.find(filter).first();
 
-            Document update = new Document("$pull", new Document("Equipaje", new Document("Baggage ID", baggageId)));
+            if (ticket != null) {
+                List<Document> baggages = (List<Document>) ticket.get("Equipaje");
+                if (baggages != null && baggageIndex >= 1 && baggageIndex <= baggages.size()) {
+                    Document baggageToRemove = baggages.get(baggageIndex - 1);
+                    String baggageId = baggageToRemove.getString("Baggage ID");
 
-            UpdateResult result = ticketCollection.updateOne(filter, update);
+                    Document update = new Document("$pull", new Document("Equipaje", new Document("Baggage ID", baggageId)));
+                    UpdateResult result = ticketCollection.updateOne(filter, update);
 
-            if (result.getModifiedCount() > 0) {
-                System.out.println("Equipaje eliminado exitosamente.");
-            } else {
-                System.out.println("No se encontró equipaje para eliminar.");
+                    if (result.getModifiedCount() > 0) {
+                        JOptionPane.showMessageDialog(null, "Equipaje eliminado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se encontró equipaje para eliminar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                    }
+                }
             }
         } catch (Exception e) {
-            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al eliminar el equipaje: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    
 }
+    
+    
+
 
 
 

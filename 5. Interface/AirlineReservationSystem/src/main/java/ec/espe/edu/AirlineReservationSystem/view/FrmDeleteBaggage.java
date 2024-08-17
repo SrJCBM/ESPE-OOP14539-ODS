@@ -5,6 +5,7 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
+import ec.espe.edu.AirlineReservationSystem.utils.ButtonBaggageManager;
 
 /**
  *
@@ -21,6 +22,11 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
         
      BaggageController.DeleteBaggageActivate(Baggage2Panel);
      BaggageController.AdministrateBaggagePanel(ticketId, Baggage2Panel);
+     
+        ButtonBaggageManager manager = new ButtonBaggageManager ();
+        
+        manager.updateBaggageLabels(ticketId, BaggageLbel2, BaggageLbel1);
+        
     }
 
     /**
@@ -102,20 +108,14 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
         Baggage1PanelLayout.setHorizontalGroup(
             Baggage1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Baggage1PanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BaggageLbel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(Baggage1Bton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addComponent(BaggageLbel1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Baggage1Bton, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Baggage1PanelLayout.setVerticalGroup(
             Baggage1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Baggage1PanelLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(Baggage1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BaggageLbel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Baggage1Bton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 9, Short.MAX_VALUE))
+            .addComponent(Baggage1Bton, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+            .addComponent(BaggageLbel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         background.add(Baggage1Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 380, 100));
@@ -141,23 +141,17 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
         Baggage2PanelLayout.setHorizontalGroup(
             Baggage2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Baggage2PanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BaggageLbel2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(Baggage2Bton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addComponent(BaggageLbel2, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Baggage2Bton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Baggage2PanelLayout.setVerticalGroup(
             Baggage2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Baggage2PanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Baggage2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BaggageLbel2, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                    .addComponent(Baggage2Bton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+            .addComponent(Baggage2Bton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+            .addComponent(BaggageLbel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        background.add(Baggage2Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 380, 110));
+        background.add(Baggage2Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 380, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,13 +173,43 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
 
     private void Baggage1BtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Baggage1BtonActionPerformed
       
-                     
+  BaggageController baggageController = new BaggageController();
+
+
+    baggageController.deleteBaggage(ticketId, 1);
+
+   
+    ButtonBaggageManager manager = new ButtonBaggageManager();
+    manager.updateBaggageLabels(ticketId, BaggageLbel1, BaggageLbel2);
+
+  
+    if (BaggageLbel1.getText().isEmpty()) {
+      BaggageController.DeleteBaggageActivate(Baggage1Panel);
+    }
+    if (BaggageLbel2.getText().isEmpty()) {
+        BaggageController.DeleteBaggageActivate(Baggage2Panel);
+    }
         
     }//GEN-LAST:event_Baggage1BtonActionPerformed
 
     private void Baggage2BtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Baggage2BtonActionPerformed
     
+   BaggageController baggageController = new BaggageController();
+
+
+    baggageController.deleteBaggage(ticketId, 2);
+
+   
+    ButtonBaggageManager manager = new ButtonBaggageManager();
+    manager.updateBaggageLabels(ticketId, BaggageLbel1, BaggageLbel2);
+
   
+    if (BaggageLbel1.getText().isEmpty()) {
+      BaggageController.DeleteBaggageActivate(Baggage1Panel);
+    }
+    if (BaggageLbel2.getText().isEmpty()) {
+        BaggageController.DeleteBaggageActivate(Baggage2Panel);
+    }
 
     }//GEN-LAST:event_Baggage2BtonActionPerformed
 
