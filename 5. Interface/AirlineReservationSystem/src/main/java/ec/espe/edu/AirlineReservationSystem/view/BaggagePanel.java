@@ -325,15 +325,7 @@ public class BaggagePanel extends javax.swing.JPanel {
       TicketController ticketController = new TicketController();
       int BaggageCounter = ticketController.getBaggageCount(ticketId);
       
-        if (BaggageCounter >= 2) {
-
-            JOptionPane.showMessageDialog(this,
-                    "No se pueden añadir más maletas. Ya se han añadido 2 maletas.",
-                    "Límite Alcanzado",
-                    JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-
+   
         ButtonBaggageManager.insertWeigthBaggagePanel (baggageType, BaggageCounter);
 
 
@@ -360,8 +352,23 @@ public class BaggagePanel extends javax.swing.JPanel {
 
     private void CleanBaggageBtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CleanBaggageBtonActionPerformed
 
+        int ticketId = BaggageController.getTicketId();
         
+         TicketController ticketController = new TicketController();
+      int BaggageCounter = ticketController.getBaggageCount(ticketId);
+      
+        FrmDeleteBaggage deleteBaggage = new FrmDeleteBaggage();
+        
+        deleteBaggage.setResizable(false);
+        deleteBaggage.setSize(700, 500);
+        deleteBaggage.setLocationRelativeTo(null);
+        deleteBaggage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        if (BaggageCounter > 0 ) {
+            
+        deleteBaggage.setVisible(true);
     
+        }
     }//GEN-LAST:event_CleanBaggageBtonActionPerformed
 
 
