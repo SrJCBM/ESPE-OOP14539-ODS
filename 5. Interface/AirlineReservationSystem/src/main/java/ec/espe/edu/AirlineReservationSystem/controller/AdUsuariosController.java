@@ -1,10 +1,9 @@
 package ec.espe.edu.AirlineReservationSystem.controller;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCursor;
+import ec.espe.edu.AirlineReservationSystem.utils.MongoDBManager;
 import org.bson.Document;
 
 import java.util.ArrayList;
@@ -15,14 +14,13 @@ import java.util.List;
  *
  * Author: Kerlly Chiriboga, ODS
  */
-public class AdUsuariosController {
+public class AdUsuariosController extends MongoDBManager {
 
-    private MongoClient mongoClient;
     private MongoDatabase database;
     private MongoCollection<Document> usuariosCollection;
 
     public AdUsuariosController() {
-        mongoClient = MongoClients.create("mongodb+srv://overnightdevelopersquad:Iq9R4i2czmCFcGBk@airlinedb.wbmwsfn.mongodb.net/");
+        super("mongodb+srv://overnightdevelopersquad:Iq9R4i2czmCFcGBk@airlinedb.wbmwsfn.mongodb.net/");
         database = mongoClient.getDatabase("CustomerDatabase");
         usuariosCollection = database.getCollection("customers");
     }
@@ -42,13 +40,13 @@ public class AdUsuariosController {
         try {
             Document query = new Document("id", userId);
             Document update = new Document("$set", new Document("name", newName)
-                .append("email", newEmail)
-                .append("phoneNumber", newPhoneNumber)
-                .append("city", newCity)
-                .append("state", newState)
-                .append("postalCode", newPostalCode)
-                .append("dateOfBirth", newDateOfBirth)
-                .append("gender", newGender));
+                    .append("email", newEmail)
+                    .append("phoneNumber", newPhoneNumber)
+                    .append("city", newCity)
+                    .append("state", newState)
+                    .append("postalCode", newPostalCode)
+                    .append("dateOfBirth", newDateOfBirth)
+                    .append("gender", newGender));
 
             usuariosCollection.updateOne(query, update);
             return true;
@@ -68,11 +66,5 @@ public class AdUsuariosController {
             return false;
         }
     }
-
-    public void close() {
-        if (mongoClient != null) {
-            mongoClient.close();
-            System.out.println("Conexión a MongoDB cerrada.");
-        }
-    }
 }
+

@@ -1,14 +1,12 @@
 package ec.espe.edu.AirlineReservationSystem.controller;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
+import ec.espe.edu.AirlineReservationSystem.utils.MongoDBManager;
 import org.bson.Document;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,14 +15,14 @@ import java.util.List;
  *
  * @author Kerlly Chiriboga, ODS
  */
-public class AdFlightsController {
 
-    private MongoClient mongoClient;
+public class AdFlightsController extends MongoDBManager {
+
     private MongoDatabase database;
     private MongoCollection<Document> flightsCollection;
 
     public AdFlightsController() {
-        mongoClient = MongoClients.create("mongodb+srv://overnightdevelopersquad:Iq9R4i2czmCFcGBk@airlinedb.wbmwsfn.mongodb.net/");
+        super("mongodb+srv://overnightdevelopersquad:Iq9R4i2czmCFcGBk@airlinedb.wbmwsfn.mongodb.net/");
         database = mongoClient.getDatabase("FlightDataBase");
         flightsCollection = database.getCollection("flights");
     }
@@ -65,13 +63,6 @@ public class AdFlightsController {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
-        }
-    }
-
-    public void close() {
-        if (mongoClient != null) {
-            mongoClient.close();
-            System.out.println("Conexión a MongoDB cerrada.");
         }
     }
 }
