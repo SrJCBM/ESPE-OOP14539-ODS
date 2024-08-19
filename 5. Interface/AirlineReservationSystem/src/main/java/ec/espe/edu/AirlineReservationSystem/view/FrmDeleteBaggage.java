@@ -6,6 +6,8 @@ package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
 import ec.espe.edu.AirlineReservationSystem.utils.ButtonBaggageManager;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -101,7 +103,7 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
         });
 
         BaggageLbel1.setBackground(new java.awt.Color(204, 255, 204));
-        BaggageLbel1.setText("Bgg");
+        BaggageLbel1.setText("jLabel6");
 
         javax.swing.GroupLayout Baggage1PanelLayout = new javax.swing.GroupLayout(Baggage1Panel);
         Baggage1Panel.setLayout(Baggage1PanelLayout);
@@ -180,15 +182,11 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
 
    
     ButtonBaggageManager manager = new ButtonBaggageManager();
-    manager.updateBaggageLabels(ticketId, BaggageLbel1, BaggageLbel2);
+    manager.updateBaggageLabels(ticketId, BaggageLbel2, BaggageLbel1);
 
-  
-    if (BaggageLbel1.getText().isEmpty()) {
-      BaggageController.DeleteBaggageActivate(Baggage1Panel);
-    }
-    if (BaggageLbel2.getText().isEmpty()) {
-        BaggageController.DeleteBaggageActivate(Baggage2Panel);
-    }
+       BaggageController.DeleteBaggageActivate(Baggage2Panel);
+
+   ButtonBaggageManager.closeWindowBaggageToEliminate(ticketId, Baggage1Bton);
         
     }//GEN-LAST:event_Baggage1BtonActionPerformed
 
@@ -201,16 +199,11 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
 
    
     ButtonBaggageManager manager = new ButtonBaggageManager();
-    manager.updateBaggageLabels(ticketId, BaggageLbel1, BaggageLbel2);
+    manager.updateBaggageLabels(ticketId, BaggageLbel2, BaggageLbel1);
 
-  
-    if (BaggageLbel1.getText().isEmpty()) {
-      BaggageController.DeleteBaggageActivate(Baggage1Panel);
-    }
-    if (BaggageLbel2.getText().isEmpty()) {
-        BaggageController.DeleteBaggageActivate(Baggage2Panel);
-    }
+       BaggageController.DeleteBaggageActivate(Baggage2Panel);
 
+    ButtonBaggageManager.closeWindowBaggageToEliminate(ticketId, Baggage2Bton);
     }//GEN-LAST:event_Baggage2BtonActionPerformed
 
     /**

@@ -8,14 +8,18 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
 import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
+import ec.espe.edu.AirlineReservationSystem.view.FrmDeleteBaggage;
 import ec.espe.edu.AirlineReservationSystem.view.WeigthBaggagePanel;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import org.bson.Document;
 
 /**
@@ -133,5 +137,19 @@ public class ButtonBaggageManager {
         newFrame.add(weightPanel);
 
         newFrame.setVisible(true);
+   }
+   public static void closeWindowBaggageToEliminate (int ticketId, JButton boton){
+       TicketController controller = new TicketController();
+   int baggageCount = controller.getBaggageCount(ticketId);
+    if (baggageCount == 0) {
+       
+  JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(boton);
+        if (frame != null) {
+            frame.dispose();
+        }
+            JOptionPane.showMessageDialog(null, "No existen maletas asociadas. Por favor, agregue más maletas.", "Información", JOptionPane.INFORMATION_MESSAGE);
+
+    }
+    
    }
 }

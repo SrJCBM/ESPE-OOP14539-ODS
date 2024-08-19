@@ -5,6 +5,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.UpdateResult;
+import static ec.espe.edu.AirlineReservationSystem.utils.CustomOptionPane.showCustomDialog;
 import java.awt.HeadlessException;
 import java.util.List;
 import java.util.logging.Level;
@@ -75,16 +76,16 @@ public BaggageController(MongoClient mongoClient, int ticketId) {
             
             TicketController controller = new TicketController ();
           controller.updateTicketWithBaggage(ticketId, baggageType, weightValue);
-
-            JOptionPane.showMessageDialog(component, "Peso confirmado: " + weightValue + " kilogramos", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-
-            JOptionPane.showMessageDialog(component, "El equipaje se ha añadido a su Ticket!", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
-            JOptionPane.showMessageDialog(component,
-                    "<html><body style='width: 300px;'>"
-                    + "<p style='font-size: 14px;'>Por favor, proceda con el pago.</p>"
-                    + "</body></html>",
-                    "Éxito",
-                    JOptionPane.INFORMATION_MESSAGE);
+          
+          
+      showCustomDialog(null,
+                "<html><body style='width: 300px;'>"
+                + "<p style='font-size: 16px; color: #2C3E50;'><strong>Peso confirmado:</strong> 25 kilogramos</p>"
+                + "<p style='font-size: 16px; color: #27AE60;'><strong>El equipaje se ha añadido a su Ticket!</strong></p>"
+                + "<p style='font-size: 14px; color: #2980B9;'>"
+                + "Por favor, proceda con el pago."
+                + "</p>"
+                + "</body></html>");
 
         }
       
@@ -157,7 +158,7 @@ public BaggageController(MongoClient mongoClient, int ticketId) {
                     }
                 }
             }
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Error al eliminar el equipaje: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }

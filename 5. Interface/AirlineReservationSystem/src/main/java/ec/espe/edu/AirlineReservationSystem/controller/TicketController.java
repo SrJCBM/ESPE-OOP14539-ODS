@@ -137,7 +137,7 @@ public class TicketController {
         }
     }
     
-  public void updateTicketWithBaggage(int ticketId, String baggageType, int baggageSize) {
+public void updateTicketWithBaggage(int ticketId, String baggageType, int baggageSize) {
     try {
         Document filter = new Document("Ticket ID", ticketId);
         Document ticket = ticketCollection.find(filter).first();
@@ -145,29 +145,37 @@ public class TicketController {
         if (ticket != null) {
             List<Document> baggages = (List<Document>) ticket.get("Equipaje");
 
+            int nextBaggageId = 1;
             if (baggages != null) {
-                for (int i = 0; i < baggages.size(); i++) {
-                    Document baggage = baggages.get(i);
-                    String newId = "Equipaje " + (i + 1);
-                    baggage.put("Baggage ID", newId);
+                boolean[] idsUsed = {false, false}; 
+                for (Document baggage : baggages) {
+                    String baggageId = baggage.getString("Baggage ID");
+                    if (baggageId.equals("Equipaje 1")) {
+                        idsUsed[0] = true;
+                    } else if (baggageId.equals("Equipaje 2")) {
+                        idsUsed[1] = true;
+                    }
                 }
-                Document update = new Document("$set", new Document("Equipaje", baggages));
-                ticketCollection.updateOne(filter, update);
-
-                int nextBaggageId = baggages.size() + 1;
-                String baggageId = "Equipaje " + nextBaggageId;
-
-                Document newBaggage = new Document("Baggage ID", baggageId)
-                        .append("Baggage Type", baggageType)
-                        .append("Baggage Size", baggageSize);
-
-                update = new Document("$push", new Document("Equipaje", newBaggage));
-                ticketCollection.updateOne(filter, update);
+                
+            
+                if (!idsUsed[0]) {
+                    nextBaggageId = 1;
+                } else if (!idsUsed[1]) {
+                    nextBaggageId = 2;
+                } 
             }
+
+            String baggageId = "Equipaje " + nextBaggageId;
+            Document newBaggage = new Document("Baggage ID", baggageId)
+                    .append("Baggage Type", baggageType)
+                    .append("Baggage Size", baggageSize);
+
+            Document update = new Document("$push", new Document("Equipaje", newBaggage));
+            ticketCollection.updateOne(filter, update);
         }
     } catch (Exception e) {
         logger.log(Level.SEVERE, "Error al actualizar el equipaje del ticket", e);
     }
-  }
 }
 
+}
