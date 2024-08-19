@@ -137,24 +137,37 @@ public class TicketController {
         }
     }
     
-      public void updateTicketWithBaggage(int ticketId, String baggageType, int baggageSize) {
-        try {
-            Document filter = new Document("Ticket ID", ticketId);
-             BaggageController controller =  new BaggageController ();
-            int nextBaggageId = controller.getNextBaggage(ticketId);
-            String baggageId = "Equipaje " + nextBaggageId;
+  public void updateTicketWithBaggage(int ticketId, String baggageType, int baggageSize) {
+    try {
+        Document filter = new Document("Ticket ID", ticketId);
+        Document ticket = ticketCollection.find(filter).first();
 
-            Document newBaggage = new Document("Baggage ID", baggageId)
-                    .append("Baggage Type", baggageType)
-                    .append("Baggage Size", baggageSize);
+        if (ticket != null) {
+            List<Document> baggages = (List<Document>) ticket.get("Equipaje");
 
-            Document update = new Document("$push", new Document("Equipaje", newBaggage));
+            if (baggages != null) {
+                for (int i = 0; i < baggages.size(); i++) {
+                    Document baggage = baggages.get(i);
+                    String newId = "Equipaje " + (i + 1);
+                    baggage.put("Baggage ID", newId);
+                }
+                Document update = new Document("$set", new Document("Equipaje", baggages));
+                ticketCollection.updateOne(filter, update);
 
-            ticketCollection.updateOne(filter, update);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error al actualizar el equipaje del ticket", e);
+                int nextBaggageId = baggages.size() + 1;
+                String baggageId = "Equipaje " + nextBaggageId;
+
+                Document newBaggage = new Document("Baggage ID", baggageId)
+                        .append("Baggage Type", baggageType)
+                        .append("Baggage Size", baggageSize);
+
+                update = new Document("$push", new Document("Equipaje", newBaggage));
+                ticketCollection.updateOne(filter, update);
+            }
         }
+    } catch (Exception e) {
+        logger.log(Level.SEVERE, "Error al actualizar el equipaje del ticket", e);
     }
-
+  }
 }
 

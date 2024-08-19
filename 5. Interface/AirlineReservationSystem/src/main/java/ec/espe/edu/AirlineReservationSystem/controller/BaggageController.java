@@ -96,7 +96,7 @@ public BaggageController(MongoClient mongoClient, int ticketId) {
      
   
      
- public static void     AdministrateBaggagePanel (int ticketId, JPanel panelToDesactivate){
+ public static void AdministrateBaggagePanel (int ticketId, JPanel panelToDesactivate){
 
       try {
           TicketController ticketController = new TicketController();

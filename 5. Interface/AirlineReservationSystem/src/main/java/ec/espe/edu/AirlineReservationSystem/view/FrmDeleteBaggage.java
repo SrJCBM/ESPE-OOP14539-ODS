@@ -101,7 +101,7 @@ public class FrmDeleteBaggage extends javax.swing.JFrame {
         });
 
         BaggageLbel1.setBackground(new java.awt.Color(204, 255, 204));
-        BaggageLbel1.setText("jLabel6");
+        BaggageLbel1.setText("Bgg");
 
         javax.swing.GroupLayout Baggage1PanelLayout = new javax.swing.GroupLayout(Baggage1Panel);
         Baggage1Panel.setLayout(Baggage1PanelLayout);

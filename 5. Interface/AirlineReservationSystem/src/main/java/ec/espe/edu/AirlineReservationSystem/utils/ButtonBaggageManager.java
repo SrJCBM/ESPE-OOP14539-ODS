@@ -95,7 +95,8 @@ public class ButtonBaggageManager {
                     String baggageType1 = baggage1.getString("Baggage Type");
                     int baggageSize1 = baggage1.getInteger("Baggage Size");
 
-                    updateBaggageLabel(baggageLabel1, baggageId1, baggageType1, baggageSize1);
+                    updateBaggageLabel(baggageLabel2, baggageId1, baggageType1, baggageSize1);
+                   
                 }
                 if (baggages.size() > 1) {
                     Document baggage2 = baggages.get(1);
@@ -103,7 +104,7 @@ public class ButtonBaggageManager {
                     String baggageType2 = baggage2.getString("Baggage Type");
                     int baggageSize2 = baggage2.getInteger("Baggage Size");
 
-                    updateBaggageLabel(baggageLabel2, baggageId2, baggageType2, baggageSize2);
+                    updateBaggageLabel(baggageLabel1, baggageId2, baggageType2, baggageSize2);
                 }
             }
         }
