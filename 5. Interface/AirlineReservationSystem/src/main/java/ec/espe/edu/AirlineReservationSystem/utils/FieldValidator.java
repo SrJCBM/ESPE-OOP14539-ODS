@@ -1,7 +1,7 @@
-
 package ec.espe.edu.AirlineReservationSystem.utils;
 
 import java.awt.Component;
+import java.util.Date;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
@@ -31,6 +31,27 @@ public class FieldValidator {
 
         if (!flightId.matches("\\d+")) {
             JOptionPane.showMessageDialog(parentComponent, "El ID del vuelo solo puede contener dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        return true;
+    }
+
+    public static boolean validateFlightFields(String origin, String destination, String airline, Date departureDate, Date arrivalDate, Component parentComponent) {
+        Date today = new Date();
+
+        if (origin.equals("Ciudad") || destination.equals("Ciudad") || airline.isEmpty() || departureDate == null || arrivalDate == null) {
+            JOptionPane.showMessageDialog(parentComponent, "Por favor, complete todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (departureDate.before(today)) {
+            JOptionPane.showMessageDialog(parentComponent, "La fecha de salida no puede ser anterior a la fecha actual.", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        if (arrivalDate.before(departureDate)) {
+            JOptionPane.showMessageDialog(parentComponent, "La fecha de llegada no puede ser anterior a la fecha de salida.", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 

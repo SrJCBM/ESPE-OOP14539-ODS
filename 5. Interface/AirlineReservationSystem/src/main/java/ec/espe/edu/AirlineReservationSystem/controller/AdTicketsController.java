@@ -1,10 +1,8 @@
 package ec.espe.edu.AirlineReservationSystem.controller;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCursor;
+import ec.espe.edu.AirlineReservationSystem.utils.MongoDBManager;
 import org.bson.Document;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +11,12 @@ import java.util.List;
  *
  * @author Kerlly Chiriboga, ODS
  */
+public class AdTicketsController extends MongoDBManager {
 
-public class AdTicketsController {
-
-    private MongoClient mongoClient;
-    private MongoDatabase database;
     private MongoCollection<Document> ticketsCollection;
 
     public AdTicketsController() {
-        mongoClient = MongoClients.create("mongodb+srv://overnightdevelopersquad:Iq9R4i2czmCFcGBk@airlinedb.wbmwsfn.mongodb.net/");
-        database = mongoClient.getDatabase("TicketDataBase");
+        super("mongodb+srv://overnightdevelopersquad:Iq9R4i2czmCFcGBk@airlinedb.wbmwsfn.mongodb.net/", "TicketDataBase");
         ticketsCollection = database.getCollection("tickets");
     }
 
@@ -37,36 +31,17 @@ public class AdTicketsController {
         return ticketsList;
     }
 
-    public void close() {
-        if (mongoClient != null) {
-            mongoClient.close();
-            System.out.println("Conexión a MongoDB cerrada.");
-        }
-    }
-
     public boolean updateTicket(int ticketId, String newCustomerName, int newFlightId, String newTicketClass) {
-        try {
-            Document query = new Document("Ticket ID", ticketId);
-            Document update = new Document("$set", new Document("Customer Name", newCustomerName)
+        Document query = new Document("Ticket ID", ticketId);
+        Document update = new Document("Customer Name", newCustomerName)
                 .append("Id Flight", newFlightId)
-                .append("Ticket Class", newTicketClass));
+                .append("Ticket Class", newTicketClass);
 
-            ticketsCollection.updateOne(query, update);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+        return updateDocument(ticketsCollection, query, update);
     }
 
     public boolean deleteTicket(int ticketId) {
-        try {
-            Document query = new Document("Ticket ID", ticketId);
-            ticketsCollection.deleteOne(query);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+        Document query = new Document("Ticket ID", ticketId);
+        return deleteDocument(ticketsCollection, query);
     }
 }
