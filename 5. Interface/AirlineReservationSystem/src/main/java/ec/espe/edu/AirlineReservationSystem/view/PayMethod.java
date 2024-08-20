@@ -1,5 +1,6 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
+import ec.espe.edu.AirlineReservationSystem.utils.CustomOptionPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +14,7 @@ public class PayMethod extends javax.swing.JFrame {
         initComponents();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -143,14 +145,14 @@ public class PayMethod extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (BCredit.isSelected() || BDebit.isSelected() || BPaypal.isSelected()) {
+         if (BCredit.isSelected() || BDebit.isSelected() || BPaypal.isSelected()) {
+        CustomOptionPane.showCustomConfirmation("El pago se realizó con éxito.", "Método de pago seleccionado: " +
+            (BCredit.isSelected() ? "Crédito" : BDebit.isSelected() ? "Débito" : "PayPal"));
+        this.dispose();
+    } else {
+        CustomOptionPane.showCustomConfirmation("Por favor, seleccione un método de pago.", "");
+    }
 
-            JOptionPane.showMessageDialog(this, "El pago se realizó con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-        } else {
-
-            JOptionPane.showMessageDialog(this, "Por favor, seleccione un método de pago.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BDebitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BDebitActionPerformed

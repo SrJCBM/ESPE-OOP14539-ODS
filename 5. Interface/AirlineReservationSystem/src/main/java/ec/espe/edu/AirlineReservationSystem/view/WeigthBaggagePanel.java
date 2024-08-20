@@ -5,9 +5,6 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.BaggageController;
-import ec.espe.edu.AirlineReservationSystem.controller.PaymethodController;
-import ec.espe.edu.AirlineReservationSystem.controller.TicketController;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -134,8 +131,6 @@ public class WeigthBaggagePanel extends javax.swing.JPanel {
         BaggageController baggageController = new BaggageController();
           baggageController.handleBaggageProcess(this, weightValue, baggageType);
           
-           PaymethodController payController = new PaymethodController ();
-           payController.paymethodUtilizate();
 
         } catch (Exception e) {
             e.printStackTrace();

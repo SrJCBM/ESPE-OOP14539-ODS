@@ -2,6 +2,7 @@ package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.CreateFlightController;
 import ec.espe.edu.AirlineReservationSystem.utils.ClearFields;
+import ec.espe.edu.AirlineReservationSystem.utils.CustomOptionPane;
 import java.awt.Color;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -185,25 +186,34 @@ public class FrmCreateFlight extends javax.swing.JFrame {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         try {
-            String origin = cmbOrigin.getSelectedItem().toString();
-            String destination = cmbDestination.getSelectedItem().toString();
-            String airline = txtAirline.getText();
-            Date departureDate = jDateDeparture.getDate();
-            Date arrivalDate = jDateArrival.getDate();
+    String origin = cmbOrigin.getSelectedItem().toString();
+    String destination = cmbDestination.getSelectedItem().toString();
+    String airline = txtAirline.getText();
+    Date departureDate = jDateDeparture.getDate();
+    Date arrivalDate = jDateArrival.getDate();
 
-            CreateFlightController controller = new CreateFlightController();
-            String flightId = controller.createFlight(origin, destination, airline, departureDate, arrivalDate, this);
+    CreateFlightController controller = new CreateFlightController();
+    String flightId = controller.createFlight(origin, destination, airline, departureDate, arrivalDate, this);
 
-            if (flightId != null) {
-                JOptionPane.showMessageDialog(this, "Vuelo creado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                ClearFields.clearFieldsFlight(cmbOrigin, cmbDestination, txtAirline, jDateDeparture, jDateArrival);
-            }
+    if (flightId != null) {
+        CustomOptionPane.showCustomConfirmation(
+            "Vuelo creado exitosamente.",
+            "ID de vuelo: " + flightId
+        );
+        ClearFields.clearFieldsFlight(cmbOrigin, cmbDestination, txtAirline, jDateDeparture, jDateArrival);
+    }
 
-        } catch (IllegalArgumentException e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ocurrió un error al crear el vuelo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
+} catch (IllegalArgumentException e) {
+    CustomOptionPane.showCustomConfirmation(
+        e.getMessage(),
+        "Error al crear el vuelo"
+    );
+} catch (Exception e) {
+    CustomOptionPane.showCustomConfirmation(
+        "Ocurrió un error al crear el vuelo: " + e.getMessage(),
+        "Error al crear el vuelo"
+    );
+}
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked

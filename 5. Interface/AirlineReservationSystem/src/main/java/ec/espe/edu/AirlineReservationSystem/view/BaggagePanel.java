@@ -168,10 +168,10 @@ public class BaggagePanel extends javax.swing.JPanel {
             .addGroup(BackgroundLayout.createSequentialGroup()
                 .addGap(380, 380, 380)
                 .addComponent(jLabel1))
-            .addGroup(BackgroundLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(OptionBaggagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(datePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(BackgroundLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(OptionBaggagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         BackgroundLayout.setVerticalGroup(
             BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

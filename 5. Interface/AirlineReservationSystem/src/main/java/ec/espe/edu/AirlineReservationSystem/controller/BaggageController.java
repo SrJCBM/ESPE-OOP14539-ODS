@@ -5,7 +5,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.UpdateResult;
-import static ec.espe.edu.AirlineReservationSystem.utils.CustomOptionPane.showCustomDialog;
+import ec.espe.edu.AirlineReservationSystem.utils.CustomOptionPane;
 import java.awt.HeadlessException;
 import java.util.List;
 import java.util.logging.Level;
@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import org.bson.Document;
 
 /**
@@ -38,7 +39,7 @@ public class BaggageController {
     private static int ticketId;
 
     public BaggageController(int ticketId) {
-        this.ticketId = ticketId;
+        BaggageController.ticketId = ticketId;
     }
 
        public BaggageController() {
@@ -49,7 +50,7 @@ public class BaggageController {
     }
     
 public BaggageController(MongoClient mongoClient, int ticketId) {
-    this.ticketId = ticketId;
+    BaggageController.ticketId = ticketId;
     this.mongoClient = mongoClient;
     this.database = mongoClient.getDatabase("TicketDataBase");
     this.ticketCollection = database.getCollection("tickets");
@@ -65,29 +66,34 @@ public BaggageController(MongoClient mongoClient, int ticketId) {
         return ticketId;
     }
     
-      public void handleBaggageProcess(JComponent component, int weightValue, String baggageType) {
-          
-            if (weightValue <= 0) {
-                JOptionPane.showMessageDialog(component, "El peso debe ser mayor que 0.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
+public void handleBaggageProcess(JComponent component, int weightValue, String baggageType) {
+    if (weightValue <= 0) {
+        JOptionPane.showMessageDialog(component, "El peso debe ser mayor que 0.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-            int ticketId= BaggageController.getTicketId();
-            
-            TicketController controller = new TicketController ();
-          controller.updateTicketWithBaggage(ticketId, baggageType, weightValue);
-          
-          
-      showCustomDialog(null,
-                "<html><body style='width: 300px;'>"
-                + "<p style='font-size: 16px; color: #2C3E50;'><strong>Peso confirmado:</strong> 25 kilogramos</p>"
-                + "<p style='font-size: 16px; color: #27AE60;'><strong>El equipaje se ha añadido a su Ticket!</strong></p>"
-                + "<p style='font-size: 14px; color: #2980B9;'>"
-                + "Por favor, proceda con el pago."
-                + "</p>"
-                + "</body></html>");
+    int ticketId = BaggageController.getTicketId();
+    TicketController controller = new TicketController();
+    controller.updateTicketWithBaggage(ticketId, baggageType, weightValue);
 
-        }
+    int result = CustomOptionPane.showCustomConfirmation(
+        component, 
+        "<html><body style='width: 300px;'>"
+        + "<p style='font-size: 16px; color: #2C3E50;'><strong>Peso confirmado:</strong> 25 kilogramos</p>"
+        + "<p style='font-size: 16px; color: #27AE60;'><strong>El equipaje se ha añadido a su Ticket!</strong></p>"
+        + "<p style='font-size: 14px; color: #2980B9;'>"
+        + "Por favor, proceda con el pago."
+        + "</p>"
+        + "</body></html>"
+    );
+
+    if (result == JOptionPane.OK_OPTION) {
+        PaymethodController payController = new PaymethodController();
+        payController.paymethodUtilizate();
+        
+        SwingUtilities.getWindowAncestor(component).dispose();
+    }
+}
       
      public static void DeleteBaggageActivate ( JPanel panel ){
       panel.setVisible(false);  

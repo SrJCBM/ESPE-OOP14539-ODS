@@ -1,6 +1,7 @@
 package ec.espe.edu.AirlineReservationSystem.view;
 
 import ec.espe.edu.AirlineReservationSystem.controller.CustomerController;
+import ec.espe.edu.AirlineReservationSystem.utils.CustomOptionPane;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -308,19 +309,26 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_passTxtMousePressed
 
     private void logginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logginButtonActionPerformed
-        String username = UsernameField.getText();
-        String password = new String(passTxt.getPassword());
+   String username = UsernameField.getText();
+String password = new String(passTxt.getPassword());
 
-        boolean isAuthenticated = CustomerController.authenticateCustomer(username, password);
+boolean isAuthenticated = CustomerController.authenticateCustomer(username, password);
 
-        if (isAuthenticated) {
-            FrmAirlineReservationSystem fmAirlineReservationSystem = new FrmAirlineReservationSystem();
-            this.setVisible(false);
-            fmAirlineReservationSystem.setVisible(true);
-            JOptionPane.showMessageDialog(this, "Login successful!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos. Por favor intentelo de nuevo", "Login Error", JOptionPane.ERROR_MESSAGE);
-        }
+if (isAuthenticated) {
+    FrmAirlineReservationSystem fmAirlineReservationSystem = new FrmAirlineReservationSystem();
+    this.setVisible(false);
+    fmAirlineReservationSystem.setVisible(true);
+
+    CustomOptionPane.showCustomConfirmation(
+        "Login exitoso!",
+        "Bienvenido al sistema de reservas de aerolíneas."
+    );
+} else {
+    CustomOptionPane.showCustomConfirmation(
+        "Usuario o contraseña incorrectos. Por favor intentelo de nuevo",
+        "Error de Login"
+    );
+}
     }//GEN-LAST:event_logginButtonActionPerformed
 
     private void logginButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logginButtonMouseEntered

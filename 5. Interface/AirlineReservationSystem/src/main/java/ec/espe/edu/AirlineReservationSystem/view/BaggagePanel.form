@@ -47,11 +47,11 @@
                   <EmptySpace min="-2" pref="380" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               </Group>
+              <Component id="datePanel" alignment="0" min="-2" max="-2" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="OptionBaggagePanel" min="-2" max="-2" attributes="0"/>
               </Group>
-              <Component id="datePanel" alignment="0" min="-2" max="-2" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
